@@ -1,375 +1,736 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 
-<html class="light" lang="en"><head>
-<link rel="stylesheet" href="../../shared/tailwind-desktop.css"/>
-<link rel="stylesheet" href="../../shared/base.css"/>
+<html class="light" lang="en">
+  <head>
+    <link rel="stylesheet" href="../../shared/tailwind-desktop.css" />
+    <link rel="stylesheet" href="../../shared/base.css" />
 
-<meta charset="utf-8"/>
-<meta name="description" content="SkillForge — The premium platform for professional skill development and certification."/>
-<link rel="icon" type="image/svg+xml" href="../../shared/favicon.svg"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>SkillForge | Student Progress</title>
-
-</head>
-<body class="bg-background font-body text-on-surface antialiased flex overflow-hidden h-screen">
-<!-- SideNavBar (Authority: JSON) -->
-<aside class="h-screen w-64 border-r border-slate-200/50 dark:border-slate-800/50 bg-surface-container-low dark:bg-slate-950 flex flex-col py-6 px-4 space-y-2 shrink-0">
-<div class="px-2 mb-8">
-<div class="flex items-center gap-3">
-<div class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-white shadow-lg shadow-primary/20 overflow-hidden">
-<img alt="SkillForge Logo" class="w-8 h-8" data-alt="Abstract geometric orange shape representing a modern educational brand logo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCciU5TAH4rxjfnEcXRUWOR4dwAUVgMPWfK_3xJmCjBuN4kiGgZLK1wQ1nWleoYhIM6lzILJkyoYGQUoFrn6lL2fNxj0PZK1XUOZZSyiixgqRuYah8YYSgSQtK0tHFxwD52w0aAs6nI2mLp7UnP6y_-EthlPorKOUS5UVCAwh7b26ZZ2TiBhv0aMrP2-ZEZeLAy55wpJeL0CUO67NhMZENmMHjaWtp2EcskUmRcehj--5TE8RiIQxunyssKynheuse92IgZU95o6HU"/>
-</div>
-<div>
-<h1 class="sf-brand text-2xl">SkillForge</h1>
-<p class="text-label text-outline font-bold tracking-tighter uppercase">Instructor Portal</p>
-</div>
-</div>
-</div>
-<nav class="flex-1 space-y-1">
-<a class="flex items-center gap-3 px-3 py-3 text-on-surface-variant dark:text-outline hover:bg-surface-container-low dark:hover:bg-slate-900 font-label text-sm font-medium tracking-wide hover:translate-x-1 transition-transform duration-200 cursor-pointer active:scale-98" href="#">
-<span class="material-symbols-outlined nav-icon" data-icon="dashboard">dashboard</span>
-<span>Dashboard</span>
-</a>
-<a class="flex items-center gap-3 px-3 py-3 text-on-surface-variant dark:text-outline hover:bg-surface-container-low dark:hover:bg-slate-900 font-label text-sm font-medium tracking-wide hover:translate-x-1 transition-transform duration-200 cursor-pointer active:scale-98" href="#">
-<span class="material-symbols-outlined nav-icon" data-icon="account_tree">account_tree</span>
-<span>Curriculum</span>
-</a>
-<a class="flex items-center gap-3 px-3 py-3 text-on-surface-variant dark:text-outline hover:bg-surface-container-low dark:hover:bg-slate-900 font-label text-sm font-medium tracking-wide hover:translate-x-1 transition-transform duration-200 cursor-pointer active:scale-98" href="#">
-<span class="material-symbols-outlined nav-icon" data-icon="quiz">quiz</span>
-<span>Quiz Builder</span>
-</a>
-<a class="flex items-center gap-3 px-3 py-3 text-on-surface-variant dark:text-outline hover:bg-surface-container-low dark:hover:bg-slate-900 font-label text-sm font-medium tracking-wide hover:translate-x-1 transition-transform duration-200 cursor-pointer active:scale-98" href="#">
-<span class="material-symbols-outlined nav-icon" data-icon="assignment_turned_in">assignment_turned_in</span>
-<span>Grading</span>
-</a>
-<!-- Active Tab: Progress -->
-<a class="flex items-center gap-3 px-3 py-3 text-primary dark:text-primary-container font-bold bg-white dark:bg-inverse-surface rounded-xl shadow-sm shadow-orange-900/5 font-label text-sm tracking-wide hover:translate-x-1 transition-transform duration-200 cursor-pointer active:scale-98" href="#">
-<span class="material-symbols-outlined nav-icon" data-icon="trending_up">trending_up</span>
-<span>Progress</span>
-</a>
-</nav>
-<div class="mt-auto space-y-1">
-<button class="btn btn-primary btn-w-full mb-4">
-<span class="material-symbols-outlined icon" data-icon="add">add</span>
-                Create New Course
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="SkillForge — The premium platform for professional skill development and certification."
+    />
+    <link rel="icon" type="image/svg+xml" href="../../shared/favicon.svg" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>SkillForge | Student Progress</title>
+  </head>
+  <body
+    class="bg-background font-body text-on-surface antialiased flex overflow-hidden h-screen"
+  >
+    <!-- SideNavBar (Authority: JSON) -->
+    <aside
+      class="h-screen w-64 border-r border-slate-200/50 dark:border-slate-800/50 bg-surface-container-low dark:bg-slate-950 flex flex-col py-6 px-4 space-y-2 shrink-0"
+    >
+      <div class="px-2 mb-8">
+        <div class="flex items-center gap-3">
+          <!-- <div
+            class="w-10 h-10 rounded-xl bg-primary-container flex items-center justify-center text-white shadow-lg shadow-primary/20 overflow-hidden"
+          >
+            <img
+              alt="SkillForge Logo"
+              class="w-8 h-8"
+              data-alt="Abstract geometric orange shape representing a modern educational brand logo"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCciU5TAH4rxjfnEcXRUWOR4dwAUVgMPWfK_3xJmCjBuN4kiGgZLK1wQ1nWleoYhIM6lzILJkyoYGQUoFrn6lL2fNxj0PZK1XUOZZSyiixgqRuYah8YYSgSQtK0tHFxwD52w0aAs6nI2mLp7UnP6y_-EthlPorKOUS5UVCAwh7b26ZZ2TiBhv0aMrP2-ZEZeLAy55wpJeL0CUO67NhMZENmMHjaWtp2EcskUmRcehj--5TE8RiIQxunyssKynheuse92IgZU95o6HU"
+            />
+          </div> -->
+          <div>
+            <h1 class="sf-brand text-2xl">SkillForge</h1>
+            <p
+              class="text-label text-outline font-bold tracking-tighter uppercase"
+            >
+              Instructor Portal
+            </p>
+          </div>
+        </div>
+      </div>
+      <nav class="flex-1 space-y-1">
+        <a
+          class="flex items-center gap-3 px-3 py-3 text-on-surface-variant dark:text-outline hover:bg-surface-container-low dark:hover:bg-slate-900 font-label text-sm font-medium tracking-wide hover:translate-x-1 transition-transform duration-200 cursor-pointer active:scale-98"
+          href="#"
+        >
+          <span class="material-symbols-outlined nav-icon" data-icon="dashboard"
+            >dashboard</span
+          >
+          <span>Dashboard</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-3 py-3 text-on-surface-variant dark:text-outline hover:bg-surface-container-low dark:hover:bg-slate-900 font-label text-sm font-medium tracking-wide hover:translate-x-1 transition-transform duration-200 cursor-pointer active:scale-98"
+          href="#"
+        >
+          <span
+            class="material-symbols-outlined nav-icon"
+            data-icon="account_tree"
+            >account_tree</span
+          >
+          <span>Curriculum</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-3 py-3 text-on-surface-variant dark:text-outline hover:bg-surface-container-low dark:hover:bg-slate-900 font-label text-sm font-medium tracking-wide hover:translate-x-1 transition-transform duration-200 cursor-pointer active:scale-98"
+          href="#"
+        >
+          <span class="material-symbols-outlined nav-icon" data-icon="quiz"
+            >quiz</span
+          >
+          <span>Quiz Builder</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-3 py-3 text-on-surface-variant dark:text-outline hover:bg-surface-container-low dark:hover:bg-slate-900 font-label text-sm font-medium tracking-wide hover:translate-x-1 transition-transform duration-200 cursor-pointer active:scale-98"
+          href="#"
+        >
+          <span
+            class="material-symbols-outlined nav-icon"
+            data-icon="assignment_turned_in"
+            >assignment_turned_in</span
+          >
+          <span>Grading</span>
+        </a>
+        <!-- Active Tab: Progress -->
+        <a
+          class="flex items-center gap-3 px-3 py-3 text-primary dark:text-primary-container font-bold bg-white dark:bg-inverse-surface rounded-xl shadow-sm shadow-orange-900/5 font-label text-sm tracking-wide hover:translate-x-1 transition-transform duration-200 cursor-pointer active:scale-98"
+          href="#"
+        >
+          <span
+            class="material-symbols-outlined nav-icon"
+            data-icon="trending_up"
+            >trending_up</span
+          >
+          <span>Progress</span>
+        </a>
+      </nav>
+      <div class="mt-auto space-y-1">
+        <button class="btn btn-primary btn-w-full mb-4">
+          <span class="material-symbols-outlined icon" data-icon="add"
+            >add</span
+          >
+          Create New Course
+        </button>
+        <a
+          class="flex items-center gap-3 px-3 py-3 text-on-surface-variant dark:text-outline hover:bg-surface-container-low font-label text-sm font-medium tracking-wide"
+          href="#"
+        >
+          <span class="material-symbols-outlined nav-icon" data-icon="support"
+            >support</span
+          >
+          <span>Support</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-3 py-3 text-on-surface-variant dark:text-outline hover:bg-surface-container-low font-label text-sm font-medium tracking-wide"
+          href="#"
+        >
+          <span class="material-symbols-outlined nav-icon" data-icon="logout"
+            >logout</span
+          >
+          <span>Sign Out</span>
+        </a>
+      </div>
+    </aside>
+    <!-- Main Workspace -->
+    <main
+      class="flex-1 flex flex-col h-screen relative bg-surface overflow-hidden"
+    >
+      <!-- TopNavBar (Authority: JSON) -->
+      <header class="navbar navbar-admin">
+        <div class="flex items-center gap-4 flex-1">
+          <div class="relative w-full max-w-md">
+            <span
+              class="material-symbols-outlined icon absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant"
+              >search</span
+            >
+            <input
+              class="w-full bg-surface-container-lowest/90 pl-10 pr-4 py-2 rounded-full border-none focus:ring-2 focus:ring-primary/20 text-sm placeholder:text-on-surface-variant/60 shadow-sm"
+              placeholder="Search students, courses or quiz results..."
+              type="text"
+            />
+          </div>
+        </div>
+        <div class="navbar-logo">
+          <button
+            class="text-outline hover:text-primary font-medium text-sm transition-colors duration-200"
+          >
+            Help Center
+          </button>
+          <div class="flex items-center gap-4 border-l border-slate-200 pl-6">
+            <button
+              class="text-outline hover:text-primary transition-all duration-200 relative"
+            >
+              <span
+                class="material-symbols-outlined icon"
+                data-icon="notifications"
+                >notifications</span
+              >
+              <span
+                class="absolute -top-1 -right-1 w-2 h-2 bg-primary rounded-full"
+              ></span>
             </button>
-<a class="flex items-center gap-3 px-3 py-3 text-on-surface-variant dark:text-outline hover:bg-surface-container-low font-label text-sm font-medium tracking-wide" href="#">
-<span class="material-symbols-outlined nav-icon" data-icon="support">support</span>
-<span>Support</span>
-</a>
-<a class="flex items-center gap-3 px-3 py-3 text-on-surface-variant dark:text-outline hover:bg-surface-container-low font-label text-sm font-medium tracking-wide" href="#">
-<span class="material-symbols-outlined nav-icon" data-icon="logout">logout</span>
-<span>Sign Out</span>
-</a>
-</div>
-</aside>
-<!-- Main Workspace -->
-<main class="flex-1 flex flex-col h-screen relative bg-surface overflow-hidden">
-<!-- TopNavBar (Authority: JSON) -->
-<header class="navbar navbar-admin">
-
-<div class="flex items-center gap-4 flex-1">
-<div class="relative w-full max-w-md">
-<span class="material-symbols-outlined icon absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
-<input class="w-full bg-surface-container-lowest/90 pl-10 pr-4 py-2 rounded-full border-none focus:ring-2 focus:ring-primary/20 text-sm placeholder:text-on-surface-variant/60 shadow-sm" placeholder="Search students, courses or quiz results..." type="text"/>
-</div>
-</div>
-<div class="navbar-logo">
-<button class="text-outline hover:text-primary font-medium text-sm transition-colors duration-200">Help Center</button>
-<div class="flex items-center gap-4 border-l border-slate-200 pl-6">
-<button class="text-outline hover:text-primary transition-all duration-200 relative">
-<span class="material-symbols-outlined icon" data-icon="notifications">notifications</span>
-<span class="absolute -top-1 -right-1 w-2 h-2 bg-primary rounded-full"></span>
-</button>
-<button class="text-outline hover:text-primary transition-all duration-200">
-<span class="material-symbols-outlined icon" data-icon="settings">settings</span>
-</button>
-<div class="flex items-center gap-2 group cursor-pointer">
-<img alt="Instructor Avatar" class="w-8 h-8 rounded-full bg-primary-fixed border-2 border-white" data-alt="Portrait of a professional instructor with glasses and a friendly expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwHUF19RWGh2LjHXF9-mtJ86TTL7m6MZuu_oXHRGswD2ch0mMuRfqiX9gKyrPWBDLvyBMl7om4JnffnJMVfCqtKsuuHR2M9atjF8eDVzIno1KP86-B166MloEdQCu0jb4VoXspSYv8bN4YZnvIqwwMAmv3z-og0iCBrBlYthfFDlCkMRDj_dReIGxiATOB3gr2vCjnVo8iL1bznCdI5Awbh-3QdPHv_S6e1RqIF4ZxkX5BYpdxc3t94aLn9-0P7NEVJfViln-A7Mo"/>
-<span class="text-sm font-bold text-slate-900 font-headline">Dr. Marcus Forge</span>
-</div>
-</div>
-</div>
-</header>
-<!-- Content Canvas -->
-<div class="pt-24 px-10 pb-10 overflow-y-auto flex-1 no-scrollbar">
-<!-- Header Section -->
-<div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
-<div>
-<div class="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest mb-1">
-<span class="material-symbols-outlined icon">analytics</span>
-                        Insight Dashboard
-                    </div>
-<h2 class="text-4xl font-extrabold text-slate-900 font-headline tracking-tight leading-none">Student Progress</h2>
-<p class="text-outline mt-2 max-w-lg">Monitor real-time engagement and academic performance across your enrolled cohort.</p>
-</div>
-<!-- Filters (The "Editorial Tag" aesthetic) -->
-<div class="flex items-center gap-3">
-<button class="flex items-center gap-2 px-4 py-3 bg-surface-container-lowest text-slate-900 rounded-xl font-bold text-sm shadow-sm border border-slate-200/50 hover:bg-surface-container-low transition-colors">
-<span class="material-symbols-outlined nav-icon">filter_list</span>
-                        All Students
-                    </button>
-<button class="flex items-center gap-2 px-4 py-3 bg-white text-blue-500 rounded-xl font-bold text-sm border border-blue-50 shadow-sm hover:bg-blue-50 transition-colors">
-<span class="material-symbols-outlined nav-icon icon-filled" >star</span>
-                        Top Performers
-                    </button>
-<button class="flex items-center gap-2 px-4 py-3 bg-white text-error rounded-xl font-bold text-sm border border-error-container shadow-sm hover:bg-error-container/20 transition-colors">
-<span class="material-symbols-outlined nav-icon icon-filled" >warning</span>
-                        At Risk
-                    </button>
-</div>
-</div>
-<!-- Dashboard Stats Grid (Asymmetric) -->
-<div class="grid grid-cols-12 gap-6 mb-12">
-<div class="col-span-12 md:col-span-4 bg-gradient-to-br from-primary to-primary-container p-6 rounded-full shadow-lg shadow-orange-900/10 text-white flex justify-between items-center overflow-hidden relative">
-<div class="relative z-10">
-<p class="text-white/70 text-label font-black uppercase tracking-widest">Average Progress</p>
-<h3 class="text-5xl font-extrabold font-headline mt-1">74%</h3>
-<div class="flex items-center gap-1 text-white/90 text-xs font-bold mt-2">
-<span class="material-symbols-outlined icon">trending_up</span>
-                            +12% vs last month
+            <button
+              class="text-outline hover:text-primary transition-all duration-200"
+            >
+              <span class="material-symbols-outlined icon" data-icon="settings"
+                >settings</span
+              >
+            </button>
+            <div class="flex items-center gap-2 group cursor-pointer">
+              <img
+                alt="Instructor Avatar"
+                class="w-8 h-8 rounded-full bg-primary-fixed border-2 border-white"
+                data-alt="Portrait of a professional instructor with glasses and a friendly expression"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwHUF19RWGh2LjHXF9-mtJ86TTL7m6MZuu_oXHRGswD2ch0mMuRfqiX9gKyrPWBDLvyBMl7om4JnffnJMVfCqtKsuuHR2M9atjF8eDVzIno1KP86-B166MloEdQCu0jb4VoXspSYv8bN4YZnvIqwwMAmv3z-og0iCBrBlYthfFDlCkMRDj_dReIGxiATOB3gr2vCjnVo8iL1bznCdI5Awbh-3QdPHv_S6e1RqIF4ZxkX5BYpdxc3t94aLn9-0P7NEVJfViln-A7Mo"
+              />
+              <span class="text-sm font-bold text-slate-900 font-headline"
+                >Dr. Marcus Forge</span
+              >
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- Content Canvas -->
+      <div class="pt-24 px-10 pb-10 overflow-y-auto flex-1 no-scrollbar">
+        <!-- Header Section -->
+        <div
+          class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6"
+        >
+          <div>
+            <div
+              class="flex items-center gap-2 text-primary font-bold text-xs uppercase tracking-widest mb-1"
+            >
+              <span class="material-symbols-outlined icon">analytics</span>
+              Insight Dashboard
+            </div>
+            <h2
+              class="text-4xl font-extrabold text-slate-900 font-headline tracking-tight leading-none"
+            >
+              Student Progress
+            </h2>
+            <p class="text-outline mt-2 max-w-lg">
+              Monitor real-time engagement and academic performance across your
+              enrolled cohort.
+            </p>
+          </div>
+          <!-- Filters (The "Editorial Tag" aesthetic) -->
+          <div class="flex items-center gap-3">
+            <button
+              class="flex items-center gap-2 px-4 py-3 bg-surface-container-lowest text-slate-900 rounded-xl font-bold text-sm shadow-sm border border-slate-200/50 hover:bg-surface-container-low transition-colors"
+            >
+              <span class="material-symbols-outlined nav-icon"
+                >filter_list</span
+              >
+              All Students
+            </button>
+            <button
+              class="flex items-center gap-2 px-4 py-3 bg-white text-blue-500 rounded-xl font-bold text-sm border border-blue-50 shadow-sm hover:bg-blue-50 transition-colors"
+            >
+              <span class="material-symbols-outlined nav-icon icon-filled"
+                >star</span
+              >
+              Top Performers
+            </button>
+            <button
+              class="flex items-center gap-2 px-4 py-3 bg-white text-error rounded-xl font-bold text-sm border border-error-container shadow-sm hover:bg-error-container/20 transition-colors"
+            >
+              <span class="material-symbols-outlined nav-icon icon-filled"
+                >warning</span
+              >
+              At Risk
+            </button>
+          </div>
+        </div>
+        <!-- Dashboard Stats Grid (Asymmetric) -->
+        <div class="grid grid-cols-12 gap-6 mb-12">
+          <div
+            class="col-span-12 md:col-span-4 bg-gradient-to-br from-primary to-primary-container p-6 rounded-full shadow-lg shadow-orange-900/10 text-white flex justify-between items-center overflow-hidden relative"
+          >
+            <div class="relative z-10">
+              <p
+                class="text-white/70 text-label font-black uppercase tracking-widest"
+              >
+                Average Progress
+              </p>
+              <h3 class="text-5xl font-extrabold font-headline mt-1">74%</h3>
+              <div
+                class="flex items-center gap-1 text-white/90 text-xs font-bold mt-2"
+              >
+                <span class="material-symbols-outlined icon">trending_up</span>
+                +12% vs last month
+              </div>
+            </div>
+            <span
+              class="material-symbols-outlined icon icon-hero absolute -right-6 -bottom-6 opacity-10"
+              data-icon="auto_graph"
+              >auto_graph</span
+            >
+          </div>
+          <div
+            class="col-span-12 md:col-span-8 card border border-slate-100 flex items-center justify-around"
+          >
+            <div class="text-center">
+              <p
+                class="text-slate-400 text-label font-black uppercase tracking-widest"
+              >
+                Active Learners
+              </p>
+              <h4 class="text-3xl font-bold text-slate-900 font-headline mt-1">
+                1,284
+              </h4>
+            </div>
+            <div class="w-px h-12 bg-surface-container-low"></div>
+            <div class="text-center">
+              <p
+                class="text-slate-400 text-label font-black uppercase tracking-widest"
+              >
+                Avg. Quiz Score
+              </p>
+              <h4 class="text-3xl font-bold text-slate-900 font-headline mt-1">
+                88<span class="text-lg font-normal text-slate-400">/100</span>
+              </h4>
+            </div>
+            <div class="w-px h-12 bg-surface-container-low"></div>
+            <div class="text-center">
+              <p
+                class="text-slate-400 text-label font-black uppercase tracking-widest"
+              >
+                Graduation Rate
+              </p>
+              <h4 class="text-3xl font-bold text-slate-900 font-headline mt-1">
+                92.4%
+              </h4>
+            </div>
+          </div>
+        </div>
+        <!-- Student Table (Surface Container Lowest - The "Paper") -->
+        <div
+          class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden border border-slate-100"
+        >
+          <div class="overflow-x-auto">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="bg-surface-container-low/50">
+                  <th
+                    class="px-6 py-4 text-label font-black text-slate-400 uppercase tracking-widest border-b border-slate-100"
+                  >
+                    Student Name
+                  </th>
+                  <th
+                    class="px-6 py-4 text-label font-black text-slate-400 uppercase tracking-widest border-b border-slate-100"
+                  >
+                    Join Date
+                  </th>
+                  <th
+                    class="px-6 py-4 text-label font-black text-slate-400 uppercase tracking-widest border-b border-slate-100"
+                  >
+                    Course Progress
+                  </th>
+                  <th
+                    class="px-6 py-4 text-label font-black text-slate-400 uppercase tracking-widest border-b border-slate-100"
+                  >
+                    Lessons
+                  </th>
+                  <th
+                    class="px-6 py-4 text-label font-black text-slate-400 uppercase tracking-widest border-b border-slate-100"
+                  >
+                    Quiz Avg
+                  </th>
+                  <th
+                    class="px-6 py-4 text-label font-black text-slate-400 uppercase tracking-widest border-b border-slate-100 text-right"
+                  >
+                    Action
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-50">
+                <!-- Row 1: Top Performer -->
+                <tr
+                  class="hover:bg-surface-container-low/50 transition-colors group"
+                >
+                  <td class="px-6 py-5">
+                    <div class="flex items-center gap-3">
+                      <img
+                        alt="Student Avatar"
+                        class="w-10 h-10 rounded-full bg-surface-container-low"
+                        data-alt="Female student profile picture with a cheerful look"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzVIc7RJSY8FhlaDTLeWTIXCvluxAzCG8JtSHt8b9eNAvlJlOofOKMeB3hh3qVXnjxaSy6FSDF8tuCrKpV7CgaWJH72eHC9qeU1JTWmPYWKCxBJ5hmad09L3TVodLpag6kkGzZwYGU3xhYvaXLg5Ptvs3Kvz6hCa6YCRGPaR2zQTRObASV6bRl6UuZ-pLg6EENKWo3-Kg__8TejQeEBNFSk7PTBNrr6XUIUTANN48nfhECrACE-fHzOUsQFwgsh9FZV0Ir5PibbUg"
+                      />
+                      <div>
+                        <div class="font-bold text-slate-900">
+                          Alice Thompson
                         </div>
-</div>
-<span class="material-symbols-outlined icon icon-hero absolute -right-6 -bottom-6 opacity-10" data-icon="auto_graph">auto_graph</span>
-</div>
-<div class="col-span-12 md:col-span-8 card border border-slate-100 flex items-center justify-around">
-<div class="text-center">
-<p class="text-slate-400 text-label font-black uppercase tracking-widest">Active Learners</p>
-<h4 class="text-3xl font-bold text-slate-900 font-headline mt-1">1,284</h4>
-</div>
-<div class="w-px h-12 bg-surface-container-low"></div>
-<div class="text-center">
-<p class="text-slate-400 text-label font-black uppercase tracking-widest">Avg. Quiz Score</p>
-<h4 class="text-3xl font-bold text-slate-900 font-headline mt-1">88<span class="text-lg font-normal text-slate-400">/100</span></h4>
-</div>
-<div class="w-px h-12 bg-surface-container-low"></div>
-<div class="text-center">
-<p class="text-slate-400 text-label font-black uppercase tracking-widest">Graduation Rate</p>
-<h4 class="text-3xl font-bold text-slate-900 font-headline mt-1">92.4%</h4>
-</div>
-</div>
-</div>
-<!-- Student Table (Surface Container Lowest - The "Paper") -->
-<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden border border-slate-100">
-<div class="overflow-x-auto">
-<table class="w-full text-left border-collapse">
-<thead>
-<tr class="bg-surface-container-low/50">
-<th class="px-6 py-4 text-label font-black text-slate-400 uppercase tracking-widest border-b border-slate-100">Student Name</th>
-<th class="px-6 py-4 text-label font-black text-slate-400 uppercase tracking-widest border-b border-slate-100">Join Date</th>
-<th class="px-6 py-4 text-label font-black text-slate-400 uppercase tracking-widest border-b border-slate-100">Course Progress</th>
-<th class="px-6 py-4 text-label font-black text-slate-400 uppercase tracking-widest border-b border-slate-100">Lessons</th>
-<th class="px-6 py-4 text-label font-black text-slate-400 uppercase tracking-widest border-b border-slate-100">Quiz Avg</th>
-<th class="px-6 py-4 text-label font-black text-slate-400 uppercase tracking-widest border-b border-slate-100 text-right">Action</th>
-</tr>
-</thead>
-<tbody class="divide-y divide-slate-50">
-<!-- Row 1: Top Performer -->
-<tr class="hover:bg-surface-container-low/50 transition-colors group">
-<td class="px-6 py-5">
-<div class="flex items-center gap-3">
-<img alt="Student Avatar" class="w-10 h-10 rounded-full bg-surface-container-low" data-alt="Female student profile picture with a cheerful look" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAzVIc7RJSY8FhlaDTLeWTIXCvluxAzCG8JtSHt8b9eNAvlJlOofOKMeB3hh3qVXnjxaSy6FSDF8tuCrKpV7CgaWJH72eHC9qeU1JTWmPYWKCxBJ5hmad09L3TVodLpag6kkGzZwYGU3xhYvaXLg5Ptvs3Kvz6hCa6YCRGPaR2zQTRObASV6bRl6UuZ-pLg6EENKWo3-Kg__8TejQeEBNFSk7PTBNrr6XUIUTANN48nfhECrACE-fHzOUsQFwgsh9FZV0Ir5PibbUg"/>
-<div>
-<div class="font-bold text-slate-900">Alice Thompson</div>
-<div class="text-xs text-slate-400">alice.t@university.edu</div>
-</div>
-</div>
-</td>
-<td class="px-6 py-5 text-sm text-on-surface-variant font-medium">Oct 12, 2023</td>
-<td class="px-6 py-5">
-<div class="w-full max-w-[140px]">
-<div class="flex justify-between items-center mb-1">
-<span class="text-label font-bold text-secondary">98%</span>
-</div>
-<div class="h-1.5 w-full bg-surface-container-low rounded-full overflow-hidden">
-<div class="h-full bg-secondary rounded-full" style="width: 98%"></div>
-</div>
-</div>
-</td>
-<td class="px-6 py-5">
-<div class="text-sm font-bold text-slate-900">24<span class="text-slate-400 font-normal">/25</span></div>
-</td>
-<td class="px-6 py-5">
-<span class="px-3 py-1 rounded-xl bg-blue-50 text-blue-600 text-xs font-bold border border-blue-100">96.5%</span>
-</td>
-<td class="px-6 py-5 text-right">
-<button class="text-slate-400 hover:text-primary transition-colors">
-<span class="material-symbols-outlined icon">more_vert</span>
-</button>
-</td>
-</tr>
-<!-- Row 2: At Risk -->
-<tr class="hover:bg-surface-container-low/50 transition-colors group bg-error-container/5">
-<td class="px-6 py-5">
-<div class="flex items-center gap-3">
-<img alt="Student Avatar" class="w-10 h-10 rounded-full bg-surface-container-low" data-alt="Male student profile picture with short hair and a focused expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWWL-f4C3QebJorlB9sYeFikpJobrJahp_40rQBK1nlGFoK71ujT_7CI3_XHXqxIMuy0m4P1MrSbBcrpf3ZJPfbTtdlSf4e2lPmTdYLRpPso4qtTMROY6VhzbxmnY2ncxeu0drid-T86qQ2SHf3979X_nH4pRuXPZQ2NxjWIj_j9GgoUHWY6s4FY8fD7Ih7gPVZWa5qet_M1yq3vYlWsoVz_EGtNd5ljUEg_rRDn7ZV9wHJ4EfR5KVPF59F-p3gQO6u-CHIC3wCZE"/>
-<div>
-<div class="font-bold text-slate-900">James Wilson</div>
-<div class="text-xs text-slate-400">j.wilson@stmail.com</div>
-</div>
-</div>
-</td>
-<td class="px-6 py-5 text-sm text-on-surface-variant font-medium">Oct 15, 2023</td>
-<td class="px-6 py-5">
-<div class="w-full max-w-[140px]">
-<div class="flex justify-between items-center mb-1">
-<span class="text-label font-bold text-error">12%</span>
-</div>
-<div class="h-1.5 w-full bg-surface-container-low rounded-full overflow-hidden">
-<div class="h-full bg-error rounded-full" style="width: 12%"></div>
-</div>
-</div>
-</td>
-<td class="px-6 py-5">
-<div class="text-sm font-bold text-slate-900">3<span class="text-slate-400 font-normal">/25</span></div>
-</td>
-<td class="px-6 py-5">
-<span class="px-3 py-1 rounded-xl bg-error-container/30 text-error text-xs font-bold border border-error-container/50">42.0%</span>
-</td>
-<td class="px-6 py-5 text-right">
-<button class="text-slate-400 hover:text-primary transition-colors">
-<span class="material-symbols-outlined icon">more_vert</span>
-</button>
-</td>
-</tr>
-<!-- Row 3: Standard -->
-<tr class="hover:bg-surface-container-low/50 transition-colors group">
-<td class="px-6 py-5">
-<div class="flex items-center gap-3">
-<img alt="Student Avatar" class="w-10 h-10 rounded-full bg-surface-container-low" data-alt="Female student with dark hair and a professional academic look" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnTFKUyOUa-b7wtFVoOciea7bFuaZ-TbT3bpnoFt6F9banfMCtw3kso0c8zaqA-5SoZfSPI8_r38ZkkX61ufh80DQ5rjAqSSghD5WG2aOAvZh1h2nQLgy-y8qSJrEBMBRf0KJlfys9v3H3KjhpKRzbxGb0MQkGXWqeT0pE3pYE5Ntw1sISPyW7GMew3cAwm_Q7MnLrRzSgEgdjaNHq10JP2xRFtolPGgWyy00_n9uvDzIC6b9e6kZY8b2ovm7fmRMNLXPfgkYsY9Y"/>
-<div>
-<div class="font-bold text-slate-900">Maria Garcia</div>
-<div class="text-xs text-slate-400">m.garcia@gmail.com</div>
-</div>
-</div>
-</td>
-<td class="px-6 py-5 text-sm text-on-surface-variant font-medium">Oct 18, 2023</td>
-<td class="px-6 py-5">
-<div class="w-full max-w-[140px]">
-<div class="flex justify-between items-center mb-1">
-<span class="text-label font-bold text-primary">64%</span>
-</div>
-<div class="h-1.5 w-full bg-surface-container-low rounded-full overflow-hidden">
-<div class="h-full bg-primary rounded-full" style="width: 64%"></div>
-</div>
-</div>
-</td>
-<td class="px-6 py-5">
-<div class="text-sm font-bold text-slate-900">16<span class="text-slate-400 font-normal">/25</span></div>
-</td>
-<td class="px-6 py-5">
-<span class="px-3 py-1 rounded-xl bg-surface-container-low text-slate-700 text-xs font-bold border border-slate-200">78.2%</span>
-</td>
-<td class="px-6 py-5 text-right">
-<button class="text-slate-400 hover:text-primary transition-colors">
-<span class="material-symbols-outlined icon">more_vert</span>
-</button>
-</td>
-</tr>
-<!-- Row 4: Standard -->
-<tr class="hover:bg-surface-container-low/50 transition-colors group">
-<td class="px-6 py-5">
-<div class="flex items-center gap-3">
-<img alt="Student Avatar" class="w-10 h-10 rounded-full bg-surface-container-low" data-alt="Male student with a modern hairstyle wearing a casual sweater" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBShFq6UV01SLRQqiZssIKcInWaxiSQS3uQ-zJBp9zI_28i24103Tun-DW9Vif4wVUT2pYZtJyKPMM1yznR41yWIcIFWTAGTrY1CMSSwnsVkSFc-hWcqRpH9IL5FPU8JkZ8XNo7D4gtRo6sSC3swqyVk1TcQg0U6TypxMsEco1hoNWZbV1Nw_ZSlSlEnUQPKpgqhiQPnFvjapd5_1bzgbItxSJUKMREZ14Vio_uVLmIVOmKu3v99qVh7Y0cFRfhGUsKsZAcYdgDoI"/>
-<div>
-<div class="font-bold text-slate-900">Robert Chen</div>
-<div class="text-xs text-slate-400">r.chen@techinst.edu</div>
-</div>
-</div>
-</td>
-<td class="px-6 py-5 text-sm text-on-surface-variant font-medium">Oct 20, 2023</td>
-<td class="px-6 py-5">
-<div class="w-full max-w-[140px]">
-<div class="flex justify-between items-center mb-1">
-<span class="text-label font-bold text-primary">82%</span>
-</div>
-<div class="h-1.5 w-full bg-surface-container-low rounded-full overflow-hidden">
-<div class="h-full bg-primary rounded-full" style="width: 82%"></div>
-</div>
-</div>
-</td>
-<td class="px-6 py-5">
-<div class="text-sm font-bold text-slate-900">21<span class="text-slate-400 font-normal">/25</span></div>
-</td>
-<td class="px-6 py-5">
-<span class="px-3 py-1 rounded-xl bg-surface-container-low text-slate-700 text-xs font-bold border border-slate-200">89.4%</span>
-</td>
-<td class="px-6 py-5 text-right">
-<button class="text-slate-400 hover:text-primary transition-colors">
-<span class="material-symbols-outlined icon">more_vert</span>
-</button>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<!-- Pagination / Footer -->
-<div class="px-6 py-4 bg-surface-container-low/30 row row-between border-t border-slate-50">
-<p class="text-xs text-slate-400 font-medium">Showing 1 to 4 of 1,284 students</p>
-<div class="icon-text">
-<button class="p-2 rounded-xl hover:bg-surface-container-low text-slate-400">
-<span class="material-symbols-outlined nav-icon">chevron_left</span>
-</button>
-<button class="w-8 h-8 rounded-xl bg-primary text-white font-bold text-xs">1</button>
-<button class="w-8 h-8 rounded-xl hover:bg-surface-container-low text-on-surface-variant font-bold text-xs">2</button>
-<button class="w-8 h-8 rounded-xl hover:bg-surface-container-low text-on-surface-variant font-bold text-xs">3</button>
-<span class="text-slate-400 text-xs px-2">...</span>
-<button class="p-2 rounded-xl hover:bg-surface-container-low text-slate-400">
-<span class="material-symbols-outlined nav-icon">chevron_right</span>
-</button>
-</div>
-</div>
-</div>
-<!-- Additional Insights (Bento Grid Style) -->
-<div class="grid grid-cols-12 gap-6 mt-12 mb-10">
-<div class="col-span-12 md:col-span-7 bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-slate-100">
-<h5 class="text-lg font-bold text-slate-900 font-headline mb-6">Quiz Difficulty Heatmap</h5>
-<div class="flex items-end gap-2 h-40">
-<div class="flex-1 bg-primary/10 rounded-t-xl relative group">
-<div class="absolute bottom-0 w-full bg-primary rounded-t-xl transition-all duration-500 h-[40%] group-hover:h-[45%]"></div>
-<span class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-label font-bold text-primary">Q1</span>
-</div>
-<div class="flex-1 bg-primary/10 rounded-t-xl relative group">
-<div class="absolute bottom-0 w-full bg-primary rounded-t-xl transition-all duration-500 h-[70%] group-hover:h-[75%]"></div>
-<span class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-label font-bold text-primary">Q2</span>
-</div>
-<div class="flex-1 bg-primary/10 rounded-t-xl relative group">
-<div class="absolute bottom-0 w-full bg-error/80 rounded-t-xl transition-all duration-500 h-[95%] group-hover:h-[100%]"></div>
-<span class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-label font-bold text-error">Q3</span>
-</div>
-<div class="flex-1 bg-primary/10 rounded-t-xl relative group">
-<div class="absolute bottom-0 w-full bg-primary rounded-t-xl transition-all duration-500 h-[55%] group-hover:h-[60%]"></div>
-<span class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-label font-bold text-primary">Q4</span>
-</div>
-<div class="flex-1 bg-primary/10 rounded-t-xl relative group">
-<div class="absolute bottom-0 w-full bg-primary rounded-t-xl transition-all duration-500 h-[30%] group-hover:h-[35%]"></div>
-<span class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-label font-bold text-primary">Q5</span>
-</div>
-</div>
-<p class="text-xs text-outline mt-6 leading-relaxed">
-<span class="font-bold text-error">Attention Required:</span> Quiz 3 has a significantly higher failure rate (28%). Consider reviewing Module 3 content.
-                    </p>
-</div>
-<div class="col-span-12 md:col-span-5 bg-surface-container p-8 rounded-xl relative overflow-hidden flex flex-col justify-between">
-<div>
-<h5 class="text-lg font-bold text-slate-900 font-headline">Action Items</h5>
-<ul class="mt-4 space-y-3">
-<li class="flex items-start gap-3">
-<span class="material-symbols-outlined icon text-primary mt-1">mail</span>
-<p class="text-sm text-on-surface-variant">Email 14 "At Risk" students with remedial resources.</p>
-</li>
-<li class="flex items-start gap-3">
-<span class="material-symbols-outlined icon text-primary mt-1">celebration</span>
-<p class="text-sm text-on-surface-variant">Award "Top Performer" badges to 52 eligible students.</p>
-</li>
-</ul>
-</div>
-<button class="btn btn-outline btn-w-full mt-6">
-                        Generate Progress Report
+                        <div class="text-xs text-slate-400">
+                          alice.t@university.edu
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td
+                    class="px-6 py-5 text-sm text-on-surface-variant font-medium"
+                  >
+                    Oct 12, 2023
+                  </td>
+                  <td class="px-6 py-5">
+                    <div class="w-full max-w-[140px]">
+                      <div class="flex justify-between items-center mb-1">
+                        <span class="text-label font-bold text-secondary"
+                          >98%</span
+                        >
+                      </div>
+                      <div
+                        class="h-1.5 w-full bg-surface-container-low rounded-full overflow-hidden"
+                      >
+                        <div
+                          class="h-full bg-secondary rounded-full"
+                          style="width: 98%"
+                        ></div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-5">
+                    <div class="text-sm font-bold text-slate-900">
+                      24<span class="text-slate-400 font-normal">/25</span>
+                    </div>
+                  </td>
+                  <td class="px-6 py-5">
+                    <span
+                      class="px-3 py-1 rounded-xl bg-blue-50 text-blue-600 text-xs font-bold border border-blue-100"
+                      >96.5%</span
+                    >
+                  </td>
+                  <td class="px-6 py-5 text-right">
+                    <button
+                      class="text-slate-400 hover:text-primary transition-colors"
+                    >
+                      <span class="material-symbols-outlined icon"
+                        >more_vert</span
+                      >
                     </button>
-<span class="material-symbols-outlined icon absolute -right-4 top-4 icon-hero text-slate-900/5 rotate-12" data-icon="assignment_late">assignment_late</span>
-</div>
-</div>
-</div>
-</main>
-</body></html>
+                  </td>
+                </tr>
+                <!-- Row 2: At Risk -->
+                <tr
+                  class="hover:bg-surface-container-low/50 transition-colors group bg-error-container/5"
+                >
+                  <td class="px-6 py-5">
+                    <div class="flex items-center gap-3">
+                      <img
+                        alt="Student Avatar"
+                        class="w-10 h-10 rounded-full bg-surface-container-low"
+                        data-alt="Male student profile picture with short hair and a focused expression"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWWL-f4C3QebJorlB9sYeFikpJobrJahp_40rQBK1nlGFoK71ujT_7CI3_XHXqxIMuy0m4P1MrSbBcrpf3ZJPfbTtdlSf4e2lPmTdYLRpPso4qtTMROY6VhzbxmnY2ncxeu0drid-T86qQ2SHf3979X_nH4pRuXPZQ2NxjWIj_j9GgoUHWY6s4FY8fD7Ih7gPVZWa5qet_M1yq3vYlWsoVz_EGtNd5ljUEg_rRDn7ZV9wHJ4EfR5KVPF59F-p3gQO6u-CHIC3wCZE"
+                      />
+                      <div>
+                        <div class="font-bold text-slate-900">James Wilson</div>
+                        <div class="text-xs text-slate-400">
+                          j.wilson@stmail.com
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td
+                    class="px-6 py-5 text-sm text-on-surface-variant font-medium"
+                  >
+                    Oct 15, 2023
+                  </td>
+                  <td class="px-6 py-5">
+                    <div class="w-full max-w-[140px]">
+                      <div class="flex justify-between items-center mb-1">
+                        <span class="text-label font-bold text-error">12%</span>
+                      </div>
+                      <div
+                        class="h-1.5 w-full bg-surface-container-low rounded-full overflow-hidden"
+                      >
+                        <div
+                          class="h-full bg-error rounded-full"
+                          style="width: 12%"
+                        ></div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-5">
+                    <div class="text-sm font-bold text-slate-900">
+                      3<span class="text-slate-400 font-normal">/25</span>
+                    </div>
+                  </td>
+                  <td class="px-6 py-5">
+                    <span
+                      class="px-3 py-1 rounded-xl bg-error-container/30 text-error text-xs font-bold border border-error-container/50"
+                      >42.0%</span
+                    >
+                  </td>
+                  <td class="px-6 py-5 text-right">
+                    <button
+                      class="text-slate-400 hover:text-primary transition-colors"
+                    >
+                      <span class="material-symbols-outlined icon"
+                        >more_vert</span
+                      >
+                    </button>
+                  </td>
+                </tr>
+                <!-- Row 3: Standard -->
+                <tr
+                  class="hover:bg-surface-container-low/50 transition-colors group"
+                >
+                  <td class="px-6 py-5">
+                    <div class="flex items-center gap-3">
+                      <img
+                        alt="Student Avatar"
+                        class="w-10 h-10 rounded-full bg-surface-container-low"
+                        data-alt="Female student with dark hair and a professional academic look"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnTFKUyOUa-b7wtFVoOciea7bFuaZ-TbT3bpnoFt6F9banfMCtw3kso0c8zaqA-5SoZfSPI8_r38ZkkX61ufh80DQ5rjAqSSghD5WG2aOAvZh1h2nQLgy-y8qSJrEBMBRf0KJlfys9v3H3KjhpKRzbxGb0MQkGXWqeT0pE3pYE5Ntw1sISPyW7GMew3cAwm_Q7MnLrRzSgEgdjaNHq10JP2xRFtolPGgWyy00_n9uvDzIC6b9e6kZY8b2ovm7fmRMNLXPfgkYsY9Y"
+                      />
+                      <div>
+                        <div class="font-bold text-slate-900">Maria Garcia</div>
+                        <div class="text-xs text-slate-400">
+                          m.garcia@gmail.com
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td
+                    class="px-6 py-5 text-sm text-on-surface-variant font-medium"
+                  >
+                    Oct 18, 2023
+                  </td>
+                  <td class="px-6 py-5">
+                    <div class="w-full max-w-[140px]">
+                      <div class="flex justify-between items-center mb-1">
+                        <span class="text-label font-bold text-primary"
+                          >64%</span
+                        >
+                      </div>
+                      <div
+                        class="h-1.5 w-full bg-surface-container-low rounded-full overflow-hidden"
+                      >
+                        <div
+                          class="h-full bg-primary rounded-full"
+                          style="width: 64%"
+                        ></div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-5">
+                    <div class="text-sm font-bold text-slate-900">
+                      16<span class="text-slate-400 font-normal">/25</span>
+                    </div>
+                  </td>
+                  <td class="px-6 py-5">
+                    <span
+                      class="px-3 py-1 rounded-xl bg-surface-container-low text-slate-700 text-xs font-bold border border-slate-200"
+                      >78.2%</span
+                    >
+                  </td>
+                  <td class="px-6 py-5 text-right">
+                    <button
+                      class="text-slate-400 hover:text-primary transition-colors"
+                    >
+                      <span class="material-symbols-outlined icon"
+                        >more_vert</span
+                      >
+                    </button>
+                  </td>
+                </tr>
+                <!-- Row 4: Standard -->
+                <tr
+                  class="hover:bg-surface-container-low/50 transition-colors group"
+                >
+                  <td class="px-6 py-5">
+                    <div class="flex items-center gap-3">
+                      <img
+                        alt="Student Avatar"
+                        class="w-10 h-10 rounded-full bg-surface-container-low"
+                        data-alt="Male student with a modern hairstyle wearing a casual sweater"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBShFq6UV01SLRQqiZssIKcInWaxiSQS3uQ-zJBp9zI_28i24103Tun-DW9Vif4wVUT2pYZtJyKPMM1yznR41yWIcIFWTAGTrY1CMSSwnsVkSFc-hWcqRpH9IL5FPU8JkZ8XNo7D4gtRo6sSC3swqyVk1TcQg0U6TypxMsEco1hoNWZbV1Nw_ZSlSlEnUQPKpgqhiQPnFvjapd5_1bzgbItxSJUKMREZ14Vio_uVLmIVOmKu3v99qVh7Y0cFRfhGUsKsZAcYdgDoI"
+                      />
+                      <div>
+                        <div class="font-bold text-slate-900">Robert Chen</div>
+                        <div class="text-xs text-slate-400">
+                          r.chen@techinst.edu
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                  <td
+                    class="px-6 py-5 text-sm text-on-surface-variant font-medium"
+                  >
+                    Oct 20, 2023
+                  </td>
+                  <td class="px-6 py-5">
+                    <div class="w-full max-w-[140px]">
+                      <div class="flex justify-between items-center mb-1">
+                        <span class="text-label font-bold text-primary"
+                          >82%</span
+                        >
+                      </div>
+                      <div
+                        class="h-1.5 w-full bg-surface-container-low rounded-full overflow-hidden"
+                      >
+                        <div
+                          class="h-full bg-primary rounded-full"
+                          style="width: 82%"
+                        ></div>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="px-6 py-5">
+                    <div class="text-sm font-bold text-slate-900">
+                      21<span class="text-slate-400 font-normal">/25</span>
+                    </div>
+                  </td>
+                  <td class="px-6 py-5">
+                    <span
+                      class="px-3 py-1 rounded-xl bg-surface-container-low text-slate-700 text-xs font-bold border border-slate-200"
+                      >89.4%</span
+                    >
+                  </td>
+                  <td class="px-6 py-5 text-right">
+                    <button
+                      class="text-slate-400 hover:text-primary transition-colors"
+                    >
+                      <span class="material-symbols-outlined icon"
+                        >more_vert</span
+                      >
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- Pagination / Footer -->
+          <div
+            class="px-6 py-4 bg-surface-container-low/30 row row-between border-t border-slate-50"
+          >
+            <p class="text-xs text-slate-400 font-medium">
+              Showing 1 to 4 of 1,284 students
+            </p>
+            <div class="icon-text">
+              <button
+                class="p-2 rounded-xl hover:bg-surface-container-low text-slate-400"
+              >
+                <span class="material-symbols-outlined nav-icon"
+                  >chevron_left</span
+                >
+              </button>
+              <button
+                class="w-8 h-8 rounded-xl bg-primary text-white font-bold text-xs"
+              >
+                1
+              </button>
+              <button
+                class="w-8 h-8 rounded-xl hover:bg-surface-container-low text-on-surface-variant font-bold text-xs"
+              >
+                2
+              </button>
+              <button
+                class="w-8 h-8 rounded-xl hover:bg-surface-container-low text-on-surface-variant font-bold text-xs"
+              >
+                3
+              </button>
+              <span class="text-slate-400 text-xs px-2">...</span>
+              <button
+                class="p-2 rounded-xl hover:bg-surface-container-low text-slate-400"
+              >
+                <span class="material-symbols-outlined nav-icon"
+                  >chevron_right</span
+                >
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Additional Insights (Bento Grid Style) -->
+        <div class="grid grid-cols-12 gap-6 mt-12 mb-10">
+          <div
+            class="col-span-12 md:col-span-7 bg-surface-container-lowest p-8 rounded-xl shadow-sm border border-slate-100"
+          >
+            <h5 class="text-lg font-bold text-slate-900 font-headline mb-6">
+              Quiz Difficulty Heatmap
+            </h5>
+            <div class="flex items-end gap-2 h-40">
+              <div class="flex-1 bg-primary/10 rounded-t-xl relative group">
+                <div
+                  class="absolute bottom-0 w-full bg-primary rounded-t-xl transition-all duration-500 h-[40%] group-hover:h-[45%]"
+                ></div>
+                <span
+                  class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-label font-bold text-primary"
+                  >Q1</span
+                >
+              </div>
+              <div class="flex-1 bg-primary/10 rounded-t-xl relative group">
+                <div
+                  class="absolute bottom-0 w-full bg-primary rounded-t-xl transition-all duration-500 h-[70%] group-hover:h-[75%]"
+                ></div>
+                <span
+                  class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-label font-bold text-primary"
+                  >Q2</span
+                >
+              </div>
+              <div class="flex-1 bg-primary/10 rounded-t-xl relative group">
+                <div
+                  class="absolute bottom-0 w-full bg-error/80 rounded-t-xl transition-all duration-500 h-[95%] group-hover:h-[100%]"
+                ></div>
+                <span
+                  class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-label font-bold text-error"
+                  >Q3</span
+                >
+              </div>
+              <div class="flex-1 bg-primary/10 rounded-t-xl relative group">
+                <div
+                  class="absolute bottom-0 w-full bg-primary rounded-t-xl transition-all duration-500 h-[55%] group-hover:h-[60%]"
+                ></div>
+                <span
+                  class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-label font-bold text-primary"
+                  >Q4</span
+                >
+              </div>
+              <div class="flex-1 bg-primary/10 rounded-t-xl relative group">
+                <div
+                  class="absolute bottom-0 w-full bg-primary rounded-t-xl transition-all duration-500 h-[30%] group-hover:h-[35%]"
+                ></div>
+                <span
+                  class="absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-label font-bold text-primary"
+                  >Q5</span
+                >
+              </div>
+            </div>
+            <p class="text-xs text-outline mt-6 leading-relaxed">
+              <span class="font-bold text-error">Attention Required:</span> Quiz
+              3 has a significantly higher failure rate (28%). Consider
+              reviewing Module 3 content.
+            </p>
+          </div>
+          <div
+            class="col-span-12 md:col-span-5 bg-surface-container p-8 rounded-xl relative overflow-hidden flex flex-col justify-between"
+          >
+            <div>
+              <h5 class="text-lg font-bold text-slate-900 font-headline">
+                Action Items
+              </h5>
+              <ul class="mt-4 space-y-3">
+                <li class="flex items-start gap-3">
+                  <span class="material-symbols-outlined icon text-primary mt-1"
+                    >mail</span
+                  >
+                  <p class="text-sm text-on-surface-variant">
+                    Email 14 "At Risk" students with remedial resources.
+                  </p>
+                </li>
+                <li class="flex items-start gap-3">
+                  <span class="material-symbols-outlined icon text-primary mt-1"
+                    >celebration</span
+                  >
+                  <p class="text-sm text-on-surface-variant">
+                    Award "Top Performer" badges to 52 eligible students.
+                  </p>
+                </li>
+              </ul>
+            </div>
+            <button class="btn btn-outline btn-w-full mt-6">
+              Generate Progress Report
+            </button>
+            <span
+              class="material-symbols-outlined icon absolute -right-4 top-4 icon-hero text-slate-900/5 rotate-12"
+              data-icon="assignment_late"
+              >assignment_late</span
+            >
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
