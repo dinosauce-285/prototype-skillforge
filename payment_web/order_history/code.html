@@ -1,0 +1,262 @@
+﻿<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<link rel="stylesheet" href="../../shared/tailwind-desktop.css"/>
+<link rel="stylesheet" href="../../shared/base.css"/>
+
+<meta charset="utf-8"/>
+<meta name="description" content="SkillForge — The premium platform for professional skill development and certification."/>
+<link rel="icon" type="image/svg+xml" href="../../shared/favicon.svg"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SkillForge | Order History</title>
+
+</head>
+<body class="bg-surface font-body text-on-surface">
+<!-- TopNavBar (Shared Component) -->
+<nav class="navbar">
+<div class="flex items-center gap-12">
+<div class="sf-brand text-2xl">SkillForge</div>
+<div class="hidden md:flex gap-8">
+<a class="text-on-surface-variant hover:text-primary-container transition-colors duration-300 font-headline tracking-tight font-bold text-lg" href="#">Browse</a>
+<a class="text-on-surface-variant hover:text-primary-container transition-colors duration-300 font-headline tracking-tight font-bold text-lg" href="#">My Courses</a>
+<a class="text-on-surface-variant hover:text-primary-container transition-colors duration-300 font-headline tracking-tight font-bold text-lg" href="#">Revenue</a>
+<a class="text-primary border-b-2 border-[#a53c00] pb-1 font-headline tracking-tight font-bold text-lg" href="#">Dashboard</a>
+</div>
+</div>
+<div class="navbar-logo">
+<div class="hidden md:flex bg-surface-container-low px-4 py-2 rounded-full items-center gap-2">
+<span class="material-symbols-outlined icon text-on-surface-variant">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-48 font-body" placeholder="Search invoices..." type="text"/>
+</div>
+<button class="material-symbols-outlined icon text-on-surface-variant hover:text-primary transition-colors">notifications</button>
+<button class="material-symbols-outlined icon text-on-surface-variant hover:text-primary transition-colors">account_circle</button>
+<button class="btn btn-primary">Cart</button>
+</div>
+</nav>
+<!-- SideNavBar (Shared Component - Conditional for Top Level) -->
+<aside class="h-full w-64 fixed left-0 border-r-0 bg-[#fbf9f9] dark:bg-[#1b1c1c] flex flex-col h-screen pt-24 pb-8 hidden lg:flex">
+<div class="px-8 mb-10">
+<div class="h-16 w-16 rounded-xl bg-surface-container-high mb-4 overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="professional instructor portrait with soft lighting against a neutral grey studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCL7GaOqvmoEatdqjNXA1HDVIzK6tJK1I_U0IACQctwmz6IZEkvhoHJ-cPu8duhptTEaM0LFHTANq0JDU0g-Ae6K2xSGgfOmgSoxVO80wcLzH3YNkRiObw8vWZi0taA5xIC6MJ9bBLhNKsP3l_nO9TsG3M50SWb_A6eDMd8k9w69mU2ih917jjoBDOh2V-7_uFdXyf8pACp2Yu3i4asdHq8XSI5fz9Yp3D3HQTL5ItCicNHNLMC0zvsxbApEGIS1Ro_mm0udh_Cb4NC"/>
+</div>
+<h3 class="font-headline font-bold text-on-surface leading-tight">Financial Hub</h3>
+<p class="text-xs text-on-surface-variant font-medium uppercase tracking-widest mt-1 opacity-70">Manage your earnings</p>
+</div>
+<nav class="flex-grow space-y-1">
+<a class="flex items-center gap-4 py-3 text-on-surface-variant pl-5 opacity-70 hover:bg-[#f5f3f3] transition-all duration-200 font-label text-sm font-medium uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined icon">dashboard</span>
+        Overview
+      </a>
+<a class="flex items-center gap-4 py-3 text-primary font-bold border-l-4 border-[#a53c00] pl-4 hover:bg-[#f5f3f3] transition-all duration-200 font-label text-sm font-medium uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined icon icon-filled" >payments</span>
+        Transactions
+      </a>
+<a class="flex items-center gap-4 py-3 text-on-surface-variant pl-5 opacity-70 hover:bg-[#f5f3f3] transition-all duration-200 font-label text-sm font-medium uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined icon">account_balance_wallet</span>
+        Payouts
+      </a>
+<a class="flex items-center gap-4 py-3 text-on-surface-variant pl-5 opacity-70 hover:bg-[#f5f3f3] transition-all duration-200 font-label text-sm font-medium uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined icon">description</span>
+        Tax Documents
+      </a>
+<a class="flex items-center gap-4 py-3 text-on-surface-variant pl-5 opacity-70 hover:bg-[#f5f3f3] transition-all duration-200 font-label text-sm font-medium uppercase tracking-widest" href="#">
+<span class="material-symbols-outlined icon">settings</span>
+        Settings
+      </a>
+</nav>
+<div class="px-6 mt-auto">
+<button class="btn btn-outline btn-lg btn-w-full">
+        Export Report
+      </button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-64 pt-32 px-8 pb-20 min-h-screen">
+<div class="max-w-6xl mx-auto">
+<!-- Editorial Header -->
+<header class="mb-16">
+
+<span class="text-tertiary font-label font-medium uppercase tracking-[0.2em] text-label mb-2 block">Ledger &amp; History</span>
+<h1 class="text-6xl font-headline font-extrabold tracking-tighter text-on-surface mb-4">Order History.</h1>
+<p class="text-on-surface-variant max-w-xl text-lg leading-relaxed">
+          Access your digital receipts and course transaction history. All educational investments are listed below for your professional records.
+        </p>
+</header>
+<!-- Stats Grid (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+<div class="bg-surface-container-lowest p-8 rounded-xl shadow-lg flex flex-col justify-between">
+<span class="text-on-surface-variant font-label text-xs uppercase tracking-widest">Total Investment</span>
+<div class="mt-4">
+<span class="text-4xl font-headline font-extrabold text-primary">$1,240.00</span>
+<span class="text-xs text-tertiary block mt-1 font-medium">Across 12 courses</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-8 rounded-xl flex flex-col justify-between border border-primary/10">
+<span class="text-on-surface-variant font-label text-xs uppercase tracking-widest">Active Enrollments</span>
+<div class="mt-4">
+<span class="text-4xl font-headline font-extrabold text-on-surface">04</span>
+<span class="text-xs text-on-surface-variant block mt-1 font-medium">Courses in progress</span>
+</div>
+</div>
+<div class="bg-primary p-8 rounded-xl flex flex-col justify-between text-on-primary relative overflow-hidden">
+<div class="z-10 relative">
+<span class="font-label text-xs uppercase tracking-widest opacity-80">Upcoming Payout</span>
+<div class="mt-4">
+<span class="text-4xl font-headline font-extrabold">$142.50</span>
+<span class="text-xs block mt-1 font-medium opacity-80">Next billing cycle: Oct 12</span>
+</div>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-10">
+<span class="material-symbols-outlined icon icon-hero">receipt_long</span>
+</div>
+</div>
+</div>
+<!-- Transaction List (Asymmetric Editorial Style) -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-lg">
+<!-- Table Header -->
+<div class="grid grid-cols-12 gap-4 px-8 py-6 bg-surface-container-low font-label text-label uppercase tracking-[0.15em] text-on-surface-variant font-bold">
+<div class="col-span-3">Invoice ID</div>
+<div class="col-span-3">Date &amp; Item</div>
+<div class="col-span-2">Amount</div>
+<div class="col-span-2">Status</div>
+<div class="col-span-2 text-right">Actions</div>
+</div>
+<!-- Transaction Rows -->
+<div class="divide-y-0">
+<!-- Row 1 -->
+<div class="grid grid-cols-12 gap-4 px-8 py-8 items-center group hover:bg-surface-container-low/50 transition-colors">
+<div class="col-span-3">
+<span class="font-headline font-bold text-on-surface tracking-tight">INV-2024-8812</span>
+</div>
+<div class="col-span-3">
+<div class="text-on-surface font-semibold text-sm">Sept 28, 2024</div>
+<div class="text-on-surface-variant text-xs mt-1">Advanced Editorial Design</div>
+</div>
+<div class="col-span-2">
+<span class="text-lg font-headline font-bold text-on-surface">$199.00</span>
+</div>
+<div class="col-span-2">
+<span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-tertiary/10 text-tertiary text-label font-bold uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                Success
+              </span>
+</div>
+<div class="col-span-2 text-right">
+<button class="text-primary hover:text-primary-container transition-colors inline-flex items-center gap-2 group/btn">
+<span class="text-xs font-bold uppercase tracking-widest">Download PDF</span>
+<span class="material-symbols-outlined nav-icon group-hover/btn:translate-y-0.5 transition-transform">download</span>
+</button>
+</div>
+</div>
+<!-- Row 2 (Subtle tonal shift instead of border) -->
+<div class="grid grid-cols-12 gap-4 px-8 py-8 items-center bg-surface-container-low/20 group hover:bg-surface-container-low/50 transition-colors">
+<div class="col-span-3">
+<span class="font-headline font-bold text-on-surface tracking-tight">INV-2024-8705</span>
+</div>
+<div class="col-span-3">
+<div class="text-on-surface font-semibold text-sm">Sept 14, 2024</div>
+<div class="text-on-surface-variant text-xs mt-1">Typography Masterclass</div>
+</div>
+<div class="col-span-2">
+<span class="text-lg font-headline font-bold text-on-surface">$145.00</span>
+</div>
+<div class="col-span-2">
+<span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-tertiary/10 text-tertiary text-label font-bold uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                Success
+              </span>
+</div>
+<div class="col-span-2 text-right">
+<button class="text-primary hover:text-primary-container transition-colors inline-flex items-center gap-2 group/btn">
+<span class="text-xs font-bold uppercase tracking-widest">Download PDF</span>
+<span class="material-symbols-outlined nav-icon group-hover/btn:translate-y-0.5 transition-transform">download</span>
+</button>
+</div>
+</div>
+<!-- Row 3 (Pending State) -->
+<div class="grid grid-cols-12 gap-4 px-8 py-8 items-center group hover:bg-surface-container-low/50 transition-colors">
+<div class="col-span-3">
+<span class="font-headline font-bold text-on-surface tracking-tight">INV-2024-8622</span>
+</div>
+<div class="col-span-3">
+<div class="text-on-surface font-semibold text-sm">Sept 02, 2024</div>
+<div class="text-on-surface-variant text-xs mt-1">Brand Identity Frameworks</div>
+</div>
+<div class="col-span-2">
+<span class="text-lg font-headline font-bold text-on-surface">$299.00</span>
+</div>
+<div class="col-span-2">
+<span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-container/20 text-on-secondary-container text-label font-bold uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container animate-pulse"></span>
+                Pending
+              </span>
+</div>
+<div class="col-span-2 text-right">
+<button class="text-on-surface-variant opacity-30 cursor-not-allowed inline-flex items-center gap-2" disabled="">
+<span class="text-xs font-bold uppercase tracking-widest">Processing</span>
+<span class="material-symbols-outlined nav-icon">hourglass_empty</span>
+</button>
+</div>
+</div>
+<!-- Row 4 -->
+<div class="grid grid-cols-12 gap-4 px-8 py-8 items-center bg-surface-container-low/20 group hover:bg-surface-container-low/50 transition-colors">
+<div class="col-span-3">
+<span class="font-headline font-bold text-on-surface tracking-tight">INV-2024-8551</span>
+</div>
+<div class="col-span-3">
+<div class="text-on-surface font-semibold text-sm">Aug 21, 2024</div>
+<div class="text-on-surface-variant text-xs mt-1">Narrative Journalism Prep</div>
+</div>
+<div class="col-span-2">
+<span class="text-lg font-headline font-bold text-on-surface">$89.00</span>
+</div>
+<div class="col-span-2">
+<span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-tertiary/10 text-tertiary text-label font-bold uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                Success
+              </span>
+</div>
+<div class="col-span-2 text-right">
+<button class="text-primary hover:text-primary-container transition-colors inline-flex items-center gap-2 group/btn">
+<span class="text-xs font-bold uppercase tracking-widest">Download PDF</span>
+<span class="material-symbols-outlined nav-icon group-hover/btn:translate-y-0.5 transition-transform">download</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Pagination -->
+<div class="px-8 py-10 row row-between">
+<p class="text-xs text-on-surface-variant font-medium">Showing <span class="text-on-surface font-bold">4</span> of <span class="text-on-surface font-bold">12</span> transactions</p>
+<div class="flex gap-2">
+<button class="h-10 w-10 flex items-center justify-center rounded-xl bg-surface-container-high text-on-surface-variant opacity-50 cursor-not-allowed">
+<span class="material-symbols-outlined icon">chevron_left</span>
+</button>
+<button class="h-10 w-10 flex items-center justify-center rounded-xl bg-primary text-on-primary shadow-lg shadow-primary/20">
+<span class="text-xs font-bold">1</span>
+</button>
+<button class="h-10 w-10 flex items-center justify-center rounded-xl bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest transition-colors">
+<span class="text-xs font-bold">2</span>
+</button>
+<button class="h-10 w-10 flex items-center justify-center rounded-xl bg-surface-container-high text-on-surface-variant hover:bg-surface-container-highest transition-colors">
+<span class="text-xs font-bold">3</span>
+</button>
+<button class="h-10 w-10 flex items-center justify-center rounded-xl bg-surface-container-high text-on-surface hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined icon">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="bg-[#f5f3f3] dark:bg-[#1b1c1c] w-full py-12 flex flex-col items-center justify-center stack px-8 mt-auto">
+<div class="font-body font-black text-primary text-xl tracking-tighter uppercase">SkillForge</div>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-label text-xs tracking-normal text-on-surface-variant opacity-80 hover:opacity-100 transition-opacity" href="#">Privacy Policy</a>
+<a class="font-label text-xs tracking-normal text-on-surface-variant opacity-80 hover:opacity-100 transition-opacity" href="#">Terms of Service</a>
+<a class="font-label text-xs tracking-normal text-primary underline" href="#">Financial Security</a>
+<a class="font-label text-xs tracking-normal text-on-surface-variant opacity-80 hover:opacity-100 transition-opacity" href="#">Help Center</a>
+</div>
+<p class="font-label text-xs tracking-normal text-on-surface-variant opacity-60">© 2024 SkillForge. All rights reserved.</p>
+</footer>
+</body></html>

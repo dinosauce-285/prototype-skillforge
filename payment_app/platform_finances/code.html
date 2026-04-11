@@ -1,0 +1,241 @@
+﻿<!DOCTYPE html>
+
+<html class="light mobile-simulator" lang="en"><head>
+<link rel="stylesheet" href="../../shared/tailwind-mobile.css"/>
+<link rel="stylesheet" href="../../shared/base.css"/>
+
+<meta charset="utf-8"/>
+<meta name="description" content="SkillForge — The premium platform for professional skill development and certification."/>
+<link rel="icon" type="image/svg+xml" href="../../shared/favicon.svg"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+<title>SkillForge | Platform Finances</title>
+
+</head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="navbar">
+
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined icon text-primary-container scale-95 active:duration-150 cursor-pointer">arrow_back</span>
+<h1 class="sf-brand text-xl">SkillForge</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 px-4 py-2 rounded-full bg-surface-container-high text-on-surface-variant text-sm font-semibold hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined icon">file_download</span>
+                Export Financial Report
+            </button>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden border-2 border-primary-container">
+<img alt="Admin Profile" data-alt="professional headshot of a female administrator in a clean modern office setting with soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC3rMJ_BafSNUeTkbCe-4PHAZLnX4xtjYyz1d_eSJoDqttCaNCEm7ZZHNd6ghCTvUu-VbiNAncYjzS00GnqNI7U0hqEZUV16336rxRtWOYeYuqKvoz_VQA9GpH48hwPILY9v9bMSf0N8Fqo8CNxIaluDh8vfCMnW73Mr3ChW02q8HNZyX2How6xNAbBXMJVLJZoTnnX5mI9hlmBIDgHykTkmR1PUF91TgOkTOyDN8wXwRhsFwfeo1f4ZNl0adjkaGIWmc5EpQIObSPg"/>
+</div>
+</div>
+</header>
+<main class="pt-24 px-6 sf-container space-y-8">
+<!-- Global Revenue Overview (Bento Grid Style) -->
+<section class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Main Metric Card -->
+<div class="card-feature md:col-span-8 flex flex-col overflow-hidden relative">
+<div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined icon icon-hero icon-filled" >payments</span>
+</div>
+<div>
+<p class="text-on-surface-variant font-label uppercase tracking-widest text-xs mb-2">Total Platform Revenue</p>
+<h2 class="text-5xl font-extrabold text-on-surface tracking-tighter mb-4">$482,950.00</h2>
+<div class="flex items-center gap-2 text-primary font-bold">
+<span class="material-symbols-outlined icon">trending_up</span>
+<span>+12.4% from last month</span>
+</div>
+</div>
+<!-- Visual placeholder for chart -->
+<div class="mt-8 h-40 w-full flex items-end gap-1">
+<div class="flex-1 bg-primary/10 rounded-t-xl h-[40%]"></div>
+<div class="flex-1 bg-primary/20 rounded-t-xl h-[60%]"></div>
+<div class="flex-1 bg-primary/15 rounded-t-xl h-[45%]"></div>
+<div class="flex-1 bg-primary/30 rounded-t-xl h-[75%]"></div>
+<div class="flex-1 bg-primary/40 rounded-t-xl h-[65%]"></div>
+<div class="flex-1 bg-primary/60 rounded-t-xl h-[85%]"></div>
+<div class="flex-1 bg-gradient-to-t from-primary to-primary-container rounded-t-xl h-[100%]"></div>
+</div>
+</div>
+<!-- Configuration & Quick Stats -->
+<div class="md:col-span-4 space-y-6">
+<!-- Instructor Share Config -->
+<div class="card-tinted">
+<h3 class="font-headline font-bold text-on-surface-variant text-sm mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined icon">settings_suggest</span>
+                        Global Payout Logic
+                    </h3>
+<div class="stack-md">
+<div>
+<label class="block text-xs font-semibold text-on-surface-variant uppercase tracking-wider mb-2">Instructor Share %</label>
+<div class="relative">
+<input class="w-full bg-surface-container-lowest border-none rounded-xl py-3 px-4 text-xl font-headline font-extrabold text-primary focus:ring-2 focus:ring-primary-container transition-all" type="number" value="70"/>
+<span class="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant font-bold">%</span>
+</div>
+</div>
+<button class="btn btn-secondary btn-pill btn-w-full">Update Split Ratio</button>
+</div>
+</div>
+<!-- Instructor Payouts Metric -->
+<div class="bg-gradient-to-br from-[#a53c00] to-[#f26724] rounded-3xl p-6 text-white shadow-[0_8px_24px_rgba(165,60,0,0.12)]">
+<p class="font-label uppercase tracking-widest text-label opacity-80 mb-1">Total Instructor Payouts</p>
+<h2 class="text-3xl font-black tracking-tight">$338,065.00</h2>
+<div class="mt-4 pt-4 border-t border-white/20 flex justify-between items-center">
+<span class="text-xs opacity-90">Net Margin: 30%</span>
+<span class="material-symbols-outlined icon opacity-50">account_balance_wallet</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Pending Payout Requests -->
+<section class="stack">
+<div class="flex justify-between items-end">
+<div>
+<h2 class="text-2xl font-extrabold text-on-surface tracking-tight">Pending Payout Requests</h2>
+<p class="text-on-surface-variant text-sm">Review and authorize instructor earnings withdrawals.</p>
+</div>
+<div class="flex gap-2">
+<span class="px-3 py-1 bg-error-container text-on-error-container rounded-full text-label font-black uppercase tracking-widest">12 Action Required</span>
+</div>
+</div>
+<div class="bg-surface-container-low rounded-3xl overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full border-collapse">
+<thead>
+<tr class="text-left border-b border-outline-variant/10">
+<th class="px-8 py-5 text-label font-black uppercase tracking-widest text-on-surface-variant">Instructor</th>
+<th class="px-8 py-5 text-label font-black uppercase tracking-widest text-on-surface-variant">Requested Amount</th>
+<th class="px-8 py-5 text-label font-black uppercase tracking-widest text-on-surface-variant">Wallet Balance</th>
+<th class="px-8 py-5 text-label font-black uppercase tracking-widest text-on-surface-variant text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/5">
+<!-- Row 1 -->
+<tr class="group hover:bg-surface-container-lowest transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img alt="Sarah Jenkins" data-alt="close-up portrait of a creative instructor with glasses in a vibrant studio space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqscS_NFD2aClxaZGNKvn36uhheLLk3KiblNLr2SzGCJSNwbV3XQtwWsNZKfbY3SI6a8h56k63Qn5MiUK5UN2MRhmpWXSh-az6vrhPQsFQiWtwfrIbnU1ZEkgArznMt0Q1ohruBPk_1gV5BJR9KDkMkHqnGcJjL5h3tahIMnk-Hxm1lPYNOly8Ktv1g5_9qmeXFf9Gk_4r17NA4xsboVNEItRBuK87Xn-TIgie_2vsI_Egn9eT-_V6_4ENxkhqoK4cgTl4bU-Q1Hea"/>
+</div>
+<div>
+<p class="font-bold text-on-surface leading-none">Sarah Jenkins</p>
+<p class="text-xs text-on-surface-variant mt-1">UX Design Lead</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<span class="text-lg font-headline font-extrabold text-on-surface">$12,450.00</span>
+</td>
+<td class="px-8 py-6">
+<span class="text-sm font-medium text-on-surface-variant">$15,820.40</span>
+</td>
+<td class="px-8 py-6 text-right">
+<div class="flex justify-end gap-3">
+<button class="px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant text-xs font-bold hover:bg-error-container hover:text-on-error-container hover:border-transparent transition-all">Reject</button>
+<button class="px-6 py-2 rounded-full bg-primary-container text-white text-xs font-bold shadow-sm hover:shadow-md active:scale-95 transition-all">Approve</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="group hover:bg-surface-container-lowest transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img alt="David Chen" data-alt="professional architect portrait in front of a blueprint-filled wall with soft side lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3jcztpYj_4l0A_HUDhO8BqnNDXV9JJL3nKbTYHDxNojgvKehM02819OjqkXzqmTvQy7Yz23sl4HymO12ft48vhIruPDhpqmRgJ2gm-EptWqM6vi9VJ97K30p6tnMfPGaF9C_i8dti1Ixrfj_g4KCtwkt-1HYopFWH2qJ0WktjKixGq11SmMl6F4HM_-vk4OkA9cHRt369uU7Ag2XFxjJ1QxQIt90rs7AfZ7OLNXNk4fp_b7sNl5ij6UFUahrrPUKuOeELYw6I7any"/>
+</div>
+<div>
+<p class="font-bold text-on-surface leading-none">David Chen</p>
+<p class="text-xs text-on-surface-variant mt-1">Python Developer</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<span class="text-lg font-headline font-extrabold text-on-surface">$8,200.00</span>
+</td>
+<td class="px-8 py-6">
+<span class="text-sm font-medium text-on-surface-variant">$9,100.00</span>
+</td>
+<td class="px-8 py-6 text-right">
+<div class="flex justify-end gap-3">
+<button class="px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant text-xs font-bold hover:bg-error-container hover:text-on-error-container hover:border-transparent transition-all">Reject</button>
+<button class="px-6 py-2 rounded-full bg-primary-container text-white text-xs font-bold shadow-sm hover:shadow-md active:scale-95 transition-all">Approve</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="group hover:bg-surface-container-lowest transition-colors">
+<td class="px-8 py-6">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-surface-container-high flex items-center justify-center overflow-hidden">
+<img alt="Elena Rodriguez" data-alt="successful business woman smiling in a minimalist conference room with warm morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBK5lgD61xONp_4tWJGhllVIie4NQdtUZicf1y7UUu4rOySHeJ4Z-DZQiAA3mbQgwQMfGsD3oYtOloS92eXrsbEPbZuY11k1kztjyrskbqKntpW2LbexCqxEeqFOcOsQWMx7z17x0Qw0uTH3jn11S9STJ8NsvCAE63ZhnxZHNYgQKGY3zoyUSTEG-uKVGgHCqO6EhC5BYe5zHaq5gJ1LczDg_juETUY_mea5B6DyoBoDHVazE-HfwQhMx590EbgGX6BqU22SKtKI2tu"/>
+</div>
+<div>
+<p class="font-bold text-on-surface leading-none">Elena Rodriguez</p>
+<p class="text-xs text-on-surface-variant mt-1">Digital Marketing</p>
+</div>
+</div>
+</td>
+<td class="px-8 py-6">
+<span class="text-lg font-headline font-extrabold text-on-surface">$24,900.00</span>
+</td>
+<td class="px-8 py-6">
+<span class="text-sm font-medium text-on-surface-variant">$31,500.25</span>
+</td>
+<td class="px-8 py-6 text-right">
+<div class="flex justify-end gap-3">
+<button class="px-4 py-2 rounded-full border border-outline-variant text-on-surface-variant text-xs font-bold hover:bg-error-container hover:text-on-error-container hover:border-transparent transition-all">Reject</button>
+<button class="px-6 py-2 rounded-full bg-primary-container text-white text-xs font-bold shadow-sm hover:shadow-md active:scale-95 transition-all">Approve</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- Insights Summary (Editorial Style) -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="p-6 rounded-3xl bg-surface-container-high/50 border-l-4 border-primary">
+<p class="font-label text-label font-black text-primary uppercase tracking-widest mb-2">Payout Health</p>
+<p class="text-sm text-on-surface leading-relaxed">
+                    Average processing time for payout requests has decreased by <span class="font-bold">14%</span> this week.
+                </p>
+</div>
+<div class="p-6 rounded-3xl bg-surface-container-high/50 border-l-4 border-tertiary">
+<p class="font-label text-label font-black text-tertiary uppercase tracking-widest mb-2">New Instructors</p>
+<p class="text-sm text-on-surface leading-relaxed">
+<span class="font-bold">42</span> new instructors approved for payouts in the current billing cycle.
+                </p>
+</div>
+<div class="p-6 rounded-3xl bg-surface-container-high/50 border-l-4 border-secondary">
+<p class="font-label text-label font-black text-secondary uppercase tracking-widest mb-2">Tax Compliance</p>
+<p class="text-sm text-on-surface leading-relaxed">
+                    All instructors in the current pending list have submitted valid <span class="font-bold">W-9/W-8BEN</span> forms.
+                </p>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="nav-bottom border-none">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-2 transition-all hover:text-primary-container" href="#">
+<span class="material-symbols-outlined icon" data-icon="school">school</span>
+<span class="font-label text-label font-semibold uppercase tracking-widest mt-1">Learn</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-2 transition-all hover:text-primary-container" href="#">
+<span class="material-symbols-outlined icon" data-icon="shopping_cart">shopping_cart</span>
+<span class="font-label text-label font-semibold uppercase tracking-widest mt-1">Cart</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-2 transition-all hover:text-primary-container" href="#">
+<span class="material-symbols-outlined icon" data-icon="receipt_long">receipt_long</span>
+<span class="font-label text-label font-semibold uppercase tracking-widest mt-1">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-2 transition-all hover:text-primary-container" href="#">
+<span class="material-symbols-outlined icon" data-icon="payments">payments</span>
+<span class="font-label text-label font-semibold uppercase tracking-widest mt-1">Revenue</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-gradient-to-br from-[#a53c00] to-[#f26724] text-white rounded-2xl px-4 py-2 transition-all shadow-md" href="#">
+<span class="material-symbols-outlined icon icon-filled" data-icon="admin_panel_settings" >admin_panel_settings</span>
+<span class="font-label text-label font-semibold uppercase tracking-widest mt-1">Admin</span>
+</a>
+</nav>
+</body></html>

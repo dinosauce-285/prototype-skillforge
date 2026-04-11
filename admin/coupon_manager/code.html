@@ -1,0 +1,305 @@
+﻿<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<link rel="stylesheet" href="../../shared/tailwind-desktop.css"/>
+<link rel="stylesheet" href="../../shared/base.css"/>
+
+<meta charset="utf-8"/>
+<meta name="description" content="SkillForge — The premium platform for professional skill development and certification."/>
+<link rel="icon" type="image/svg+xml" href="../../shared/favicon.svg"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SkillForge | Coupon Manager</title>
+
+</head>
+<body class="bg-background text-on-surface min-h-screen">
+<!-- SideNavBar -->
+<aside class="h-screen w-64 fixed left-0 top-0 border-r-0 bg-surface dark:bg-inverse-surface flex flex-col h-full py-6 z-50">
+<div class="px-8 mb-10">
+<h1 class="sf-brand text-2xl">SkillForge</h1>
+<p class="text-xs font-semibold text-on-surface-variant tracking-widest uppercase mt-1">Admin Portal</p>
+</div>
+<nav class="flex-1 space-y-1">
+<a class="flex items-center px-8 py-3 text-on-surface-variant dark:text-outline font-medium hover:bg-surface-container-high dark:hover:bg-surface-container-high transition-colors scale-95 duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined icon mr-3" data-icon="dashboard">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center px-8 py-3 text-on-surface-variant dark:text-outline font-medium hover:bg-surface-container-high dark:hover:bg-surface-container-high transition-colors scale-95 duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined icon mr-3" data-icon="group">group</span>
+<span>Users</span>
+</a>
+<a class="flex items-center px-8 py-3 text-on-surface-variant dark:text-outline font-medium hover:bg-surface-container-high dark:hover:bg-surface-container-high transition-colors scale-95 duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined icon mr-3" data-icon="school">school</span>
+<span>Courses</span>
+</a>
+<a class="flex items-center px-8 py-3 text-primary-container font-bold border-r-4 border-[#f46825] bg-surface scale-95 duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined icon mr-3" data-icon="local_offer">local_offer</span>
+<span>Coupons</span>
+</a>
+<a class="flex items-center px-8 py-3 text-on-surface-variant dark:text-outline font-medium hover:bg-surface-container-high dark:hover:bg-surface-container-high transition-colors scale-95 duration-200 ease-in-out" href="#">
+<span class="material-symbols-outlined icon mr-3" data-icon="settings">settings</span>
+<span>Settings</span>
+</a>
+</nav>
+<div class="px-8 mt-auto pt-6 border-t border-outline-variant/10">
+<div class="flex items-center gap-3">
+<img alt="SkillForge Admin Profile" class="w-10 h-10 rounded-full bg-surface-container-high" data-alt="professional headshot of a smiling administrative manager in a clean modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQQ8GEgxKQycpYv_dz9WyecOnqgZLko5DzuU1ZEbRBdAyYoEvm3Q-XkzjH6sTUdu3RUPahAU8T4KyqeLaHUx5HvsFyuSiaBxqZsx2Y-vq831HirQ9g6DYcqfed9zP5MlJMiFD_lsS4hSbWCyHLnj0f1WApNnGRgMsDqvVP7jXbQPEJsYMmAWH4cA5wNRGedj3Tm_EQZ7UJr1SamdJlQEDlNMei6ydIXd5io_NcmnnRkaKOhlIVQnz4AEeORyjg-ePKWTBg3m5zbt7-"/>
+<div>
+<p class="text-sm font-bold text-on-surface">Alex Rivera</p>
+<p class="text-xs text-on-surface-variant">System Admin</p>
+</div>
+</div>
+</div>
+</aside>
+<!-- TopNavBar -->
+<header class="navbar navbar-admin">
+
+<div class="flex items-center flex-1 max-w-md">
+<div class="relative w-full">
+<span class="material-symbols-outlined icon absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-xl text-sm focus:ring-2 focus:ring-primary focus:bg-surface-container-lowest transition-all" placeholder="Search promotions..." type="text"/>
+</div>
+</div>
+<div class="navbar-actions">
+<button class="p-2 text-on-surface-variant hover:text-primary transition-all active:scale-95">
+<span class="material-symbols-outlined icon" data-icon="notifications">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:text-primary transition-all active:scale-95">
+<span class="material-symbols-outlined icon" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="ml-64 p-8 min-h-screen">
+<!-- Header & Action Row -->
+<div class="flex justify-between items-end mb-10">
+<div class="space-y-1">
+<h2 class="text-4xl font-extrabold tracking-tight text-on-surface font-headline">Coupon Manager</h2>
+<p class="text-on-surface-variant max-w-lg">Orchestrate your kinetic marketing strategies. Design, launch, and monitor promotional performance from a single interface.</p>
+</div>
+<div class="flex gap-4">
+<button class="px-6 py-3 bg-surface-container-lowest border border-outline-variant/30 rounded-xl font-bold text-on-surface hover:bg-surface-container-low transition-all">
+                    Export Report
+                </button>
+<button class="btn btn-primary shadow-lg shadow-primary/20 hover:opacity-90 active:scale-95 transition-all">
+                    Create New Coupon
+                </button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-12 gap-6">
+<!-- Summary Stats (Top Row) -->
+<div class="col-span-12 lg:col-span-4 bg-surface-container-lowest p-6 rounded-xl relative overflow-hidden border border-outline-variant/10">
+<div class="relative z-10">
+<p class="text-on-surface-variant font-bold text-sm uppercase tracking-wider mb-2">Total Active Savings</p>
+<h3 class="text-3xl font-black text-on-surface">$12,450.00</h3>
+<div class="mt-4 flex items-center text-primary font-bold">
+<span class="material-symbols-outlined icon mr-1" data-icon="trending_up">trending_up</span>
+<span>14% vs last month</span>
+</div>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-5">
+<span class="material-symbols-outlined icon icon-hero" data-icon="savings">savings</span>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-4 bg-surface-container-lowest p-6 rounded-xl relative overflow-hidden border border-outline-variant/10">
+<div class="relative z-10">
+<p class="text-on-surface-variant font-bold text-sm uppercase tracking-wider mb-2">Redemption Rate</p>
+<h3 class="text-3xl font-black text-on-surface">68.2%</h3>
+<div class="mt-4 flex items-center text-tertiary-fixed-dim font-bold">
+<span class="material-symbols-outlined icon mr-1" data-icon="bolt">bolt</span>
+<span>High Engagement</span>
+</div>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-5">
+<span class="material-symbols-outlined icon icon-hero" data-icon="analytics">analytics</span>
+</div>
+</div>
+<div class="col-span-12 lg:col-span-4 bg-surface-container-lowest p-6 rounded-xl relative overflow-hidden border border-outline-variant/10">
+<div class="relative z-10">
+<p class="text-on-surface-variant font-bold text-sm uppercase tracking-wider mb-2">Expiring Soon</p>
+<h3 class="text-3xl font-black text-on-surface">04</h3>
+<div class="mt-4 flex items-center text-error font-bold">
+<span class="material-symbols-outlined icon mr-1" data-icon="schedule">schedule</span>
+<span>Action Required</span>
+</div>
+</div>
+<div class="absolute -right-4 -bottom-4 opacity-5">
+<span class="material-symbols-outlined icon icon-hero" data-icon="priority_high">priority_high</span>
+</div>
+</div>
+<!-- Active Promotions List (Asymmetric Section) -->
+<div class="col-span-12 lg:col-span-8 space-y-6">
+<div class="row row-between">
+<h4 class="text-xl font-bold font-headline">Active Promotions</h4>
+<div class="flex gap-2">
+<button class="p-2 rounded-xl bg-surface-container-high text-on-surface-variant">
+<span class="material-symbols-outlined icon" data-icon="filter_list">filter_list</span>
+</button>
+</div>
+</div>
+<div class="stack-md">
+<!-- Coupon Card 1 -->
+<div class="group bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/5 hover:border-primary/20 transition-all row row-between">
+<div class="navbar-logo">
+<div class="w-16 h-16 rounded-xl bg-primary-container/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined icon icon-lg" data-icon="confirmation_number">confirmation_number</span>
+</div>
+<div>
+<div class="flex items-center gap-3">
+<h5 class="text-lg font-bold text-on-surface">SUMMER_SKILLS24</h5>
+<span class="px-2 py-1 bg-primary/10 text-primary text-label font-black rounded uppercase tracking-tighter">Active</span>
+</div>
+<p class="text-on-surface-variant text-sm mt-1">25% OFF site-wide on all Masterclass courses.</p>
+</div>
+</div>
+<div class="text-right navbar-logo">
+<div>
+<p class="text-label uppercase font-bold text-on-surface-variant tracking-widest">Redemptions</p>
+<p class="text-lg font-black text-on-surface">1,240</p>
+</div>
+<div class="flex flex-col items-end">
+<button class="p-2 hover:bg-surface-container rounded-xl transition-colors">
+<span class="material-symbols-outlined icon text-on-surface-variant" data-icon="more_vert">more_vert</span>
+</button>
+<p class="text-xs text-on-surface-variant mt-2 italic">Ends in 4d</p>
+</div>
+</div>
+</div>
+<!-- Coupon Card 2 -->
+<div class="group bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/5 hover:border-primary/20 transition-all row row-between">
+<div class="navbar-logo">
+<div class="w-16 h-16 rounded-xl bg-tertiary-container/10 flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined icon icon-lg" data-icon="stars">stars</span>
+</div>
+<div>
+<div class="flex items-center gap-3">
+<h5 class="text-lg font-bold text-on-surface">FORGE_VIP_100</h5>
+<span class="px-2 py-1 bg-primary/10 text-primary text-label font-black rounded uppercase tracking-tighter">Active</span>
+</div>
+<p class="text-on-surface-variant text-sm mt-1">Full access grant for corporate partner VIPs.</p>
+</div>
+</div>
+<div class="text-right navbar-logo">
+<div>
+<p class="text-label uppercase font-bold text-on-surface-variant tracking-widest">Redemptions</p>
+<p class="text-lg font-black text-on-surface">85</p>
+</div>
+<div class="flex flex-col items-end">
+<button class="p-2 hover:bg-surface-container rounded-xl transition-colors">
+<span class="material-symbols-outlined icon text-on-surface-variant" data-icon="more_vert">more_vert</span>
+</button>
+<p class="text-xs text-on-surface-variant mt-2 italic">Never expires</p>
+</div>
+</div>
+</div>
+<!-- Coupon Card 3 -->
+<div class="group bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/5 hover:border-primary/20 transition-all row row-between opacity-75 grayscale hover:grayscale-0 hover:opacity-100">
+<div class="navbar-logo">
+<div class="w-16 h-16 rounded-xl bg-surface-container flex items-center justify-center text-outline">
+<span class="material-symbols-outlined icon icon-lg" data-icon="history">history</span>
+</div>
+<div>
+<div class="flex items-center gap-3">
+<h5 class="text-lg font-bold text-on-surface">EARLYBIRD_LAUNCH</h5>
+<span class="px-2 py-1 bg-outline-variant/20 text-on-surface-variant text-label font-black rounded uppercase tracking-tighter">Expired</span>
+</div>
+<p class="text-on-surface-variant text-sm mt-1">Historic 50% discount for first 500 users.</p>
+</div>
+</div>
+<div class="text-right navbar-logo">
+<div>
+<p class="text-label uppercase font-bold text-on-surface-variant tracking-widest">Redemptions</p>
+<p class="text-lg font-black text-on-surface">500</p>
+</div>
+<div class="flex flex-col items-end">
+<button class="p-2 hover:bg-surface-container rounded-xl transition-colors">
+<span class="material-symbols-outlined icon text-on-surface-variant" data-icon="more_vert">more_vert</span>
+</button>
+<p class="text-xs text-on-surface-variant mt-2 italic">Ended Mar 12</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Side Form: Create Promotion -->
+<div class="col-span-12 lg:col-span-4 sticky top-24 h-fit">
+<div class="bg-surface-container-low p-8 rounded-xl border border-outline-variant/10">
+<h4 class="text-xl font-bold font-headline mb-6">Quick Config</h4>
+<form class="space-y-5">
+<div class="stack-xs">
+<label class="text-xs font-black uppercase tracking-widest text-on-surface-variant">Coupon Code</label>
+<input class="w-full px-4 py-3 bg-surface-container-lowest border border-outline-variant/20 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all font-bold" placeholder="e.g. SKILLUP2024" type="text"/>
+</div>
+<div class="stack-xs">
+<label class="text-xs font-black uppercase tracking-widest text-on-surface-variant">Discount Type</label>
+<div class="grid grid-cols-2 gap-2">
+<button class="py-2 bg-primary text-white rounded-xl font-bold text-sm" type="button">Percentage</button>
+<button class="py-2 bg-surface-container-lowest text-on-surface rounded-xl font-bold text-sm border border-outline-variant/20" type="button">Fixed Amount</button>
+</div>
+</div>
+<div class="stack-xs">
+<label class="text-xs font-black uppercase tracking-widest text-on-surface-variant">Value (%)</label>
+<input class="w-full px-4 py-3 bg-surface-container-lowest border border-outline-variant/20 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all font-bold" type="number" value="15"/>
+</div>
+<div class="stack-xs">
+<label class="text-xs font-black uppercase tracking-widest text-on-surface-variant">Expiration Date</label>
+<div class="relative">
+<input class="w-full px-4 py-3 bg-surface-container-lowest border border-outline-variant/20 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all" type="date"/>
+</div>
+</div>
+<div class="pt-4">
+<button class="btn btn-secondary btn-lg btn-w-full" type="submit">
+<span>Forge Link</span>
+<span class="material-symbols-outlined icon" data-icon="auto_fix_high">auto_fix_high</span>
+</button>
+<p class="text-center text-label text-on-surface-variant mt-4 leading-relaxed">
+                                Creating a coupon will instantly notify all eligible users via the Kinetic push network.
+                            </p>
+</div>
+</form>
+</div>
+<!-- Visual Accent: The Progress Orbit -->
+<div class="mt-6 bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 navbar-logo">
+<div class="relative flex-shrink-0">
+<svg class="w-16 h-16 transform -rotate-90">
+<circle class="text-surface-container-high" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-width="6"></circle>
+<circle class="text-primary" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-dasharray="175.9" stroke-dashoffset="44" stroke-width="6"></circle>
+<circle class="text-tertiary-fixed" cx="32" cy="32" fill="transparent" r="28" stroke="currentColor" stroke-dasharray="175.9" stroke-dashoffset="130" stroke-width="6"></circle>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="material-symbols-outlined icon text-primary" data-icon="auto_graph">auto_graph</span>
+</div>
+</div>
+<div>
+<p class="text-xs font-black uppercase tracking-widest text-on-surface-variant">Global Reach</p>
+<h6 class="text-lg font-bold">Campaign Health</h6>
+<p class="text-sm text-on-surface-variant">75% of target reached</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Featured Media (Bottom Mosaic) -->
+<div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="relative h-64 rounded-2xl overflow-hidden group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="vibrant abstract digital illustration featuring floating orange and gold geometric shapes with a high-tech kinetic energy feel" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD9R3wKFRyDL7DeN2EGpvcMvfI09sBEsnJ2wKXvBY7UtZ6yglw9viUtrjmedO4za92BovY015KTkcoINB40Ow-tjlLA1Ut7-J7sc-6B4ii4DPUzvtKdjbcqE4gpMsu-6vvVocFS0reoVL7nCMm2ARbZhv-2nZvpI2h-r1MZcXs15YC87SLeJvrFIU7mf7giARHYawzVBwjB4i67G3OVGNcFVf2kyJRtyixN93yaNx5m8dPdscTO-OrOWYwpyDEUkJwRoMUIi7q_Ebkp"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6">
+<h5 class="text-white font-bold text-lg">Visual Assets</h5>
+<p class="text-white/70 text-xs">Manage campaign imagery and brand kits.</p>
+</div>
+</div>
+<div class="relative h-64 rounded-2xl overflow-hidden group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="close up of high resolution data dashboard with glowing line charts in orange and gold against a dark obsidian background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUr5pFTvQeVyfdGLpmFrJofgNbWIbumxEdnMwEyaKCh4aZAIjLi5ZZNl-IMF7JEHwCsDDRLvsgLAbXncHIqX-QBmPfbsm0KmmvUrjsHQ_EF2s6PH2y4YbQTZaG6TRr8412FNBZjUIXSYDmM8ZPL21TkdZkZ9_djKQKBcLkxOAtYvZIPTY8HPtk1TgxalXqFyKaVxCTKSisUNcTDHiv1NG2Uerpa95cKCWuR2tqehBn6sgKIhK4NEP8Tb_KqLJqZ7rjntEmqMzyVVDT"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex flex-col justify-end p-6">
+<h5 class="text-white font-bold text-lg">Traffic Heatmaps</h5>
+<p class="text-white/70 text-xs">See where redemptions are highest in real-time.</p>
+</div>
+</div>
+<div class="bg-primary p-8 rounded-2xl flex flex-col justify-center items-center text-center">
+<span class="material-symbols-outlined icon text-white icon-xl mb-4 icon-filled" data-icon="hub" >hub</span>
+<h5 class="text-white font-black text-xl mb-2">Partner Integration</h5>
+<p class="text-white/80 text-sm">Sync coupons with external affiliate networks and CRM systems.</p>
+<button class="mt-6 px-6 py-2 bg-white text-primary font-bold rounded-xl hover:bg-on-primary transition-all">Learn More</button>
+</div>
+</div>
+</main>
+</body></html>

@@ -1,0 +1,279 @@
+﻿<!DOCTYPE html>
+
+<html class="light mobile-simulator" lang="en"><head>
+<link rel="stylesheet" href="../../shared/tailwind-mobile.css"/>
+<link rel="stylesheet" href="../../shared/base.css"/>
+
+<meta charset="utf-8"/>
+<meta name="description" content="SkillForge — The premium platform for professional skill development and certification."/>
+<link rel="icon" type="image/svg+xml" href="../../shared/favicon.svg"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>SkillForge | Dashboard</title>
+
+</head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- Top Navigation Bar -->
+<header class="navbar">
+
+<div class="flex items-center gap-4">
+<span class="font-['Plus_Jakarta_Sans'] font-extrabold text-primary dark:text-primary-container italic">SkillForge</span>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined icon text-zinc-500 hover:opacity-80 transition-opacity" data-icon="notifications">notifications</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border-2 border-primary/20">
+<img alt="Profile" data-alt="close up professional headshot of a creative professional with a friendly smile, warm studio lighting, clean background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBn5QuseOBx77pQexjpZqCg0S8Ev-BXKfM8iV9QSTLsrdq6I8DD6-njyEkWKW8mY5UWyNp9CVJtvx0-CLQPYDx1FAkwhdJEFZriO5Cn96VeUZGlCBuZ8O1xNQtCPn9bYHgStKWKkkvFLYRPyF0xPI1taYkQYACmvdOPVnpH7PWjnuWtFfXlskyBFhZ8v2vM952ir_A7-K9-78U58zc8K_sXRKkzyIJpi63WiM_a1ZYKqU8PA3Hvlyx7i8tFffW2JcL6gdwmRL3lT6bL"/>
+</div>
+</div>
+</header>
+<main class="pt-24 px-6 sf-container space-y-10">
+<!-- Personalized Greeting -->
+<section class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="space-y-1">
+<p class="font-label text-label-sm uppercase tracking-wider text-primary font-medium">Welcome back,</p>
+<h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-on-background">Alex Rivera</h1>
+</div>
+<div class="card row-sm">
+<div class="relative w-12 h-12">
+<svg class="w-full h-full transform -rotate-90">
+<circle class="text-surface-container" cx="24" cy="24" fill="transparent" r="20" stroke="currentColor" stroke-width="4"></circle>
+<circle class="text-primary" cx="24" cy="24" fill="transparent" r="20" stroke="currentColor" stroke-dasharray="125.6" stroke-dashoffset="31.4" stroke-width="4"></circle>
+</svg>
+<span class="absolute inset-0 flex items-center justify-center text-label font-bold text-primary">75%</span>
+</div>
+<div>
+<p class="text-xs font-label uppercase tracking-widest text-secondary">Daily Goal</p>
+<p class="text-sm font-bold">45m / 60m learned</p>
+</div>
+</div>
+</section>
+<!-- Continue Learning (Horizontal Scroll) -->
+<section class="stack">
+<div class="row row-between">
+<h2 class="text-2xl font-bold tracking-tight">Continue Learning</h2>
+<button class="text-primary font-semibold text-sm hover:opacity-80 transition-opacity">View All</button>
+</div>
+<div class="flex overflow-x-auto gap-6 pb-6 -mx-6 px-6 no-scrollbar">
+<!-- Course Card 1 -->
+<div class="flex-none w-72 bg-surface-container-lowest rounded-xl overflow-hidden hover:-translate-y-1 transition-transform duration-300">
+<div class="h-40 relative overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="professional workspace with a laptop showing code, warm ambient lighting, coffee mug on the side, minimalist desk setup" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaZYttX4A-DojfnOXKO_4EbU4Xv0BcY3nm4C393E2XbDG6IUjgMwB1Weg_0gt79FN5UqtNaWH2WrjfMuo4hZlCfmv3Rxle_wdOHNFgL6AN3yVeGErDi8248EiIFMBWxc1V5XD-wsIk7c9wRXKoVjvHvpfApDu_2U_0Z8tIjPBUgZl6kSOdXGn1QbCFIpbP7M1u2TC6FwGNdvP6XKPZwiVHecExbTUr4yBxQYc_bb3TMU5aAqjBS_j10psC517hLK4feLtkw_sQltxG"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<span class="px-2 py-1 bg-primary text-white text-label font-bold rounded uppercase tracking-tighter">Advanced React</span>
+</div>
+</div>
+<div class="p-5 space-y-4">
+<h3 class="font-bold text-lg leading-tight">Mastering Server Components</h3>
+<div class="space-y-1">
+<div class="flex justify-between text-xs text-secondary font-medium">
+<span>68% Complete</span>
+<span>12/18 Lessons</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[68%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Course Card 2 -->
+<div class="flex-none w-72 bg-surface-container-lowest rounded-xl overflow-hidden hover:-translate-y-1 transition-transform duration-300">
+<div class="h-40 relative overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="abstract creative design studio with vibrant color swatches, typography posters on wall, natural sunlight through window" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBd5WX2Mg-toX3LScNX7Twr9UTawrDOJY_SwIV9G59NZCs-ZaCmthUpa4sDD8aHPIWDeTxP_-H8sU4l0s8WR2KmoVTIsUqtQSeuCdCwWeQSQ17tDZ1534A6wcUeBvg1i0pQvKPF4Cp6dN0ND6xk9ogHsf_gAeNjWx-ujH5NScfvg_q8ZpsYe0theUdt0u-3ft23JRtcKWwr0czFonrwznK2ei1lojG7D6A5NtzbvtKg4_zkZ2CbAKPSATfg-Jy4SLHB_kuSH5WVv8qM"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<span class="px-2 py-1 bg-tertiary-container text-on-tertiary-container text-label font-bold rounded uppercase tracking-tighter">Design Systems</span>
+</div>
+</div>
+<div class="p-5 space-y-4">
+<h3 class="font-bold text-lg leading-tight">Tokens &amp; Architecture</h3>
+<div class="space-y-1">
+<div class="flex justify-between text-xs text-secondary font-medium">
+<span>32% Complete</span>
+<span>4/12 Lessons</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[32%]"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Course Card 3 -->
+<div class="flex-none w-72 bg-surface-container-lowest rounded-xl overflow-hidden hover:-translate-y-1 transition-transform duration-300">
+<div class="h-40 relative overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="clean minimal data visualization dashboard on a large tablet screen, blue and orange accented charts, futuristic aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8hUdrTZ7V1U43wcm0uE2Fg_2_PyNxSrqQABI-AR4PqGEcmTgwiOk1geiyyawmBGopWrSO4i0KFOHaoKbOLPySXWFMpffowM05IdXwKqlsD4JJN50HoVaw9JRr7DBieyzjIOfK9fbgc87ql-3VSC3T1A5LrnK2ijGw26dvJ9N_dqRWbKUtWyxU7tYuh_uOcpunu_j913jD-XTJRfOIspMv8EqP72wbKHWlmCF7kSFlFOki7glXi22ebzPtBMClHrcxwUgw-WdSiJB5"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+<div class="absolute bottom-4 left-4">
+<span class="px-2 py-1 bg-secondary text-white text-label font-bold rounded uppercase tracking-tighter">Data Science</span>
+</div>
+</div>
+<div class="p-5 space-y-4">
+<h3 class="font-bold text-lg leading-tight">Predictive Modeling 101</h3>
+<div class="space-y-1">
+<div class="flex justify-between text-xs text-secondary font-medium">
+<span>85% Complete</span>
+<span>17/20 Lessons</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[85%]"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid: Activity & Recommendations -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Learning Timeline (1/3 Width) -->
+<section class="lg:col-span-1 space-y-6">
+<h2 class="text-2xl font-bold tracking-tight">Recent Activity</h2>
+<div class="card relative overflow-hidden">
+<div class="space-y-8 relative z-10">
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="w-3 h-3 rounded-full bg-primary ring-4 ring-primary/20"></div>
+<div class="w-0.5 h-12 bg-outline-variant mt-2"></div>
+</div>
+<div class="pb-4">
+<p class="text-xs font-label text-secondary mb-1">TODAY, 10:24 AM</p>
+<p class="text-sm font-semibold text-on-background">Completed "Introduction to Tailwind Grid"</p>
+<p class="text-xs text-secondary mt-1">+150 Forge Points earned</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="w-3 h-3 rounded-full bg-secondary ring-4 ring-secondary/20"></div>
+<div class="w-0.5 h-12 bg-outline-variant mt-2"></div>
+</div>
+<div class="pb-4">
+<p class="text-xs font-label text-secondary mb-1">YESTERDAY, 04:15 PM</p>
+<p class="text-sm font-semibold text-on-background">Started "Advanced Figma Variables"</p>
+<p class="text-xs text-secondary mt-1">Lesson 1 of 8 finished</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="flex flex-col items-center">
+<div class="w-3 h-3 rounded-full bg-tertiary ring-4 ring-tertiary/20"></div>
+</div>
+<div>
+<p class="text-xs font-label text-secondary mb-1">SEP 12, 09:00 AM</p>
+<p class="text-sm font-semibold text-on-background">Achieved Weekly Streak: 5 Days</p>
+<p class="text-xs text-secondary mt-1">Consistency is key!</p>
+</div>
+</div>
+</div>
+<!-- Subtle decorative gradient -->
+<div class="absolute -right-10 -bottom-10 w-40 h-40 bg-primary/5 rounded-full blur-3xl"></div>
+</div>
+</section>
+<!-- Recommended (2/3 Width) -->
+<section class="lg:col-span-2 space-y-6">
+<div class="row row-between">
+<h2 class="text-2xl font-bold tracking-tight">Recommended for You</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Recommendation Card 1 -->
+<div class="card-sm flex gap-4 cursor-pointer border-b-2 border-transparent hover:border-primary transition-all">
+<div class="w-24 h-24 rounded-xl overflow-hidden shrink-0">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="close up of a modern computer keyboard with blue backlighting, clean and tech-focused aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC11akpZG-usWf4ZJ4lcvAXxHozevjn_WQ4E2ZZDIaMWs6rd38vmyQ8FmhtYJccBaHjuTKUG4Y4J3nEfYLcWZAxNdtkr-3Mc9iLa7WSFpMexCYRi-OP1wVYwjUfq3s_0ZbCjY-tseHc4p-DxHVbc3QkoxWZKDrHCXcnhtH5yfrF4idRQnjS0e2tgWeV26lVhuSK7aEPEeQvlEiU7iuRknURfDHgiljL9tl-V_9gmAn0RGa7qg6YL3SIexBHrR6eRbCmoBBGqzEQaoyk"/>
+</div>
+<div class="flex flex-col justify-between py-1">
+<div>
+<h3 class="font-bold text-base leading-snug group-hover:text-primary transition-colors">Rust for Web Devs</h3>
+<p class="text-xs text-secondary mt-1">By Dr. Elena Vance</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center text-amber-500">
+<span class="material-symbols-outlined icon icon-filled" >star</span>
+<span class="text-xs font-bold ml-1">4.9</span>
+</div>
+<span class="text-label font-label text-secondary uppercase tracking-widest bg-surface-container px-2 py-1 rounded">Beginner</span>
+</div>
+</div>
+</div>
+<!-- Recommendation Card 2 -->
+<div class="card-sm flex gap-4 cursor-pointer border-b-2 border-transparent hover:border-primary transition-all">
+<div class="w-24 h-24 rounded-xl overflow-hidden shrink-0">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="creative branding elements, colorful geometric shapes, high-end graphic design portfolio style" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhPqbuijhV6dnqu8rk-qekSQsWIQrX-lNelP1V2AhQrXFoVy0-V7Xk6FgNid_QImpAEuXObFsQ1--aeq7ABrOyCBiow0-SJGeqxqsiCbKnYd8zJijkiOdkCNTG_FTQi8et5w2kbhdFAiTpRng7_csTQZUar1tqiT22w9w3xLS9GBFy0fF1tlGWsS6hsjO_Iklan6exKOZierDIbhHNagAEHqBPCVvNb1to3gV2m6vMAhjO6Ya3ljn0de5PkzU-9PVXp2ezgWt08AX4"/>
+</div>
+<div class="flex flex-col justify-between py-1">
+<div>
+<h3 class="font-bold text-base leading-snug group-hover:text-primary transition-colors">Modern Brand Strategy</h3>
+<p class="text-xs text-secondary mt-1">By Studio Nexus</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center text-amber-500">
+<span class="material-symbols-outlined icon icon-filled" >star</span>
+<span class="text-xs font-bold ml-1">4.7</span>
+</div>
+<span class="text-label font-label text-secondary uppercase tracking-widest bg-surface-container px-2 py-1 rounded">Expert</span>
+</div>
+</div>
+</div>
+<!-- Recommendation Card 3 -->
+<div class="card-sm flex gap-4 cursor-pointer border-b-2 border-transparent hover:border-primary transition-all">
+<div class="w-24 h-24 rounded-xl overflow-hidden shrink-0">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="top view of person working on a laptop at a minimal desk with plants and notebook, soft morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBK2XWVgcYkIOUJ6NtyBlGVUGKgey9eCY-jUcX3txf7EfbU86KWl4Ne2Mcn6Atv_cY7QLGQdUOilXlEl--EcNo1dkEM3LvgYfhCdA0j7U2P06CaqliuY5qcGopcOyhB1g_GNW-xqi2l5ajoDPT-6zjHHBWb9e34ZRPEJ_JJGZD5yRh_5czz_1pSuuk0hTKouPLFSA-we41-VfSew1tbP1aJYUbtrtmzxcaolzNUL0hd8mWvTnSmlNug0mfCv7sb484wUhSFEu1DlpTT"/>
+</div>
+<div class="flex flex-col justify-between py-1">
+<div>
+<h3 class="font-bold text-base leading-snug group-hover:text-primary transition-colors">AI-Driven UI Design</h3>
+<p class="text-xs text-secondary mt-1">By Marcus Thorne</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center text-amber-500">
+<span class="material-symbols-outlined icon icon-filled" >star</span>
+<span class="text-xs font-bold ml-1">4.8</span>
+</div>
+<span class="text-label font-label text-secondary uppercase tracking-widest bg-surface-container px-2 py-1 rounded">Intermediate</span>
+</div>
+</div>
+</div>
+<!-- Recommendation Card 4 -->
+<div class="card-sm flex gap-4 cursor-pointer border-b-2 border-transparent hover:border-primary transition-all">
+<div class="w-24 h-24 rounded-xl overflow-hidden shrink-0">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="business meeting charts on a digital wall screen, sharp corporate aesthetic, orange and charcoal tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFDssGJcd0cSQtnaYAA1JWruf3WXhbVxarkxo8pzBzc-oiGuoJcnbbjhVHUvhyy2Sqng4O_G_zjyVpEWp1DxaJHO2sSBePBTR7l6c7fpJ_ZWp6z2tDfUR6YeGBmjrp_07eVfo457kV_rIyvG0fS-x-y5JVOWuhU-sZ2Dy5kobwiRyKq2eSgbZQvm6Pyp-AtmCysHqHka_YGh7ZvCS9od8x4QZtcTWBid9ceLsvQHm4CsOk-j2fvtYgmm-677t9Glei9QKUtWWEJZKa"/>
+</div>
+<div class="flex flex-col justify-between py-1">
+<div>
+<h3 class="font-bold text-base leading-snug group-hover:text-primary transition-colors">Micro-SaaS Marketing</h3>
+<p class="text-xs text-secondary mt-1">By Sarah Jenkins</p>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex items-center text-amber-500">
+<span class="material-symbols-outlined icon icon-filled" >star</span>
+<span class="text-xs font-bold ml-1">4.6</span>
+</div>
+<span class="text-label font-label text-secondary uppercase tracking-widest bg-surface-container px-2 py-1 rounded">Intermediate</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="nav-bottom">
+<!-- Active Tab: Home -->
+<a class="flex flex-col items-center justify-center bg-[#f26724]/10 text-primary dark:text-primary-container rounded-xl px-4 py-1 scale-110 transition-transform duration-300" href="#">
+<span class="material-symbols-outlined icon icon-filled" data-icon="home" >home</span>
+<span class="font-label font-medium text-caption uppercase tracking-wider mt-1">Home</span>
+</a>
+<a class="nav-bottom-item" href="#">
+<span class="material-symbols-outlined icon" data-icon="search">search</span>
+<span class="font-label font-medium text-caption uppercase tracking-wider mt-1">Search</span>
+</a>
+<a class="nav-bottom-item" href="#">
+<span class="material-symbols-outlined icon" data-icon="local_library">local_library</span>
+<span class="font-label font-medium text-caption uppercase tracking-wider mt-1">My Courses</span>
+</a>
+<a class="nav-bottom-item" href="#">
+<span class="material-symbols-outlined icon" data-icon="person">person</span>
+<span class="font-label font-medium text-caption uppercase tracking-wider mt-1">Profile</span>
+</a>
+</nav>
+<!-- Floating Action Button - Contextual for Dashboard -->
+<button class="btn btn-primary btn-icon fixed bottom-24 right-6 w-14 h-14 rounded-full shadow-lg flex items-center justify-center scale-95 active:transition-transform active:scale-90 z-40 transition-all">
+<span class="material-symbols-outlined icon" data-icon="add">add</span>
+</button>
+
+</body></html>

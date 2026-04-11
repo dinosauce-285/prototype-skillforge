@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html class="light mobile-simulator" lang="en"><head>
+<link rel="stylesheet" href="../../shared/tailwind-mobile.css"/>
+<link rel="stylesheet" href="../../shared/base.css"/>
+
+<meta charset="utf-8"/>
+<meta name="description" content="SkillForge — The premium platform for professional skill development and certification."/>
+<link rel="icon" type="image/svg+xml" href="../../shared/favicon.svg"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SkillForge | Sign In</title>
+</head>
+
+<body class="bg-background font-body text-on-surface min-h-screen flex flex-col md:flex-row overflow-x-hidden">
+
+  <!-- ═══════════════════════════════════════════════════════
+       LEFT — Editorial hero panel (hidden on mobile)
+  ════════════════════════════════════════════════════════════ -->
+  <div class="hidden md:flex md:w-1/2 lg:w-3/5 bg-primary relative items-center justify-center p-12 overflow-hidden">
+
+    <!-- Background image -->
+    <div class="absolute inset-0 z-0">
+      <img
+        alt="Modern high-end library with warm lighting"
+        class="w-full h-full object-cover opacity-40"
+        src="https://lh3.googleusercontent.com/aida-public/AB6AXuABUlRxQLFcM9l81xN41QKDrvpRvrChdRSje5KVTBiBAAYM38zyH4Qg6pUL1Mixvo69gUHNxslrYdBH3Gdf_GfZrCJLI0kYCKmzHglynQyAVsDDEWGxoPr9G5CX6lGjP1Jb0_n3SXnufsmO0nbFhIKCnHMszQPteim2ps323J9IkyGJLSahgCvtRWOWNghS1_2zqmaPl-vV-HMiF235VbvTLuW8pDWqYMPgYo9ifnrBsqCPXO0ZXhjR7wyQibm0HeoWheHT2kesJQc1"/>
+      <div class="absolute inset-0 bg-gradient-to-br from-primary/80 to-primary-container/40 mix-blend-multiply"></div>
+    </div>
+
+    <!-- Hero copy — stack layout, max-width for readability -->
+    <div class="relative z-10 stack max-w-lg">
+      <span class="sf-brand text-3xl text-on-primary">SkillForge</span>
+
+      <h1 class="font-headline font-bold text-on-primary text-6xl leading-[1.1]">
+        Forge your path to <span class="text-primary-fixed">mastery</span>.
+      </h1>
+
+      <p class="text-primary-fixed/90 text-xl leading-relaxed font-light">
+        Join a curated community of lifelong learners and industry experts
+        shaping the future of digital craft.
+      </p>
+    </div>
+
+    <!-- Floating decorative badge -->
+    <div class="absolute bottom-8 right-8 w-32 h-32 bg-white/10 backdrop-blur-xl rounded-full
+                flex items-center justify-center border border-white/20">
+      <span class="material-symbols-outlined icon text-white icon-lg">auto_awesome</span>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════════════
+       RIGHT — Login form panel
+  ════════════════════════════════════════════════════════════ -->
+  <main class="flex-1 flex flex-col justify-center bg-surface z-10
+               px-6 py-12 md:px-16 lg:px-24">
+
+    <!-- Mobile logo (stack keeps it above the form) -->
+    <div class="md:hidden mb-8">
+      <span class="sf-brand text-3xl">SkillForge</span>
+    </div>
+
+    <!-- Form card — container-xs centres and constrains width -->
+    <div class="container-xs stack">
+
+      <!-- Page heading -->
+      <header class="stack-sm">
+        <h2 class="font-headline font-bold text-4xl text-on-surface tracking-tight">Welcome back</h2>
+        <p class="text-secondary font-medium">Continue your professional journey.</p>
+      </header>
+
+      <!-- OAuth buttons — 2-col grid, gap-4 (token: space-4) -->
+      <div class="grid grid-cols-2 gap-4">
+        <button class="row row-center py-3 px-4 bg-surface-container-lowest rounded-xl
+                       hover:bg-surface-container-low transition-colors border border-outline-variant/10 shadow-sm">
+          <img alt="Google" class="w-5 h-5"
+               src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzazsLrCxSmxhpL56j-at7vUP0ofIkc5XfA6VWfjuu2CY3CzbfjjTFnQIGS_34eK5iS2UjSHiTo8qAq3if6ptqIDIzmctxElulTLPQxrtin44CLZyYCArIBk2h7h6MRNM9fVLNtGjjsMg82Jr7BVWRL3go_I-lJUyiZHoq_LY4N3AuUpQqO-C3vi5kIU1fEpDg51AI8T1QmRyb21qNdG12nbzlw1uJCi_5LMJEQuBn7YC3VeH9Y8swpOyWherRaxCPcQ1hKQmNCII0"/>
+          <span class="text-sm font-semibold text-on-surface-variant font-label tracking-wide uppercase">Google</span>
+        </button>
+
+        <button class="row row-center py-3 px-4 bg-surface-container-lowest rounded-xl
+                       hover:bg-surface-container-low transition-colors border border-outline-variant/10 shadow-sm">
+          <svg class="w-5 h-5 text-[#1877F2]" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+          <span class="text-sm font-semibold text-on-surface-variant font-label tracking-wide uppercase">Facebook</span>
+        </button>
+      </div>
+
+      <!-- Divider — sf-divider + row-center for the label -->
+      <div class="row row-center gap-4">
+        <div class="sf-divider flex-1"></div>
+        <span class="text-xs font-label uppercase tracking-[0.2em] text-secondary/60 whitespace-nowrap">Or email login</span>
+        <div class="sf-divider flex-1"></div>
+      </div>
+
+      <!-- Email / password form — stack-md gaps all fields uniformly -->
+      <form action="#" class="stack-md" novalidate>
+
+        <!-- Email field -->
+        <div class="stack-xs">
+          <label class="input-label" for="email">Work Email</label>
+          <input
+            class="w-full bg-transparent border-0 border-b-2 border-outline-variant/40
+                   py-3 px-0 text-on-surface placeholder-secondary/40
+                   focus:ring-0 focus:border-primary transition-all duration-300"
+            id="email" name="email"
+            placeholder="name@company.com"
+            required type="email"/>
+        </div>
+
+        <!-- Password field -->
+        <div class="stack-xs">
+          <div class="row row-between">
+            <label class="input-label" for="password">Password</label>
+            <a class="text-caption font-label font-bold uppercase tracking-wider
+                      text-primary hover:text-primary-container transition-colors"
+               href="#">Forgot?</a>
+          </div>
+          <input
+            class="w-full bg-transparent border-0 border-b-2 border-outline-variant/40
+                   py-3 px-0 text-on-surface placeholder-secondary/40
+                   focus:ring-0 focus:border-primary transition-all duration-300"
+            id="password" name="password"
+            placeholder="••••••••"
+            required type="password"/>
+        </div>
+
+        <!-- Submit -->
+        <button class="btn btn-primary w-full" type="submit">Sign In</button>
+      </form>
+
+      <!-- Sign-up link -->
+      <footer class="text-center">
+        <p class="text-secondary text-sm font-medium">
+          New to the forge?
+          <a class="text-primary font-bold ml-1 hover:underline underline-offset-4 decoration-primary/30"
+             href="#">Create an account</a>
+        </p>
+      </footer>
+
+    </div><!-- /container-xs -->
+  </main>
+
+  <!-- Floating support button -->
+  <div class="fixed bottom-8 right-8 hidden lg:block">
+    <button class="row-sm bg-surface-container-lowest/80 backdrop-blur-md border border-outline-variant/20
+                   px-4 py-2 rounded-full shadow-sm hover:bg-surface-container-lowest transition-all">
+      <span class="material-symbols-outlined icon text-primary">help_outline</span>
+      <span class="text-xs font-label font-bold uppercase tracking-wider text-on-surface-variant">Support</span>
+    </button>
+  </div>
+
+</body></html>

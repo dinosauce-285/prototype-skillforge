@@ -1,0 +1,135 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" class="mobile-simulator"><head>
+<link rel="stylesheet" href="../../shared/tailwind-mobile.css"/>
+<link rel="stylesheet" href="../../shared/base.css"/>
+
+<meta charset="utf-8"/>
+<meta name="description" content="SkillForge — The premium platform for professional skill development and certification."/>
+<link rel="icon" type="image/svg+xml" href="../../shared/favicon.svg"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SkillForge | Quiz</title>
+
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopAppBar -->
+<header class="navbar">
+
+<div class="flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-surface-container-high overflow-hidden">
+<img alt="User" class="w-full h-full object-cover" data-alt="close-up portrait of a professional male student in a modern studio with soft warm lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJzeaZYmghiqSIT_LpNlLkmlwLpISYsdGvbvwsiGd5Kr48hqdRdnzm4fObUV-oLXgn8FsthetmYUevR9XC--03-fWzFsFFQUXPptO4eEkp3eVihhLN9T6urlirwB5pVbYcdC8HCLRUfuODawtMeXY5qe5LuyOY935Ktrq5-CIrtuphGSv60VjaiI256A_eVxkY_DfA8TDuZI26gRBc-yWKBl3U2A6ZaCAM9G6D_x7pFWppbqGmASdxYQZD0rsQaz4F-vQFx2Dz4jRc"/>
+</div>
+<h1 class="sf-brand text-xl">SkillForge</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center bg-surface-container-low px-4 py-2 rounded-full gap-2">
+<span class="material-symbols-outlined icon text-primary" data-icon="timer">timer</span>
+<span class="font-label text-sm font-semibold text-primary">14:52</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-primary-fixed/50 transition-colors">
+<span class="material-symbols-outlined icon text-outline" data-icon="search">search</span>
+</button>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 container-md min-h-screen">
+<!-- Progress Header - Asymmetric Layout -->
+<section class="mb-12 flex flex-col md:flex-row items-end gap-6">
+<div class="flex-1">
+<span class="font-label text-label uppercase tracking-[0.05em] text-primary font-bold mb-2 block">AI Foundations Module</span>
+<h2 class="font-headline text-3xl font-extrabold text-on-surface leading-tight">Modern AI Architecture</h2>
+</div>
+<!-- Forge Ring Signature -->
+<div class="forge-ring-container">
+<svg class="forge-ring-svg w-full h-full" viewbox="0 0 36 36">
+<path class="text-surface-container stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="3"></path>
+<path class="text-primary stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-dasharray="40, 100" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="font-label text-label font-bold text-on-surface">4/10</span>
+</div>
+</div>
+</section>
+<!-- Question Card -->
+<div class="card-feature mb-8">
+<div class="flex justify-between items-start mb-10">
+<p class="font-headline text-xl font-medium text-on-surface-variant leading-relaxed max-w-xl">
+                    Which architectural component is primarily responsible for the "Attention Mechanism" in modern Transformer-based models like GPT-4?
+                </p>
+<button class="p-2 hover:bg-primary-fixed/50 rounded-xl transition-colors group" title="Flag for review">
+<span class="material-symbols-outlined icon text-slate-400 group-hover:text-primary" data-icon="flag">flag</span>
+</button>
+</div>
+<!-- Options - No borders, just tonal layering -->
+<div class="stack-md">
+<!-- Option 1: Selected State -->
+<label class="block cursor-pointer group">
+<input checked="" class="hidden" name="quiz_option" type="radio"/>
+<div class="flex items-center p-5 rounded-2xl bg-primary-fixed/50/50 border-2 border-orange-200/50 transition-all">
+<div class="w-6 h-6 rounded-full border-2 border-primary bg-primary flex items-center justify-center mr-4">
+<div class="w-2 h-2 rounded-full bg-white"></div>
+</div>
+<span class="font-body text-on-surface font-medium">Multi-Head Scaled Dot-Product Attention</span>
+</div>
+</label>
+<!-- Option 2 -->
+<label class="block cursor-pointer group">
+<input class="hidden" name="quiz_option" type="radio"/>
+<div class="flex items-center p-5 rounded-2xl bg-surface-container-low hover:bg-surface-container-high transition-all">
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant mr-4 group-hover:border-primary transition-colors"></div>
+<span class="font-body text-secondary group-hover:text-on-surface transition-colors">Recurrent Gated Unit (RGU) feedback loops</span>
+</div>
+</label>
+<!-- Option 3 -->
+<label class="block cursor-pointer group">
+<input class="hidden" name="quiz_option" type="radio"/>
+<div class="flex items-center p-5 rounded-2xl bg-surface-container-low hover:bg-surface-container-high transition-all">
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant mr-4 group-hover:border-primary transition-colors"></div>
+<span class="font-body text-secondary group-hover:text-on-surface transition-colors">Convolutional Spatial Pooling layers</span>
+</div>
+</label>
+<!-- Option 4 -->
+<label class="block cursor-pointer group">
+<input class="hidden" name="quiz_option" type="radio"/>
+<div class="flex items-center p-5 rounded-2xl bg-surface-container-low hover:bg-surface-container-high transition-all">
+<div class="w-6 h-6 rounded-full border-2 border-outline-variant mr-4 group-hover:border-primary transition-colors"></div>
+<span class="font-body text-secondary group-hover:text-on-surface transition-colors">Linear Discriminant Analysis (LDA) blocks</span>
+</div>
+</label>
+</div>
+</div>
+<!-- Footer Actions -->
+<div class="row row-between mt-12">
+<button class="px-8 py-4 font-label text-sm font-bold text-outline hover:text-primary transition-colors">
+                PREVIOUS
+            </button>
+<button class="btn btn-primary btn-lg">
+                NEXT QUESTION
+            </button>
+</div>
+</main>
+<!-- BottomNavBar (Suppressed for transactional quiz focus but kept structure for global consistency if needed elsewhere) -->
+<!-- Applying "Shell Visibility & Relevance" - Quiz is transactional/task-focused, so standard bottom nav is hidden to prioritize focus. -->
+<nav class="fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-2 bg-white dark:bg-inverse-surface shadow-sm rounded-t-3xl md:hidden">
+<a class="flex flex-col items-center justify-center bg-primary-fixed/50 dark:bg-orange-900/20 text-primary dark:text-primary-container rounded-2xl px-5 py-2" href="#">
+<span class="material-symbols-outlined icon" data-icon="school">school</span>
+<span class="font-label text-label font-medium uppercase tracking-[0.05em] mt-1">Learn</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-outline px-5 py-2" href="#">
+<span class="material-symbols-outlined icon" data-icon="quiz">quiz</span>
+<span class="font-label text-label font-medium uppercase tracking-[0.05em] mt-1">Quizzes</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-outline px-5 py-2" href="#">
+<span class="material-symbols-outlined icon" data-icon="workspace_premium">workspace_premium</span>
+<span class="font-label text-label font-medium uppercase tracking-[0.05em] mt-1">Certificates</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-outline px-5 py-2" href="#">
+<span class="material-symbols-outlined icon" data-icon="person">person</span>
+<span class="font-label text-label font-medium uppercase tracking-[0.05em] mt-1">Profile</span>
+</a>
+</nav>
+<!-- Visual Accents: Asymmetry decorative elements -->
+<div class="fixed -top-20 -right-20 w-96 h-96 bg-primary-fixed/20 rounded-full blur-[100px] -z-10"></div>
+<div class="fixed top-1/2 -left-20 w-64 h-64 bg-tertiary-fixed/10 rounded-full blur-[80px] -z-10"></div>
+</body></html>

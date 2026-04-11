@@ -1,0 +1,236 @@
+﻿<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<link rel="stylesheet" href="../../shared/tailwind-desktop.css"/>
+<link rel="stylesheet" href="../../shared/base.css"/>
+
+<meta charset="utf-8"/>
+<meta name="description" content="SkillForge — The premium platform for professional skill development and certification."/>
+<link rel="icon" type="image/svg+xml" href="../../shared/favicon.svg"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SkillForge | Dashboard</title>
+
+</head>
+<body class="bg-surface-bright text-on-surface">
+<!-- TopAppBar -->
+<header class="navbar">
+
+<div class="navbar-container">
+<div class="navbar-logo">
+<span class="sf-brand text-2xl">SkillForge</span>
+<nav class="hidden md:flex navbar-logo">
+<a class="nav-item nav-item-active" href="#">Home</a>
+<a class="nav-item" href="#">Explore</a>
+<a class="nav-item" href="#">My Learning</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-on-surface-variant hover:bg-primary-fixed/50 rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined icon">notifications</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-primary-fixed/50 rounded-full transition-colors active:scale-95">
+<span class="material-symbols-outlined icon">settings</span>
+</button>
+<div class="h-10 w-10 rounded-full bg-surface-container-high overflow-hidden border-2 border-primary-fixed">
+<img alt="User profile" data-alt="professional headshot of a smiling young man in a blue shirt against a neutral office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBFRRMTxz1iAfG3X0fEhGZtYQkJdkV3Nz0fKfuAHFH2AYtR932JJ3VbxeK6-hKSMZHDw67tTsgR0ZPsd-HeLLgJHx1zEke858EEBmrHh0AMe4q-U2guqVFWqrl_DDyohmwwrHHNkjIJKTpuxa3mKqfeE_NIq_J9S74j6CIO7Ejj9Ep1iiNIuoiouJyM3D9hwpbJ5kZ63S8jxoYXeSTyWiBce1xZNc_oTCl8CrbMc4h2v-iu7Nmzn0sfnM9T3ZeyaJQultNX17IWZqTO"/>
+</div>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 sf-container">
+<!-- Welcome Section -->
+<section class="mb-12">
+<h1 class="text-h1 leading-tight font-headline font-extrabold text-on-surface tracking-tight mb-2">
+                Welcome back, <span class="text-primary-container">Alex.</span>
+</h1>
+<p class="text-lg text-on-surface-variant font-medium max-w-2xl">
+                You've completed <span class="text-primary font-bold">72%</span> of your weekly goal. Keep the momentum going!
+            </p>
+</section>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+<!-- LEFT: Continue & Courses (8 Cols) -->
+<div class="md:col-span-8 space-y-12">
+<!-- Continue Learning (Hero Card) -->
+<div class="card-feature relative overflow-hidden">
+<div class="relative h-48 w-full md:w-64 rounded-2xl overflow-hidden shrink-0">
+<img alt="Current Course" class="w-full h-full object-cover" data-alt="close-up of a high-end laptop showing dark themed code editor in a dimly lit modern workstation" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCdLi6wPRZX9COOrM_Dh_dTOqCib5SbKWIbBEu0ZNYo1TghPASgsbhylF0yU3GBaKhRtlblvWB34FDHeTqotLg56MVgJC8iup-7IEwUjbKiqUrW3dKJosfIhnbSWowmdUwbqnkuaUKAGPvtoIXYRR_lRQa7YPl_KbvAfMdY8XJ54Wh0MZxniYT8fL2pXhunMoR6WXQo25c83u22fxNBedUCbd6ZAhsuXYWvhHsSZRwLsCng9CMDfyrsy_sbJ8VZ7colQS3L7OFy4JCh"/>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<button class="h-14 w-14 rounded-full bg-white text-primary-container flex items-center justify-center shadow-xl active:scale-90 transition-transform">
+<span class="material-symbols-outlined icon icon-lg icon-filled" >play_arrow</span>
+</button>
+</div>
+</div>
+<div class="flex-1">
+<span class="inline-block px-3 py-1 bg-secondary-fixed text-on-secondary-fixed-variant rounded-full font-bold text-xs tracking-wider mb-4 font-headline">CONTINUE LEARNING</span>
+<h2 class="text-2xl font-headline font-bold mb-2">Advanced UI Patterns in React</h2>
+<p class="text-on-surface-variant text-sm mb-6">Module 4: Higher-Order Components &amp; Hooks</p>
+<div class="flex items-center gap-4">
+<div class="flex-1 h-2 bg-primary-fixed rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[64%]"></div>
+</div>
+<span class="text-sm font-bold text-primary">64%</span>
+</div>
+</div>
+</div>
+<!-- My Courses Section -->
+<section>
+<div class="flex justify-between items-end mb-6 px-2">
+<h3 class="text-2xl font-headline font-bold">My Courses</h3>
+<button class="text-primary font-bold text-sm hover:underline">View All</button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+<!-- Course Card 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-3xl group hover:bg-white transition-all shadow-md border border-transparent hover:border-primary-fixed">
+<div class="h-40 w-full rounded-xl bg-surface-container overflow-hidden mb-4">
+<img alt="Course thumb" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="clean macro shot of computer code on a high resolution screen with blue and purple syntax highlighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCd1Bww1ZmRFEl6KFwOlr1gHKt_-Ks1WDm5QOJzsfyvSzueWXDm1DPnUSgVDABSpz7ob2klL65UCueoBrBUaOnoQqUCIv7ZRgQPJsjs7dOxhndTJNqIAgdwOmiIe035rKkRlhctG34XHVyIF6Tm9SaMeI_RS1RqgFlGk_oeqxtkFpD4n6s-3OtuqDOuQSfe3uP6CWIVI2P-UPPlKARfZeYCdA0yCav64JKmAz6GNJWWxwHAMRIB1ieJqXKoupaieOOBfcUwdXe0ANt5"/>
+</div>
+<h4 class="font-headline font-bold text-lg mb-1 leading-tight">Mastering TypeScript for Enterprise</h4>
+<p class="text-xs text-on-surface-variant font-medium mb-4">12 Lessons • 8h 24m</p>
+<div class="row row-between">
+<div class="w-2/3 h-1.5 bg-primary-fixed rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[85%]"></div>
+</div>
+<span class="material-symbols-outlined icon text-tertiary-fixed-dim icon-filled" >star</span>
+</div>
+</div>
+<!-- Course Card 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-3xl group hover:bg-white transition-all shadow-md border border-transparent hover:border-primary-fixed">
+<div class="h-40 w-full rounded-xl bg-surface-container overflow-hidden mb-4">
+<img alt="Course thumb" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="vibrant abstract design showing overlapping geometric shapes in shades of orange and white" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDEDWTin2BFX2PfUQwtoJq-NMUhMEEZ9dKOSwiChDn3n7l8jkkAmzZn5v1NmVYZMtp9452A-lRsA2JhAAQ9VwyLhoJg9RaADBBJM8FT0GmRMF2ACAqmM1eJInpwmoNS6k1Ka7MFL5H80REEusm60udEP-Fg-YkR25PiUEkq28kT69vtE498oKjZyctKv5Sm7xDTF6XITVaJEktWlExrXK8lDeNtgoq9eqYqhk9tZEOeqpA0E2Fya-ENRpkKZVkrZciWYwHODrJ2LnRh"/>
+</div>
+<h4 class="font-headline font-bold text-lg mb-1 leading-tight">Motion Design with Framer</h4>
+<p class="text-xs text-on-surface-variant font-medium mb-4">8 Lessons • 4h 15m</p>
+<div class="row row-between">
+<div class="w-2/3 h-1.5 bg-primary-fixed rounded-full overflow-hidden">
+<div class="h-full bg-primary-container w-[12%]"></div>
+</div>
+<span class="material-symbols-outlined icon text-tertiary-fixed-dim icon-filled" >star</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Suggested for You -->
+<section>
+<h3 class="text-2xl font-headline font-bold mb-6 px-2">Suggested for You</h3>
+<div class="grid grid-cols-1 gap-4">
+<div class="flex items-center gap-4 p-4 bg-surface-container-low rounded-2xl hover:bg-primary-fixed/50 transition-colors cursor-pointer group">
+<div class="h-16 w-16 rounded-xl bg-primary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined icon text-primary-container icon-lg">psychology</span>
+</div>
+<div class="flex-1">
+<h4 class="font-headline font-bold text-base group-hover:text-primary transition-colors">Cognitive Load in UX Design</h4>
+<p class="text-sm text-on-surface-variant">Based on your interest in UI Patterns</p>
+</div>
+<button class="p-2 rounded-full border border-outline-variant/30 text-on-surface-variant group-hover:bg-primary-container group-hover:text-white transition-all">
+<span class="material-symbols-outlined icon">chevron_right</span>
+</button>
+</div>
+<div class="flex items-center gap-4 p-4 bg-surface-container-low rounded-2xl hover:bg-primary-fixed/50 transition-colors cursor-pointer group">
+<div class="h-16 w-16 rounded-xl bg-primary-fixed flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined icon text-primary-container icon-lg">architecture</span>
+</div>
+<div class="flex-1">
+<h4 class="font-headline font-bold text-base group-hover:text-primary transition-colors">Atomic Design at Scale</h4>
+<p class="text-sm text-on-surface-variant">Recommended for Design Leaders</p>
+</div>
+<button class="p-2 rounded-full border border-outline-variant/30 text-on-surface-variant group-hover:bg-primary-container group-hover:text-white transition-all">
+<span class="material-symbols-outlined icon">chevron_right</span>
+</button>
+</div>
+</div>
+</section>
+</div>
+<!-- RIGHT: Timeline & Activity (4 Cols) -->
+<div class="md:col-span-4 space-y-8">
+<!-- Activity Timeline -->
+<div class="bg-surface-container-lowest p-8 rounded-3xl shadow-[0_24px_40px_rgba(0,0,0,0.03)]">
+<h3 class="text-xl font-headline font-bold mb-8">Recent Activity</h3>
+<div class="space-y-8 relative">
+<div class="absolute left-4 top-1 bottom-1 w-0.5 bg-surface-container"></div>
+<!-- Timeline Item 1 -->
+<div class="relative flex gap-6">
+<div class="relative z-10 h-8 w-8 rounded-full bg-primary-container flex items-center justify-center text-white ring-4 ring-white shadow-md">
+<span class="material-symbols-outlined icon icon-filled" >check</span>
+</div>
+<div>
+<p class="text-sm font-bold mb-1">Quiz Passed: React Hooks</p>
+<p class="text-xs text-on-surface-variant mb-2">2 hours ago</p>
+<span class="text-label px-2 py-1 bg-success-container text-on-success-container font-bold rounded-md uppercase tracking-wider">Score: 92%</span>
+</div>
+</div>
+<!-- Timeline Item 2 -->
+<div class="relative flex gap-6">
+<div class="relative z-10 h-8 w-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant ring-4 ring-white">
+<span class="material-symbols-outlined icon">schedule</span>
+</div>
+<div>
+<p class="text-sm font-bold mb-1">Lesson Completed</p>
+<p class="text-xs text-on-surface-variant mb-1">Yesterday</p>
+<p class="text-xs text-on-surface-variant">Custom Hooks Lifecycle</p>
+</div>
+</div>
+<!-- Timeline Item 3 -->
+<div class="relative flex gap-6">
+<div class="relative z-10 h-8 w-8 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant ring-4 ring-white">
+<span class="material-symbols-outlined icon">workspace_premium</span>
+</div>
+<div>
+<p class="text-sm font-bold mb-1">Certificate Earned</p>
+<p class="text-xs text-on-surface-variant mb-1">3 days ago</p>
+<p class="text-xs font-bold text-primary">CSS Layout Mastery</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Stats/Achievement Card -->
+<div class="sf-gradient p-8 rounded-3xl text-white overflow-hidden relative">
+<div class="relative z-10">
+<h3 class="text-xl font-headline font-bold mb-6">Learning Streak</h3>
+<div class="flex items-end gap-2 mb-4">
+<span class="text-5xl font-black font-headline leading-none">14</span>
+<span class="text-lg font-bold mb-1 opacity-80 uppercase tracking-widest">Days</span>
+</div>
+<p class="text-sm opacity-90 leading-relaxed">You're in the top 5% of learners this month. Keep pushing!</p>
+</div>
+<span class="material-symbols-outlined icon absolute -bottom-4 -right-4 text-[120px] opacity-10 rotate-12 icon-filled" >local_fire_department</span>
+</div>
+<!-- Mentorship/Quick Help -->
+<div class="bg-surface-container-high p-6 rounded-3xl">
+<div class="flex items-center gap-4 mb-4">
+<div class="h-12 w-12 rounded-full overflow-hidden border-2 border-white">
+<img alt="Mentor" data-alt="professional portrait of a middle-aged woman with glasses and confident expression, professional lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdp7FvXCWgxCPcZuzTLfoQbsjDvwily_VBkhrLhr6vgXT2J7pLFX2o_mpydnvr-Lx2SeZwe5zI8mXYGxCA0HzhSaZlu9CKqydYElrUxcNe1OLSWNrOjJxcnihYSlR8B73_7j7plQBssgUepN0qmMoAqiN3hJ3EVJhh0I1uTjB63lWWJCQclAH5wvBV_zPv58QjUwq5S7w2ASi-v6vZkKiPXPd2CGPjuyFBeXaJRbjqE1zVQdT2Zz95TGPCdn1LjCylkb4_il1pmrSk"/>
+</div>
+<div>
+<p class="text-sm font-bold">Ask Sarah (Mentor)</p>
+<p class="text-xs text-on-surface-variant">Online now</p>
+</div>
+</div>
+<button class="btn btn-surface btn-w-full">
+                        Send a Message
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full bg-white dark:bg-inverse-surface shadow-sm flex justify-around items-center px-4 pb-6 pt-3 z-50 rounded-t-3xl">
+<a class="flex flex-col items-center justify-center bg-primary-fixed dark:bg-primary/40 text-primary dark:text-primary-fixed-dim rounded-2xl px-5 py-1.5 active:scale-90 transition-transform" href="#">
+<span class="material-symbols-outlined icon icon-filled" >home</span>
+<span class="font-accent text-caption font-medium tracking-wide uppercase mt-1">Home</span>
+</a>
+<a class="nav-bottom-item" href="#">
+<span class="material-symbols-outlined icon">search</span>
+<span class="font-accent text-caption font-medium tracking-wide uppercase mt-1">Search</span>
+</a>
+<a class="nav-bottom-item" href="#">
+<span class="material-symbols-outlined icon">menu_book</span>
+<span class="font-accent text-caption font-medium tracking-wide uppercase mt-1">Learning</span>
+</a>
+<a class="nav-bottom-item" href="#">
+<span class="material-symbols-outlined icon">person</span>
+<span class="font-accent text-caption font-medium tracking-wide uppercase mt-1">Profile</span>
+</a>
+</nav>
+</body></html>

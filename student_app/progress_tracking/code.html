@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+
+<html class="light mobile-simulator" lang="en"><head>
+<link rel="stylesheet" href="../../shared/tailwind-mobile.css"/>
+<link rel="stylesheet" href="../../shared/base.css"/>
+
+<meta charset="utf-8"/>
+<meta name="description" content="SkillForge — The premium platform for professional skill development and certification."/>
+<link rel="icon" type="image/svg+xml" href="../../shared/favicon.svg"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SkillForge | Progress Tracking</title>
+
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-fixed">
+<!-- Top Navigation Bar -->
+<header class="navbar">
+
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden bg-surface-container-high border-2 border-primary-fixed">
+<img class="w-full h-full object-cover" data-alt="professional male portrait with soft studio lighting and warm neutral background for educational profile avatar" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBL4pnNwMxIenBf0M9zQsIspCEpPX0zQ-hf-lMAKeCpAPBzWZJa4ISK4U7A3FKCQ69hKQF9Fk1UGgKdrLvxP61Eh6ZRd1YUztRZAYkJUd-3N6pITPfBpkmD2rlNXoq-zezLwq8GJe8Tu3csgvvwbMKFIF5mphJcm0ZPOPiJ3WKKkhKGSPM2nzBjMPRwW6X22iUOafxNnff2j_zrwiD6-ZrbtFY3zETBRIAPzDYrB-LEJlQqK_u7idN9qSWzsIVCJzewy6EbUXMksLAa"/>
+</div>
+<h1 class="sf-brand text-xl">SkillForge</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-neutral-500 hover:translate-y-[-2px] transition-transform duration-200">
+<span class="material-symbols-outlined icon" data-icon="search">search</span>
+</button>
+<button class="p-2 text-neutral-500 hover:translate-y-[-2px] transition-transform duration-200 relative">
+<span class="material-symbols-outlined icon" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full"></span>
+</button>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 sf-container">
+<!-- Hero Title Section -->
+<div class="mb-12">
+<span class="text-label uppercase tracking-widest font-bold text-primary mb-2 block font-label">Personal Performance</span>
+<h2 class="text-5xl font-extrabold font-headline text-on-surface tracking-tighter leading-none mb-4">
+                Forge Your <span class="text-primary italic">Legacy.</span>
+</h2>
+<p class="text-secondary max-w-md">Tracking your intellectual evolution from the moment of enrollment to mastery.</p>
+</div>
+<!-- Bento Grid Layout -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Completion Card (The Forge Ring) -->
+<div class="md:col-span-4 bg-white rounded-3xl p-8 shadow-sm flex flex-col items-center justify-center text-center relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 blur-3xl"></div>
+<div class="relative mb-6">
+<svg class="w-48 h-48">
+<circle class="text-surface-container stroke-current" cx="96" cy="96" fill="transparent" r="80" stroke-width="12"></circle>
+<circle class="text-primary stroke-current progress-ring-circle" cx="96" cy="96" fill="transparent" r="80" stroke-linecap="round" stroke-width="12" style="stroke-dasharray: 502.65; stroke-dashoffset: 125.66;"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-4xl font-extrabold font-headline text-on-surface">75%</span>
+<span class="text-label uppercase tracking-widest font-bold text-neutral-400 font-label">Completed</span>
+</div>
+</div>
+<h3 class="text-xl font-bold font-headline mb-1">Advanced Mastery</h3>
+<p class="text-sm text-secondary">12 of 16 modules finished</p>
+</div>
+<!-- Stats & Learning Hours -->
+<div class="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+<div class="bg-primary text-on-primary rounded-3xl p-8 flex flex-col justify-between shadow-[0_12px_32px_rgba(165,60,0,0.1)] relative overflow-hidden">
+<div class="absolute bottom-0 right-0 opacity-10 translate-x-4 translate-y-4">
+<span class="material-symbols-outlined icon text-[120px] icon-filled" data-icon="schedule" >schedule</span>
+</div>
+<div>
+<span class="text-label uppercase tracking-widest font-bold opacity-80 font-label">Investment</span>
+<div class="text-5xl font-extrabold font-headline mt-2">142h</div>
+</div>
+<p class="text-sm font-medium mt-4">Total learning hours since October</p>
+</div>
+<div class="card-feature">
+<div>
+<span class="text-label uppercase tracking-widest font-bold text-neutral-400 font-label">Daily Streak</span>
+<div class="text-5xl font-extrabold font-headline text-on-surface mt-2">24</div>
+</div>
+<div class="flex items-center gap-2 mt-4 text-primary">
+<span class="material-symbols-outlined icon icon-filled" data-icon="local_fire_department" >local_fire_department</span>
+<span class="font-bold">Days consistent forging</span>
+</div>
+</div>
+<!-- Timeline Activity Card -->
+<div class="sm:col-span-2 bg-surface-container-low rounded-3xl p-8">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h3 class="text-xl font-bold font-headline">Activity Timeline</h3>
+<p class="text-sm text-secondary">Your journey since purchase on Oct 12, 2023</p>
+</div>
+<span class="text-label uppercase tracking-widest font-bold text-primary font-label">View History</span>
+</div>
+<div class="flex items-end justify-between h-32 gap-2">
+<!-- Bar chart visualization -->
+<div class="w-full bg-primary/20 rounded-full h-[30%] hover:bg-primary transition-colors cursor-pointer" title="Monday"></div>
+<div class="w-full bg-primary/20 rounded-full h-[55%] hover:bg-primary transition-colors cursor-pointer" title="Tuesday"></div>
+<div class="w-full bg-primary/20 rounded-full h-[45%] hover:bg-primary transition-colors cursor-pointer" title="Wednesday"></div>
+<div class="w-full bg-primary rounded-full h-[90%] hover:bg-primary transition-colors cursor-pointer" title="Thursday (Today)"></div>
+<div class="w-full bg-surface-container-highest rounded-full h-[15%]" title="Friday"></div>
+<div class="w-full bg-surface-container-highest rounded-full h-[10%]" title="Saturday"></div>
+<div class="w-full bg-surface-container-highest rounded-full h-[12%]" title="Sunday"></div>
+</div>
+<div class="flex justify-between mt-4 px-2 text-label font-bold text-neutral-400 uppercase tracking-tighter">
+<span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+</div>
+</div>
+</div>
+<!-- Completed Lessons (Editorial List) -->
+<div class="md:col-span-12 bg-white rounded-3xl p-8 mt-4 shadow-[0_8px_24px_rgba(0,0,0,0.02)]">
+<div class="row row-between mb-10">
+<h3 class="text-2xl font-bold font-headline">Completed Lessons</h3>
+<div class="flex gap-2">
+<button class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-neutral-600 hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined icon" data-icon="filter_list">filter_list</span>
+</button>
+</div>
+</div>
+<div class="stack-lg">
+<!-- Lesson Item 1 -->
+<div class="flex flex-col md:flex-row md:items-center gap-6 group">
+<div class="w-16 h-16 shrink-0 rounded-2xl bg-primary-fixed/50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+<span class="material-symbols-outlined icon icon-lg" data-icon="architecture">architecture</span>
+</div>
+<div class="flex-grow">
+<div class="flex flex-wrap items-center gap-x-4 gap-y-1 mb-1">
+<h4 class="text-lg font-bold">Foundations of Visual Hierarchy</h4>
+<span class="bg-secondary-container/50 text-label font-bold uppercase tracking-widest px-2 py-1 rounded-full text-on-secondary-container">Module 01</span>
+</div>
+<p class="text-sm text-secondary leading-relaxed">Explored the principles of focal points, gestalt theory, and directional flow in high-end UI design.</p>
+</div>
+<div class="md:text-right shrink-0">
+<div class="text-sm font-bold text-on-surface">Oct 24, 2023</div>
+<div class="text-label font-bold uppercase text-neutral-400 tracking-widest mt-1">Grade: 98/100</div>
+</div>
+</div>
+<!-- Lesson Item 2 -->
+<div class="flex flex-col md:flex-row md:items-center gap-6 group">
+<div class="w-16 h-16 shrink-0 rounded-2xl bg-primary-fixed/50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+<span class="material-symbols-outlined icon icon-lg" data-icon="palette">palette</span>
+</div>
+<div class="flex-grow">
+<div class="flex flex-wrap items-center gap-x-4 gap-y-1 mb-1">
+<h4 class="text-lg font-bold">Chromatic Psychology in Branding</h4>
+<span class="bg-secondary-container/50 text-label font-bold uppercase tracking-widest px-2 py-1 rounded-full text-on-secondary-container">Module 02</span>
+</div>
+<p class="text-sm text-secondary leading-relaxed">Understanding how color dictates emotional response and user behavior in scholarly environments.</p>
+</div>
+<div class="md:text-right shrink-0">
+<div class="text-sm font-bold text-on-surface">Nov 02, 2023</div>
+<div class="text-label font-bold uppercase text-neutral-400 tracking-widest mt-1">Grade: 94/100</div>
+</div>
+</div>
+<!-- Lesson Item 3 -->
+<div class="flex flex-col md:flex-row md:items-center gap-6 group">
+<div class="w-16 h-16 shrink-0 rounded-2xl bg-primary-fixed/50 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+<span class="material-symbols-outlined icon icon-lg" data-icon="auto_stories">auto_stories</span>
+</div>
+<div class="flex-grow">
+<div class="flex flex-wrap items-center gap-x-4 gap-y-1 mb-1">
+<h4 class="text-lg font-bold">Editorial Typography Systems</h4>
+<span class="bg-secondary-container/50 text-label font-bold uppercase tracking-widest px-2 py-1 rounded-full text-on-secondary-container">Module 03</span>
+</div>
+<p class="text-sm text-secondary leading-relaxed">Applying boutique magazine layouts to digital interfaces for improved readability and authority.</p>
+</div>
+<div class="md:text-right shrink-0">
+<div class="text-sm font-bold text-on-surface">Nov 15, 2023</div>
+<div class="text-label font-bold uppercase text-neutral-400 tracking-widest mt-1">Grade: 100/100</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="nav-bottom">
+<a class="flex flex-col items-center justify-center text-neutral-400 dark:text-neutral-600 px-5 py-2 transition-all duration-300 ease-out hover:text-primary" href="#">
+<span class="material-symbols-outlined icon mb-1" data-icon="school">school</span>
+<span class="font-label text-caption uppercase tracking-widest font-bold">Forge</span>
+</a>
+<a class="flex flex-col items-center justify-center text-neutral-400 dark:text-neutral-600 px-5 py-2 transition-all duration-300 ease-out hover:text-primary" href="#">
+<span class="material-symbols-outlined icon mb-1" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-label text-caption uppercase tracking-widest font-bold">Discover</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-fixed/50 dark:bg-orange-900/20 text-primary dark:text-primary-container rounded-2xl px-5 py-2 transition-all duration-300 ease-out" href="#">
+<span class="material-symbols-outlined icon mb-1" data-icon="timeline">timeline</span>
+<span class="font-label text-caption uppercase tracking-widest font-bold">Insights</span>
+</a>
+<a class="flex flex-col items-center justify-center text-neutral-400 dark:text-neutral-600 px-5 py-2 transition-all duration-300 ease-out hover:text-primary" href="#">
+<span class="material-symbols-outlined icon mb-1" data-icon="star">star</span>
+<span class="font-label text-caption uppercase tracking-widest font-bold">Reviews</span>
+</a>
+</nav>
+<!-- Contextual FAB (Only on Insights/Progress page) -->
+<button class="fixed bottom-28 right-6 w-14 h-14 bg-gradient-to-br from-primary to-primary-container text-white rounded-2xl flex items-center justify-center shadow-[0_12px_32px_rgba(165,60,0,0.2)] hover:translate-y-[-4px] transition-all duration-300 z-40 group">
+<span class="material-symbols-outlined icon" data-icon="download">download</span>
+<span class="absolute right-full mr-4 bg-on-surface text-white text-label font-bold uppercase tracking-widest py-2 px-4 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap">Report</span>
+</button>
+</body></html>

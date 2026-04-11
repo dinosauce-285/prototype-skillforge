@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html class="light mobile-simulator" lang="en">
+<head>
+<link rel="stylesheet" href="../../shared/tailwind-mobile.css"/>
+<link rel="stylesheet" href="../../shared/base.css"/>
+
+<meta charset="utf-8"/>
+    <meta name="description" content="SkillForge — The premium platform for professional skill development and certification."/>
+    <link rel="icon" type="image/svg+xml" href="../../shared/favicon.svg"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>SkillForge | Lesson Discussions</title>
+</head>
+<body class="bg-background font-body text-on-surface min-h-screen pb-32">
+<!-- TopAppBar App Style -->
+<header class="navbar">
+    <div class="navbar-container">
+        <div class="navbar-logo">
+            <button class="text-primary hover:opacity-80 transition-opacity active:scale-95">
+                <span class="material-symbols-outlined icon">arrow_back</span>
+            </button>
+            <h1 class="font-headline font-bold text-lg text-primary truncate">Module 4: Shaders</h1>
+        </div>
+        <div class="navbar-actions">
+            <button class="material-symbols-outlined icon text-on-surface-variant hover:bg-primary-fixed/50 p-2 rounded-full transition-colors active:scale-95">search</button>
+        </div>
+    </div>
+</header>
+
+<main class="pt-20 px-4 sf-container">
+    <div class="mb-6">
+        <h2 class="text-3xl font-headline font-black tracking-tight text-on-surface mb-2">Discussions</h2>
+        <p class="text-on-surface-variant text-sm leading-relaxed">Ask questions or reference timestamps from the video.</p>
+    </div>
+    
+    <button class="btn btn-primary btn-w-full btn-lg mb-8 shadow-sm">
+        Ask a Question
+    </button>
+    
+    <div class="stack-md">
+        <!-- Thread 1 -->
+        <div class="card p-4">
+            <div class="flex items-start gap-4">
+                <img alt="Alex" class="w-10 h-10 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKozZW1w3Dn_Q-Wmvaet6WE99f7_1-nEnAT2Dmirf4Tm1SJLv2BmfubWaLxqgmf6ucsNze3LFgL0LmLTxNMoHhnxa0VGFYGCwoDY6MPQHE2IURztkTFyZAH-hXB1rOiAzVqy6RaTNCoMq0mGWk86HKGSI1XZb1jDNqo2aAn3Ak-6FW2HCz7cUCeMcgDBe7n6eozlAuehiTZ09Cp5yo8VKjpz7GELtjRPlje7l9s82rVL1919s7t3v7sC3Y0d4RtAPYTIrFoEhm3CH7"/>
+                <div class="flex-grow">
+                    <h3 class="font-headline font-bold text-lg text-on-surface leading-tight">Buffer overflows in WebGL2?</h3>
+                    <div class="flex gap-2 items-center mt-2 mb-3">
+                        <span class="bg-primary-fixed text-on-primary-fixed-variant px-2 py-0.5 rounded text-label font-bold uppercase flex items-center gap-1">
+                            <span class="material-symbols-outlined icon icon-filled" style="font-size: 14px;">schedule</span>
+                            12:45
+                        </span>
+                        <span class="text-xs text-on-surface-variant">2h ago</span>
+                    </div>
+                    <p class="text-on-surface-variant text-sm mb-4">If my dynamic mesh increases beyond 65k vertices, what's the strategy?</p>
+                    
+                    <!-- Instructor Reply -->
+                    <div class="bg-surface-container-low p-3 rounded-lg border-l-2 border-primary mb-4">
+                        <span class="text-xs font-bold text-primary mb-1 flex items-center gap-1">
+                            <span class="material-symbols-outlined icon icon-filled" style="font-size: 12px;">verified</span> INSTRUCTOR
+                        </span>
+                        <p class="text-on-surface text-sm italic">Great catch! We typically implement a Buffer Orphaning technique.</p>
+                    </div>
+                    
+                    <div class="flex justify-between items-center text-sm pt-2 border-t border-outline-variant/30">
+                        <div class="icon-text text-on-surface-variant">
+                            <span class="material-symbols-outlined icon" style="font-size: 18px;">chat_bubble</span> 14
+                        </div>
+                        <div class="icon-text text-primary font-bold">
+                            <span class="material-symbols-outlined icon icon-filled" style="font-size: 18px;">thumb_up</span> 32
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Thread 2 -->
+        <div class="card p-4">
+            <div class="flex items-start gap-4">
+                <div class="flex flex-col items-center gap-0">
+                    <button class="material-symbols-outlined icon text-on-surface-variant scale-90">expand_less</button>
+                    <span class="font-bold text-sm">8</span>
+                    <button class="material-symbols-outlined icon text-on-surface-variant scale-90">expand_more</button>
+                </div>
+                <div>
+                     <h3 class="font-headline font-bold text-lg text-on-surface leading-tight mb-2">Fragment shader precision</h3>
+                     <p class="text-on-surface-variant text-sm mb-3">Does using mediump affect texture sampling accuracy on mobile iOS?</p>
+                     <p class="text-xs text-on-surface-variant">5 students discussing...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Bottom Nav Box -->
+<nav class="nav-bottom shadow-xl">
+    <a class="nav-bottom-item" href="../dashboard/code.html">
+        <span class="material-symbols-outlined icon">home</span>
+        <span class="font-accent text-caption uppercase mt-1">Home</span>
+    </a>
+    <a class="nav-bottom-item" href="../course_search/code.html">
+        <span class="material-symbols-outlined icon">search</span>
+        <span class="font-accent text-caption uppercase mt-1">Search</span>
+    </a>
+    <a class="nav-bottom-item nav-bottom-active" href="../learning_interface/code.html">
+        <span class="material-symbols-outlined icon icon-filled">menu_book</span>
+        <span class="font-accent text-caption uppercase mt-1">Learn</span>
+    </a>
+    <a class="nav-bottom-item" href="../user_profile/code.html">
+        <span class="material-symbols-outlined icon">person</span>
+        <span class="font-accent text-caption uppercase mt-1">Profile</span>
+    </a>
+</nav>
+</body>
+</html>

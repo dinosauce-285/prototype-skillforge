@@ -1,0 +1,173 @@
+﻿<!DOCTYPE html>
+
+<html lang="en"><head>
+<link rel="stylesheet" href="../../shared/tailwind-desktop.css"/>
+<link rel="stylesheet" href="../../shared/base.css"/>
+
+<meta charset="utf-8"/>
+<meta name="description" content="SkillForge — The premium platform for professional skill development and certification."/>
+<link rel="icon" type="image/svg+xml" href="../../shared/favicon.svg"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SkillForge | Secure Payment</title>
+
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-fixed">
+<!-- TopNavBar -->
+<nav class="navbar">
+<div class="flex items-center gap-12">
+<span class="sf-brand text-2xl">SkillForge</span>
+<div class="hidden md:flex gap-8 items-center h-full">
+<a class="text-on-surface-variant transition-colors duration-300 hover:text-primary-container font-headline tracking-tight font-bold text-lg" href="#">Browse</a>
+<a class="text-on-surface-variant transition-colors duration-300 hover:text-primary-container font-headline tracking-tight font-bold text-lg" href="#">My Courses</a>
+<a class="text-on-surface-variant transition-colors duration-300 hover:text-primary-container font-headline tracking-tight font-bold text-lg" href="#">Revenue</a>
+<a class="text-on-surface-variant transition-colors duration-300 hover:text-primary-container font-headline tracking-tight font-bold text-lg" href="#">Dashboard</a>
+</div>
+</div>
+<div class="navbar-logo">
+<button class="relative p-2 text-on-surface-variant transition-all hover:scale-95">
+<span class="material-symbols-outlined icon">notifications</span>
+</button>
+<button class="relative p-2 text-on-surface-variant transition-all hover:scale-95">
+<span class="material-symbols-outlined icon">account_circle</span>
+</button>
+<button class="sf-gradient text-white px-6 py-3 rounded-md font-headline font-bold text-sm tracking-tight transition-all active:opacity-80 scale-95 md:scale-100">
+                Cart
+            </button>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="pt-32 pb-20 px-4 md:px-8 sf-container min-h-screen">
+<div class="mb-12">
+<span class="text-xs font-bold uppercase tracking-widest text-primary mb-2 block">Checkout Process</span>
+<h1 class="text-5xl font-black text-on-surface font-headline tracking-tighter leading-tight">Complete Your Enrollment</h1>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+<!-- Left Column: Payment Details -->
+<div class="lg:col-span-7 space-y-8">
+<!-- Payment Method Selection -->
+<section class="card">
+<h2 class="text-xl font-headline font-bold mb-6 text-on-surface">Select Payment Method</h2>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<!-- Card Option -->
+<button class="flex flex-col items-center justify-center p-4 bg-surface-container-lowest rounded-xl border-2 border-primary ring-2 ring-primary/10 transition-all">
+<span class="material-symbols-outlined icon text-primary icon-lg mb-2">credit_card</span>
+<span class="text-xs font-bold uppercase tracking-wider text-on-surface">Card</span>
+</button>
+<!-- MoMo Option -->
+<button class="flex flex-col items-center justify-center p-4 bg-surface-container-lowest rounded-xl transition-all hover:bg-surface-variant group">
+<span class="material-symbols-outlined icon text-on-surface-variant group-hover:text-primary icon-lg mb-2">account_balance_wallet</span>
+<span class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">MoMo</span>
+</button>
+<!-- VNPay Option -->
+<button class="flex flex-col items-center justify-center p-4 bg-surface-container-lowest rounded-xl transition-all hover:bg-surface-variant group">
+<span class="material-symbols-outlined icon text-on-surface-variant group-hover:text-primary icon-lg mb-2">qr_code_2</span>
+<span class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">VNPay</span>
+</button>
+<!-- PayPal Option -->
+<button class="flex flex-col items-center justify-center p-4 bg-surface-container-lowest rounded-xl transition-all hover:bg-surface-variant group">
+<span class="material-symbols-outlined icon text-on-surface-variant group-hover:text-primary icon-lg mb-2">payments</span>
+<span class="text-xs font-bold uppercase tracking-wider text-on-surface-variant">PayPal</span>
+</button>
+</div>
+<!-- Card Details Form -->
+<div class="mt-10 space-y-6">
+<div class="relative">
+<label class="text-label font-bold uppercase tracking-widest text-on-surface-variant absolute -top-2 left-4 bg-surface-container-low px-1">Cardholder Name</label>
+<input class="w-full bg-surface-container-highest border-b-2 border-primary focus:ring-0 focus:outline-none py-4 px-4 font-headline font-bold text-on-surface placeholder:text-outline-variant transition-all" placeholder="JONATHAN SCHOLAR" type="text"/>
+</div>
+<div class="relative">
+<label class="text-label font-bold uppercase tracking-widest text-on-surface-variant absolute -top-2 left-4 bg-surface-container-low px-1">Card Number</label>
+<input class="w-full bg-surface-container-highest border-b-2 border-primary focus:ring-0 focus:outline-none py-4 px-4 font-headline font-bold text-on-surface placeholder:text-outline-variant transition-all" placeholder="0000 0000 0000 0000" type="text"/>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="relative">
+<label class="text-label font-bold uppercase tracking-widest text-on-surface-variant absolute -top-2 left-4 bg-surface-container-low px-1">Expiry Date</label>
+<input class="w-full bg-surface-container-highest border-b-2 border-primary focus:ring-0 focus:outline-none py-4 px-4 font-headline font-bold text-on-surface placeholder:text-outline-variant transition-all" placeholder="MM / YY" type="text"/>
+</div>
+<div class="relative">
+<label class="text-label font-bold uppercase tracking-widest text-on-surface-variant absolute -top-2 left-4 bg-surface-container-low px-1">CVV</label>
+<input class="w-full bg-surface-container-highest border-b-2 border-primary focus:ring-0 focus:outline-none py-4 px-4 font-headline font-bold text-on-surface placeholder:text-outline-variant transition-all" placeholder="***" type="password"/>
+</div>
+</div>
+</div>
+</section>
+<!-- Security Badges -->
+<div class="flex flex-wrap items-center justify-between gap-6 px-4">
+<div class="flex items-center gap-3 opacity-60">
+<span class="material-symbols-outlined icon text-primary">verified_user</span>
+<span class="text-label font-bold uppercase tracking-widest">SSL Secured Payment</span>
+</div>
+<div class="flex items-center gap-3 opacity-60">
+<span class="material-symbols-outlined icon text-primary">shield_lock</span>
+<span class="text-label font-bold uppercase tracking-widest">Encrypted Data</span>
+</div>
+<div class="flex items-center gap-3 opacity-60">
+<span class="material-symbols-outlined icon text-primary">history</span>
+<span class="text-label font-bold uppercase tracking-widest">30-Day Guarantee</span>
+</div>
+</div>
+</div>
+<!-- Right Column: Order Summary -->
+<aside class="lg:col-span-5">
+<div class="card-sticky">
+<h3 class="text-sm font-bold uppercase tracking-[0.2em] text-on-surface-variant mb-8">Order Summary</h3>
+<div class="space-y-6 mb-10">
+<!-- Course Item -->
+<div class="flex gap-4 items-center">
+<div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 bg-surface-dim">
+<img class="w-full h-full object-cover" data-alt="Close-up of high-quality fountain pen resting on a scholarly manuscript with elegant handwriting and soft light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtGF2SJ2WMuN5QX2wiohWRmPdyw7m80_J9K2cwIQy_DX4kjPyX3IJba7SAumwMC5Qv1V8YItYn4gpKW1lgI7cUPR1wSp_53kv1iDDNkPmbQUBF_8Qfrh7hzea0Av4UVJzNM3vv7rIT1qkXMZDHnyMJp9k2ysfKHFce5BzzRE8cn0_JY3F08uURP7ouBnJhez-yitchACohvWS_U-0leDTCIFhY8eggxbCyAIOHN1U3efQNb3HreM03IHNdiUIhJ89r15FwYwoyjmQi"/>
+</div>
+<div class="flex-grow">
+<h4 class="font-headline font-extrabold text-on-surface leading-tight text-lg">Modern Editorial Principles for Scholars</h4>
+<span class="text-xs font-medium text-on-surface-variant">Certification Course</span>
+</div>
+<span class="font-headline font-black text-primary">$199.00</span>
+</div>
+<!-- Course Item -->
+<div class="flex gap-4 items-center">
+<div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 bg-surface-dim">
+<img class="w-full h-full object-cover" data-alt="Overhead shot of a minimalist workspace with a laptop, open notebook, and professional coffee cup on white surface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBxrgU1LqFamLsv0rtGL0Fbhy95zfP-KEWH-3GM5JZisFdfY3vO0X-ayxUivr0bQQqtuF4S2MNKDIXa6j-L-WC9FLQqdUfbgwRCXGiH8GrLUJg2eipM17QLim2o4MsFfaRHHFXHW56PXkMeodPNPAMaKmuM12DPW5QWbpPirXy90Nl1opiY1JYb8ZqUTwlzfktaU9KWdsxoPhQQUucsfhDgegcCo35DqS0Q99ccZLH20zJFYKUDDXMxv3Q3Flo5QZY15IOAh18mfkyB"/>
+</div>
+<div class="flex-grow">
+<h4 class="font-headline font-extrabold text-on-surface leading-tight text-lg">The Academic Writer's Toolkit</h4>
+<span class="text-xs font-medium text-on-surface-variant">Resource Bundle</span>
+</div>
+<span class="font-headline font-black text-primary">$49.00</span>
+</div>
+</div>
+<div class="space-y-3 pt-8 border-t border-outline-variant/20 mb-8">
+<div class="flex justify-between items-center">
+<span class="text-sm text-on-surface-variant font-medium">Subtotal</span>
+<span class="text-sm font-bold text-on-surface">$248.00</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-sm text-on-surface-variant font-medium">Tax (0%)</span>
+<span class="text-sm font-bold text-on-surface">$0.00</span>
+</div>
+<div class="flex justify-between items-center pt-4">
+<span class="text-xl font-headline font-black text-on-surface">Total</span>
+<span class="text-3xl font-headline font-black text-primary tracking-tighter">$248.00</span>
+</div>
+</div>
+<button class="btn btn-primary btn-lg btn-w-full">
+                        Complete Enrollment
+                    </button>
+<p class="text-label text-center mt-6 text-on-surface-variant uppercase tracking-widest font-bold px-4 leading-relaxed">
+                        By clicking pay now, you agree to our Terms of Academic Integrity and Refund Policy.
+                    </p>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-[#f5f3f3] py-12 flex flex-col items-center justify-center stack px-8 mt-auto">
+<span class="font-body font-black text-primary text-xl">SkillForge</span>
+<div class="flex flex-wrap justify-center gap-8">
+<a class="font-label text-xs tracking-normal text-on-surface-variant opacity-80 hover:opacity-100 transition-opacity" href="#">Privacy Policy</a>
+<a class="font-label text-xs tracking-normal text-on-surface-variant opacity-80 hover:opacity-100 transition-opacity" href="#">Terms of Service</a>
+<a class="font-label text-xs tracking-normal text-on-surface-variant opacity-80 hover:opacity-100 transition-opacity" href="#">Financial Security</a>
+<a class="font-label text-xs tracking-normal text-on-surface-variant opacity-80 hover:opacity-100 transition-opacity" href="#">Help Center</a>
+</div>
+<p class="font-label text-xs tracking-normal text-on-surface-variant opacity-60">© 2024 SkillForge. All rights reserved.</p>
+</footer>
+</body></html>

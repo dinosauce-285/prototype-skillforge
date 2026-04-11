@@ -1,0 +1,197 @@
+﻿<!DOCTYPE html>
+
+<html class="light mobile-simulator" lang="en"><head>
+<link rel="stylesheet" href="../../shared/tailwind-mobile.css"/>
+<link rel="stylesheet" href="../../shared/base.css"/>
+
+<meta charset="utf-8"/>
+<meta name="description" content="SkillForge — The premium platform for professional skill development and certification."/>
+<link rel="icon" type="image/svg+xml" href="../../shared/favicon.svg"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SkillForge | Explore Courses</title>
+
+</head>
+<body class="bg-background font-body text-on-background min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="navbar">
+
+<div class="flex items-center gap-4">
+<button class="text-zinc-500 dark:text-zinc-400 hover:opacity-80 transition-opacity scale-95 active:transition-transform">
+<span class="material-symbols-outlined icon" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-['Plus_Jakarta_Sans'] font-extrabold text-primary dark:text-primary-container italic">SkillForge</h1>
+</div>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-outline-variant/30">
+<img class="w-full h-full object-cover" data-alt="close-up portrait of a professional man with a friendly expression in studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKWt8TYiA2R3WTPikwqaX3EUqD1EP3Z9R610zUV6wa7q0t7MFLfgHUsnZnB94lZKZfi3zoEarSVHm-PoW3qhuOS9_XMCiQ0H5IG9trNlbyEQJVTMDVn4mJx5ATAvOoo9MS0rTH7diSay4XX2KG0eNiJkPFulqLWOnFXFtpSf-z4Eaw0Lf_ZkqGLHrcGesuEoAjGUnF2LSAzo5mR20KQ-ZMMr_WL-nTDAUrI0AFhzOsubJWDHokGLpodEGjQYBn1hhsAE4fW2nb8LaJ"/>
+</div>
+</header>
+<main class="pt-24 px-6 container-lg">
+<!-- Search & Discovery Header -->
+<div class="mb-10">
+<h2 class="font-headline font-bold text-4xl tracking-tight text-on-surface mb-6">Discover Your Next Masterpiece</h2>
+<!-- Search Bar with Glassmorphism -->
+<div class="relative group">
+<div class="absolute inset-y-0 left-5 flex items-center pointer-events-none text-on-surface-variant/60">
+<span class="material-symbols-outlined icon" data-icon="search">search</span>
+</div>
+<input class="w-full h-14 pl-14 pr-6 rounded-full bg-surface-container-low/60 backdrop-blur-md border-none focus:ring-2 focus:ring-primary/20 transition-all font-body text-lg shadow-sm" placeholder="Search for courses, skills, or mentors..." type="text"/>
+</div>
+</div>
+<!-- Filter Section -->
+<section class="mb-12">
+<div class="flex flex-col gap-6">
+<!-- Category Chips -->
+<div>
+<span class="font-label text-caption uppercase tracking-widest text-on-surface-variant/60 mb-3 block">Categories</span>
+<div class="flex flex-wrap gap-3">
+<button class="px-5 py-3 rounded-full bg-primary text-on-primary font-medium text-sm transition-all hover:opacity-90">All Courses</button>
+<button class="px-5 py-3 rounded-full bg-surface-container-lowest text-on-surface-variant font-medium text-sm transition-all hover:bg-surface-container-high">Technology</button>
+<button class="px-5 py-3 rounded-full bg-surface-container-lowest text-on-surface-variant font-medium text-sm transition-all hover:bg-surface-container-high">Design</button>
+<button class="px-5 py-3 rounded-full bg-surface-container-lowest text-on-surface-variant font-medium text-sm transition-all hover:bg-surface-container-high">Business</button>
+</div>
+</div>
+<!-- Difficulty Chips -->
+<div>
+<span class="font-label text-caption uppercase tracking-widest text-on-surface-variant/60 mb-3 block">Difficulty</span>
+<div class="flex flex-wrap gap-3">
+<button class="px-5 py-3 rounded-full bg-surface-container-lowest text-on-surface-variant font-medium text-sm transition-all hover:bg-surface-container-high border border-outline-variant/15">Beginner</button>
+<button class="px-5 py-3 rounded-full bg-surface-container-lowest text-on-surface-variant font-medium text-sm transition-all hover:bg-surface-container-high border border-outline-variant/15">Intermediate</button>
+<button class="px-5 py-3 rounded-full bg-surface-container-lowest text-on-surface-variant font-medium text-sm transition-all hover:bg-surface-container-high border border-outline-variant/15">Expert</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Course Discovery Grid (Bento/Editorial Layout) -->
+<section class="stack-lg">
+<div class="flex justify-between items-end">
+<h3 class="font-headline font-bold text-2xl text-on-surface">Curated Picks</h3>
+<span class="font-label text-sm font-semibold text-primary">124 Courses Found</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<!-- Course Card 1 -->
+<div class="group relative bg-surface-container-lowest rounded-3xl overflow-hidden hover:-translate-y-1 transition-transform duration-300">
+<div class="aspect-[16/10] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="clean minimal design workspace with high-end laptop and aesthetic stationery in morning sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCn3TaG3NlwMgNp1IzUqQZcgX-2Dx4NtER7v7Rh5l4RKy48DG-RBedwC7LL4BN2Ks9aUR2jM1rwhn3h_EVfDSmuRb6P-ReqD3w-QQU0ryw8MSe2Dd1hZd4tEQAiM-5sI8-3jIhfYqhPZfP-Fy5-p2_rkvI-yJ53YphinB7sBILGkt9snE81LKzBihhAVrBz1bX-rNBZZV4HYIKQXV0gEkjf85shUUiCa7cmOtEIWy50NMc6479Gczv6Vnw1zXOtOt2S_RagaJve4rJg"/>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label text-label uppercase tracking-widest px-3 py-1 bg-surface-container text-on-surface-variant rounded-full">Digital Arts</span>
+<div class="flex items-center gap-1 text-tertiary-fixed-dim">
+<span class="material-symbols-outlined filled-icon icon-filled" data-icon="star" >star</span>
+<span class="text-on-surface-variant font-semibold text-xs ml-1">4.9 (2.1k)</span>
+</div>
+</div>
+<h4 class="font-headline font-bold text-xl text-on-surface leading-snug mb-3">Architectural Minimalism in Modern Web Design</h4>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Master the art of space and form with Sarah Jenkins, Lead Designer at Studio Forge.</p>
+<div class="row row-between mt-auto">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container border-2 border-white overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="portrait of a professional woman instructor in a modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAG-qEFewD0dEPOx_3Pcvn1GFDhW9ygqe-wOoSNcEbsRQWNv0V4Ke4K0p0fgBaFOS-ffF7LW2SbR_a1hgw5RFj--y2hz3Hwj3Mq44yzaeVddhbiYavQm99ANQvqEE9SYALKFLBtiHqU6tgKeD36UCY8Yac-eHlP3PjJo-MbGMaVg6LGxsEVEBTCJRLxXooHLRusG4FQ81y-fw8mvts7OMnfkMh-CDLqd4wsMK7bHtELWgs9GS0PCqg_WaO771QkX63zWq6d0wFELDEK"/>
+</div>
+<span class="text-xs font-semibold text-on-surface">Sarah Jenkins</span>
+</div>
+<span class="font-headline font-extrabold text-2xl text-primary">$89.00</span>
+</div>
+</div>
+</div>
+<!-- Course Card 2 -->
+<div class="group relative bg-surface-container-lowest rounded-3xl overflow-hidden hover:-translate-y-1 transition-transform duration-300">
+<div class="aspect-[16/10] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="close up of code on a high resolution monitor with colorful syntax highlighting and soft bokeh" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTl2r00TnLQlfQKz3Rr4R70JHev9zcEtQX6hVZeFj5AiXRYpDWyM7r6rvlzE_ZG17aKxT2BZKOzqe8IELbL9Xmqz-iKD9zJxcapf07UiW1f7LP7ClqQ9Hx1EsFXgNuhSMFc6r1Q3AqOA34XvKdJrlCyXzhbBG9zL--zO6P81S1QKwpKSq0IK78vQwz1n6JDOqSUkmKRPsJSqCtPY4GOdfhGQp0K4lCteuMkZbneiDVzkhJWSpTTYPKIbcIRyVF9UBMV2wLHLIZuX-r"/>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label text-label uppercase tracking-widest px-3 py-1 bg-surface-container text-on-surface-variant rounded-full">Engineering</span>
+<div class="flex items-center gap-1 text-tertiary-fixed-dim">
+<span class="material-symbols-outlined filled-icon icon-filled" data-icon="star" >star</span>
+<span class="text-on-surface-variant font-semibold text-xs ml-1">5.0 (840)</span>
+</div>
+</div>
+<h4 class="font-headline font-bold text-xl text-on-surface leading-snug mb-3">Advanced Systems Architecture: Scaling to Infinity</h4>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Deep dive into distributed systems with CTO and Architect Marcus Thorne.</p>
+<div class="row row-between mt-auto">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container border-2 border-white overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="portrait of a tech professional man with glasses" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChKhwZ2Hg9PE54jUHZlcl8ulU5zYHdtcRYtGayNBsvMuoeleW-Ppan-j5cBbGWvmmzvpY0PxIx7qkI0OTvYwJcV4hNhvHLeWI7VFV7xlckyg55E_AcHVmqAF-zq6cZsygGU6LfJYJhzGf0mFqA10XbMqPIPj2LE19v_IMjjq_bBOZpotUS-tI00USmaKl9rb1FNpK9tOszJj8In7Kk45UHQjiyEKB6OSJ-aWJyHNfU4l0KSkrkaKZ_9EGVstB6HukD69dGDtCkw3QX"/>
+</div>
+<span class="text-xs font-semibold text-on-surface">Marcus Thorne</span>
+</div>
+<span class="font-headline font-extrabold text-2xl text-primary">$124.00</span>
+</div>
+</div>
+</div>
+<!-- Course Card 3 -->
+<div class="group relative bg-surface-container-lowest rounded-3xl overflow-hidden hover:-translate-y-1 transition-transform duration-300">
+<div class="aspect-[16/10] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="modern collaborative meeting room with glass walls and professional atmosphere" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPnuhYkaZkokaFpZp28TZQvYJWhlqtUkpl1EzlU5VSzmXNf4HOphZB1fOuwuY6vjvCHLFlV3tlDNiuLsCMn6TpHZ5pYy1OSk_4GrEH56lzovagDpgZOqW_URTJBFHZMDvXZcSCx9DJXdF1AKQWqSCH9Gy1domz5GsvhuGqhEbkWAhj04PRlYSDZFg_C7YnzgPj0nlwkWxSfupTn6AOujY-TjTk5UVq6TLfGPFLI-U9FDAFu8V0qSGWBbbyq2PnYymCSqJnDki2kOYB"/>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label text-label uppercase tracking-widest px-3 py-1 bg-surface-container text-on-surface-variant rounded-full">Business</span>
+<div class="flex items-center gap-1 text-tertiary-fixed-dim">
+<span class="material-symbols-outlined filled-icon icon-filled" data-icon="star" >star</span>
+<span class="text-on-surface-variant font-semibold text-xs ml-1">4.8 (1.5k)</span>
+</div>
+</div>
+<h4 class="font-headline font-bold text-xl text-on-surface leading-snug mb-3">Venture Thinking: The Startup Methodology</h4>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Learn the frameworks of successful entrepreneurs and venture capitalists.</p>
+<div class="row row-between mt-auto">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container border-2 border-white overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="professional woman in corporate attire smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1uF2_fWdii4GrzTg0hYmqs2uslacpqHU05Wy8d07aLhvIXmjGZqW3kgvW3XJTaOeA08fZrMEndmcz4-wQof6ecDe8ilxMihm-jeb6dRa_X42Jvw_Zjnvficbxif_GzpDFx3OEV-4sJb7p_y674vg56U05DHlRFJ69nD2Auw8LsSdrnTJ817qqFrHUz5tiyR2-HtKqku0xClVx2XO4jxvyQkZt6phNI07yAJF3F4NwmoWH_QKHt5ZZFHZbaEG2ut6Iym3spliMRUjz"/>
+</div>
+<span class="text-xs font-semibold text-on-surface">Dr. Elena Rodriguez</span>
+</div>
+<span class="font-headline font-extrabold text-2xl text-primary">$95.00</span>
+</div>
+</div>
+</div>
+<!-- Course Card 4 -->
+<div class="group relative bg-surface-container-lowest rounded-3xl overflow-hidden hover:-translate-y-1 transition-transform duration-300">
+<div class="aspect-[16/10] overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="stylized charts and data visualizations on a clean dashboard" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCntIK3pFWD_Zum4QL2xP8019ozgehi0t4u_me9Zrk_qXoHV5dCEE-LF9P5BOujXeCF5YXOZCfvzafsXwZysLSBd-5hj-MAn_ZEqerTP5zP9eb1d_R8JO0EZx0H8ksdJXReHtnjFhzUr3aY-lr6CWHQOzYNW2cbnFcBwIl3AVvD63_ZvZXSoDAWMu9x6Ipnx22p-bo4thoFFoC0LLUMymnQel0JHkD5xLv_lGnurSGqCZrBCwn8dJXuxgUxiU9-3IOrnSclRgSf_GQT"/>
+</div>
+<div class="p-8">
+<div class="flex justify-between items-start mb-4">
+<span class="font-label text-label uppercase tracking-widest px-3 py-1 bg-surface-container text-on-surface-variant rounded-full">Technology</span>
+<div class="flex items-center gap-1 text-tertiary-fixed-dim">
+<span class="material-symbols-outlined filled-icon icon-filled" data-icon="star" >star</span>
+<span class="text-on-surface-variant font-semibold text-xs ml-1">4.9 (420)</span>
+</div>
+</div>
+<h4 class="font-headline font-bold text-xl text-on-surface leading-snug mb-3">AI Foundations: Beyond the Prompt</h4>
+<p class="text-on-surface-variant text-sm mb-6 leading-relaxed">Understanding the mathematics and ethics of Large Language Models.</p>
+<div class="row row-between mt-auto">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container border-2 border-white overflow-hidden shadow-sm">
+<img class="w-full h-full object-cover" data-alt="professional male instructor in a research lab setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZFiAXH7jugPJNf6GiELTviat5CdrWKa-DSAuB6GIn3Sm869h-5aFbPJSNwq2RRsYKQc6ZhluX_zVIEzAbqIQuwPt5tsujqRSCKC7jTklqibv9Q3OGyzvwpNLZHKJZAytR_Kv2igJ1oVq1YYAofM3rg-YJLwKcTsk4nSiHr_VoszSt0I4P8PMgZlLDlZDkko57w2F0pqtI6cZ-t3tinfTmaaJf40k6TxQEwp23O3tVE4c1cswQR6xPsBgCryI_VR6YZuq4frIElIAe"/>
+</div>
+<span class="text-xs font-semibold text-on-surface">Prof. Liam Chen</span>
+</div>
+<span class="font-headline font-extrabold text-2xl text-primary">$150.00</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="nav-bottom">
+<div class="nav-bottom-item">
+<span class="material-symbols-outlined icon" data-icon="home">home</span>
+<span class="font-label font-medium text-caption uppercase tracking-wider">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-[#f26724]/10 text-primary dark:text-primary-container rounded-xl px-4 py-1 scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined filled-icon icon-filled" data-icon="search" >search</span>
+<span class="font-label font-medium text-caption uppercase tracking-wider">Search</span>
+</div>
+<div class="nav-bottom-item">
+<span class="material-symbols-outlined icon" data-icon="local_library">local_library</span>
+<span class="font-label font-medium text-caption uppercase tracking-wider">My Courses</span>
+</div>
+<div class="nav-bottom-item">
+<span class="material-symbols-outlined icon" data-icon="person">person</span>
+<span class="font-label font-medium text-caption uppercase tracking-wider">Profile</span>
+</div>
+</nav>
+</body></html>
