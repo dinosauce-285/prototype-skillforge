@@ -1,221 +1,456 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 
-<html class="light" lang="en"><head>
-<link rel="stylesheet" href="../../shared/tailwind-desktop.css"/>
-<link rel="stylesheet" href="../../shared/base.css"/>
+<html class="light" lang="en">
+  <head>
+    <link rel="stylesheet" href="../../shared/tailwind-desktop.css" />
+    <link rel="stylesheet" href="../../shared/base.css" />
 
-<meta charset="utf-8"/>
-<meta name="description" content="SkillForge — The premium platform for professional skill development and certification."/>
-<link rel="icon" type="image/svg+xml" href="../../shared/favicon.svg"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>SkillForge | My Courses</title>
-
-</head>
-<body class="bg-surface text-on-surface overflow-x-hidden">
-<!-- SideNavBar (Execution from JSON) -->
-<aside class="fixed left-0 top-0 h-full flex flex-col py-6 bg-surface-container-low dark:bg-inverse-surface h-screen w-64 border-r-0 z-50">
-<div class="px-6 mb-10">
-<h1 class="text-2xl font-bold tracking-tighter text-primary dark:text-primary-container">SkillForge</h1>
-<p class="text-label uppercase tracking-widest text-outline font-bold mt-1">Knowledge Architect</p>
-</div>
-<nav class="flex-1 space-y-1 px-3">
-<a class="flex items-center px-4 py-3 rounded-xl text-outline dark:text-outline font-medium hover:bg-surface-container-high/50 dark:hover:bg-surface-container-high/50 transition-colors" href="#">
-<span class="material-symbols-outlined icon mr-3">dashboard</span>
-<span class="font-body tracking-tight">Dashboard</span>
-</a>
-<a class="flex items-center px-4 py-3 rounded-xl text-primary dark:text-primary-container font-bold border-r-4 border-orange-600 bg-surface-container-high/50 dark:bg-surface-container-high/50 transition-colors" href="#">
-<span class="material-symbols-outlined icon mr-3">auto_stories</span>
-<span class="font-body tracking-tight">Courses</span>
-</a>
-<a class="flex items-center px-4 py-3 rounded-xl text-outline dark:text-outline font-medium hover:bg-surface-container-high/50 dark:hover:bg-surface-container-high/50 transition-colors" href="#">
-<span class="material-symbols-outlined icon mr-3">group</span>
-<span class="font-body tracking-tight">Students</span>
-</a>
-<a class="flex items-center px-4 py-3 rounded-xl text-outline dark:text-outline font-medium hover:bg-surface-container-high/50 dark:hover:bg-surface-container-high/50 transition-colors" href="#">
-<span class="material-symbols-outlined icon mr-3">payments</span>
-<span class="font-body tracking-tight">Finance</span>
-</a>
-<a class="flex items-center px-4 py-3 rounded-xl text-outline dark:text-outline font-medium hover:bg-surface-container-high/50 dark:hover:bg-surface-container-high/50 transition-colors" href="#">
-<span class="material-symbols-outlined icon mr-3">settings</span>
-<span class="font-body tracking-tight">Settings</span>
-</a>
-</nav>
-<div class="px-4 mt-auto">
-<button class="btn btn-primary btn-lg btn-w-full">
-<span class="material-symbols-outlined icon">add</span>
-<span class="font-body tracking-tight">Create New Course</span>
-</button>
-</div>
-</aside>
-<!-- Main Content Area -->
-<main class="ml-64 min-h-screen">
-<!-- TopNavBar (Execution from JSON) -->
-<header class="navbar">
-
-<div class="flex items-center flex-1 max-w-xl">
-<div class="relative w-full group">
-<span class="material-symbols-outlined icon absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
-<input class="w-full pl-10 pr-4 py-2 bg-surface-container-highest/50 border-none rounded-xl text-sm focus:ring-2 focus:ring-primary-container/20 focus:bg-surface-container-lowest transition-all outline-none" placeholder="Search courses, students, or analytics..." type="text"/>
-</div>
-</div>
-<div class="navbar-logo ml-8">
-<div class="flex items-center gap-4 text-on-surface-variant dark:text-outline">
-<button class="p-2 hover:bg-surface-container-low dark:hover:bg-inverse-surface rounded-xl transition-all relative">
-<span class="material-symbols-outlined icon">notifications</span>
-<span class="absolute top-2 right-2 w-2 h-2 bg-primary-container rounded-full border-2 border-white"></span>
-</button>
-<button class="p-2 hover:bg-surface-container-low dark:hover:bg-inverse-surface rounded-xl transition-all">
-<span class="material-symbols-outlined icon">help_outline</span>
-</button>
-</div>
-<div class="h-8 w-[1px] bg-surface-container"></div>
-<button class="text-primary font-semibold font-body text-sm hover:underline">Support</button>
-<button class="px-6 py-2 bg-primary-container text-white rounded-xl font-bold font-body text-sm active:scale-95 transition-transform">Go Live</button>
-<img alt="Instructor Avatar" class="w-10 h-10 rounded-full object-cover ring-2 ring-orange-100" data-alt="professional portrait of a male knowledge architect instructor with warm lighting and a neutral grey background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUEfcL0TrIjIiyI6xRLWkdeXJDGU28BJuLEGfIlBqo3Rqaf0A7NVUHgYFQpssdgw3LL6th8yUiwkEOzzUvfF2TZ7xeD1kbGXgFYCHycIdhV17aHDT3lX3V2toVgOQ3AcOMu122dHEnsCdEAP4ob5o4WjK5VVXKpThAMrJ3K24BBwnPru_Du_aYKmIsASAN3SmFnvYEDTEH4gC8K3B5lvD7YW-wvrLQUixKIPXZwGtBe0fqk3tdJ85ZwPye9-TWrhbJi7gbsF-TwwA"/>
-</div>
-</header>
-<!-- Canvas Content -->
-<section class="p-8 sf-container">
-<!-- Page Header & Filters -->
-<div class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
-<div>
-<h2 class="text-4xl font-extrabold tracking-tight text-on-surface mb-2">My Courses</h2>
-<p class="text-on-surface-variant font-medium">Manage your curriculum and track student enrollment.</p>
-</div>
-<div class="flex flex-wrap gap-3">
-<button class="px-5 py-3 bg-primary-container text-white font-bold rounded-xl flex items-center gap-2 shadow-md shadow-orange-900/10">
-<span class="material-symbols-outlined nav-icon">filter_list</span>
-                        Filter by Status
-                    </button>
-<div class="flex bg-surface-container p-1 rounded-xl">
-<button class="px-4 py-1.5 bg-surface-container-lowest text-primary font-bold rounded-xl shadow-sm text-sm">All</button>
-<button class="px-4 py-1.5 text-on-surface-variant font-medium text-sm hover:text-primary transition-colors">Approved</button>
-<button class="px-4 py-1.5 text-on-surface-variant font-medium text-sm hover:text-primary transition-colors">Pending</button>
-<button class="px-4 py-1.5 text-on-surface-variant font-medium text-sm hover:text-primary transition-colors">Draft</button>
-</div>
-</div>
-</div>
-<!-- Bento Grid Layout -->
-<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 pr-12">
-<!-- Course Card 1: Approved -->
-<div class="group bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/10 hover:shadow-2xl hover:shadow-orange-900/5 transition-all duration-300">
-<div class="relative h-48">
-<img alt="Architecture Basics" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="modern glass and concrete architectural structure against a deep blue dusk sky with glowing interior lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2lqjOdg5SIfquT6fnJ3JKaqZ5vzlL_-ijVpvIUGWrwzEbt5ROGeVi4eg3_Q7N03T9JVg9iW92N5MMx54daErpRQfj-IahcPKRxKJ2j7IKr7w-KLzaqRRnsK87izwiLiThz0Kf4UQhc0_hdeJCdHW-dvVX5NHEaXi1ouxTNMeuLKpoT-hcwbQRRcBp27kFRoFU328oN3WtzN-nsY3-WmFIsCjPrHZNlgxHOBwRTL-JaKIwcLabLITDEJ-5lQLstvo1nQ0DLGD2TLY"/>
-<div class="absolute top-4 left-4">
-<span class="bg-success-container text-on-success-container px-3 py-1 rounded-full text-label font-extrabold uppercase tracking-widest">Approved</span>
-</div>
-</div>
-<div class="p-6">
-<p class="text-label font-bold text-primary-container uppercase tracking-widest mb-2">Sustainable Design</p>
-<h3 class="text-xl font-bold text-on-surface mb-4 leading-tight">Mastering Sustainable Urban Frameworks</h3>
-<div class="row row-between mt-6">
-<span class="text-2xl font-extrabold text-on-surface">$199.00</span>
-<div class="icon-text">
-<span class="material-symbols-outlined icon text-tertiary icon-filled" >star</span>
-<span class="text-sm font-bold">4.9</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Course Card 2: Pending -->
-<div class="group bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/10 hover:shadow-2xl hover:shadow-orange-900/5 transition-all duration-300">
-<div class="relative h-48">
-<img alt="Model Making" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="minimalist architectural model made of white balsa wood and cardstock on a clean studio table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARiwd1Sd7DoxWUmmsIg8F9cDTqHFo0mLzocesFMIgAXBQ6OZaC9Q85jrRzATrKOTKejmhmHqk8A3jjnI0h-5VtbXhXexRkSLIrz_HOCzRJrawU9SpsDnML_LBQi1lbWuxZFAp5B7Cbrh4Hswi2OkMSd-cHhXjuhrIMwYuMKjo0__pWfQYETZK9qWLtwZQXKNCDFSl0H23pZB4VAdsM9CNKYOc7SW_ImQOtN2yHHusEomYD9n2R7uA9QDAFRG9QvIR50eAUfRaJ7Ns"/>
-<div class="absolute top-4 left-4">
-<span class="bg-primary-fixed text-primary px-3 py-1 rounded-full text-label font-extrabold uppercase tracking-widest">Pending</span>
-</div>
-</div>
-<div class="p-6">
-<p class="text-label font-bold text-primary-container uppercase tracking-widest mb-2">Visual Arts</p>
-<h3 class="text-xl font-bold text-on-surface mb-4 leading-tight">Physical Model Crafting for Executives</h3>
-<div class="row row-between mt-6">
-<span class="text-2xl font-extrabold text-on-surface">$145.00</span>
-<div class="flex items-center gap-4">
-<span class="text-xs text-on-surface-variant">24 Students</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Course Card 3: Draft -->
-<div class="group bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/10 hover:shadow-2xl hover:shadow-orange-900/5 transition-all duration-300">
-<div class="relative h-48">
-<img alt="Digital Drafting" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="laptop on a wooden desk showing complex 3D blueprints and technical drawings with soft morning sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6y-Up6j9QP_RLb-swhqpqKj_wZdvBxzm60Tz3hja-JW0tSUCfeh6J6TI3vEA5z9wG-fH_CofJiYGR-VpJ9MTGJo0cT2_chbL99xi0SqODYjhU2eGUDTNa9XhDr6YZIxuwzfUXLH_1uKdzO_yXR97-1bWBOXXjkTALg9QS4GzmKAw5f_qzzILHMVnrgfbhPQ1eMnBBvJ-zomEmH7NoMX1GBz2wySZgWYxZCLIsYhQF0ltZt_qL35lgXweu4CIiyT7Tt8-vNJh0ht8"/>
-<div class="absolute top-4 left-4">
-<span class="bg-surface-container-low text-on-surface-variant px-3 py-1 rounded-full text-label font-extrabold uppercase tracking-widest">Draft</span>
-</div>
-</div>
-<div class="p-6">
-<p class="text-label font-bold text-primary-container uppercase tracking-widest mb-2">Digital Tools</p>
-<h3 class="text-xl font-bold text-on-surface mb-4 leading-tight">Advanced Parametric Scripting in Rhino</h3>
-<div class="row row-between mt-6">
-<span class="text-2xl font-extrabold text-on-surface-variant">$299.00</span>
-<button class="text-primary font-bold text-sm flex items-center gap-1 group/btn">
-                                Edit Draft
-                                <span class="material-symbols-outlined icon group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
-</button>
-</div>
-</div>
-</div>
-<!-- Course Card 4: Approved (Alt Style) -->
-<div class="group bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/10 hover:shadow-2xl hover:shadow-orange-900/5 transition-all duration-300">
-<div class="relative h-48">
-<img alt="Office Design" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" data-alt="wide shot of a bright modern open office interior with minimalist desks and high-end lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOUkikaVg7n9OIk3jPBBy9rjqt3soN8RpQTsiQCStzFo9wQRM8KNUSOKxzEBr4Mg2H-qv0XKonC9TsjNAPeF_345TmOXfrkTOsOY4r0atYWVecY_Gtk3Mg98rWWSLSN1HXukWJotA4tqJQec3SfkKw41Mia_EZLFAiTpG13LL4OUkigWModWnoe0OQvzEbReR98A6wFKJ2lIoNy3aRw44CgQAWM5AE-Dc6OhkGrp10xUHgutYmAMZ_KLvRB0T79hbCIGeNcLDv-nc"/>
-<div class="absolute top-4 left-4">
-<span class="bg-success-container text-on-success-container px-3 py-1 rounded-full text-label font-extrabold uppercase tracking-widest">Approved</span>
-</div>
-</div>
-<div class="p-6">
-<p class="text-label font-bold text-primary-container uppercase tracking-widest mb-2">Interior Design</p>
-<h3 class="text-xl font-bold text-on-surface mb-4 leading-tight">Psychology of Contemporary Workspace</h3>
-<div class="row row-between mt-6">
-<span class="text-2xl font-extrabold text-on-surface">$89.00</span>
-<div class="icon-text">
-<span class="material-symbols-outlined icon text-tertiary icon-filled" >star</span>
-<span class="text-sm font-bold">4.7</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Create New Course (Large Card Style) -->
-<div class="md:col-span-2 xl:col-span-2 group relative rounded-xl overflow-hidden bg-primary-fixed cursor-pointer transition-all duration-300 hover:shadow-xl hover:shadow-orange-900/10">
-<div class="absolute inset-0 opacity-10 pointer-events-none">
-<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 100 100">
-<path d="M0 100 L100 0" fill="none" stroke="currentColor" stroke-width="0.5"></path>
-<path d="M0 80 L80 0" fill="none" stroke="currentColor" stroke-width="0.5"></path>
-<path d="M0 60 L60 0" fill="none" stroke="currentColor" stroke-width="0.5"></path>
-<path d="M20 100 L100 20" fill="none" stroke="currentColor" stroke-width="0.5"></path>
-<path d="M40 100 L100 40" fill="none" stroke="currentColor" stroke-width="0.5"></path>
-</svg>
-</div>
-<div class="relative h-full flex flex-col justify-center items-center p-12 text-center">
-<div class="w-16 h-16 bg-primary-container text-white rounded-full flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300">
-<span class="material-symbols-outlined icon icon-lg">add</span>
-</div>
-<h2 class="text-3xl font-extrabold text-on-primary-fixed mb-4">Architect a New Knowledge Path</h2>
-<p class="text-on-primary-fixed-variant container-xs mb-8 font-medium">Ready to share your expertise? Start building your next curriculum with our advanced module builder.</p>
-<button class="sf-gradient text-white px-10 py-4 rounded-xl font-bold shadow-xl shadow-orange-900/20">Begin New Course Draft</button>
-</div>
-</div>
-</div>
-<!-- Dashboard Stats Summary (Bottom Rail) -->
-<div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 pr-12">
-<div class="p-6 bg-surface-container rounded-xl">
-<p class="text-label font-bold text-on-surface-variant uppercase tracking-widest mb-1">Total Revenue</p>
-<p class="text-2xl font-extrabold text-on-surface">$24,402.00</p>
-</div>
-<div class="p-6 bg-surface-container rounded-xl">
-<p class="text-label font-bold text-on-surface-variant uppercase tracking-widest mb-1">Active Students</p>
-<p class="text-2xl font-extrabold text-on-surface">1,284</p>
-</div>
-<div class="p-6 bg-surface-container rounded-xl border-l-4 border-primary-container">
-<p class="text-label font-bold text-primary uppercase tracking-widest mb-1">Approval Rate</p>
-<p class="text-2xl font-extrabold text-on-surface">94.2%</p>
-</div>
-<div class="p-6 bg-surface-container rounded-xl">
-<p class="text-label font-bold text-on-surface-variant uppercase tracking-widest mb-1">Course Rating</p>
-<p class="text-2xl font-extrabold text-on-surface">4.85</p>
-</div>
-</div>
-</section>
-</main>
-</body></html>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="SkillForge — The premium platform for professional skill development and certification."
+    />
+    <link rel="icon" type="image/svg+xml" href="../../shared/favicon.svg" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>SkillForge | My Courses</title>
+  </head>
+  <body class="bg-surface text-on-surface overflow-x-hidden">
+    <!-- SideNavBar (Execution from JSON) -->
+    <aside
+      class="fixed left-0 top-0 h-full flex flex-col py-6 bg-surface-container-low dark:bg-inverse-surface h-screen w-64 border-r-0 z-50"
+    >
+      <div class="px-6 mb-10">
+        <h1
+          class="text-2xl font-bold tracking-tighter text-primary dark:text-primary-container"
+        >
+          SkillForge
+        </h1>
+        <p
+          class="text-label uppercase tracking-widest text-outline font-bold mt-1"
+        >
+          Knowledge Architect
+        </p>
+      </div>
+      <nav class="flex-1 space-y-1 px-3">
+        <a
+          class="flex items-center px-4 py-3 rounded-xl text-outline dark:text-outline font-medium hover:bg-surface-container-high/50 dark:hover:bg-surface-container-high/50 transition-colors"
+          href="#"
+        >
+          <span class="material-symbols-outlined icon mr-3">dashboard</span>
+          <span class="font-body tracking-tight">Dashboard</span>
+        </a>
+        <a
+          class="flex items-center px-4 py-3 rounded-xl text-primary dark:text-primary-container font-bold border-r-4 border-orange-600 bg-surface-container-high/50 dark:bg-surface-container-high/50 transition-colors"
+          href="#"
+        >
+          <span class="material-symbols-outlined icon mr-3">auto_stories</span>
+          <span class="font-body tracking-tight">Courses</span>
+        </a>
+        <a
+          class="flex items-center px-4 py-3 rounded-xl text-outline dark:text-outline font-medium hover:bg-surface-container-high/50 dark:hover:bg-surface-container-high/50 transition-colors"
+          href="#"
+        >
+          <span class="material-symbols-outlined icon mr-3">group</span>
+          <span class="font-body tracking-tight">Students</span>
+        </a>
+        <a
+          class="flex items-center px-4 py-3 rounded-xl text-outline dark:text-outline font-medium hover:bg-surface-container-high/50 dark:hover:bg-surface-container-high/50 transition-colors"
+          href="#"
+        >
+          <span class="material-symbols-outlined icon mr-3">payments</span>
+          <span class="font-body tracking-tight">Finance</span>
+        </a>
+        <a
+          class="flex items-center px-4 py-3 rounded-xl text-outline dark:text-outline font-medium hover:bg-surface-container-high/50 dark:hover:bg-surface-container-high/50 transition-colors"
+          href="#"
+        >
+          <span class="material-symbols-outlined icon mr-3">settings</span>
+          <span class="font-body tracking-tight">Settings</span>
+        </a>
+      </nav>
+      <div class="px-4 mt-auto">
+        <button class="btn btn-primary btn-lg btn-w-full">
+          <span class="material-symbols-outlined icon">add</span>
+          <span class="font-body tracking-tight">Create New Course</span>
+        </button>
+      </div>
+    </aside>
+    <!-- Main Content Area -->
+    <main class="ml-64 min-h-screen">
+      <!-- TopNavBar (Execution from JSON) -->
+      <header
+        class="navbar navbar-admin sticky top-0 z-40 bg-surface border-b border-outline-variant/20 px-6 py-3 flex items-center justify-between"
+      >
+        <div class="flex items-center flex-1 max-w-xl">
+          <div class="relative w-full group">
+            <span
+              class="material-symbols-outlined icon absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant"
+              >search</span
+            >
+            <input
+              class="w-full pl-10 pr-4 py-2 bg-surface-container-highest/50 border-none rounded-xl text-sm focus:ring-2 focus:ring-primary-container/20 focus:bg-surface-container-lowest transition-all outline-none"
+              placeholder="Search courses, students, or analytics..."
+              type="text"
+            />
+          </div>
+        </div>
+        <div class="navbar-logo ml-8">
+          <div
+            class="flex items-center gap-4 text-on-surface-variant dark:text-outline"
+          >
+            <button
+              class="p-2 hover:bg-surface-container-low dark:hover:bg-inverse-surface rounded-xl transition-all relative"
+            >
+              <span class="material-symbols-outlined icon">notifications</span>
+              <span
+                class="absolute top-2 right-2 w-2 h-2 bg-primary-container rounded-full border-2 border-white"
+              ></span>
+            </button>
+            <button
+              class="p-2 hover:bg-surface-container-low dark:hover:bg-inverse-surface rounded-xl transition-all"
+            >
+              <span class="material-symbols-outlined icon">help_outline</span>
+            </button>
+          </div>
+          <div class="h-8 w-[1px] bg-surface-container"></div>
+          <button
+            class="text-primary font-semibold font-body text-sm hover:underline"
+          >
+            Support
+          </button>
+          <button
+            class="px-6 py-2 bg-primary-container text-white rounded-xl font-bold font-body text-sm active:scale-95 transition-transform"
+          >
+            Go Live
+          </button>
+          <img
+            alt="Instructor Avatar"
+            class="w-10 h-10 rounded-full object-cover ring-2 ring-orange-100"
+            data-alt="professional portrait of a male knowledge architect instructor with warm lighting and a neutral grey background"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUEfcL0TrIjIiyI6xRLWkdeXJDGU28BJuLEGfIlBqo3Rqaf0A7NVUHgYFQpssdgw3LL6th8yUiwkEOzzUvfF2TZ7xeD1kbGXgFYCHycIdhV17aHDT3lX3V2toVgOQ3AcOMu122dHEnsCdEAP4ob5o4WjK5VVXKpThAMrJ3K24BBwnPru_Du_aYKmIsASAN3SmFnvYEDTEH4gC8K3B5lvD7YW-wvrLQUixKIPXZwGtBe0fqk3tdJ85ZwPye9-TWrhbJi7gbsF-TwwA"
+          />
+        </div>
+      </header>
+      <!-- Canvas Content -->
+      <section class="p-8 min-h-screen mt-16">
+        <!-- Page Header & Filters -->
+        <div
+          class="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6"
+        >
+          <div>
+            <h2
+              class="text-4xl font-extrabold tracking-tight text-on-surface mb-2"
+            >
+              My Courses
+            </h2>
+            <p class="text-on-surface-variant font-medium">
+              Manage your curriculum and track student enrollment.
+            </p>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <button
+              class="px-5 py-3 bg-primary-container text-white font-bold rounded-xl flex items-center gap-2 shadow-md shadow-orange-900/10"
+            >
+              <span class="material-symbols-outlined nav-icon"
+                >filter_list</span
+              >
+              Filter by Status
+            </button>
+            <div class="flex bg-surface-container p-1 rounded-xl">
+              <button
+                class="px-4 py-1.5 bg-surface-container-lowest text-primary font-bold rounded-xl shadow-sm text-sm"
+              >
+                All
+              </button>
+              <button
+                class="px-4 py-1.5 text-on-surface-variant font-medium text-sm hover:text-primary transition-colors"
+              >
+                Approved
+              </button>
+              <button
+                class="px-4 py-1.5 text-on-surface-variant font-medium text-sm hover:text-primary transition-colors"
+              >
+                Pending
+              </button>
+              <button
+                class="px-4 py-1.5 text-on-surface-variant font-medium text-sm hover:text-primary transition-colors"
+              >
+                Draft
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Bento Grid Layout -->
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 pr-12">
+          <!-- Course Card 1: Approved -->
+          <div
+            class="group bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/10 hover:shadow-2xl hover:shadow-orange-900/5 transition-all duration-300"
+          >
+            <div class="relative h-48">
+              <img
+                alt="Architecture Basics"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                data-alt="modern glass and concrete architectural structure against a deep blue dusk sky with glowing interior lights"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2lqjOdg5SIfquT6fnJ3JKaqZ5vzlL_-ijVpvIUGWrwzEbt5ROGeVi4eg3_Q7N03T9JVg9iW92N5MMx54daErpRQfj-IahcPKRxKJ2j7IKr7w-KLzaqRRnsK87izwiLiThz0Kf4UQhc0_hdeJCdHW-dvVX5NHEaXi1ouxTNMeuLKpoT-hcwbQRRcBp27kFRoFU328oN3WtzN-nsY3-WmFIsCjPrHZNlgxHOBwRTL-JaKIwcLabLITDEJ-5lQLstvo1nQ0DLGD2TLY"
+              />
+              <div class="absolute top-4 left-4">
+                <span
+                  class="bg-success-container text-on-success-container px-3 py-1 rounded-full text-label font-extrabold uppercase tracking-widest"
+                  >Approved</span
+                >
+              </div>
+            </div>
+            <div class="p-6">
+              <p
+                class="text-label font-bold text-primary-container uppercase tracking-widest mb-2"
+              >
+                Sustainable Design
+              </p>
+              <h3 class="text-xl font-bold text-on-surface mb-4 leading-tight">
+                Mastering Sustainable Urban Frameworks
+              </h3>
+              <div class="row row-between mt-6">
+                <span class="text-2xl font-extrabold text-on-surface"
+                  >$199.00</span
+                >
+                <div class="icon-text">
+                  <span
+                    class="material-symbols-outlined icon text-tertiary icon-filled"
+                    >star</span
+                  >
+                  <span class="text-sm font-bold">4.9</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Course Card 2: Pending -->
+          <div
+            class="group bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/10 hover:shadow-2xl hover:shadow-orange-900/5 transition-all duration-300"
+          >
+            <div class="relative h-48">
+              <img
+                alt="Model Making"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                data-alt="minimalist architectural model made of white balsa wood and cardstock on a clean studio table"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuARiwd1Sd7DoxWUmmsIg8F9cDTqHFo0mLzocesFMIgAXBQ6OZaC9Q85jrRzATrKOTKejmhmHqk8A3jjnI0h-5VtbXhXexRkSLIrz_HOCzRJrawU9SpsDnML_LBQi1lbWuxZFAp5B7Cbrh4Hswi2OkMSd-cHhXjuhrIMwYuMKjo0__pWfQYETZK9qWLtwZQXKNCDFSl0H23pZB4VAdsM9CNKYOc7SW_ImQOtN2yHHusEomYD9n2R7uA9QDAFRG9QvIR50eAUfRaJ7Ns"
+              />
+              <div class="absolute top-4 left-4">
+                <span
+                  class="bg-primary-fixed text-primary px-3 py-1 rounded-full text-label font-extrabold uppercase tracking-widest"
+                  >Pending</span
+                >
+              </div>
+            </div>
+            <div class="p-6">
+              <p
+                class="text-label font-bold text-primary-container uppercase tracking-widest mb-2"
+              >
+                Visual Arts
+              </p>
+              <h3 class="text-xl font-bold text-on-surface mb-4 leading-tight">
+                Physical Model Crafting for Executives
+              </h3>
+              <div class="row row-between mt-6">
+                <span class="text-2xl font-extrabold text-on-surface"
+                  >$145.00</span
+                >
+                <div class="flex items-center gap-4">
+                  <span class="text-xs text-on-surface-variant"
+                    >24 Students</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Course Card 3: Draft -->
+          <div
+            class="group bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/10 hover:shadow-2xl hover:shadow-orange-900/5 transition-all duration-300"
+          >
+            <div class="relative h-48">
+              <img
+                alt="Digital Drafting"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                data-alt="laptop on a wooden desk showing complex 3D blueprints and technical drawings with soft morning sunlight"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6y-Up6j9QP_RLb-swhqpqKj_wZdvBxzm60Tz3hja-JW0tSUCfeh6J6TI3vEA5z9wG-fH_CofJiYGR-VpJ9MTGJo0cT2_chbL99xi0SqODYjhU2eGUDTNa9XhDr6YZIxuwzfUXLH_1uKdzO_yXR97-1bWBOXXjkTALg9QS4GzmKAw5f_qzzILHMVnrgfbhPQ1eMnBBvJ-zomEmH7NoMX1GBz2wySZgWYxZCLIsYhQF0ltZt_qL35lgXweu4CIiyT7Tt8-vNJh0ht8"
+              />
+              <div class="absolute top-4 left-4">
+                <span
+                  class="bg-surface-container-low text-on-surface-variant px-3 py-1 rounded-full text-label font-extrabold uppercase tracking-widest"
+                  >Draft</span
+                >
+              </div>
+            </div>
+            <div class="p-6">
+              <p
+                class="text-label font-bold text-primary-container uppercase tracking-widest mb-2"
+              >
+                Digital Tools
+              </p>
+              <h3 class="text-xl font-bold text-on-surface mb-4 leading-tight">
+                Advanced Parametric Scripting in Rhino
+              </h3>
+              <div class="row row-between mt-6">
+                <span class="text-2xl font-extrabold text-on-surface-variant"
+                  >$299.00</span
+                >
+                <button
+                  class="text-primary font-bold text-sm flex items-center gap-1 group/btn"
+                >
+                  Edit Draft
+                  <span
+                    class="material-symbols-outlined icon group-hover/btn:translate-x-1 transition-transform"
+                    >arrow_forward</span
+                  >
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- Course Card 4: Approved (Alt Style) -->
+          <div
+            class="group bg-surface-container-lowest rounded-xl overflow-hidden border border-outline-variant/10 hover:shadow-2xl hover:shadow-orange-900/5 transition-all duration-300"
+          >
+            <div class="relative h-48">
+              <img
+                alt="Office Design"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                data-alt="wide shot of a bright modern open office interior with minimalist desks and high-end lighting"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOUkikaVg7n9OIk3jPBBy9rjqt3soN8RpQTsiQCStzFo9wQRM8KNUSOKxzEBr4Mg2H-qv0XKonC9TsjNAPeF_345TmOXfrkTOsOY4r0atYWVecY_Gtk3Mg98rWWSLSN1HXukWJotA4tqJQec3SfkKw41Mia_EZLFAiTpG13LL4OUkigWModWnoe0OQvzEbReR98A6wFKJ2lIoNy3aRw44CgQAWM5AE-Dc6OhkGrp10xUHgutYmAMZ_KLvRB0T79hbCIGeNcLDv-nc"
+              />
+              <div class="absolute top-4 left-4">
+                <span
+                  class="bg-success-container text-on-success-container px-3 py-1 rounded-full text-label font-extrabold uppercase tracking-widest"
+                  >Approved</span
+                >
+              </div>
+            </div>
+            <div class="p-6">
+              <p
+                class="text-label font-bold text-primary-container uppercase tracking-widest mb-2"
+              >
+                Interior Design
+              </p>
+              <h3 class="text-xl font-bold text-on-surface mb-4 leading-tight">
+                Psychology of Contemporary Workspace
+              </h3>
+              <div class="row row-between mt-6">
+                <span class="text-2xl font-extrabold text-on-surface"
+                  >$89.00</span
+                >
+                <div class="icon-text">
+                  <span
+                    class="material-symbols-outlined icon text-tertiary icon-filled"
+                    >star</span
+                  >
+                  <span class="text-sm font-bold">4.7</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Create New Course (Large Card Style) -->
+          <div
+            class="md:col-span-2 xl:col-span-2 group relative rounded-xl overflow-hidden bg-primary-fixed cursor-pointer transition-all duration-300 hover:shadow-xl hover:shadow-orange-900/10"
+          >
+            <div class="absolute inset-0 opacity-10 pointer-events-none">
+              <svg
+                class="w-full h-full"
+                preserveaspectratio="none"
+                viewbox="0 0 100 100"
+              >
+                <path
+                  d="M0 100 L100 0"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="0.5"
+                ></path>
+                <path
+                  d="M0 80 L80 0"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="0.5"
+                ></path>
+                <path
+                  d="M0 60 L60 0"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="0.5"
+                ></path>
+                <path
+                  d="M20 100 L100 20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="0.5"
+                ></path>
+                <path
+                  d="M40 100 L100 40"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="0.5"
+                ></path>
+              </svg>
+            </div>
+            <div
+              class="relative h-full flex flex-col justify-center items-center p-12 text-center"
+            >
+              <div
+                class="w-16 h-16 bg-primary-container text-white rounded-full flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300"
+              >
+                <span class="material-symbols-outlined icon icon-lg">add</span>
+              </div>
+              <h2 class="text-3xl font-extrabold text-on-primary-fixed mb-4">
+                Architect a New Knowledge Path
+              </h2>
+              <p
+                class="text-on-primary-fixed-variant container-xs mb-8 font-medium"
+              >
+                Ready to share your expertise? Start building your next
+                curriculum with our advanced module builder.
+              </p>
+              <button
+                class="sf-gradient text-white px-10 py-4 rounded-xl font-bold shadow-xl shadow-orange-900/20"
+              >
+                Begin New Course Draft
+              </button>
+            </div>
+          </div>
+        </div>
+        <!-- Dashboard Stats Summary (Bottom Rail) -->
+        <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 pr-12">
+          <div class="p-6 bg-surface-container rounded-xl">
+            <p
+              class="text-label font-bold text-on-surface-variant uppercase tracking-widest mb-1"
+            >
+              Total Revenue
+            </p>
+            <p class="text-2xl font-extrabold text-on-surface">$24,402.00</p>
+          </div>
+          <div class="p-6 bg-surface-container rounded-xl">
+            <p
+              class="text-label font-bold text-on-surface-variant uppercase tracking-widest mb-1"
+            >
+              Active Students
+            </p>
+            <p class="text-2xl font-extrabold text-on-surface">1,284</p>
+          </div>
+          <div
+            class="p-6 bg-surface-container rounded-xl border-l-4 border-primary-container"
+          >
+            <p
+              class="text-label font-bold text-primary uppercase tracking-widest mb-1"
+            >
+              Approval Rate
+            </p>
+            <p class="text-2xl font-extrabold text-on-surface">94.2%</p>
+          </div>
+          <div class="p-6 bg-surface-container rounded-xl">
+            <p
+              class="text-label font-bold text-on-surface-variant uppercase tracking-widest mb-1"
+            >
+              Course Rating
+            </p>
+            <p class="text-2xl font-extrabold text-on-surface">4.85</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

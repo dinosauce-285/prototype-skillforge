@@ -1,379 +1,769 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 
-<html class="light" lang="en"><head>
-<link rel="stylesheet" href="../../shared/tailwind-desktop.css"/>
-<link rel="stylesheet" href="../../shared/base.css"/>
+<html class="light" lang="en">
+  <head>
+    <link rel="stylesheet" href="../../shared/tailwind-desktop.css" />
+    <link rel="stylesheet" href="../../shared/base.css" />
 
-<meta charset="utf-8"/>
-<meta name="description" content="SkillForge — The premium platform for professional skill development and certification."/>
-<link rel="icon" type="image/svg+xml" href="../../shared/favicon.svg"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>SkillForge | User Management</title>
-
-</head>
-<body class="bg-surface text-on-surface">
-<!-- SideNavBar Component -->
-<aside class="h-screen w-64 fixed left-0 top-0 border-r-0 bg-surface dark:bg-inverse-surface flex flex-col h-full py-6 z-[60]">
-<div class="px-6 mb-10">
-<h1 class="sf-brand text-2xl">SkillForge</h1>
-<p class="text-sm font-medium text-on-surface-variant">Admin Portal</p>
-</div>
-<nav class="flex-1 space-y-1">
-<a class="flex items-center px-6 py-3 text-on-surface-variant dark:text-outline font-medium hover:bg-surface-container-high dark:hover:bg-slate-800 transition-colors scale-95 duration-200 ease-in-out" href="#">
-<span class="material-symbols-outlined icon mr-3" data-icon="dashboard">dashboard</span>
-<span>Dashboard</span>
-</a>
-<a class="flex items-center px-6 py-3 text-primary-container font-bold border-r-4 border-[#f46825] bg-surface scale-95 duration-200 ease-in-out" href="#">
-<span class="material-symbols-outlined icon mr-3" data-icon="group">group</span>
-<span>Users</span>
-</a>
-<a class="flex items-center px-6 py-3 text-on-surface-variant dark:text-outline font-medium hover:bg-surface-container-high dark:hover:bg-slate-800 transition-colors scale-95 duration-200 ease-in-out" href="#">
-<span class="material-symbols-outlined icon mr-3" data-icon="school">school</span>
-<span>Courses</span>
-</a>
-<a class="flex items-center px-6 py-3 text-on-surface-variant dark:text-outline font-medium hover:bg-surface-container-high dark:hover:bg-slate-800 transition-colors scale-95 duration-200 ease-in-out" href="#">
-<span class="material-symbols-outlined icon mr-3" data-icon="local_offer">local_offer</span>
-<span>Coupons</span>
-</a>
-<a class="flex items-center px-6 py-3 text-on-surface-variant dark:text-outline font-medium hover:bg-surface-container-high dark:hover:bg-slate-800 transition-colors scale-95 duration-200 ease-in-out mt-auto" href="#">
-<span class="material-symbols-outlined icon mr-3" data-icon="settings">settings</span>
-<span>Settings</span>
-</a>
-</nav>
-<div class="px-6 pt-6 mt-auto">
-<div class="flex items-center p-3 rounded-xl bg-surface-container-high transition-all hover:bg-surface-container-highest cursor-pointer">
-<img alt="SkillForge Admin Profile" class="w-10 h-10 rounded-full object-cover mr-3" data-alt="Close-up portrait of a professional male administrator in a modern office with soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGvDOqraEYznWlcCp2xjn51hU8ZjwTPGMxg3Mj8JdpkKLLkkIwC3R5JO7u_GKntnLVPSDK-t5wezs38kmfP8mLMvjrhastDqsKruU66bJCa2rukgCIvsErZWQNi6BsytgBiUeSxSOaoEJKdAoYvazrlVOu_vkBzBAz2vjQRXa4mx3GMfuZJJ6FAvJ-ZHNua0zf1gA5HwtvWUlsTHVLEmi-Jyg04XqAR4nTExj5rpebsYXN9CFiSR6pQHOaeP7eKmgsUp-opAMSCJPH"/>
-<div class="overflow-hidden">
-<p class="text-sm font-bold truncate">Alex Rivera</p>
-<p class="text-xs text-on-surface-variant truncate">Master Admin</p>
-</div>
-</div>
-</div>
-</aside>
-<!-- TopNavBar Component -->
-<header class="navbar navbar-admin">
-
-<div class="flex items-center flex-1 max-w-xl">
-<div class="relative w-full">
-<span class="material-symbols-outlined icon absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
-<input class="w-full pl-10 pr-4 py-2 bg-surface-container-lowest border-none rounded-xl text-sm focus:ring-2 focus:ring-primary transition-all" placeholder="Search students, instructors, or ID..." type="text"/>
-</div>
-</div>
-<div class="flex items-center gap-4">
-<button class="p-2 text-on-surface-variant hover:text-primary transition-all active:scale-95">
-<span class="material-symbols-outlined icon" data-icon="notifications">notifications</span>
-</button>
-<div class="h-8 w-[1px] bg-outline-variant/20 mx-2"></div>
-<button class="p-2 text-on-surface-variant hover:text-primary transition-all active:scale-95">
-<span class="material-symbols-outlined icon" data-icon="account_circle">account_circle</span>
-</button>
-</div>
-</header>
-<!-- Main Content Canvas -->
-<main class="ml-64 p-8 min-h-screen">
-<!-- Header Section -->
-<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
-<div>
-<h2 class="text-4xl font-extrabold tracking-tight text-on-surface mb-2">User Management</h2>
-<p class="text-on-surface-variant max-w-lg">Orchestrate your educational community. Manage roles, verify instructor credentials, and track student engagement.</p>
-</div>
-<div class="flex gap-3">
-<button class="px-6 py-3 bg-surface-container-lowest border border-outline-variant/30 text-on-surface font-bold rounded-xl hover:bg-surface-container-low transition-all active:scale-95 flex items-center">
-<span class="material-symbols-outlined icon mr-2" data-icon="file_download">file_download</span>
-                    Export CSV
-                </button>
-<button class="btn btn-primary shadow-lg shadow-primary/20 hover:primary-fixed-dim transition-all active:scale-95 flex items-center">
-<span class="material-symbols-outlined icon mr-2" data-icon="person_add">person_add</span>
-                    Invite User
-                </button>
-</div>
-</div>
-<!-- Bento Grid Summary Cards -->
-<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
-<div class="bg-surface-container-lowest p-6 rounded-xl relative overflow-hidden group">
-<div class="flex flex-col gap-1 z-10 relative">
-<span class="text-sm font-semibold text-on-surface-variant">Total Users</span>
-<span class="text-3xl font-extrabold text-on-surface">12,482</span>
-<span class="text-xs font-bold text-primary flex items-center mt-2">
-<span class="material-symbols-outlined icon mr-1" data-icon="trending_up">trending_up</span>
-                        +14% from last month
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="SkillForge — The premium platform for professional skill development and certification."
+    />
+    <link rel="icon" type="image/svg+xml" href="../../shared/favicon.svg" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>SkillForge | User Management</title>
+  </head>
+  <body class="bg-surface text-on-surface">
+    <!-- SideNavBar Component -->
+    <aside
+      class="h-screen w-64 fixed left-0 top-0 border-r-0 bg-surface dark:bg-inverse-surface flex flex-col h-full py-6 z-[60]"
+    >
+      <div class="px-6 mb-10">
+        <h1 class="sf-brand text-2xl">SkillForge</h1>
+        <p class="text-sm font-medium text-on-surface-variant">Admin Portal</p>
+      </div>
+      <nav class="flex-1 space-y-1">
+        <a
+          class="flex items-center px-6 py-3 text-on-surface-variant dark:text-outline font-medium hover:bg-surface-container-high dark:hover:bg-slate-800 transition-colors scale-95 duration-200 ease-in-out"
+          href="#"
+        >
+          <span
+            class="material-symbols-outlined icon mr-3"
+            data-icon="dashboard"
+            >dashboard</span
+          >
+          <span>Dashboard</span>
+        </a>
+        <a
+          class="flex items-center px-6 py-3 text-primary-container font-bold border-r-4 border-[#f46825] bg-surface scale-95 duration-200 ease-in-out"
+          href="#"
+        >
+          <span class="material-symbols-outlined icon mr-3" data-icon="group"
+            >group</span
+          >
+          <span>Users</span>
+        </a>
+        <a
+          class="flex items-center px-6 py-3 text-on-surface-variant dark:text-outline font-medium hover:bg-surface-container-high dark:hover:bg-slate-800 transition-colors scale-95 duration-200 ease-in-out"
+          href="#"
+        >
+          <span class="material-symbols-outlined icon mr-3" data-icon="school"
+            >school</span
+          >
+          <span>Courses</span>
+        </a>
+        <a
+          class="flex items-center px-6 py-3 text-on-surface-variant dark:text-outline font-medium hover:bg-surface-container-high dark:hover:bg-slate-800 transition-colors scale-95 duration-200 ease-in-out"
+          href="#"
+        >
+          <span
+            class="material-symbols-outlined icon mr-3"
+            data-icon="local_offer"
+            >local_offer</span
+          >
+          <span>Coupons</span>
+        </a>
+        <a
+          class="flex items-center px-6 py-3 text-on-surface-variant dark:text-outline font-medium hover:bg-surface-container-high dark:hover:bg-slate-800 transition-colors scale-95 duration-200 ease-in-out mt-auto"
+          href="#"
+        >
+          <span class="material-symbols-outlined icon mr-3" data-icon="settings"
+            >settings</span
+          >
+          <span>Settings</span>
+        </a>
+      </nav>
+      <div class="px-6 pt-6 mt-auto">
+        <div
+          class="flex items-center p-3 rounded-xl bg-surface-container-high transition-all hover:bg-surface-container-highest cursor-pointer"
+        >
+          <img
+            alt="SkillForge Admin Profile"
+            class="w-10 h-10 rounded-full object-cover mr-3"
+            data-alt="Close-up portrait of a professional male administrator in a modern office with soft natural lighting"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJhO3l7mIQiKxdsF_47A16cyf1_f6_XjyFAl8b_iKeByYylQJNsj15QLFiCrM5JAo4KbCJq2J8AC8-3aNWQEKGd7s1oDtW7x5r67gfElYWIfjUhUFBA-EVP41hADhw6bXkY7TVjU4Fr9LbYKkpOY5IYX5fpYmxmlIEewhR6ZnLq_EUcJL9wp5WoNFmyGXLrM-AUgRWm04E-Kci-CcFXo63h0ymn7LzkyVrVByvTnxZzNyJolCGYVwtSUOhTOmfBKtUuuntHrarcHn6?fbclid=IwY2xjawRHXV9leHRuA2FlbQIxMABicmlkETFBZVZpUFY1V1E0T1N3c000c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHk-EHJhQcZXAxD3zXYQMF1XtYl0SpyHgvyd1Uhqp2X0vhVMIm4yf5eJDFB3k_aem_3CxU88kMBcwtO4cFmn2OHA"
+          />
+          <div class="overflow-hidden">
+            <p class="text-sm font-bold truncate">Alex Rivera</p>
+            <p class="text-xs text-on-surface-variant truncate">Master Admin</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+    <!-- TopNavBar Component -->
+    <header class="navbar navbar-admin">
+      <div class="mx-2 flex items-center justify-around flex-1">
+        <div class="relative w-full max-w-md">
+          <span
+            class="material-symbols-outlined icon absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant"
+            data-icon="search"
+            >search</span
+          >
+          <input
+            class="w-full pl-10 pr-4 py-2 bg-surface-container-lowest border-none rounded-xl text-sm focus:ring-2 focus:ring-primary transition-all"
+            placeholder="Search students, instructors, or ID..."
+            type="text"
+          />
+        </div>
+      </div>
+      <div class="flex items-center gap-4">
+        <button
+          class="p-2 text-on-surface-variant hover:text-primary transition-all active:scale-95"
+        >
+          <span class="material-symbols-outlined icon" data-icon="notifications"
+            >notifications</span
+          >
+        </button>
+        <div class="h-8 w-[1px] bg-outline-variant/20 mx-2"></div>
+        <button
+          class="p-2 text-on-surface-variant hover:text-primary transition-all active:scale-95"
+        >
+          <span
+            class="material-symbols-outlined icon"
+            data-icon="account_circle"
+            >account_circle</span
+          >
+        </button>
+      </div>
+    </header>
+    <!-- Main Content Canvas -->
+    <main class="ml-64 p-8 min-h-screen mt-16">
+      <!-- Header Section -->
+      <div
+        class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10"
+      >
+        <div>
+          <h2
+            class="text-4xl font-extrabold tracking-tight text-on-surface mb-2"
+          >
+            User Management
+          </h2>
+          <p class="text-on-surface-variant max-w-lg">
+            Orchestrate your educational community. Manage roles, verify
+            instructor credentials, and track student engagement.
+          </p>
+        </div>
+        <div class="flex gap-3">
+          <button
+            class="px-6 py-3 bg-surface-container-lowest border border-outline-variant/30 text-on-surface font-bold rounded-xl hover:bg-surface-container-low transition-all active:scale-95 flex items-center"
+          >
+            <span
+              class="material-symbols-outlined icon mr-2"
+              data-icon="file_download"
+              >file_download</span
+            >
+            Export CSV
+          </button>
+          <button
+            class="btn btn-primary shadow-lg shadow-primary/20 hover:primary-fixed-dim transition-all active:scale-95 flex items-center"
+          >
+            <span
+              class="material-symbols-outlined icon mr-2"
+              data-icon="person_add"
+              >person_add</span
+            >
+            Invite User
+          </button>
+        </div>
+      </div>
+      <!-- Bento Grid Summary Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+        <div
+          class="bg-surface-container-lowest p-6 rounded-xl relative overflow-hidden group"
+        >
+          <div class="flex flex-col gap-1 z-10 relative">
+            <span class="text-sm font-semibold text-on-surface-variant"
+              >Total Users</span
+            >
+            <span class="text-3xl font-extrabold text-on-surface">12,482</span>
+            <span class="text-xs font-bold text-primary flex items-center mt-2">
+              <span
+                class="material-symbols-outlined icon mr-1"
+                data-icon="trending_up"
+                >trending_up</span
+              >
+              +14% from last month
+            </span>
+          </div>
+          <span
+            class="material-symbols-outlined icon absolute -right-4 -bottom-4 text-7xl text-surface-container-high opacity-20 group-hover:scale-110 transition-transform"
+            data-icon="groups"
+            >groups</span
+          >
+        </div>
+        <div
+          class="bg-surface-container-lowest p-6 rounded-xl relative overflow-hidden group"
+        >
+          <div class="flex flex-col gap-1 z-10 relative">
+            <span class="text-sm font-semibold text-on-surface-variant"
+              >Active Students</span
+            >
+            <span class="text-3xl font-extrabold text-on-surface">8,901</span>
+            <div
+              class="w-full h-1.5 bg-surface-container-high rounded-full mt-4"
+            >
+              <div class="w-3/4 h-full bg-primary rounded-full"></div>
+            </div>
+          </div>
+          <span
+            class="material-symbols-outlined icon absolute -right-4 -bottom-4 text-7xl text-surface-container-high opacity-20 group-hover:scale-110 transition-transform"
+            data-icon="school"
+            >school</span
+          >
+        </div>
+        <div
+          class="bg-surface-container-lowest p-6 rounded-xl relative overflow-hidden group"
+        >
+          <div class="flex flex-col gap-1 z-10 relative">
+            <span class="text-sm font-semibold text-on-surface-variant"
+              >Verified Instructors</span
+            >
+            <span class="text-3xl font-extrabold text-on-surface">412</span>
+            <span
+              class="text-xs font-bold text-tertiary-fixed-dim flex items-center mt-2"
+            >
+              <span
+                class="material-symbols-outlined icon mr-1"
+                data-icon="verified_user"
+                >verified_user</span
+              >
+              98% satisfaction rate
+            </span>
+          </div>
+          <span
+            class="material-symbols-outlined icon absolute -right-4 -bottom-4 text-7xl text-surface-container-high opacity-20 group-hover:scale-110 transition-transform"
+            data-icon="badge"
+            >badge</span
+          >
+        </div>
+        <div
+          class="bg-surface-container-lowest p-6 rounded-xl relative overflow-hidden group"
+        >
+          <div class="flex flex-col gap-1 z-10 relative">
+            <span class="text-sm font-semibold text-on-surface-variant"
+              >Pending Approvals</span
+            >
+            <span class="text-3xl font-extrabold text-on-surface">24</span>
+            <span class="text-xs font-bold text-error flex items-center mt-2">
+              <span
+                class="material-symbols-outlined icon mr-1"
+                data-icon="notification_important"
+                >notification_important</span
+              >
+              Urgent action required
+            </span>
+          </div>
+          <span
+            class="material-symbols-outlined icon absolute -right-4 -bottom-4 text-7xl text-surface-container-high opacity-20 group-hover:scale-110 transition-transform"
+            data-icon="pending_actions"
+            >pending_actions</span
+          >
+        </div>
+      </div>
+      <!-- Data Table Section -->
+      <div
+        class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden"
+      >
+        <!-- Table Controls -->
+        <div
+          class="p-6 flex flex-wrap items-center justify-between gap-4 border-b border-outline-variant/10"
+        >
+          <div class="flex items-center gap-4">
+            <button
+              class="flex items-center gap-2 px-4 py-2 rounded-xl bg-surface-container-low text-sm font-bold hover:bg-surface-container-high transition-all"
+            >
+              <span
+                class="material-symbols-outlined icon"
+                data-icon="filter_list"
+                >filter_list</span
+              >
+              Filter
+            </button>
+            <div class="flex bg-surface-container-low rounded-xl p-1">
+              <button
+                class="px-4 py-1.5 text-xs font-bold rounded-md bg-white shadow-sm text-primary"
+              >
+                All Users
+              </button>
+              <button
+                class="px-4 py-1.5 text-xs font-bold rounded-md text-on-surface-variant hover:text-on-surface"
+              >
+                Instructors
+              </button>
+              <button
+                class="px-4 py-1.5 text-xs font-bold rounded-md text-on-surface-variant hover:text-on-surface"
+              >
+                Students
+              </button>
+            </div>
+          </div>
+          <div class="text-sm text-on-surface-variant font-medium">
+            Showing <span class="text-on-surface">1-10</span> of 12,482
+          </div>
+        </div>
+        <!-- Custom Table -->
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-surface-container-low/50">
+                <th
+                  class="px-6 py-4 text-xs font-extrabold uppercase tracking-widest text-on-surface-variant"
+                >
+                  User Details
+                </th>
+                <th
+                  class="px-6 py-4 text-xs font-extrabold uppercase tracking-widest text-on-surface-variant"
+                >
+                  Role &amp; ID
+                </th>
+                <th
+                  class="px-6 py-4 text-xs font-extrabold uppercase tracking-widest text-on-surface-variant"
+                >
+                  Status
+                </th>
+                <th
+                  class="px-6 py-4 text-xs font-extrabold uppercase tracking-widest text-on-surface-variant"
+                >
+                  Enrollments
+                </th>
+                <th
+                  class="px-6 py-4 text-xs font-extrabold uppercase tracking-widest text-on-surface-variant"
+                >
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-outline-variant/10">
+              <!-- User Row 1 -->
+              <tr
+                class="hover:bg-surface-container-low/30 transition-colors group"
+              >
+                <td class="px-6 py-5">
+                  <div class="flex items-center gap-4">
+                    <div class="relative">
+                      <img
+                        alt="User"
+                        class="w-11 h-11 rounded-full object-cover"
+                        data-alt="Headshot of a smiling young professional woman with brunette hair in a brightly lit studio"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJhO3l7mIQiKxdsF_47A16cyf1_f6_XjyFAl8b_iKeByYylQJNsj15QLFiCrM5JAo4KbCJq2J8AC8-3aNWQEKGd7s1oDtW7x5r67gfElYWIfjUhUFBA-EVP41hADhw6bXkY7TVjU4Fr9LbYKkpOY5IYX5fpYmxmlIEewhR6ZnLq_EUcJL9wp5WoNFmyGXLrM-AUgRWm04E-Kci-CcFXo63h0ymn7LzkyVrVByvTnxZzNyJolCGYVwtSUOhTOmfBKtUuuntHrarcHn6?fbclid=IwY2xjawRHXV9leHRuA2FlbQIxMABicmlkETFBZVZpUFY1V1E0T1N3c000c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHk-EHJhQcZXAxD3zXYQMF1XtYl0SpyHgvyd1Uhqp2X0vhVMIm4yf5eJDFB3k_aem_3CxU88kMBcwtO4cFmn2OHA"
+                      />
+                      <div
+                        class="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 border-2 border-white rounded-full"
+                      ></div>
+                    </div>
+                    <div>
+                      <p class="font-bold text-on-surface">Sarah Chen</p>
+                      <p class="text-sm text-on-surface-variant">
+                        sarah.chen@skillforge.com
+                      </p>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-5">
+                  <div class="flex flex-col">
+                    <span
+                      class="text-xs font-bold text-primary flex items-center"
+                    >
+                      <span
+                        class="material-symbols-outlined icon mr-1"
+                        data-icon="school"
+                        >school</span
+                      >
+                      Instructor
                     </span>
-</div>
-<span class="material-symbols-outlined icon absolute -right-4 -bottom-4 text-7xl text-surface-container-high opacity-20 group-hover:scale-110 transition-transform" data-icon="groups">groups</span>
-</div>
-<div class="bg-surface-container-lowest p-6 rounded-xl relative overflow-hidden group">
-<div class="flex flex-col gap-1 z-10 relative">
-<span class="text-sm font-semibold text-on-surface-variant">Active Students</span>
-<span class="text-3xl font-extrabold text-on-surface">8,901</span>
-<div class="w-full h-1.5 bg-surface-container-high rounded-full mt-4">
-<div class="w-3/4 h-full bg-primary rounded-full"></div>
-</div>
-</div>
-<span class="material-symbols-outlined icon absolute -right-4 -bottom-4 text-7xl text-surface-container-high opacity-20 group-hover:scale-110 transition-transform" data-icon="school">school</span>
-</div>
-<div class="bg-surface-container-lowest p-6 rounded-xl relative overflow-hidden group">
-<div class="flex flex-col gap-1 z-10 relative">
-<span class="text-sm font-semibold text-on-surface-variant">Verified Instructors</span>
-<span class="text-3xl font-extrabold text-on-surface">412</span>
-<span class="text-xs font-bold text-tertiary-fixed-dim flex items-center mt-2">
-<span class="material-symbols-outlined icon mr-1" data-icon="verified_user">verified_user</span>
-                        98% satisfaction rate
-                    </span>
-</div>
-<span class="material-symbols-outlined icon absolute -right-4 -bottom-4 text-7xl text-surface-container-high opacity-20 group-hover:scale-110 transition-transform" data-icon="badge">badge</span>
-</div>
-<div class="bg-surface-container-lowest p-6 rounded-xl relative overflow-hidden group">
-<div class="flex flex-col gap-1 z-10 relative">
-<span class="text-sm font-semibold text-on-surface-variant">Pending Approvals</span>
-<span class="text-3xl font-extrabold text-on-surface">24</span>
-<span class="text-xs font-bold text-error flex items-center mt-2">
-<span class="material-symbols-outlined icon mr-1" data-icon="notification_important">notification_important</span>
-                        Urgent action required
-                    </span>
-</div>
-<span class="material-symbols-outlined icon absolute -right-4 -bottom-4 text-7xl text-surface-container-high opacity-20 group-hover:scale-110 transition-transform" data-icon="pending_actions">pending_actions</span>
-</div>
-</div>
-<!-- Data Table Section -->
-<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
-<!-- Table Controls -->
-<div class="p-6 flex flex-wrap items-center justify-between gap-4 border-b border-outline-variant/10">
-<div class="flex items-center gap-4">
-<button class="flex items-center gap-2 px-4 py-2 rounded-xl bg-surface-container-low text-sm font-bold hover:bg-surface-container-high transition-all">
-<span class="material-symbols-outlined icon" data-icon="filter_list">filter_list</span>
-                        Filter
+                    <span class="text-xs font-medium text-on-surface-variant"
+                      >ID: INS-9921</span
+                    >
+                  </div>
+                </td>
+                <td class="px-6 py-5">
+                  <span
+                    class="px-3 py-1 text-xs font-bold rounded-full bg-success-container text-on-success-container"
+                    >Active</span
+                  >
+                </td>
+                <td class="px-6 py-5">
+                  <div class="flex -space-x-2">
+                    <div
+                      class="w-8 h-8 rounded-full border-2 border-white bg-primary-container text-label flex items-center justify-center text-white font-bold"
+                    >
+                      UI
+                    </div>
+                    <div
+                      class="w-8 h-8 rounded-full border-2 border-white bg-secondary-container text-label flex items-center justify-center text-secondary font-bold"
+                    >
+                      JS
+                    </div>
+                    <div
+                      class="w-8 h-8 rounded-full border-2 border-white bg-tertiary-container text-label flex items-center justify-center text-tertiary font-bold"
+                    >
+                      +4
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-5">
+                  <div
+                    class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    <button
+                      class="p-2 hover:bg-surface-container-high rounded-xl text-on-surface-variant hover:text-primary transition-all"
+                    >
+                      <span
+                        class="material-symbols-outlined nav-icon"
+                        data-icon="edit"
+                        >edit</span
+                      >
                     </button>
-<div class="flex bg-surface-container-low rounded-xl p-1">
-<button class="px-4 py-1.5 text-xs font-bold rounded-md bg-white shadow-sm text-primary">All Users</button>
-<button class="px-4 py-1.5 text-xs font-bold rounded-md text-on-surface-variant hover:text-on-surface">Instructors</button>
-<button class="px-4 py-1.5 text-xs font-bold rounded-md text-on-surface-variant hover:text-on-surface">Students</button>
-</div>
-</div>
-<div class="text-sm text-on-surface-variant font-medium">
-                    Showing <span class="text-on-surface">1-10</span> of 12,482
+                    <button
+                      class="p-2 hover:bg-surface-container-high rounded-xl text-on-surface-variant hover:text-primary transition-all"
+                    >
+                      <span
+                        class="material-symbols-outlined nav-icon"
+                        data-icon="visibility"
+                        >visibility</span
+                      >
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <!-- User Row 2 -->
+              <tr
+                class="hover:bg-surface-container-low/30 transition-colors group"
+              >
+                <td class="px-6 py-5">
+                  <div class="flex items-center gap-4">
+                    <div class="relative">
+                      <img
+                        alt="User"
+                        class="w-11 h-11 rounded-full object-cover"
+                        data-alt="Professional portrait of a young man with glasses and a friendly expression, outdoor urban setting"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJhO3l7mIQiKxdsF_47A16cyf1_f6_XjyFAl8b_iKeByYylQJNsj15QLFiCrM5JAo4KbCJq2J8AC8-3aNWQEKGd7s1oDtW7x5r67gfElYWIfjUhUFBA-EVP41hADhw6bXkY7TVjU4Fr9LbYKkpOY5IYX5fpYmxmlIEewhR6ZnLq_EUcJL9wp5WoNFmyGXLrM-AUgRWm04E-Kci-CcFXo63h0ymn7LzkyVrVByvTnxZzNyJolCGYVwtSUOhTOmfBKtUuuntHrarcHn6?fbclid=IwY2xjawRHXV9leHRuA2FlbQIxMABicmlkETFBZVZpUFY1V1E0T1N3c000c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHk-EHJhQcZXAxD3zXYQMF1XtYl0SpyHgvyd1Uhqp2X0vhVMIm4yf5eJDFB3k_aem_3CxU88kMBcwtO4cFmn2OHA"
+                      />
+                      <div
+                        class="absolute -bottom-1 -right-1 w-4 h-4 bg-on-surface-variant border-2 border-white rounded-full"
+                      ></div>
+                    </div>
+                    <div>
+                      <p class="font-bold text-on-surface">Marcus Thompson</p>
+                      <p class="text-sm text-on-surface-variant">
+                        m.thompson@student.edu
+                      </p>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-5">
+                  <div class="flex flex-col">
+                    <span
+                      class="text-xs font-bold text-secondary flex items-center"
+                    >
+                      <span
+                        class="material-symbols-outlined icon mr-1"
+                        data-icon="person"
+                        >person</span
+                      >
+                      Student
+                    </span>
+                    <span class="text-xs font-medium text-on-surface-variant"
+                      >ID: STU-4402</span
+                    >
+                  </div>
+                </td>
+                <td class="px-6 py-5">
+                  <span
+                    class="px-3 py-1 text-xs font-bold rounded-full bg-surface-container-high text-on-surface-variant"
+                    >Offline</span
+                  >
+                </td>
+                <td class="px-6 py-5">
+                  <span class="text-sm font-bold text-on-surface"
+                    >12 Courses</span
+                  >
+                </td>
+                <td class="px-6 py-5">
+                  <div
+                    class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    <button
+                      class="p-2 hover:bg-surface-container-high rounded-xl text-on-surface-variant hover:text-primary transition-all"
+                    >
+                      <span
+                        class="material-symbols-outlined nav-icon"
+                        data-icon="edit"
+                        >edit</span
+                      >
+                    </button>
+                    <button
+                      class="p-2 hover:bg-surface-container-high rounded-xl text-on-surface-variant hover:text-primary transition-all"
+                    >
+                      <span
+                        class="material-symbols-outlined nav-icon"
+                        data-icon="visibility"
+                        >visibility</span
+                      >
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <!-- User Row 3 -->
+              <tr
+                class="hover:bg-surface-container-low/30 transition-colors group"
+              >
+                <td class="px-6 py-5">
+                  <div class="flex items-center gap-4">
+                    <div class="relative">
+                      <img
+                        alt="User"
+                        class="w-11 h-11 rounded-full object-cover"
+                        data-alt="Confident female instructor in business attire, modern office background with large windows"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJhO3l7mIQiKxdsF_47A16cyf1_f6_XjyFAl8b_iKeByYylQJNsj15QLFiCrM5JAo4KbCJq2J8AC8-3aNWQEKGd7s1oDtW7x5r67gfElYWIfjUhUFBA-EVP41hADhw6bXkY7TVjU4Fr9LbYKkpOY5IYX5fpYmxmlIEewhR6ZnLq_EUcJL9wp5WoNFmyGXLrM-AUgRWm04E-Kci-CcFXo63h0ymn7LzkyVrVByvTnxZzNyJolCGYVwtSUOhTOmfBKtUuuntHrarcHn6?fbclid=IwY2xjawRHXV9leHRuA2FlbQIxMABicmlkETFBZVZpUFY1V1E0T1N3c000c3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHk-EHJhQcZXAxD3zXYQMF1XtYl0SpyHgvyd1Uhqp2X0vhVMIm4yf5eJDFB3k_aem_3CxU88kMBcwtO4cFmn2OHA"
+                      />
+                      <div
+                        class="absolute -bottom-1 -right-1 w-4 h-4 bg-tertiary-fixed border-2 border-white rounded-full"
+                      ></div>
+                    </div>
+                    <div>
+                      <p class="font-bold text-on-surface">
+                        Dr. Elena Rodriguez
+                      </p>
+                      <p class="text-sm text-on-surface-variant">
+                        erodriguez@skillforge.com
+                      </p>
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-5">
+                  <div class="flex flex-col">
+                    <span
+                      class="text-xs font-bold text-primary flex items-center"
+                    >
+                      <span
+                        class="material-symbols-outlined icon mr-1"
+                        data-icon="school"
+                        >school</span
+                      >
+                      Instructor
+                    </span>
+                    <span class="text-xs font-medium text-on-surface-variant"
+                      >ID: INS-1108</span
+                    >
+                  </div>
+                </td>
+                <td class="px-6 py-5">
+                  <span
+                    class="px-3 py-1 text-xs font-bold rounded-full bg-tertiary-container/20 text-tertiary-dim"
+                    >Pending Review</span
+                  >
+                </td>
+                <td class="px-6 py-5">
+                  <div class="flex -space-x-2">
+                    <div
+                      class="w-8 h-8 rounded-full border-2 border-white bg-primary text-label flex items-center justify-center text-white font-bold"
+                    >
+                      DS
+                    </div>
+                    <div
+                      class="w-8 h-8 rounded-full border-2 border-white bg-on-tertiary-fixed-variant text-label flex items-center justify-center text-white font-bold"
+                    >
+                      AI
+                    </div>
+                  </div>
+                </td>
+                <td class="px-6 py-5">
+                  <div
+                    class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity"
+                  >
+                    <button
+                      class="p-2 hover:bg-surface-container-high rounded-xl text-on-surface-variant hover:text-primary transition-all"
+                    >
+                      <span
+                        class="material-symbols-outlined nav-icon"
+                        data-icon="edit"
+                        >edit</span
+                      >
+                    </button>
+                    <button
+                      class="p-2 hover:bg-surface-container-high rounded-xl text-on-surface-variant hover:text-primary transition-all"
+                    >
+                      <span
+                        class="material-symbols-outlined nav-icon"
+                        data-icon="visibility"
+                        >visibility</span
+                      >
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <!-- Pagination -->
+        <div class="p-6 row row-between border-t border-outline-variant/10">
+          <button
+            class="px-4 py-2 text-sm font-bold text-on-surface-variant hover:text-primary disabled:opacity-50 transition-all flex items-center"
+            disabled=""
+          >
+            <span
+              class="material-symbols-outlined icon mr-2"
+              data-icon="chevron_left"
+              >chevron_left</span
+            >
+            Previous
+          </button>
+          <div class="icon-text">
+            <button
+              class="w-8 h-8 rounded-xl bg-primary text-white font-bold text-xs"
+            >
+              1
+            </button>
+            <button
+              class="w-8 h-8 rounded-xl hover:bg-surface-container-low text-on-surface-variant font-bold text-xs"
+            >
+              2
+            </button>
+            <button
+              class="w-8 h-8 rounded-xl hover:bg-surface-container-low text-on-surface-variant font-bold text-xs"
+            >
+              3
+            </button>
+            <span class="px-2 text-on-surface-variant">...</span>
+            <button
+              class="w-8 h-8 rounded-xl hover:bg-surface-container-low text-on-surface-variant font-bold text-xs"
+            >
+              48
+            </button>
+          </div>
+          <button
+            class="px-4 py-2 text-sm font-bold text-on-surface-variant hover:text-primary transition-all flex items-center"
+          >
+            Next
+            <span
+              class="material-symbols-outlined icon ml-2"
+              data-icon="chevron_right"
+              >chevron_right</span
+            >
+          </button>
+        </div>
+      </div>
+      <!-- System Activity (Minimalistic Side-Action) -->
+      <div class="mt-10 grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div class="lg:col-span-2 bg-surface-container-lowest p-8 rounded-xl">
+          <h3 class="text-xl font-bold mb-6">Recent Platform Activity</h3>
+          <div class="stack">
+            <div class="flex gap-4">
+              <div
+                class="w-10 h-10 rounded-full bg-primary-container/10 flex items-center justify-center shrink-0"
+              >
+                <span
+                  class="material-symbols-outlined icon text-primary"
+                  data-icon="person_add"
+                  >person_add</span
+                >
+              </div>
+              <div>
+                <p class="text-sm font-bold">
+                  New instructor application: David Kimmich
+                </p>
+                <p class="text-xs text-on-surface-variant mt-1">
+                  2 hours ago • Machine Learning Specialist
+                </p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div
+                class="w-10 h-10 rounded-full bg-tertiary-container/10 flex items-center justify-center shrink-0"
+              >
+                <span
+                  class="material-symbols-outlined icon text-tertiary"
+                  data-icon="verified"
+                  >verified</span
+                >
+              </div>
+              <div>
+                <p class="text-sm font-bold">Bulk enrollment completed</p>
+                <p class="text-xs text-on-surface-variant mt-1">
+                  4 hours ago • 240 students added to "Adv. React Patterns"
+                </p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div
+                class="w-10 h-10 rounded-full bg-error-container/10 flex items-center justify-center shrink-0"
+              >
+                <span
+                  class="material-symbols-outlined icon text-error"
+                  data-icon="report"
+                  >report</span
+                >
+              </div>
+              <div>
+                <p class="text-sm font-bold">
+                  Suspicious login activity detected
+                </p>
+                <p class="text-xs text-on-surface-variant mt-1">
+                  6 hours ago • User ID: STU-8821 from Unknown IP
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="bg-gradient-to-br from-primary to-primary-container p-8 rounded-xl text-white relative overflow-hidden"
+        >
+          <div class="relative z-10">
+            <h3 class="text-xl font-bold mb-2">Platform Health</h3>
+            <p class="text-on-primary text-sm opacity-90 mb-6">
+              User synchronization is currently optimal across all nodes.
+            </p>
+            <div class="flex items-center justify-center py-4">
+              <!-- Progress Orbit Signature Component -->
+              <div class="relative w-32 h-32">
+                <svg class="w-full h-full transform -rotate-90">
+                  <circle
+                    class="text-white/20"
+                    cx="64"
+                    cy="64"
+                    fill="transparent"
+                    r="58"
+                    stroke="currentColor"
+                    stroke-width="8"
+                  ></circle>
+                  <circle
+                    class="text-tertiary-fixed"
+                    cx="64"
+                    cy="64"
+                    fill="transparent"
+                    r="58"
+                    stroke="currentColor"
+                    stroke-dasharray="364"
+                    stroke-dashoffset="36"
+                    stroke-width="8"
+                  ></circle>
+                </svg>
+                <div
+                  class="absolute inset-0 flex flex-col items-center justify-center"
+                >
+                  <span class="text-2xl font-black">94%</span>
+                  <span
+                    class="text-label font-bold uppercase tracking-widest opacity-80"
+                    >Stability</span
+                  >
                 </div>
-</div>
-<!-- Custom Table -->
-<div class="overflow-x-auto">
-<table class="w-full text-left border-collapse">
-<thead>
-<tr class="bg-surface-container-low/50">
-<th class="px-6 py-4 text-xs font-extrabold uppercase tracking-widest text-on-surface-variant">User Details</th>
-<th class="px-6 py-4 text-xs font-extrabold uppercase tracking-widest text-on-surface-variant">Role &amp; ID</th>
-<th class="px-6 py-4 text-xs font-extrabold uppercase tracking-widest text-on-surface-variant">Status</th>
-<th class="px-6 py-4 text-xs font-extrabold uppercase tracking-widest text-on-surface-variant">Enrollments</th>
-<th class="px-6 py-4 text-xs font-extrabold uppercase tracking-widest text-on-surface-variant">Actions</th>
-</tr>
-</thead>
-<tbody class="divide-y divide-outline-variant/10">
-<!-- User Row 1 -->
-<tr class="hover:bg-surface-container-low/30 transition-colors group">
-<td class="px-6 py-5">
-<div class="flex items-center gap-4">
-<div class="relative">
-<img alt="User" class="w-11 h-11 rounded-full object-cover" data-alt="Headshot of a smiling young professional woman with brunette hair in a brightly lit studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDphDCHh9RDQ1xvM2LTBKCvqlWNxzeqdV7vaEChiOKX_W6kfzPuXqXo8psVpaSY0dh8_j7h91wuj4bzgrw450aNPJNvoHwhdGv-zmIiO07UCwL7kc33Mo5yVYw9qJJpGunyY0Vit74SulAPMYG9L3aGXXmlhPJEhIoOzFTghQlcNj-D7faouhWPcrv6n8YVAow_JiSeIDdqcNxMlNPoi57Wq5w5oSpSAVVleGUUebu7sNHTeCRN1Hd_tNNuwjoJjBUrPjOTlLMz4odT"/>
-<div class="absolute -bottom-1 -right-1 w-4 h-4 bg-green-500 border-2 border-white rounded-full"></div>
-</div>
-<div>
-<p class="font-bold text-on-surface">Sarah Chen</p>
-<p class="text-sm text-on-surface-variant">sarah.chen@skillforge.com</p>
-</div>
-</div>
-</td>
-<td class="px-6 py-5">
-<div class="flex flex-col">
-<span class="text-xs font-bold text-primary flex items-center">
-<span class="material-symbols-outlined icon mr-1" data-icon="school">school</span>
-                                        Instructor
-                                    </span>
-<span class="text-xs font-medium text-on-surface-variant">ID: INS-9921</span>
-</div>
-</td>
-<td class="px-6 py-5">
-<span class="px-3 py-1 text-xs font-bold rounded-full bg-success-container text-on-success-container">Active</span>
-</td>
-<td class="px-6 py-5">
-<div class="flex -space-x-2">
-<div class="w-8 h-8 rounded-full border-2 border-white bg-primary-container text-label flex items-center justify-center text-white font-bold">UI</div>
-<div class="w-8 h-8 rounded-full border-2 border-white bg-secondary-container text-label flex items-center justify-center text-secondary font-bold">JS</div>
-<div class="w-8 h-8 rounded-full border-2 border-white bg-tertiary-container text-label flex items-center justify-center text-tertiary font-bold">+4</div>
-</div>
-</td>
-<td class="px-6 py-5">
-<div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-<button class="p-2 hover:bg-surface-container-high rounded-xl text-on-surface-variant hover:text-primary transition-all">
-<span class="material-symbols-outlined nav-icon" data-icon="edit">edit</span>
-</button>
-<button class="p-2 hover:bg-surface-container-high rounded-xl text-on-surface-variant hover:text-primary transition-all">
-<span class="material-symbols-outlined nav-icon" data-icon="visibility">visibility</span>
-</button>
-</div>
-</td>
-</tr>
-<!-- User Row 2 -->
-<tr class="hover:bg-surface-container-low/30 transition-colors group">
-<td class="px-6 py-5">
-<div class="flex items-center gap-4">
-<div class="relative">
-<img alt="User" class="w-11 h-11 rounded-full object-cover" data-alt="Professional portrait of a young man with glasses and a friendly expression, outdoor urban setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhy89bwEbZWii3EQKInRQNLbPBqnMgdFpeTqZ7ABbbGVie8zzKKHi8lSmpib8L2T72SP0LK6bYDVsnvgqMOlpD7s2MNe5l8b7cLW1-tNi1YAXeU9dozocPAtrz5DMc3EFj86aSqnItkgcjuEEwXRV1ta6NPi5FVgoqsxH25Uo2K2j0ViBselhwAxAU35z8UBVz4s91Vq-G8GUs0vIwf5ZRvu3S-xycUuOP38bbWEBYkNW0EqdI-Zc8Jy6ufNichJtkdz1YhSbEiG0-"/>
-<div class="absolute -bottom-1 -right-1 w-4 h-4 bg-on-surface-variant border-2 border-white rounded-full"></div>
-</div>
-<div>
-<p class="font-bold text-on-surface">Marcus Thompson</p>
-<p class="text-sm text-on-surface-variant">m.thompson@student.edu</p>
-</div>
-</div>
-</td>
-<td class="px-6 py-5">
-<div class="flex flex-col">
-<span class="text-xs font-bold text-secondary flex items-center">
-<span class="material-symbols-outlined icon mr-1" data-icon="person">person</span>
-                                        Student
-                                    </span>
-<span class="text-xs font-medium text-on-surface-variant">ID: STU-4402</span>
-</div>
-</td>
-<td class="px-6 py-5">
-<span class="px-3 py-1 text-xs font-bold rounded-full bg-surface-container-high text-on-surface-variant">Offline</span>
-</td>
-<td class="px-6 py-5">
-<span class="text-sm font-bold text-on-surface">12 Courses</span>
-</td>
-<td class="px-6 py-5">
-<div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-<button class="p-2 hover:bg-surface-container-high rounded-xl text-on-surface-variant hover:text-primary transition-all">
-<span class="material-symbols-outlined nav-icon" data-icon="edit">edit</span>
-</button>
-<button class="p-2 hover:bg-surface-container-high rounded-xl text-on-surface-variant hover:text-primary transition-all">
-<span class="material-symbols-outlined nav-icon" data-icon="visibility">visibility</span>
-</button>
-</div>
-</td>
-</tr>
-<!-- User Row 3 -->
-<tr class="hover:bg-surface-container-low/30 transition-colors group">
-<td class="px-6 py-5">
-<div class="flex items-center gap-4">
-<div class="relative">
-<img alt="User" class="w-11 h-11 rounded-full object-cover" data-alt="Confident female instructor in business attire, modern office background with large windows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBIeakzbRfZ1jTE9FCveheRtRC2XXFLNVib7FD4Ksz4PSH4olG572aA6E3DfXd-5luCBzZ9u3Bo8fBnl8muXvV77joj8dcNhmTOGxFzdmw3kKJ4J-4lcW8Ha9-4CJbTn6B0pKLRaQJA5LzWQhWgR-UvA7WKNsbyaV4GbFoYC-l485GMI_8-1PlF7PFVIo4I38JoFhcq7TJ90TNXNU7FAGnUBPa_vq1w0OyJHXQT3Zvx2UhmmE8iSUK4aK7d1A-QgYbvazue5d-R6s_W"/>
-<div class="absolute -bottom-1 -right-1 w-4 h-4 bg-tertiary-fixed border-2 border-white rounded-full"></div>
-</div>
-<div>
-<p class="font-bold text-on-surface">Dr. Elena Rodriguez</p>
-<p class="text-sm text-on-surface-variant">erodriguez@skillforge.com</p>
-</div>
-</div>
-</td>
-<td class="px-6 py-5">
-<div class="flex flex-col">
-<span class="text-xs font-bold text-primary flex items-center">
-<span class="material-symbols-outlined icon mr-1" data-icon="school">school</span>
-                                        Instructor
-                                    </span>
-<span class="text-xs font-medium text-on-surface-variant">ID: INS-1108</span>
-</div>
-</td>
-<td class="px-6 py-5">
-<span class="px-3 py-1 text-xs font-bold rounded-full bg-tertiary-container/20 text-tertiary-dim">Pending Review</span>
-</td>
-<td class="px-6 py-5">
-<div class="flex -space-x-2">
-<div class="w-8 h-8 rounded-full border-2 border-white bg-primary text-label flex items-center justify-center text-white font-bold">DS</div>
-<div class="w-8 h-8 rounded-full border-2 border-white bg-on-tertiary-fixed-variant text-label flex items-center justify-center text-white font-bold">AI</div>
-</div>
-</td>
-<td class="px-6 py-5">
-<div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
-<button class="p-2 hover:bg-surface-container-high rounded-xl text-on-surface-variant hover:text-primary transition-all">
-<span class="material-symbols-outlined nav-icon" data-icon="edit">edit</span>
-</button>
-<button class="p-2 hover:bg-surface-container-high rounded-xl text-on-surface-variant hover:text-primary transition-all">
-<span class="material-symbols-outlined nav-icon" data-icon="visibility">visibility</span>
-</button>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<!-- Pagination -->
-<div class="p-6 row row-between border-t border-outline-variant/10">
-<button class="px-4 py-2 text-sm font-bold text-on-surface-variant hover:text-primary disabled:opacity-50 transition-all flex items-center" disabled="">
-<span class="material-symbols-outlined icon mr-2" data-icon="chevron_left">chevron_left</span>
-                    Previous
-                </button>
-<div class="icon-text">
-<button class="w-8 h-8 rounded-xl bg-primary text-white font-bold text-xs">1</button>
-<button class="w-8 h-8 rounded-xl hover:bg-surface-container-low text-on-surface-variant font-bold text-xs">2</button>
-<button class="w-8 h-8 rounded-xl hover:bg-surface-container-low text-on-surface-variant font-bold text-xs">3</button>
-<span class="px-2 text-on-surface-variant">...</span>
-<button class="w-8 h-8 rounded-xl hover:bg-surface-container-low text-on-surface-variant font-bold text-xs">48</button>
-</div>
-<button class="px-4 py-2 text-sm font-bold text-on-surface-variant hover:text-primary transition-all flex items-center">
-                    Next
-                    <span class="material-symbols-outlined icon ml-2" data-icon="chevron_right">chevron_right</span>
-</button>
-</div>
-</div>
-<!-- System Activity (Minimalistic Side-Action) -->
-<div class="mt-10 grid grid-cols-1 lg:grid-cols-3 gap-6">
-<div class="lg:col-span-2 bg-surface-container-lowest p-8 rounded-xl">
-<h3 class="text-xl font-bold mb-6">Recent Platform Activity</h3>
-<div class="stack">
-<div class="flex gap-4">
-<div class="w-10 h-10 rounded-full bg-primary-container/10 flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined icon text-primary" data-icon="person_add">person_add</span>
-</div>
-<div>
-<p class="text-sm font-bold">New instructor application: David Kimmich</p>
-<p class="text-xs text-on-surface-variant mt-1">2 hours ago • Machine Learning Specialist</p>
-</div>
-</div>
-<div class="flex gap-4">
-<div class="w-10 h-10 rounded-full bg-tertiary-container/10 flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined icon text-tertiary" data-icon="verified">verified</span>
-</div>
-<div>
-<p class="text-sm font-bold">Bulk enrollment completed</p>
-<p class="text-xs text-on-surface-variant mt-1">4 hours ago • 240 students added to "Adv. React Patterns"</p>
-</div>
-</div>
-<div class="flex gap-4">
-<div class="w-10 h-10 rounded-full bg-error-container/10 flex items-center justify-center shrink-0">
-<span class="material-symbols-outlined icon text-error" data-icon="report">report</span>
-</div>
-<div>
-<p class="text-sm font-bold">Suspicious login activity detected</p>
-<p class="text-xs text-on-surface-variant mt-1">6 hours ago • User ID: STU-8821 from Unknown IP</p>
-</div>
-</div>
-</div>
-</div>
-<div class="bg-gradient-to-br from-primary to-primary-container p-8 rounded-xl text-white relative overflow-hidden">
-<div class="relative z-10">
-<h3 class="text-xl font-bold mb-2">Platform Health</h3>
-<p class="text-on-primary text-sm opacity-90 mb-6">User synchronization is currently optimal across all nodes.</p>
-<div class="flex items-center justify-center py-4">
-<!-- Progress Orbit Signature Component -->
-<div class="relative w-32 h-32">
-<svg class="w-full h-full transform -rotate-90">
-<circle class="text-white/20" cx="64" cy="64" fill="transparent" r="58" stroke="currentColor" stroke-width="8"></circle>
-<circle class="text-tertiary-fixed" cx="64" cy="64" fill="transparent" r="58" stroke="currentColor" stroke-dasharray="364" stroke-dashoffset="36" stroke-width="8"></circle>
-</svg>
-<div class="absolute inset-0 flex flex-col items-center justify-center">
-<span class="text-2xl font-black">94%</span>
-<span class="text-label font-bold uppercase tracking-widest opacity-80">Stability</span>
-</div>
-</div>
-</div>
-<button class="btn btn-surface btn-w-full mt-6">
-                        View System Logs
-                    </button>
-</div>
-<!-- Abstract decorative element -->
-<div class="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"></div>
-<div class="absolute -bottom-10 -left-10 w-40 h-40 bg-black/10 rounded-full blur-3xl"></div>
-</div>
-</div>
-</main>
-</body></html>
+              </div>
+            </div>
+            <button class="btn btn-surface btn-w-full mt-6">
+              View System Logs
+            </button>
+          </div>
+          <!-- Abstract decorative element -->
+          <div
+            class="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-3xl"
+          ></div>
+          <div
+            class="absolute -bottom-10 -left-10 w-40 h-40 bg-black/10 rounded-full blur-3xl"
+          ></div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

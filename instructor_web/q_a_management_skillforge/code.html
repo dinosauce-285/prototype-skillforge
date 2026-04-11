@@ -1,219 +1,498 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 
-<html class="light" lang="en"><head>
-<link rel="stylesheet" href="../../shared/tailwind-desktop.css"/>
-<link rel="stylesheet" href="../../shared/base.css"/>
+<html class="light" lang="en">
+  <head>
+    <link rel="stylesheet" href="../../shared/tailwind-desktop.css" />
+    <link rel="stylesheet" href="../../shared/base.css" />
 
-<meta charset="utf-8"/>
-<meta name="description" content="SkillForge — The premium platform for professional skill development and certification."/>
-<link rel="icon" type="image/svg+xml" href="../../shared/favicon.svg"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>SkillForge | Q&A Management</title>
-
-</head>
-<body class="bg-surface font-body text-on-surface">
-<!-- SideNavBar -->
-<aside class="h-screen w-64 fixed left-0 top-0 bg-zinc-100 flex flex-col p-4 gap-2 border-r border-zinc-200/50 z-50">
-<div class="mb-8 px-4">
-<h1 class="font-headline font-extrabold text-primary text-2xl tracking-tighter">Forge</h1>
-<p class="text-zinc-500 text-xs font-medium uppercase tracking-widest">Instructor Portal</p>
-</div>
-<nav class="flex-grow space-y-1">
-<a class="flex items-center gap-3 text-zinc-600 px-4 py-3 hover:bg-zinc-200 rounded-xl transition-all" href="#">
-<span class="material-symbols-outlined icon" data-icon="dashboard">dashboard</span>
-<span class="font-label text-sm font-medium">Dashboard</span>
-</a>
-<a class="flex items-center gap-3 text-zinc-600 px-4 py-3 hover:bg-zinc-200 rounded-xl transition-all" href="#">
-<span class="material-symbols-outlined icon" data-icon="school">school</span>
-<span class="font-label text-sm font-medium">My Courses</span>
-</a>
-<a class="flex items-center gap-3 text-primary font-bold px-4 py-3 bg-white rounded-xl shadow-sm shadow-orange-900/5" href="#">
-<span class="material-symbols-outlined icon" data-icon="forum">forum</span>
-<span class="font-label text-sm font-medium">Q&amp;A Management</span>
-</a>
-<a class="flex items-center gap-3 text-zinc-600 px-4 py-3 hover:bg-zinc-200 rounded-xl transition-all" href="#">
-<span class="material-symbols-outlined icon" data-icon="confirmation_number">confirmation_number</span>
-<span class="font-label text-sm font-medium">Coupon Management</span>
-</a>
-<a class="flex items-center gap-3 text-zinc-600 px-4 py-3 hover:bg-zinc-200 rounded-xl transition-all" href="#">
-<span class="material-symbols-outlined icon" data-icon="insights">insights</span>
-<span class="font-label text-sm font-medium">Analytics</span>
-</a>
-</nav>
-<div class="mt-auto border-t border-zinc-200 pt-4 space-y-1">
-<a class="flex items-center gap-3 text-zinc-600 px-4 py-3 hover:bg-zinc-200 rounded-xl transition-all" href="#">
-<span class="material-symbols-outlined icon" data-icon="settings">settings</span>
-<span class="font-label text-sm font-medium">Settings</span>
-</a>
-<a class="flex items-center gap-3 text-zinc-600 px-4 py-3 hover:bg-zinc-200 rounded-xl transition-all" href="#">
-<span class="material-symbols-outlined icon" data-icon="contact_support">contact_support</span>
-<span class="font-label text-sm font-medium">Support</span>
-</a>
-</div>
-</aside>
-<main class="ml-64 min-h-screen flex flex-col">
-<!-- TopNavBar -->
-<header class="navbar">
-
-<div class="flex items-center gap-4">
-<span class="font-headline tracking-tight font-semibold text-xl text-zinc-900">Knowledge Architect</span>
-</div>
-<div class="navbar-logo">
-<div class="relative w-64">
-<span class="material-symbols-outlined icon absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400" data-icon="search">search</span>
-<input class="w-full bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary-container transition-all" placeholder="Search platform..." type="text"/>
-</div>
-<div class="flex items-center gap-4">
-<button class="text-zinc-500 hover:text-primary transition-colors">
-<span class="material-symbols-outlined icon" data-icon="notifications">notifications</span>
-</button>
-<button class="text-zinc-500 hover:text-primary transition-colors">
-<span class="material-symbols-outlined icon" data-icon="help_outline">help_outline</span>
-</button>
-<div class="h-8 w-8 rounded-full bg-primary-fixed flex items-center justify-center border border-orange-200 overflow-hidden">
-<img alt="Instructor profile avatar" data-alt="professional male instructor portrait clean lighting office background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuSGKVpYrR2MJ0FJrVQAvnBr5dUL5-5zoYSbvsQAmT98K8CEdCsNfZMu5l4p01zRlzZoX_0DPkJ7fvjBA5OKBJATSWSMu-AY_bgFeQ_jnQTok78nhvueOkLBbg-3HCu2KhU_E0sWsU3P_R75I-PNzTc8KczJMKTItm0gv10jKnJJ4oNRivPoI4bqbCsviMa4N6VdPywJ0uKZrL5gCS3h39A9u7KRTZGyTWCgpwnTqmGwBIQXs6RUnfMbH-cqMCfZBzFnQt5lq7AkU"/>
-</div>
-</div>
-</div>
-</header>
-<div class="p-8 grid grid-cols-12 gap-8 flex-grow overflow-hidden">
-<!-- Sidebar: Question List -->
-<section class="col-span-4 flex flex-col gap-6">
-<div class="flex flex-col gap-4">
-<h2 class="font-headline text-2xl font-bold tracking-tight text-on-surface">Questions</h2>
-<div class="flex gap-2 p-1 bg-surface-container rounded-xl">
-<button class="flex-1 py-2 px-3 text-xs font-bold bg-white rounded-xl shadow-sm text-primary">All</button>
-<button class="flex-1 py-2 px-3 text-xs font-medium text-zinc-500 hover:bg-zinc-200 rounded-xl">Unanswered</button>
-<button class="flex-1 py-2 px-3 text-xs font-medium text-zinc-500 hover:bg-zinc-200 rounded-xl">Resolved</button>
-</div>
-<div class="relative">
-<span class="material-symbols-outlined icon absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400" data-icon="search">search</span>
-<input class="w-full bg-surface-container-lowest border-none rounded-xl py-3 pl-10 pr-4 text-sm shadow-sm focus:ring-2 focus:ring-primary-container" placeholder="Search questions..." type="text"/>
-</div>
-</div>
-<div class="flex flex-col gap-3 overflow-y-auto scrollbar-hide max-h-[calc(100vh-320px)]">
-<!-- Question Card Active -->
-<div class="p-4 bg-surface-container-lowest rounded-xl border-l-4 border-primary-container shadow-sm transition-all cursor-pointer">
-<div class="flex items-start gap-3 mb-2">
-<img alt="Student" class="w-10 h-10 rounded-full object-cover" data-alt="young female student portrait with warm natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIKEySQ5h0zQg1l3vxFq8Fq9wh6u0BfNbc759ogYG9MmHErD2ffwZeiQY0zLq31NxRz6AvZde21Y4BrmavJPgLWd5cOh2iw6PuHKoxFkd5zsIR3Yg-02XlhwghrMoYkXns0nwCInQwu86Ris1dGMk2z9zdoTxYwMynjenwPPgLUHztCJZ_FLQenI2heXUtobdv0xbLpEG5mFMFtcvwDPzVT5VkfO_9vbRLCtkYuzeL_PNwf2958DOl8QDKSsVo7XrCICx8KFtajRQ"/>
-<div class="flex-grow">
-<h4 class="text-sm font-bold text-on-surface">Sarah Mitchell</h4>
-<p class="text-label text-zinc-400 uppercase tracking-wider font-bold">12 mins ago</p>
-</div>
-<span class="w-2 h-2 rounded-full bg-primary-container"></span>
-</div>
-<p class="text-xs font-bold text-primary mb-1">Mastering Advanced Typography</p>
-<p class="text-sm text-on-surface-variant line-clamp-2 leading-relaxed">Could you clarify the difference between tracking and kerning in the context of high-resolution displays?</p>
-</div>
-<!-- Question Card -->
-<div class="p-4 bg-white/40 hover:bg-white rounded-xl transition-all cursor-pointer">
-<div class="flex items-start gap-3 mb-2">
-<img alt="Student" class="w-10 h-10 rounded-full object-cover" data-alt="college student male portrait outdoors soft focus greenery" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhzwBFf1MIAp1xb04IsQLje810QfBJJOd0Dxq96XyYTFCDEtg6JzIBxRYLgTy7XhIXO041f4uG84w2VjMd6uJn1NDRdZRPrXsJ9oA8vOGw4-qmvalxovcFMQy3k2Tzh68pfxW_odYObENrJ4fEnNu4cjz2ktZN7n4jLk_vEZNCS5wXLV6U9rGX2kV2sW8SGJwaOrKgDtSopEFjvHeWb4Kfg_ZRSz135nfeKsNgUQzZArexXw53gc74OAU5pSeM3xeC4dcdmHuv-eo"/>
-<div class="flex-grow">
-<h4 class="text-sm font-bold text-zinc-700">James Wilson</h4>
-<p class="text-label text-zinc-400 uppercase tracking-wider font-bold">2 hours ago</p>
-</div>
-</div>
-<p class="text-xs font-bold text-zinc-500 mb-1">UI/UX Architectural Principles</p>
-<p class="text-sm text-zinc-500 line-clamp-2 leading-relaxed">Is it better to use a grid-based approach for asymmetric layouts or should I go with freeform flexbox?</p>
-</div>
-<!-- Question Card -->
-<div class="p-4 bg-white/40 hover:bg-white rounded-xl transition-all cursor-pointer">
-<div class="flex items-start gap-3 mb-2">
-<img alt="Student" class="w-10 h-10 rounded-full object-cover" data-alt="professional female student portrait studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBm203pvNblZFp96mPNFQ2kciGVIESRZ-VXBGcs3h-TrYWruF2YpKGOlZ8tHmp3IzcD98Ja-KuXlAhxAL0qk63DLdtzHdjA7kZ-V5mh7t_6fkwZt8xHcYwlsBLJbDabr8zhTUxCTDYP8YzNd1L52gZKqt3Fnt2RQKyhb8sA-FujnesZ7zH6VogEtEAmBBLgQ_DHq6KZpov2aYqMZMX8K0MUw6m49ZBtvEb0w9PmEi6cBdnlkQQ9K91KEkGHCDuBK8oNSiQbXgBqddE"/>
-<div class="flex-grow">
-<h4 class="text-sm font-bold text-zinc-700">Elena Rodriguez</h4>
-<p class="text-label text-zinc-400 uppercase tracking-wider font-bold">5 hours ago</p>
-</div>
-</div>
-<p class="text-xs font-bold text-zinc-500 mb-1">Color Theory for Dark Mode</p>
-<p class="text-sm text-zinc-500 line-clamp-2 leading-relaxed">The contrast ratios for the primary container orange don't seem to pass AA on dark grey surfaces...</p>
-</div>
-</div>
-</section>
-<!-- Main Content: Detailed View -->
-<section class="col-span-8 flex flex-col gap-6 bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden h-[calc(100vh-160px)]">
-<!-- Thread Header -->
-<div class="p-6 border-b border-surface-container flex justify-between items-center bg-white/50 backdrop-blur-md">
-<div>
-<h3 class="font-headline text-xl font-bold text-on-surface">Question Thread</h3>
-<div class="flex items-center gap-2 mt-1">
-<span class="text-xs font-medium text-primary bg-primary-fixed px-2 py-1 rounded">Unresolved</span>
-<span class="text-xs text-zinc-400">•</span>
-<span class="text-xs text-zinc-500 font-medium">Course: <span class="text-zinc-800">Mastering Advanced Typography</span></span>
-</div>
-</div>
-<div class="flex gap-2">
-<button class="p-2 text-zinc-400 hover:text-primary transition-colors">
-<span class="material-symbols-outlined icon" data-icon="flag">flag</span>
-</button>
-<button class="p-2 text-zinc-400 hover:text-primary transition-colors">
-<span class="material-symbols-outlined icon" data-icon="archive">archive</span>
-</button>
-<button class="px-4 py-2 bg-zinc-100 text-zinc-700 rounded-xl text-sm font-bold hover:bg-zinc-200 transition-all">Mark as Resolved</button>
-</div>
-</div>
-<!-- Chat Canvas -->
-<div class="flex-grow overflow-y-auto p-6 flex flex-col gap-8 scrollbar-hide">
-<!-- Student Question -->
-<div class="flex gap-4 max-w-[85%]">
-<img alt="Sarah" class="w-10 h-10 rounded-full flex-shrink-0" data-alt="young female student portrait with warm natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1ijC4jGeJ_oivpOvwszhkr0bkjlcIW6vT7W4oy3noKa3sR4jXwvm3W5N306PC2rOPT9c05cERMqYyF40SiwXculHkWzW8JMKSEV3zYJ79EYiRbMSebE4E53vwj848d4gGFTHaCJD5ymY20LWOflINknT5eBujsUIixfzkUyJdrJlaz5bOUSJlbowLsPYUcEcfFuB86yfhnAxF0gEjYRy6mLWSaezfxYFUG9Vc7WukGigqyhi3p3OW1ZHG9peUVH0mM3p15ueN0lc"/>
-<div class="stack-xs">
-<div class="flex items-baseline gap-3">
-<span class="text-sm font-bold text-on-surface">Sarah Mitchell</span>
-<span class="text-label text-zinc-400 font-bold">10:42 AM</span>
-</div>
-<div class="bg-surface-container-low p-4 rounded-2xl rounded-tl-none">
-<p class="text-sm text-on-surface leading-relaxed">
-                                    Hey Professor! I'm working through Module 4 and I'm a bit confused. Could you clarify the difference between tracking and kerning in the context of high-resolution displays? Specifically, when designing for mobile devices where pixel density is high, should I be more aggressive with tracking to improve readability? 
-                                    <br/><br/>
-                                    I noticed that some of the examples in the PDF seem to have very loose tracking. Is that a stylistic choice or a technical requirement for smaller screens?
-                                </p>
-</div>
-</div>
-</div>
-<!-- Instructor Reply Placeholder/Draft -->
-<div class="flex gap-4 max-w-[85%] ml-auto flex-row-reverse">
-<div class="h-10 w-10 rounded-full bg-primary-fixed flex items-center justify-center border border-orange-200 overflow-hidden flex-shrink-0">
-<img alt="Instructor" data-alt="professional male instructor portrait clean lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuApylfwGhZcNLBcOJRQ2DttIxT6p7uRgm-8AwUHOvECzF_qeUBHL6UPeZQvKvnJ2lYStTx12BU270zGG44YPkFWdScC9RvZhwqAYSgkwBoHUKaU02ef3knWB0gBFuChaWMQaapXsuxNcE8FNHUtcMsfkH6dbaAKgllagbKXE1jq-s9zWH9V-4D5PFLzly-0swhQEfq-J7XBmixh1sqN7VvmhSZ9mKvJ9EbqtXN9YL7PDgW72EXwbAJ3btvpSsBJUZPRtfau2Ht-L4s"/>
-</div>
-<div class="space-y-2 text-right">
-<div class="flex items-baseline gap-3 flex-row-reverse">
-<span class="text-sm font-bold text-primary">You (Drafting...)</span>
-</div>
-<div class="bg-primary-fixed/50 border border-primary-fixed p-4 rounded-2xl rounded-tr-none italic text-orange-800 text-sm">
-                                Gathering some visual examples of responsive tracking to share with you, Sarah. Hang tight!
-                            </div>
-</div>
-</div>
-</div>
-<!-- Rich Text Editor Footer -->
-<div class="p-6 bg-white border-t border-surface-container">
-<div class="bg-surface-container-low rounded-xl border border-zinc-200/50 focus-within:border-primary-container focus-within:bg-white transition-all">
-<div class="flex items-center gap-2 p-2 border-b border-zinc-200/50">
-<button class="p-1.5 text-zinc-500 hover:bg-zinc-200 rounded-xl transition-colors"><span class="material-symbols-outlined nav-icon" data-icon="format_bold">format_bold</span></button>
-<button class="p-1.5 text-zinc-500 hover:bg-zinc-200 rounded-xl transition-colors"><span class="material-symbols-outlined nav-icon" data-icon="format_italic">format_italic</span></button>
-<button class="p-1.5 text-zinc-500 hover:bg-zinc-200 rounded-xl transition-colors"><span class="material-symbols-outlined nav-icon" data-icon="format_list_bulleted">format_list_bulleted</span></button>
-<button class="p-1.5 text-zinc-500 hover:bg-zinc-200 rounded-xl transition-colors"><span class="material-symbols-outlined nav-icon" data-icon="link">link</span></button>
-<button class="p-1.5 text-zinc-500 hover:bg-zinc-200 rounded-xl transition-colors"><span class="material-symbols-outlined nav-icon" data-icon="image">image</span></button>
-<div class="w-[1px] h-4 bg-zinc-300 mx-1"></div>
-<button class="p-1.5 text-zinc-500 hover:bg-zinc-200 rounded-xl transition-colors"><span class="material-symbols-outlined nav-icon" data-icon="code">code</span></button>
-</div>
-<textarea class="w-full bg-transparent border-none focus:ring-0 p-4 text-sm min-h-[120px] resize-none" placeholder="Write your reply to Sarah..."></textarea>
-<div class="flex justify-between items-center p-3">
-<span class="text-xs text-zinc-400 italic">Auto-saving...</span>
-<div class="flex gap-3">
-<button class="px-4 py-2 text-sm font-bold text-zinc-600 hover:bg-zinc-200 rounded-xl transition-all">Discard</button>
-<button class="px-6 py-2 bg-gradient-to-b from-primary to-primary-container text-white text-sm font-bold rounded-xl shadow-sm shadow-orange-900/10 hover:brightness-110 transition-all flex items-center gap-2">
-                                    Send Reply
-                                    <span class="material-symbols-outlined icon" data-icon="send">send</span>
-</button>
-</div>
-</div>
-</div>
-</div>
-</section>
-</div>
-</main>
-<!-- FAB Suppression: Contextually hidden as per rules for Q&A screen -->
-</body></html>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="SkillForge — The premium platform for professional skill development and certification."
+    />
+    <link rel="icon" type="image/svg+xml" href="../../shared/favicon.svg" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>SkillForge | Q&A Management</title>
+  </head>
+  <body class="bg-surface font-body text-on-surface">
+    <!-- SideNavBar -->
+    <aside
+      class="h-screen w-64 fixed left-0 top-0 bg-zinc-100 flex flex-col p-4 gap-2 border-r border-zinc-200/50 z-50"
+    >
+      <div class="mb-8 px-4">
+        <h1
+          class="font-headline font-extrabold text-primary text-2xl tracking-tighter"
+        >
+          SkillForge
+        </h1>
+        <p class="text-zinc-500 text-xs font-medium uppercase tracking-widest">
+          Instructor Portal
+        </p>
+      </div>
+      <nav class="flex-grow space-y-1">
+        <a
+          class="flex items-center gap-3 text-zinc-600 px-4 py-3 hover:bg-zinc-200 rounded-xl transition-all"
+          href="#"
+        >
+          <span class="material-symbols-outlined icon" data-icon="dashboard"
+            >dashboard</span
+          >
+          <span class="font-label text-sm font-medium">Dashboard</span>
+        </a>
+        <a
+          class="flex items-center gap-3 text-zinc-600 px-4 py-3 hover:bg-zinc-200 rounded-xl transition-all"
+          href="#"
+        >
+          <span class="material-symbols-outlined icon" data-icon="school"
+            >school</span
+          >
+          <span class="font-label text-sm font-medium">My Courses</span>
+        </a>
+        <a
+          class="flex items-center gap-3 text-primary font-bold px-4 py-3 bg-white rounded-xl shadow-sm shadow-orange-900/5"
+          href="#"
+        >
+          <span class="material-symbols-outlined icon" data-icon="forum"
+            >forum</span
+          >
+          <span class="font-label text-sm font-medium">Q&amp;A Management</span>
+        </a>
+        <a
+          class="flex items-center gap-3 text-zinc-600 px-4 py-3 hover:bg-zinc-200 rounded-xl transition-all"
+          href="#"
+        >
+          <span
+            class="material-symbols-outlined icon"
+            data-icon="confirmation_number"
+            >confirmation_number</span
+          >
+          <span class="font-label text-sm font-medium">Coupon Management</span>
+        </a>
+        <a
+          class="flex items-center gap-3 text-zinc-600 px-4 py-3 hover:bg-zinc-200 rounded-xl transition-all"
+          href="#"
+        >
+          <span class="material-symbols-outlined icon" data-icon="insights"
+            >insights</span
+          >
+          <span class="font-label text-sm font-medium">Analytics</span>
+        </a>
+      </nav>
+      <div class="mt-auto border-t border-zinc-200 pt-4 space-y-1">
+        <a
+          class="flex items-center gap-3 text-zinc-600 px-4 py-3 hover:bg-zinc-200 rounded-xl transition-all"
+          href="#"
+        >
+          <span class="material-symbols-outlined icon" data-icon="settings"
+            >settings</span
+          >
+          <span class="font-label text-sm font-medium">Settings</span>
+        </a>
+        <a
+          class="flex items-center gap-3 text-zinc-600 px-4 py-3 hover:bg-zinc-200 rounded-xl transition-all"
+          href="#"
+        >
+          <span
+            class="material-symbols-outlined icon"
+            data-icon="contact_support"
+            >contact_support</span
+          >
+          <span class="font-label text-sm font-medium">Support</span>
+        </a>
+      </div>
+    </aside>
+    <main class="ml-64 min-h-screen">
+      <!-- TopNavBar -->
+      <header
+        class="navbar-admin sticky top-0 z-40 bg-surface border-b border-outline-variant/20 px-6 py-3 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-4">
+          <span
+            class="font-headline tracking-tight font-semibold text-xl text-zinc-900"
+            >Knowledge Architect</span
+          >
+        </div>
+        <div class="navbar-logo">
+          <div class="relative w-64">
+            <span
+              class="material-symbols-outlined icon absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400"
+              data-icon="search"
+              >search</span
+            >
+            <input
+              class="w-full bg-surface-container-low border-none rounded-full py-2 pl-10 pr-4 text-sm focus:ring-2 focus:ring-primary-container transition-all"
+              placeholder="Search platform..."
+              type="text"
+            />
+          </div>
+          <div class="flex items-center gap-4">
+            <button class="text-zinc-500 hover:text-primary transition-colors">
+              <span
+                class="material-symbols-outlined icon"
+                data-icon="notifications"
+                >notifications</span
+              >
+            </button>
+            <button class="text-zinc-500 hover:text-primary transition-colors">
+              <span
+                class="material-symbols-outlined icon"
+                data-icon="help_outline"
+                >help_outline</span
+              >
+            </button>
+            <div
+              class="h-8 w-8 rounded-full bg-primary-fixed flex items-center justify-center border border-orange-200 overflow-hidden"
+            >
+              <img
+                alt="Instructor profile avatar"
+                data-alt="professional male instructor portrait clean lighting office background"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAuSGKVpYrR2MJ0FJrVQAvnBr5dUL5-5zoYSbvsQAmT98K8CEdCsNfZMu5l4p01zRlzZoX_0DPkJ7fvjBA5OKBJATSWSMu-AY_bgFeQ_jnQTok78nhvueOkLBbg-3HCu2KhU_E0sWsU3P_R75I-PNzTc8KczJMKTItm0gv10jKnJJ4oNRivPoI4bqbCsviMa4N6VdPywJ0uKZrL5gCS3h39A9u7KRTZGyTWCgpwnTqmGwBIQXs6RUnfMbH-cqMCfZBzFnQt5lq7AkU"
+              />
+            </div>
+          </div>
+        </div>
+      </header>
+      <div class="p-8 grid grid-cols-12 gap-8 flex-grow overflow-hidden">
+        <!-- Sidebar: Question List -->
+        <section class="col-span-4 flex flex-col gap-6">
+          <div class="flex flex-col gap-4">
+            <h2
+              class="font-headline text-2xl font-bold tracking-tight text-on-surface"
+            >
+              Questions
+            </h2>
+            <div class="flex gap-2 p-1 bg-surface-container rounded-xl">
+              <button
+                class="flex-1 py-2 px-3 text-xs font-bold bg-white rounded-xl shadow-sm text-primary"
+              >
+                All
+              </button>
+              <button
+                class="flex-1 py-2 px-3 text-xs font-medium text-zinc-500 hover:bg-zinc-200 rounded-xl"
+              >
+                Unanswered
+              </button>
+              <button
+                class="flex-1 py-2 px-3 text-xs font-medium text-zinc-500 hover:bg-zinc-200 rounded-xl"
+              >
+                Resolved
+              </button>
+            </div>
+            <div class="relative">
+              <span
+                class="material-symbols-outlined icon absolute left-3 top-1/2 -translate-y-1/2 text-zinc-400"
+                data-icon="search"
+                >search</span
+              >
+              <input
+                class="w-full bg-surface-container-lowest border-none rounded-xl py-3 pl-10 pr-4 text-sm shadow-sm focus:ring-2 focus:ring-primary-container"
+                placeholder="Search questions..."
+                type="text"
+              />
+            </div>
+          </div>
+          <div
+            class="flex flex-col gap-3 overflow-y-auto scrollbar-hide max-h-[calc(100vh-320px)]"
+          >
+            <!-- Question Card Active -->
+            <div
+              class="p-4 bg-surface-container-lowest rounded-xl border-l-4 border-primary-container shadow-sm transition-all cursor-pointer"
+            >
+              <div class="flex items-start gap-3 mb-2">
+                <img
+                  alt="Student"
+                  class="w-10 h-10 rounded-full object-cover"
+                  data-alt="young female student portrait with warm natural lighting"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIKEySQ5h0zQg1l3vxFq8Fq9wh6u0BfNbc759ogYG9MmHErD2ffwZeiQY0zLq31NxRz6AvZde21Y4BrmavJPgLWd5cOh2iw6PuHKoxFkd5zsIR3Yg-02XlhwghrMoYkXns0nwCInQwu86Ris1dGMk2z9zdoTxYwMynjenwPPgLUHztCJZ_FLQenI2heXUtobdv0xbLpEG5mFMFtcvwDPzVT5VkfO_9vbRLCtkYuzeL_PNwf2958DOl8QDKSsVo7XrCICx8KFtajRQ"
+                />
+                <div class="flex-grow">
+                  <h4 class="text-sm font-bold text-on-surface">
+                    Sarah Mitchell
+                  </h4>
+                  <p
+                    class="text-label text-zinc-400 uppercase tracking-wider font-bold"
+                  >
+                    12 mins ago
+                  </p>
+                </div>
+                <span class="w-2 h-2 rounded-full bg-primary-container"></span>
+              </div>
+              <p class="text-xs font-bold text-primary mb-1">
+                Mastering Advanced Typography
+              </p>
+              <p
+                class="text-sm text-on-surface-variant line-clamp-2 leading-relaxed"
+              >
+                Could you clarify the difference between tracking and kerning in
+                the context of high-resolution displays?
+              </p>
+            </div>
+            <!-- Question Card -->
+            <div
+              class="p-4 bg-white/40 hover:bg-white rounded-xl transition-all cursor-pointer"
+            >
+              <div class="flex items-start gap-3 mb-2">
+                <img
+                  alt="Student"
+                  class="w-10 h-10 rounded-full object-cover"
+                  data-alt="college student male portrait outdoors soft focus greenery"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhzwBFf1MIAp1xb04IsQLje810QfBJJOd0Dxq96XyYTFCDEtg6JzIBxRYLgTy7XhIXO041f4uG84w2VjMd6uJn1NDRdZRPrXsJ9oA8vOGw4-qmvalxovcFMQy3k2Tzh68pfxW_odYObENrJ4fEnNu4cjz2ktZN7n4jLk_vEZNCS5wXLV6U9rGX2kV2sW8SGJwaOrKgDtSopEFjvHeWb4Kfg_ZRSz135nfeKsNgUQzZArexXw53gc74OAU5pSeM3xeC4dcdmHuv-eo"
+                />
+                <div class="flex-grow">
+                  <h4 class="text-sm font-bold text-zinc-700">James Wilson</h4>
+                  <p
+                    class="text-label text-zinc-400 uppercase tracking-wider font-bold"
+                  >
+                    2 hours ago
+                  </p>
+                </div>
+              </div>
+              <p class="text-xs font-bold text-zinc-500 mb-1">
+                UI/UX Architectural Principles
+              </p>
+              <p class="text-sm text-zinc-500 line-clamp-2 leading-relaxed">
+                Is it better to use a grid-based approach for asymmetric layouts
+                or should I go with freeform flexbox?
+              </p>
+            </div>
+            <!-- Question Card -->
+            <div
+              class="p-4 bg-white/40 hover:bg-white rounded-xl transition-all cursor-pointer"
+            >
+              <div class="flex items-start gap-3 mb-2">
+                <img
+                  alt="Student"
+                  class="w-10 h-10 rounded-full object-cover"
+                  data-alt="professional female student portrait studio lighting"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBm203pvNblZFp96mPNFQ2kciGVIESRZ-VXBGcs3h-TrYWruF2YpKGOlZ8tHmp3IzcD98Ja-KuXlAhxAL0qk63DLdtzHdjA7kZ-V5mh7t_6fkwZt8xHcYwlsBLJbDabr8zhTUxCTDYP8YzNd1L52gZKqt3Fnt2RQKyhb8sA-FujnesZ7zH6VogEtEAmBBLgQ_DHq6KZpov2aYqMZMX8K0MUw6m49ZBtvEb0w9PmEi6cBdnlkQQ9K91KEkGHCDuBK8oNSiQbXgBqddE"
+                />
+                <div class="flex-grow">
+                  <h4 class="text-sm font-bold text-zinc-700">
+                    Elena Rodriguez
+                  </h4>
+                  <p
+                    class="text-label text-zinc-400 uppercase tracking-wider font-bold"
+                  >
+                    5 hours ago
+                  </p>
+                </div>
+              </div>
+              <p class="text-xs font-bold text-zinc-500 mb-1">
+                Color Theory for Dark Mode
+              </p>
+              <p class="text-sm text-zinc-500 line-clamp-2 leading-relaxed">
+                The contrast ratios for the primary container orange don't seem
+                to pass AA on dark grey surfaces...
+              </p>
+            </div>
+          </div>
+        </section>
+        <!-- Main Content: Detailed View -->
+        <section
+          class="col-span-8 flex flex-col gap-6 bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden h-[calc(100vh-160px)]"
+        >
+          <!-- Thread Header -->
+          <div
+            class="p-6 border-b border-surface-container flex justify-between items-center bg-white/50 backdrop-blur-md"
+          >
+            <div>
+              <h3 class="font-headline text-xl font-bold text-on-surface">
+                Question Thread
+              </h3>
+              <div class="flex items-center gap-2 mt-1">
+                <span
+                  class="text-xs font-medium text-primary bg-primary-fixed px-2 py-1 rounded"
+                  >Unresolved</span
+                >
+                <span class="text-xs text-zinc-400">•</span>
+                <span class="text-xs text-zinc-500 font-medium"
+                  >Course:
+                  <span class="text-zinc-800"
+                    >Mastering Advanced Typography</span
+                  ></span
+                >
+              </div>
+            </div>
+            <div class="flex gap-2">
+              <button
+                class="p-2 text-zinc-400 hover:text-primary transition-colors"
+              >
+                <span class="material-symbols-outlined icon" data-icon="flag"
+                  >flag</span
+                >
+              </button>
+              <button
+                class="p-2 text-zinc-400 hover:text-primary transition-colors"
+              >
+                <span class="material-symbols-outlined icon" data-icon="archive"
+                  >archive</span
+                >
+              </button>
+              <button
+                class="px-4 py-2 bg-zinc-100 text-zinc-700 rounded-xl text-sm font-bold hover:bg-zinc-200 transition-all"
+              >
+                Mark as Resolved
+              </button>
+            </div>
+          </div>
+          <!-- Chat Canvas -->
+          <div
+            class="flex-grow overflow-y-auto p-6 flex flex-col gap-8 scrollbar-hide"
+          >
+            <!-- Student Question -->
+            <div class="flex gap-4 max-w-[85%]">
+              <img
+                alt="Sarah"
+                class="w-10 h-10 rounded-full flex-shrink-0"
+                data-alt="young female student portrait with warm natural lighting"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1ijC4jGeJ_oivpOvwszhkr0bkjlcIW6vT7W4oy3noKa3sR4jXwvm3W5N306PC2rOPT9c05cERMqYyF40SiwXculHkWzW8JMKSEV3zYJ79EYiRbMSebE4E53vwj848d4gGFTHaCJD5ymY20LWOflINknT5eBujsUIixfzkUyJdrJlaz5bOUSJlbowLsPYUcEcfFuB86yfhnAxF0gEjYRy6mLWSaezfxYFUG9Vc7WukGigqyhi3p3OW1ZHG9peUVH0mM3p15ueN0lc"
+              />
+              <div class="stack-xs">
+                <div class="flex items-baseline gap-3">
+                  <span class="text-sm font-bold text-on-surface"
+                    >Sarah Mitchell</span
+                  >
+                  <span class="text-label text-zinc-400 font-bold"
+                    >10:42 AM</span
+                  >
+                </div>
+                <div
+                  class="bg-surface-container-low p-4 rounded-2xl rounded-tl-none"
+                >
+                  <p class="text-sm text-on-surface leading-relaxed">
+                    Hey Professor! I'm working through Module 4 and I'm a bit
+                    confused. Could you clarify the difference between tracking
+                    and kerning in the context of high-resolution displays?
+                    Specifically, when designing for mobile devices where pixel
+                    density is high, should I be more aggressive with tracking
+                    to improve readability?
+                    <br /><br />
+                    I noticed that some of the examples in the PDF seem to have
+                    very loose tracking. Is that a stylistic choice or a
+                    technical requirement for smaller screens?
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- Instructor Reply Placeholder/Draft -->
+            <div class="flex gap-4 max-w-[85%] ml-auto flex-row-reverse">
+              <div
+                class="h-10 w-10 rounded-full bg-primary-fixed flex items-center justify-center border border-orange-200 overflow-hidden flex-shrink-0"
+              >
+                <img
+                  alt="Instructor"
+                  data-alt="professional male instructor portrait clean lighting"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuApylfwGhZcNLBcOJRQ2DttIxT6p7uRgm-8AwUHOvECzF_qeUBHL6UPeZQvKvnJ2lYStTx12BU270zGG44YPkFWdScC9RvZhwqAYSgkwBoHUKaU02ef3knWB0gBFuChaWMQaapXsuxNcE8FNHUtcMsfkH6dbaAKgllagbKXE1jq-s9zWH9V-4D5PFLzly-0swhQEfq-J7XBmixh1sqN7VvmhSZ9mKvJ9EbqtXN9YL7PDgW72EXwbAJ3btvpSsBJUZPRtfau2Ht-L4s"
+                />
+              </div>
+              <div class="space-y-2 text-right">
+                <div class="flex items-baseline gap-3 flex-row-reverse">
+                  <span class="text-sm font-bold text-primary"
+                    >You (Drafting...)</span
+                  >
+                </div>
+                <div
+                  class="bg-primary-fixed/50 border border-primary-fixed p-4 rounded-2xl rounded-tr-none italic text-orange-800 text-sm"
+                >
+                  Gathering some visual examples of responsive tracking to share
+                  with you, Sarah. Hang tight!
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Rich Text Editor Footer -->
+          <div class="p-6 bg-white border-t border-surface-container">
+            <div
+              class="bg-surface-container-low rounded-xl border border-zinc-200/50 focus-within:border-primary-container focus-within:bg-white transition-all"
+            >
+              <div
+                class="flex items-center gap-2 p-2 border-b border-zinc-200/50"
+              >
+                <button
+                  class="p-1.5 text-zinc-500 hover:bg-zinc-200 rounded-xl transition-colors"
+                >
+                  <span
+                    class="material-symbols-outlined nav-icon"
+                    data-icon="format_bold"
+                    >format_bold</span
+                  >
+                </button>
+                <button
+                  class="p-1.5 text-zinc-500 hover:bg-zinc-200 rounded-xl transition-colors"
+                >
+                  <span
+                    class="material-symbols-outlined nav-icon"
+                    data-icon="format_italic"
+                    >format_italic</span
+                  >
+                </button>
+                <button
+                  class="p-1.5 text-zinc-500 hover:bg-zinc-200 rounded-xl transition-colors"
+                >
+                  <span
+                    class="material-symbols-outlined nav-icon"
+                    data-icon="format_list_bulleted"
+                    >format_list_bulleted</span
+                  >
+                </button>
+                <button
+                  class="p-1.5 text-zinc-500 hover:bg-zinc-200 rounded-xl transition-colors"
+                >
+                  <span
+                    class="material-symbols-outlined nav-icon"
+                    data-icon="link"
+                    >link</span
+                  >
+                </button>
+                <button
+                  class="p-1.5 text-zinc-500 hover:bg-zinc-200 rounded-xl transition-colors"
+                >
+                  <span
+                    class="material-symbols-outlined nav-icon"
+                    data-icon="image"
+                    >image</span
+                  >
+                </button>
+                <div class="w-[1px] h-4 bg-zinc-300 mx-1"></div>
+                <button
+                  class="p-1.5 text-zinc-500 hover:bg-zinc-200 rounded-xl transition-colors"
+                >
+                  <span
+                    class="material-symbols-outlined nav-icon"
+                    data-icon="code"
+                    >code</span
+                  >
+                </button>
+              </div>
+              <textarea
+                class="w-full bg-transparent border-none focus:ring-0 p-4 text-sm min-h-[120px] resize-none"
+                placeholder="Write your reply to Sarah..."
+              ></textarea>
+              <div class="flex justify-between items-center p-3">
+                <span class="text-xs text-zinc-400 italic">Auto-saving...</span>
+                <div class="flex gap-3">
+                  <button
+                    class="px-4 py-2 text-sm font-bold text-zinc-600 hover:bg-zinc-200 rounded-xl transition-all"
+                  >
+                    Discard
+                  </button>
+                  <button
+                    class="px-6 py-2 bg-gradient-to-b from-primary to-primary-container text-white text-sm font-bold rounded-xl shadow-sm shadow-orange-900/10 hover:brightness-110 transition-all flex items-center gap-2"
+                  >
+                    Send Reply
+                    <span
+                      class="material-symbols-outlined icon"
+                      data-icon="send"
+                      >send</span
+                    >
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+    <!-- FAB Suppression: Contextually hidden as per rules for Q&A screen -->
+  </body>
+</html>

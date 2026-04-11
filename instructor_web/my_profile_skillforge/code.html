@@ -1,211 +1,374 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 
-<html lang="en"><head>
-<link rel="stylesheet" href="../../shared/tailwind-desktop.css"/>
-<link rel="stylesheet" href="../../shared/base.css"/>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="../../shared/tailwind-desktop.css" />
+    <link rel="stylesheet" href="../../shared/base.css" />
 
-<meta charset="utf-8"/>
-<meta name="description" content="SkillForge — The premium platform for professional skill development and certification."/>
-<link rel="icon" type="image/svg+xml" href="../../shared/favicon.svg"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>SkillForge | Instructor Profile</title>
-
-</head>
-<body class="bg-surface font-body text-on-surface">
-<!-- Side Navigation -->
-<aside class="fixed left-0 top-0 h-full flex flex-col py-6 bg-surface-container-low dark:bg-inverse-surface h-screen w-64 border-r-0 font-body tracking-tight font-medium z-50">
-<div class="px-6 mb-10">
-<span class="text-2xl font-bold tracking-tighter text-primary dark:text-primary-container">SkillForge</span>
-</div>
-<nav class="flex-1 px-4 space-y-1">
-<a class="flex items-center gap-3 px-4 py-3 text-outline dark:text-outline font-medium hover:text-slate-900 dark:hover:text-slate-100 hover:bg-surface-container-high/50 dark:hover:bg-surface-container-high/50 transition-colors rounded-xl" href="#">
-<span class="material-symbols-outlined icon">dashboard</span>
-<span>Dashboard</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 text-outline dark:text-outline font-medium hover:text-slate-900 dark:hover:text-slate-100 hover:bg-surface-container-high/50 dark:hover:bg-surface-container-high/50 transition-colors rounded-xl" href="#">
-<span class="material-symbols-outlined icon">auto_stories</span>
-<span>Courses</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 text-outline dark:text-outline font-medium hover:text-slate-900 dark:hover:text-slate-100 hover:bg-surface-container-high/50 dark:hover:bg-surface-container-high/50 transition-colors rounded-xl" href="#">
-<span class="material-symbols-outlined icon">group</span>
-<span>Students</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 text-outline dark:text-outline font-medium hover:text-slate-900 dark:hover:text-slate-100 hover:bg-surface-container-high/50 dark:hover:bg-surface-container-high/50 transition-colors rounded-xl" href="#">
-<span class="material-symbols-outlined icon">payments</span>
-<span>Finance</span>
-</a>
-<a class="flex items-center gap-3 px-4 py-3 text-primary dark:text-primary-container font-bold border-r-4 border-orange-600 hover:bg-surface-container-high/50 dark:hover:bg-surface-container-high/50 transition-colors" href="#">
-<span class="material-symbols-outlined icon">settings</span>
-<span>Settings</span>
-</a>
-</nav>
-<div class="px-4 mt-auto">
-<button class="btn btn-primary btn-w-full">
-                Create New Course
-            </button>
-</div>
-</aside>
-<!-- Main Content Area -->
-<main class="ml-64 min-h-screen">
-<!-- Top Navigation -->
-<header class="navbar">
-
-<div class="flex items-center bg-surface-container-low rounded-xl px-4 py-2 w-96 focus-within:ring-2 focus-within:ring-orange-500/20 transition-all">
-<span class="material-symbols-outlined icon text-on-surface-variant mr-2">search</span>
-<input class="bg-transparent border-none focus:ring-0 text-sm w-full font-body" placeholder="Search architect data..." type="text"/>
-</div>
-<div class="flex items-center gap-4">
-<button class="p-2 text-on-surface-variant dark:text-outline hover:bg-surface-container-low dark:hover:bg-slate-900 rounded-xl transition-all">
-<span class="material-symbols-outlined icon">notifications</span>
-</button>
-<button class="p-2 text-on-surface-variant dark:text-outline hover:bg-surface-container-low dark:hover:bg-slate-900 rounded-xl transition-all">
-<span class="material-symbols-outlined icon">help_outline</span>
-</button>
-<div class="h-8 w-[1px] bg-slate-200 mx-2"></div>
-<div class="flex items-center gap-3">
-<img class="w-10 h-10 rounded-full object-cover ring-2 ring-orange-500/10" data-alt="Professional headshot of a senior architect instructor with grey hair and glasses in a brightly lit modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsS38OtF4FC5Uk8xnJGWAEIdAD9Snpcy_FQN7oJapIvToFn3Mrk1o9PejhJtygo1wcj3AsdiktAxkYXMPKqShXQx43hKYFp_eW4v0NDLJ0hRSOa6hMbwKXwv7JOnYqzTfjt_8vlpUlIC6_p2jvrNiODvNjFdeYNqq6_eOEJXdHsYc2G8bLisf9ThAwYoscx90GXAp7I5JwxjIfXiljQ8FQfgc1lz8LsK4FBe2civMX1sNJ0aRtXO0dNIfyW5wyuB898Wx59m3S9BE"/>
-<div class="hidden lg:block text-right">
-<p class="text-sm font-bold font-headline">Instructor Profile</p>
-<p class="text-xs text-outline">Knowledge Architect</p>
-</div>
-</div>
-</div>
-</header>
-<!-- Page Canvas -->
-<div class="p-10 max-w-6xl mx-auto">
-<div class="mb-10">
-<h1 class="text-4xl font-extrabold font-headline tracking-tight text-on-surface mb-2">Settings</h1>
-<p class="text-outline font-body">Manage your architectural persona, professional credentials, and financial preferences.</p>
-</div>
-<!-- Profile Grid -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-<!-- Left: Profile Basics -->
-<div class="lg:col-span-4 space-y-8">
-<!-- Avatar Upload Card -->
-<div class="card-outline transition-all hover:shadow-xl hover:shadow-slate-200/50">
-<div class="flex flex-col items-center">
-<div class="relative group">
-<img class="w-40 h-40 rounded-full object-cover mb-6 ring-4 ring-orange-500/5" data-alt="Close up portrait of a middle-aged male architect instructor with friendly expression, warm studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtGQb1LrDhOqtsdpjwgzIma1LB-D8vL8rWdktIcXkCRhlgIAaWbP22flj7KYHh1PkeSuQpNM_Lb5xjgYUhbdWwn5V40cQ2BMRxisKmB7rfU6Xbj9ciC5BDF4kW5qPT6FcGLfxZhtavudO89RRDxxwDHb7A-ERGmJu8vLFwbRc-OxhteafvK1T_S5WF8m6bcI6NctLFGO9pWO-_wSvBMTzLLHMwinVk26LgoLkHd6kVW5cZH2JlA6eJlfLVR4TZSvY-ycT1Sh-cLG4"/>
-<button class="absolute bottom-6 right-2 bg-primary text-white p-2 rounded-full shadow-lg hover:scale-110 transition-transform">
-<span class="material-symbols-outlined icon">photo_camera</span>
-</button>
-</div>
-<h3 class="font-headline font-bold text-lg mb-1">Alex Rivendell</h3>
-<p class="text-outline text-sm mb-6 uppercase tracking-widest font-semibold">Chief Instructor</p>
-<div class="flex gap-2 w-full">
-<button class="flex-1 bg-surface-container-low text-primary py-2 rounded-xl text-xs font-bold transition-all hover:bg-primary-fixed/50">Upload New</button>
-<button class="p-2 bg-error-container text-on-error-container rounded-xl transition-all hover:opacity-80">
-<span class="material-symbols-outlined icon">delete</span>
-</button>
-</div>
-</div>
-</div>
-<!-- Identity Stats -->
-<div class="card-outline">
-<div class="stack-md">
-<div class="flex justify-between items-center">
-<span class="text-outline text-sm">Account Status</span>
-<span class="bg-secondary-fixed text-on-secondary-fixed px-3 py-1 rounded-full text-label font-bold uppercase tracking-wider">Verified</span>
-</div>
-<div class="flex justify-between items-center">
-<span class="text-outline text-sm">Member Since</span>
-<span class="font-bold text-sm">March 2021</span>
-</div>
-<div class="flex justify-between items-center">
-<span class="text-outline text-sm">Course Credits</span>
-<span class="text-primary font-bold text-sm">1,240.00 AR</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Right: Detailed Information -->
-<div class="lg:col-span-8 space-y-8">
-<!-- Bio & Expertise -->
-<div class="card-outline">
-<h2 class="text-xl font-bold font-headline mb-8 border-b border-surface-container pb-4">Professional Persona</h2>
-<div class="stack">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<div class="stack-xs">
-<label class="text-xs font-bold uppercase tracking-wider text-outline ml-1">Full Name</label>
-<input class="w-full bg-surface-container-highest border-none border-b-2 border-transparent focus:border-primary focus:bg-surface-container-lowest focus:ring-0 transition-all rounded-t-xl px-4 py-3 font-medium" type="text" value="Alex Rivendell"/>
-</div>
-<div class="stack-xs">
-<label class="text-xs font-bold uppercase tracking-wider text-outline ml-1">Title</label>
-<input class="w-full bg-surface-container-highest border-none border-b-2 border-transparent focus:border-primary focus:bg-surface-container-lowest focus:ring-0 transition-all rounded-t-xl px-4 py-3 font-medium" type="text" value="Principal Knowledge Architect"/>
-</div>
-</div>
-<div class="stack-xs">
-<label class="text-xs font-bold uppercase tracking-wider text-outline ml-1">Expertise</label>
-<div class="flex flex-wrap gap-2 mb-2 p-4 bg-surface-container rounded-xl">
-<span class="bg-primary-container text-on-primary-container text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1">
-                                        Architectural Design <span class="material-symbols-outlined icon">close</span>
-</span>
-<span class="bg-primary-container text-on-primary-container text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1">
-                                        Project Management <span class="material-symbols-outlined icon">close</span>
-</span>
-<span class="bg-primary-container text-on-primary-container text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1">
-                                        Sustainability <span class="material-symbols-outlined icon">close</span>
-</span>
-<button class="bg-white text-primary text-xs font-bold px-3 py-1.5 rounded-full border border-dashed border-primary hover:bg-primary-fixed/50 transition-colors">
-                                        + Add expertise
-                                    </button>
-</div>
-</div>
-<div class="stack-xs">
-<label class="text-xs font-bold uppercase tracking-wider text-outline ml-1">Biography</label>
-<textarea class="w-full bg-surface-container-highest border-none border-b-2 border-transparent focus:border-primary focus:bg-surface-container-lowest focus:ring-0 transition-all rounded-t-xl px-4 py-3 font-body text-sm leading-relaxed" placeholder="Tell your students about your journey..." rows="4">With over 15 years of industry experience, I specialize in teaching advanced spatial design principles. My goal is to empower the next generation of architects with sustainable practices and cutting-edge software mastery.</textarea>
-</div>
-</div>
-</div>
-<!-- Financial Settings -->
-<div class="card-outline">
-<div class="flex justify-between items-center mb-8 border-b border-surface-container pb-4">
-<h2 class="text-xl font-bold font-headline">Financial Accounts</h2>
-<span class="material-symbols-outlined icon text-primary">account_balance_wallet</span>
-</div>
-<div class="stack">
-<!-- Existing Account -->
-<div class="p-6 bg-surface rounded-xl border border-dashed border-slate-300 row row-between">
-<div class="flex items-center gap-4">
-<div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm">
-<span class="material-symbols-outlined icon text-secondary">account_balance</span>
-</div>
-<div>
-<p class="font-bold text-sm">International Standard Bank</p>
-<p class="text-xs text-outline">**** 8842 • Checking Account</p>
-</div>
-</div>
-<div class="flex gap-4 items-center">
-<span class="text-label bg-surface-container-highest px-2 py-1 rounded text-outline font-bold uppercase tracking-tighter">Primary</span>
-<button class="text-slate-400 hover:text-error transition-colors">
-<span class="material-symbols-outlined nav-icon">delete</span>
-</button>
-</div>
-</div>
-<!-- Form: New Financial Account -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
-<div class="stack-xs">
-<label class="text-xs font-bold uppercase tracking-wider text-outline ml-1">Bank Name / Wallet Provider</label>
-<select class="w-full bg-surface-container-highest border-none border-b-2 border-transparent focus:border-primary focus:bg-surface-container-lowest focus:ring-0 transition-all rounded-t-xl px-4 py-3 font-medium appearance-none">
-<option>Select Option</option>
-<option>Global Bank PLC</option>
-<option>Digital Wallet Pay</option>
-<option>Crypto Settlement</option>
-</select>
-</div>
-<div class="stack-xs">
-<label class="text-xs font-bold uppercase tracking-wider text-outline ml-1">Account Number / ID</label>
-<input class="w-full bg-surface-container-highest border-none border-b-2 border-transparent focus:border-primary focus:bg-surface-container-lowest focus:ring-0 transition-all rounded-t-xl px-4 py-3 font-medium" placeholder="Enter identification" type="text"/>
-</div>
-</div>
-</div>
-<div class="mt-10 pt-8 border-t border-surface-container flex justify-end gap-4">
-<button class="px-8 py-3 rounded-xl font-bold text-sm text-outline hover:bg-surface-container-low transition-colors">Cancel Changes</button>
-<button class="px-10 py-3 rounded-xl font-bold text-sm text-white orange-gradient shadow-lg shadow-orange-900/10 active:scale-95 transition-all">Save Profile</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-</main>
-</body></html>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="SkillForge — The premium platform for professional skill development and certification."
+    />
+    <link rel="icon" type="image/svg+xml" href="../../shared/favicon.svg" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>SkillForge | Instructor Profile</title>
+  </head>
+  <body class="bg-surface font-body text-on-surface">
+    <!-- Side Navigation -->
+    <aside
+      class="fixed left-0 top-0 h-full flex flex-col py-6 bg-surface-container-low dark:bg-inverse-surface h-screen w-64 border-r-0 font-body tracking-tight font-medium z-50"
+    >
+      <div class="px-6 mb-10">
+        <span
+          class="text-2xl font-bold tracking-tighter text-primary dark:text-primary-container"
+          >SkillForge</span
+        >
+      </div>
+      <nav class="flex-1 px-4 space-y-1">
+        <a
+          class="flex items-center gap-3 px-4 py-3 text-outline dark:text-outline font-medium hover:text-slate-900 dark:hover:text-slate-100 hover:bg-surface-container-high/50 dark:hover:bg-surface-container-high/50 transition-colors rounded-xl"
+          href="#"
+        >
+          <span class="material-symbols-outlined icon">dashboard</span>
+          <span>Dashboard</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 text-outline dark:text-outline font-medium hover:text-slate-900 dark:hover:text-slate-100 hover:bg-surface-container-high/50 dark:hover:bg-surface-container-high/50 transition-colors rounded-xl"
+          href="#"
+        >
+          <span class="material-symbols-outlined icon">auto_stories</span>
+          <span>Courses</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 text-outline dark:text-outline font-medium hover:text-slate-900 dark:hover:text-slate-100 hover:bg-surface-container-high/50 dark:hover:bg-surface-container-high/50 transition-colors rounded-xl"
+          href="#"
+        >
+          <span class="material-symbols-outlined icon">group</span>
+          <span>Students</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 text-outline dark:text-outline font-medium hover:text-slate-900 dark:hover:text-slate-100 hover:bg-surface-container-high/50 dark:hover:bg-surface-container-high/50 transition-colors rounded-xl"
+          href="#"
+        >
+          <span class="material-symbols-outlined icon">payments</span>
+          <span>Finance</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 text-primary dark:text-primary-container font-bold border-r-4 border-orange-600 hover:bg-surface-container-high/50 dark:hover:bg-surface-container-high/50 transition-colors"
+          href="#"
+        >
+          <span class="material-symbols-outlined icon">settings</span>
+          <span>Settings</span>
+        </a>
+      </nav>
+      <div class="px-4 mt-auto">
+        <button class="btn btn-primary btn-w-full">Create New Course</button>
+      </div>
+    </aside>
+    <!-- Main Content Area -->
+    <main class="ml-64 min-h-screen">
+      <!-- Top Navigation -->
+      <header
+        class="navbar navbar-admin sticky top-0 z-40 bg-surface border-b border-outline-variant/20 px-6 py-3 flex items-center justify-between"
+      >
+        <div
+          class="flex items-center bg-surface-container-low rounded-xl px-4 py-2 w-96 focus-within:ring-2 focus-within:ring-orange-500/20 transition-all"
+        >
+          <span
+            class="material-symbols-outlined icon text-on-surface-variant mr-2"
+            >search</span
+          >
+          <input
+            class="w-full pl-10 pr-4 py-2 bg-surface-container-lowest border-none rounded-xl text-sm focus:ring-2 focus:ring-primary transition-all"
+            placeholder="Search architect data..."
+            type="text"
+          />
+        </div>
+        <div class="flex items-center gap-4">
+          <button
+            class="p-2 text-on-surface-variant dark:text-outline hover:bg-surface-container-low dark:hover:bg-slate-900 rounded-xl transition-all"
+          >
+            <span class="material-symbols-outlined icon">notifications</span>
+          </button>
+          <button
+            class="p-2 text-on-surface-variant dark:text-outline hover:bg-surface-container-low dark:hover:bg-slate-900 rounded-xl transition-all"
+          >
+            <span class="material-symbols-outlined icon">help_outline</span>
+          </button>
+          <div class="h-8 w-[1px] bg-slate-200 mx-2"></div>
+          <div class="flex items-center gap-3">
+            <img
+              class="w-10 h-10 rounded-full object-cover ring-2 ring-orange-500/10"
+              data-alt="Professional headshot of a senior architect instructor with grey hair and glasses in a brightly lit modern office setting"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJhO3l7mIQiKxdsF_47A16cyf1_f6_XjyFAl8b_iKeByYylQJNsj15QLFiCrM5JAo4KbCJq2J8AC8-3aNWQEKGd7s1oDtW7x5r67gfElYWIfjUhUFBA-EVP41hADhw6bXkY7TVjU4Fr9LbYKkpOY5IYX5fpYmxmlIEewhR6ZnLq_EUcJL9wp5WoNFmyGXLrM-AUgRWm04E-Kci-CcFXo63h0ymn7LzkyVrVByvTnxZzNyJolCGYVwtSUOhTOmfBKtUuuntHrarcHn6"
+            />
+            <div class="hidden lg:block text-right">
+              <p class="text-sm font-bold font-headline">Instructor Profile</p>
+              <p class="text-xs text-outline">Knowledge Architect</p>
+            </div>
+          </div>
+        </div>
+      </header>
+      <!-- Page Canvas -->
+      <div class="p-10 max-w-6xl mx-auto mt-16">
+        <div class="mb-10">
+          <h1
+            class="text-4xl font-extrabold font-headline tracking-tight text-on-surface mb-2"
+          >
+            Settings
+          </h1>
+          <p class="text-outline font-body">
+            Manage your architectural persona, professional credentials, and
+            financial preferences.
+          </p>
+        </div>
+        <!-- Profile Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          <!-- Left: Profile Basics -->
+          <div class="lg:col-span-4 space-y-8">
+            <!-- Avatar Upload Card -->
+            <div
+              class="card-outline transition-all hover:shadow-xl hover:shadow-slate-200/50"
+            >
+              <div class="flex flex-col items-center">
+                <div class="relative group">
+                  <img
+                    class="w-40 h-40 rounded-full object-cover mb-6 ring-4 ring-orange-500/5"
+                    data-alt="Close up portrait of a middle-aged male architect instructor with friendly expression, warm studio lighting"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJhO3l7mIQiKxdsF_47A16cyf1_f6_XjyFAl8b_iKeByYylQJNsj15QLFiCrM5JAo4KbCJq2J8AC8-3aNWQEKGd7s1oDtW7x5r67gfElYWIfjUhUFBA-EVP41hADhw6bXkY7TVjU4Fr9LbYKkpOY5IYX5fpYmxmlIEewhR6ZnLq_EUcJL9wp5WoNFmyGXLrM-AUgRWm04E-Kci-CcFXo63h0ymn7LzkyVrVByvTnxZzNyJolCGYVwtSUOhTOmfBKtUuuntHrarcHn6"
+                  />
+                  <button
+                    class="absolute bottom-6 right-2 bg-primary text-white p-2 rounded-full shadow-lg hover:scale-110 transition-transform"
+                  >
+                    <span class="material-symbols-outlined icon"
+                      >photo_camera</span
+                    >
+                  </button>
+                </div>
+                <h3 class="font-headline font-bold text-lg mb-1">
+                  Alex Rivendell
+                </h3>
+                <p
+                  class="text-outline text-sm mb-6 uppercase tracking-widest font-semibold"
+                >
+                  Chief Instructor
+                </p>
+                <div class="flex gap-2 w-full">
+                  <button
+                    class="flex-1 bg-surface-container-low text-primary py-2 rounded-xl text-xs font-bold transition-all hover:bg-primary-fixed/50"
+                  >
+                    Upload New
+                  </button>
+                  <button
+                    class="p-2 bg-error-container text-on-error-container rounded-xl transition-all hover:opacity-80"
+                  >
+                    <span class="material-symbols-outlined icon">delete</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <!-- Identity Stats -->
+            <div class="card-outline">
+              <div class="stack-md">
+                <div class="flex justify-between items-center">
+                  <span class="text-outline text-sm">Account Status</span>
+                  <span
+                    class="bg-secondary-fixed text-on-secondary-fixed px-3 py-1 rounded-full text-label font-bold uppercase tracking-wider"
+                    >Verified</span
+                  >
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-outline text-sm">Member Since</span>
+                  <span class="font-bold text-sm">March 2021</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-outline text-sm">Course Credits</span>
+                  <span class="text-primary font-bold text-sm"
+                    >1,240.00 AR</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Right: Detailed Information -->
+          <div class="lg:col-span-8 space-y-8">
+            <!-- Bio & Expertise -->
+            <div class="card-outline">
+              <h2
+                class="text-xl font-bold font-headline mb-8 border-b border-surface-container pb-4"
+              >
+                Professional Persona
+              </h2>
+              <div class="stack">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div class="stack-xs">
+                    <label
+                      class="text-xs font-bold uppercase tracking-wider text-outline ml-1"
+                      >Full Name</label
+                    >
+                    <input
+                      class="w-full bg-surface-container-highest border-none border-b-2 border-transparent focus:border-primary focus:bg-surface-container-lowest focus:ring-0 transition-all rounded-t-xl px-4 py-3 font-medium"
+                      type="text"
+                      value="Alex Rivendell"
+                    />
+                  </div>
+                  <div class="stack-xs">
+                    <label
+                      class="text-xs font-bold uppercase tracking-wider text-outline ml-1"
+                      >Title</label
+                    >
+                    <input
+                      class="w-full bg-surface-container-highest border-none border-b-2 border-transparent focus:border-primary focus:bg-surface-container-lowest focus:ring-0 transition-all rounded-t-xl px-4 py-3 font-medium"
+                      type="text"
+                      value="Principal Knowledge Architect"
+                    />
+                  </div>
+                </div>
+                <div class="stack-xs">
+                  <label
+                    class="text-xs font-bold uppercase tracking-wider text-outline ml-1"
+                    >Expertise</label
+                  >
+                  <div
+                    class="flex flex-wrap gap-2 mb-2 p-4 bg-surface-container rounded-xl"
+                  >
+                    <span
+                      class="bg-primary-container text-on-primary-container text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1"
+                    >
+                      Architectural Design
+                      <span class="material-symbols-outlined icon">close</span>
+                    </span>
+                    <span
+                      class="bg-primary-container text-on-primary-container text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1"
+                    >
+                      Project Management
+                      <span class="material-symbols-outlined icon">close</span>
+                    </span>
+                    <span
+                      class="bg-primary-container text-on-primary-container text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-1"
+                    >
+                      Sustainability
+                      <span class="material-symbols-outlined icon">close</span>
+                    </span>
+                    <button
+                      class="bg-white text-primary text-xs font-bold px-3 py-1.5 rounded-full border border-dashed border-primary hover:bg-primary-fixed/50 transition-colors"
+                    >
+                      + Add expertise
+                    </button>
+                  </div>
+                </div>
+                <div class="stack-xs">
+                  <label
+                    class="text-xs font-bold uppercase tracking-wider text-outline ml-1"
+                    >Biography</label
+                  >
+                  <textarea
+                    class="w-full bg-surface-container-highest border-none border-b-2 border-transparent focus:border-primary focus:bg-surface-container-lowest focus:ring-0 transition-all rounded-t-xl px-4 py-3 font-body text-sm leading-relaxed"
+                    placeholder="Tell your students about your journey..."
+                    rows="4"
+                  >
+With over 15 years of industry experience, I specialize in teaching advanced spatial design principles. My goal is to empower the next generation of architects with sustainable practices and cutting-edge software mastery.</textarea
+                  >
+                </div>
+              </div>
+            </div>
+            <!-- Financial Settings -->
+            <div class="card-outline">
+              <div
+                class="flex justify-between items-center mb-8 border-b border-surface-container pb-4"
+              >
+                <h2 class="text-xl font-bold font-headline">
+                  Financial Accounts
+                </h2>
+                <span class="material-symbols-outlined icon text-primary"
+                  >account_balance_wallet</span
+                >
+              </div>
+              <div class="stack">
+                <!-- Existing Account -->
+                <div
+                  class="p-6 bg-surface rounded-xl border border-dashed border-slate-300 row row-between"
+                >
+                  <div class="flex items-center gap-4">
+                    <div
+                      class="w-12 h-12 bg-white rounded-xl flex items-center justify-center shadow-sm"
+                    >
+                      <span
+                        class="material-symbols-outlined icon text-secondary"
+                        >account_balance</span
+                      >
+                    </div>
+                    <div>
+                      <p class="font-bold text-sm">
+                        International Standard Bank
+                      </p>
+                      <p class="text-xs text-outline">
+                        **** 8842 • Checking Account
+                      </p>
+                    </div>
+                  </div>
+                  <div class="flex gap-4 items-center">
+                    <span
+                      class="text-label bg-surface-container-highest px-2 py-1 rounded text-outline font-bold uppercase tracking-tighter"
+                      >Primary</span
+                    >
+                    <button
+                      class="text-slate-400 hover:text-error transition-colors"
+                    >
+                      <span class="material-symbols-outlined nav-icon"
+                        >delete</span
+                      >
+                    </button>
+                  </div>
+                </div>
+                <!-- Form: New Financial Account -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+                  <div class="stack-xs">
+                    <label
+                      class="text-xs font-bold uppercase tracking-wider text-outline ml-1"
+                      >Bank Name / Wallet Provider</label
+                    >
+                    <select
+                      class="w-full bg-surface-container-highest border-none border-b-2 border-transparent focus:border-primary focus:bg-surface-container-lowest focus:ring-0 transition-all rounded-t-xl px-4 py-3 font-medium appearance-none"
+                    >
+                      <option>Select Option</option>
+                      <option>Global Bank PLC</option>
+                      <option>Digital Wallet Pay</option>
+                      <option>Crypto Settlement</option>
+                    </select>
+                  </div>
+                  <div class="stack-xs">
+                    <label
+                      class="text-xs font-bold uppercase tracking-wider text-outline ml-1"
+                      >Account Number / ID</label
+                    >
+                    <input
+                      class="w-full bg-surface-container-highest border-none border-b-2 border-transparent focus:border-primary focus:bg-surface-container-lowest focus:ring-0 transition-all rounded-t-xl px-4 py-3 font-medium"
+                      placeholder="Enter identification"
+                      type="text"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="mt-10 pt-8 border-t border-surface-container flex justify-end gap-4"
+              >
+                <button
+                  class="px-8 py-3 rounded-xl font-bold text-sm text-outline hover:bg-surface-container-low transition-colors"
+                >
+                  Cancel Changes
+                </button>
+                <button
+                  class="px-10 py-3 rounded-xl font-bold text-sm text-white orange-gradient shadow-lg shadow-orange-900/10 active:scale-95 transition-all"
+                >
+                  Save Profile
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

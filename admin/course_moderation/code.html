@@ -1,289 +1,494 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 
-<html class="light" lang="en"><head>
-<link rel="stylesheet" href="../../shared/tailwind-desktop.css"/>
-<link rel="stylesheet" href="../../shared/base.css"/>
+<html class="light" lang="en">
+  <head>
+    <link rel="stylesheet" href="../../shared/tailwind-desktop.css" />
+    <link rel="stylesheet" href="../../shared/base.css" />
 
-<meta charset="utf-8"/>
-<meta name="description" content="SkillForge — The premium platform for professional skill development and certification."/>
-<link rel="icon" type="image/svg+xml" href="../../shared/favicon.svg"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>SkillForge | Course Moderation</title>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="SkillForge — The premium platform for professional skill development and certification."
+    />
+    <link rel="icon" type="image/svg+xml" href="../../shared/favicon.svg" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>SkillForge | Course Moderation</title>
+  </head>
+  <body class="bg-surface text-on-surface">
+    <!-- SideNavBar -->
+    <aside
+      class="h-screen w-64 fixed left-0 top-0 border-r-0 bg-surface dark:bg-inverse-surface flex flex-col h-full py-6 z-[60]"
+    >
+      <div class="px-6 mb-10">
+        <h1 class="sf-brand text-2xl">SkillForge</h1>
+        <p class="text-sm font-medium text-on-surface-variant">Admin Portal</p>
+      </div>
+      <nav class="flex-1 space-y-1">
+        <a
+          class="flex items-center px-6 py-3 text-on-surface-variant dark:text-outline font-medium hover:bg-surface-container-high dark:hover:bg-slate-800 transition-colors scale-95 duration-200 ease-in-out"
+          href="#"
+        >
+          <span class="material-symbols-outlined icon mr-3">dashboard</span>
+          <span>Dashboard</span>
+        </a>
+        <a
+          class="flex items-center px-6 py-3 text-on-surface-variant dark:text-outline font-medium hover:bg-surface-container-high dark:hover:bg-slate-800 transition-colors scale-95 duration-200 ease-in-out"
+          href="#"
+        >
+          <span class="material-symbols-outlined icon mr-3">group</span>
+          <span>Users</span>
+        </a>
+        <a
+          class="flex items-center px-6 py-3 text-primary-container font-bold border-r-4 border-[#f46825] bg-surface scale-95 duration-200 ease-in-out"
+          href="#"
+        >
+          <span class="material-symbols-outlined icon mr-3">school</span>
+          <span>Courses</span>
+        </a>
+        <a
+          class="flex items-center px-6 py-3 text-on-surface-variant dark:text-outline font-medium hover:bg-surface-container-high dark:hover:bg-slate-800 transition-colors scale-95 duration-200 ease-in-out"
+          href="#"
+        >
+          <span class="material-symbols-outlined icon mr-3">local_offer</span>
+          <span>Coupons</span>
+        </a>
+        <a
+          class="flex items-center px-6 py-3 text-on-surface-variant dark:text-outline font-medium hover:bg-surface-container-high dark:hover:bg-slate-800 transition-colors scale-95 duration-200 ease-in-out"
+          href="#"
+        >
+          <span class="material-symbols-outlined icon mr-3">settings</span>
+          <span>Settings</span>
+        </a>
+      </nav>
+      <div class="px-6 pt-6 mt-auto">
+        <div
+          class="flex items-center p-3 rounded-xl bg-surface-container-high transition-all hover:bg-surface-container-highest cursor-pointer"
+        >
+          <img
+            class="w-10 h-10 rounded-full object-cover mr-3"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJhO3l7mIQiKxdsF_47A16cyf1_f6_XjyFAl8b_iKeByYylQJNsj15QLFiCrM5JAo4KbCJq2J8AC8-3aNWQEKGd7s1oDtW7x5r67gfElYWIfjUhUFBA-EVP41hADhw6bXkY7TVjU4Fr9LbYKkpOY5IYX5fpYmxmlIEewhR6ZnLq_EUcJL9wp5WoNFmyGXLrM-AUgRWm04E-Kci-CcFXo63h0ymn7LzkyVrVByvTnxZzNyJolCGYVwtSUOhTOmfBKtUuuntHrarcHn6"
+          />
+          <div class="overflow-hidden">
+            <p class="text-sm font-bold truncate">Alex Rivera</p>
+            <p class="text-xs text-on-surface-variant truncate">
+              Senior Moderator
+            </p>
+          </div>
+        </div>
+      </div>
+    </aside>
 
-</head>
-<body class="text-on-surface bg-background">
-<!-- SideNavBar -->
-<aside class="h-screen w-64 fixed left-0 top-0 border-r-0 bg-surface dark:bg-inverse-surface flex flex-col py-6 z-50">
-<div class="px-6 mb-10">
-<h1 class="sf-brand text-2xl">SkillForge</h1>
-<p class="text-xs font-semibold uppercase tracking-widest text-on-surface-variant opacity-60">Admin Portal</p>
-</div>
-<nav class="flex-1 space-y-1 px-3">
-<a class="flex items-center px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline font-medium hover:bg-surface-container-high dark:hover:bg-slate-800 transition-colors group" href="#">
-<span class="material-symbols-outlined icon mr-3 group-hover:scale-110 transition-transform">dashboard</span>
-<span>Dashboard</span>
-</a>
-<a class="flex items-center px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline font-medium hover:bg-surface-container-high dark:hover:bg-slate-800 transition-colors group" href="#">
-<span class="material-symbols-outlined icon mr-3 group-hover:scale-110 transition-transform">group</span>
-<span>Users</span>
-</a>
-<a class="flex items-center px-4 py-3 rounded-xl text-primary-container font-bold border-r-4 border-[#f46825] bg-surface group" href="#">
-<span class="material-symbols-outlined icon mr-3 icon-filled" >school</span>
-<span>Courses</span>
-</a>
-<a class="flex items-center px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline font-medium hover:bg-surface-container-high dark:hover:bg-slate-800 transition-colors group" href="#">
-<span class="material-symbols-outlined icon mr-3 group-hover:scale-110 transition-transform">local_offer</span>
-<span>Coupons</span>
-</a>
-<a class="flex items-center px-4 py-3 rounded-xl text-on-surface-variant dark:text-outline font-medium hover:bg-surface-container-high dark:hover:bg-slate-800 transition-colors group" href="#">
-<span class="material-symbols-outlined icon mr-3 group-hover:scale-110 transition-transform">settings</span>
-<span>Settings</span>
-</a>
-</nav>
-<div class="px-6 mt-auto">
-<div class="flex items-center p-3 bg-surface-container-high rounded-xl">
-<img alt="SkillForge Admin Profile" class="w-10 h-10 rounded-full border-2 border-primary-fixed" data-alt="professional headshot of a middle-aged male administrator with a friendly expression in a modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDv3lMA9wb_JQBD3nRVTTEqjG9kMJls_x_V-ib3fQd0D8P1pB2igtgRLAOPo53UiralnOvwfvDGTNIJ0TbQzC0RRfY3aKq8NScB4Y3jrfZQcNn-FVre2inKvCnZPSZVsAo7cIYRri0AzbMYade3AcaUohGr0SFFTe8uBeMR9i6C3Kq6CRBpAc1KUcGWYl4n_PqQ7PeShtMlZtyvztWRcqUsLiOWS8t3QHcbsYklZnIMCpfVW8xmDG7UpPyY2CY5Vhofntiz76qDiNu2"/>
-<div class="ml-3 overflow-hidden">
-<p class="text-sm font-bold truncate">Alex Rivera</p>
-<p class="text-xs text-on-surface-variant truncate">Senior Moderator</p>
-</div>
-</div>
-</div>
-</aside>
-<!-- TopNavBar -->
-<header class="navbar navbar-admin">
+    <!-- TopNavBar -->
+    <header class="navbar navbar-admin">
+      <div class="mx-2 flex items-center justify-around flex-1">
+        <div class="relative w-full max-w-md">
+          <span
+            class="material-symbols-outlined icon absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant"
+            >search</span
+          >
+          <input
+            class="w-full pl-10 pr-4 py-2 bg-surface-container-lowest border-none rounded-xl text-sm focus:ring-2 focus:ring-primary transition-all"
+            placeholder="Search courses or instructors..."
+            type="text"
+          />
+        </div>
+      </div>
+      <div class="flex items-center gap-4">
+        <button
+          class="p-2 text-on-surface-variant hover:text-primary transition-all active:scale-95"
+        >
+          <span class="material-symbols-outlined icon">notifications</span>
+        </button>
+        <div class="h-8 w-[1px] bg-outline-variant/20 mx-2"></div>
+        <button
+          class="p-2 text-on-surface-variant hover:text-primary transition-all active:scale-95"
+        >
+          <span class="material-symbols-outlined icon">account_circle</span>
+        </button>
+      </div>
+    </header>
 
-<div class="flex items-center flex-1 max-w-xl">
-<div class="relative w-full">
-<span class="material-symbols-outlined icon absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
-<input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border-none rounded-full focus:ring-2 focus:ring-primary-fixed-dim text-sm transition-all" placeholder="Search courses or instructors..." type="text"/>
-</div>
-</div>
-<div class="flex items-center space-x-6 ml-8">
-<button class="relative text-on-surface-variant hover:text-primary transition-all active:scale-95">
-<span class="material-symbols-outlined icon">notifications</span>
-<span class="absolute top-0 right-0 w-2 h-2 bg-primary-fixed rounded-full border-2 border-white"></span>
-</button>
-<button class="text-on-surface-variant hover:text-primary transition-all active:scale-95">
-<span class="material-symbols-outlined icon">account_circle</span>
-</button>
-</div>
-</header>
-<!-- Main Content -->
-<main class="ml-64 p-8 min-h-screen">
-<!-- Header Section -->
-<section class="mb-12">
-<div class="flex justify-between items-end">
-<div class="max-w-2xl">
-<h2 class="text-5xl font-extrabold tracking-tight text-on-surface mb-4 leading-tight">
-                        Course <span class="text-primary-fixed">Moderation</span> Queue
-                    </h2>
-<p class="text-lg text-on-surface-variant font-medium leading-relaxed">
-                        Review pending submissions for quality assurance. Check curriculum depth, asset resolution, and set appropriate difficulty levels before publishing.
-                    </p>
-</div>
-<div class="flex flex-col items-end space-y-2">
-<div class="flex space-x-2">
-<span class="px-4 py-2 bg-surface-container-high rounded-full text-sm font-bold">14 Pending</span>
-<span class="px-4 py-2 bg-primary/10 text-primary font-bold rounded-full text-sm">Priority: High</span>
-</div>
-</div>
-</div>
-</section>
-<!-- Stats Grid (Bento Style) -->
-<section class="grid grid-cols-4 gap-6 mb-12">
-<div class="col-span-1 bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10">
-<p class="text-on-surface-variant text-sm font-semibold mb-2">Wait Time</p>
-<h3 class="text-3xl font-bold">4.2 <span class="text-lg font-normal">hrs</span></h3>
-<div class="mt-4 h-1 w-full bg-surface-container rounded-full">
-<div class="h-full w-2/3 bg-primary rounded-full"></div>
-</div>
-</div>
-<div class="col-span-1 bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10">
-<p class="text-on-surface-variant text-sm font-semibold mb-2">Daily Goal</p>
-<h3 class="text-3xl font-bold">82<span class="text-lg font-normal">%</span></h3>
-<div class="mt-4 h-1 w-full bg-surface-container rounded-full">
-<div class="h-full w-[82%] bg-tertiary-fixed-dim rounded-full"></div>
-</div>
-</div>
-<div class="col-span-2 bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 row row-between">
-<div>
-<p class="text-on-surface-variant text-sm font-semibold mb-2">Quality Index</p>
-<h3 class="text-3xl font-bold text-primary">Excellent</h3>
-</div>
-<!-- Circular Progress (Progress Orbit) -->
-<div class="relative w-16 h-16">
-<svg class="w-full h-full" viewbox="0 0 36 36">
-<path class="text-surface-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="100, 100" stroke-width="3"></path>
-<path class="text-primary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="92, 100" stroke-linecap="round" stroke-width="3"></path>
-</svg>
-<div class="absolute inset-0 flex items-center justify-center text-label font-bold">92%</div>
-</div>
-</div>
-</section>
-<!-- Filters -->
-<div class="flex items-center space-x-4 mb-8">
-<button class="btn btn-primary btn-pill">All Submissions</button>
-<button class="btn btn-surface btn-pill btn-sm">Creative Arts</button>
-<button class="btn btn-surface btn-pill btn-sm">Data Science</button>
-<button class="btn btn-surface btn-pill btn-sm">Business</button>
-<div class="ml-auto flex items-center text-on-surface-variant font-semibold text-sm">
-<span>Sort by:</span>
-<select class="ml-2 bg-transparent border-none focus:ring-0 cursor-pointer font-bold text-on-surface">
-<option>Newest First</option>
-<option>Oldest First</option>
-<option>Complexity</option>
-</select>
-</div>
-</div>
-<!-- Course Cards Grid -->
-<div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
-<!-- Card 1 -->
-<div class="group bg-surface-container-lowest rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col">
-<div class="relative h-48 overflow-hidden">
-<img alt="Advanced Web Architecture" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="cinematic top-down view of a modern computer setup with neon lighting and complex code on multiple monitors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqUFAZkjHi30YVNoQvok7iwgE0PC6X1mMVPa9OjiOMfF9vQFsLxB2nbuevy-gWVYRojZjY9gZRkFgd_bXeI8BtnMsyn7SDN5xjAmzRLlHb1YXr91GKhAs94G_OUpj1rugR0dpye8SzluEAHe3ASE_lDkLYSGRwn7TXZDdK6WO-uaP1IcLgFDOiz_SltaF6YZFl-dJJMIQasVuKIbm-iFMRRICeszPVx_MFjZONmngGpmv54UvDztvvuL-hpGyQoLScCZvgm0TMUAZa"/>
-<div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-xl text-xs font-bold text-on-surface shadow-sm">ID: ARCH-204</div>
-<div class="absolute bottom-4 right-4 flex space-x-2">
-<span class="material-symbols-outlined icon text-white bg-black/40 p-2 rounded-full backdrop-blur-md cursor-pointer hover:bg-primary transition-colors">play_circle</span>
-</div>
-</div>
-<div class="p-6 flex-1 flex flex-col">
-<div class="flex justify-between items-start mb-2">
-<h4 class="text-xl font-bold leading-tight group-hover:text-primary transition-colors">Advanced Web Micro-Architectures</h4>
-<span class="material-symbols-outlined icon text-outline">more_vert</span>
-</div>
-<div class="flex items-center text-sm text-on-surface-variant mb-4">
-<span class="font-bold text-secondary">Dr. Sarah Jenkins</span>
-<span class="mx-2">•</span>
-<span>14.5 hours content</span>
-</div>
-<p class="text-sm text-on-surface-variant line-clamp-2 mb-6 leading-relaxed">
-                        A deep dive into serverless deployment, edge computing, and complex state management across distributed systems.
-                    </p>
-<div class="mt-auto space-y-4">
-<div>
-<label class="text-label uppercase tracking-widest font-extrabold text-on-surface-variant block mb-2">Override Difficulty</label>
-<div class="relative">
-<select class="w-full appearance-none bg-surface-container border border-outline-variant/20 rounded-xl px-4 py-3 text-sm font-bold focus:ring-2 focus:ring-primary focus:border-transparent outline-none">
-<option>Beginner</option>
-<option>Intermediate</option>
-<option selected="">Advanced</option>
-<option>Expert</option>
-</select>
-<span class="material-symbols-outlined icon absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-outline">expand_more</span>
-</div>
-</div>
-<div class="flex space-x-3">
-<button class="flex-1 bg-primary text-on-primary py-3 rounded-xl font-bold text-sm hover:bg-primary-dim transition-all active:scale-[0.98]">Approve</button>
-<button class="px-4 py-3 border border-outline-variant/30 rounded-xl text-on-surface hover:bg-surface-container transition-all">
-<span class="material-symbols-outlined icon">feedback</span>
-</button>
-</div>
-</div>
-</div>
-</div>
-<!-- Card 2 -->
-<div class="group bg-surface-container-lowest rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col">
-<div class="relative h-48 overflow-hidden">
-<img alt="Retro UI Design" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="vibrant neon 80s aesthetic workstation with retro gadgets and colorful lighting effects" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBygidxMaEQaymma6RAhWpAVhxau6Wn6BmJUM4jvsveQtFdwIKP3A-nceoOyQ-csaAvteB0WlTS6Jp8no4bJn4GYDiFPX7Ma8753TFsdZDxj8ng3CJs_XodFIw1yUB_SSsu3l9CXk151nzPrK1QosGgrZG60UZTu2BNzTa8jVGvmpkzv8AGEyrZ6FI1DREzxnvOhMTjuKlVzXyJDu4kUN_d4awDbgEQGWFEncm2B8nDpQLGsLdei61GdLl8mELGTBqGPIGar-bOREqI"/>
-<div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-xl text-xs font-bold text-on-surface shadow-sm">ID: DSGN-99</div>
-<div class="absolute bottom-4 right-4 flex space-x-2">
-<span class="material-symbols-outlined icon text-white bg-black/40 p-2 rounded-full backdrop-blur-md cursor-pointer hover:bg-primary transition-colors">play_circle</span>
-</div>
-</div>
-<div class="p-6 flex-1 flex flex-col">
-<div class="flex justify-between items-start mb-2">
-<h4 class="text-xl font-bold leading-tight group-hover:text-primary transition-colors">The Neo-Retro UI Masterclass</h4>
-<span class="material-symbols-outlined icon text-outline">more_vert</span>
-</div>
-<div class="flex items-center text-sm text-on-surface-variant mb-4">
-<span class="font-bold text-secondary">Marcus Vane</span>
-<span class="mx-2">•</span>
-<span>8 hours content</span>
-</div>
-<p class="text-sm text-on-surface-variant line-clamp-2 mb-6 leading-relaxed">
-                        Master the art of 80s nostalgia mixed with modern glassmorphism. Includes source assets and color profiles.
-                    </p>
-<div class="mt-auto space-y-4">
-<div>
-<label class="text-label uppercase tracking-widest font-extrabold text-on-surface-variant block mb-2">Override Difficulty</label>
-<div class="relative">
-<select class="w-full appearance-none bg-surface-container border border-outline-variant/20 rounded-xl px-4 py-3 text-sm font-bold focus:ring-2 focus:ring-primary focus:border-transparent outline-none">
-<option>Beginner</option>
-<option selected="">Intermediate</option>
-<option>Advanced</option>
-<option>Expert</option>
-</select>
-<span class="material-symbols-outlined icon absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-outline">expand_more</span>
-</div>
-</div>
-<div class="flex space-x-3">
-<button class="flex-1 bg-primary text-on-primary py-3 rounded-xl font-bold text-sm hover:bg-primary-dim transition-all active:scale-[0.98]">Approve</button>
-<button class="px-4 py-3 border border-outline-variant/30 rounded-xl text-on-surface hover:bg-surface-container transition-all">
-<span class="material-symbols-outlined icon">feedback</span>
-</button>
-</div>
-</div>
-</div>
-</div>
-<!-- Card 3 -->
-<div class="group bg-surface-container-lowest rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col">
-<div class="relative h-48 overflow-hidden">
-<img alt="Predictive Analytics" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="abstract visualization of glowing data points connecting like a galaxy in a deep blue digital space" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDM1l9qHYi4Z6-HrO2yxw-KSI8Nwm05rsXI-aXNxTrkm6WF6LzpjkZH79-VH_UPiw4bI0n4i1njTdBXYCrFGc4KoiakKNQ32GdY0lJimiW8QqOSin2RvFZKOYpwsPM90M133jzGn0kA_FxavmfrsgzblogS34dfYQk4vjO674_THP3u3bNcEbLXD3s3_EgqbJ_57Ia5F3TmEqVE50QK4W8qbHDuhvOhRgHcoCY2YSy4_gOoLaTzrFfjpWBgigyZh_4VAHkmbpRQa6Rg"/>
-<div class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-xl text-xs font-bold text-on-surface shadow-sm">ID: DATA-402</div>
-<div class="absolute bottom-4 right-4 flex space-x-2">
-<span class="material-symbols-outlined icon text-white bg-black/40 p-2 rounded-full backdrop-blur-md cursor-pointer hover:bg-primary transition-colors">play_circle</span>
-</div>
-</div>
-<div class="p-6 flex-1 flex flex-col">
-<div class="flex justify-between items-start mb-2">
-<h4 class="text-xl font-bold leading-tight group-hover:text-primary transition-colors">Ethical Predictive Analytics</h4>
-<span class="material-symbols-outlined icon text-outline">more_vert</span>
-</div>
-<div class="flex items-center text-sm text-on-surface-variant mb-4">
-<span class="font-bold text-secondary">AI Ethics Board</span>
-<span class="mx-2">•</span>
-<span>22 hours content</span>
-</div>
-<p class="text-sm text-on-surface-variant line-clamp-2 mb-6 leading-relaxed">
-                        Analyzing bias in machine learning models and implementing fair prediction algorithms for public sector use.
-                    </p>
-<div class="mt-auto space-y-4">
-<div>
-<label class="text-label uppercase tracking-widest font-extrabold text-on-surface-variant block mb-2">Override Difficulty</label>
-<div class="relative">
-<select class="w-full appearance-none bg-surface-container border border-outline-variant/20 rounded-xl px-4 py-3 text-sm font-bold focus:ring-2 focus:ring-primary focus:border-transparent outline-none">
-<option>Beginner</option>
-<option>Intermediate</option>
-<option>Advanced</option>
-<option selected="">Expert</option>
-</select>
-<span class="material-symbols-outlined icon absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-outline">expand_more</span>
-</div>
-</div>
-<div class="flex space-x-3">
-<button class="flex-1 bg-primary text-on-primary py-3 rounded-xl font-bold text-sm hover:bg-primary-dim transition-all active:scale-[0.98]">Approve</button>
-<button class="px-4 py-3 border border-outline-variant/30 rounded-xl text-on-surface hover:bg-surface-container transition-all">
-<span class="material-symbols-outlined icon">feedback</span>
-</button>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Footer / Load More -->
-<div class="mt-16 flex flex-col items-center">
-<p class="text-on-surface-variant text-sm font-medium mb-4">Showing 3 of 14 pending submissions</p>
-<button class="group flex items-center space-x-2 text-primary font-bold hover:scale-105 transition-transform">
-<span>Load More Submissions</span>
-<span class="material-symbols-outlined icon transition-transform group-hover:translate-y-1">keyboard_double_arrow_down</span>
-</button>
-</div>
-</main>
-<!-- FAB for quick moderator action -->
-<div class="fixed bottom-8 right-8 z-50">
-<button class="btn btn-secondary btn-icon">
-<span class="material-symbols-outlined icon">history</span>
-</button>
-</div>
-</body></html>
+    <!-- Main Content -->
+    <main class="ml-64 p-8 min-h-screen mt-16">
+      <!-- Header Section -->
+      <section class="mb-10">
+        <div class="flex justify-between items-end">
+          <div class="max-w-2xl">
+            <h2
+              class="text-4xl font-extrabold tracking-tight text-on-surface mb-2"
+            >
+              Course Moderation Queue
+            </h2>
+            <p class="text-on-surface-variant max-w-lg">
+              Review pending submissions for quality assurance.
+            </p>
+          </div>
+          <div class="flex gap-3">
+            <span
+              class="px-4 py-2 bg-surface-container-lowest border border-outline-variant/30 text-on-surface font-bold rounded-xl"
+              >14 Pending</span
+            >
+            <span
+              class="px-4 py-2 bg-primary/10 text-primary font-bold rounded-xl"
+              >Priority: High</span
+            >
+          </div>
+        </div>
+      </section>
+      <!-- Stats Grid (Bento Style) -->
+      <section class="grid grid-cols-4 gap-6 mb-12">
+        <div
+          class="col-span-1 bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10"
+        >
+          <p class="text-on-surface-variant text-sm font-semibold mb-2">
+            Wait Time
+          </p>
+          <h3 class="text-3xl font-bold">
+            4.2 <span class="text-lg font-normal">hrs</span>
+          </h3>
+          <div class="mt-4 h-1 w-full bg-surface-container rounded-full">
+            <div class="h-full w-2/3 bg-primary rounded-full"></div>
+          </div>
+        </div>
+        <div
+          class="col-span-1 bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10"
+        >
+          <p class="text-on-surface-variant text-sm font-semibold mb-2">
+            Daily Goal
+          </p>
+          <h3 class="text-3xl font-bold">
+            82<span class="text-lg font-normal">%</span>
+          </h3>
+          <div class="mt-4 h-1 w-full bg-surface-container rounded-full">
+            <div
+              class="h-full w-[82%] bg-tertiary-fixed-dim rounded-full"
+            ></div>
+          </div>
+        </div>
+        <div
+          class="col-span-2 bg-surface-container-lowest p-6 rounded-xl border border-outline-variant/10 row row-between"
+        >
+          <div>
+            <p class="text-on-surface-variant text-sm font-semibold mb-2">
+              Quality Index
+            </p>
+            <h3 class="text-3xl font-bold text-primary">Excellent</h3>
+          </div>
+          <!-- Circular Progress (Progress Orbit) -->
+          <div class="relative w-16 h-16">
+            <svg class="w-full h-full" viewbox="0 0 36 36">
+              <path
+                class="text-surface-container"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                fill="none"
+                stroke="currentColor"
+                stroke-dasharray="100, 100"
+                stroke-width="3"
+              ></path>
+              <path
+                class="text-primary"
+                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
+                fill="none"
+                stroke="currentColor"
+                stroke-dasharray="92, 100"
+                stroke-linecap="round"
+                stroke-width="3"
+              ></path>
+            </svg>
+            <div
+              class="absolute inset-0 flex items-center justify-center text-label font-bold"
+            >
+              92%
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Filters -->
+      <div class="flex items-center space-x-4 mb-8">
+        <button class="btn btn-primary btn-pill">All Submissions</button>
+        <button class="btn btn-surface btn-pill btn-sm">Creative Arts</button>
+        <button class="btn btn-surface btn-pill btn-sm">Data Science</button>
+        <button class="btn btn-surface btn-pill btn-sm">Business</button>
+        <div
+          class="ml-auto flex items-center text-on-surface-variant font-semibold text-sm"
+        >
+          <span>Sort by:</span>
+          <select
+            class="ml-2 bg-transparent border-none focus:ring-0 cursor-pointer font-bold text-on-surface"
+          >
+            <option>Newest First</option>
+            <option>Oldest First</option>
+            <option>Complexity</option>
+          </select>
+        </div>
+      </div>
+      <!-- Course Cards Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+        <!-- Card 1 -->
+        <div
+          class="group bg-surface-container-lowest rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col"
+        >
+          <div class="relative h-48 overflow-hidden">
+            <img
+              alt="Advanced Web Architecture"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              data-alt="cinematic top-down view of a modern computer setup with neon lighting and complex code on multiple monitors"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqUFAZkjHi30YVNoQvok7iwgE0PC6X1mMVPa9OjiOMfF9vQFsLxB2nbuevy-gWVYRojZjY9gZRkFgd_bXeI8BtnMsyn7SDN5xjAmzRLlHb1YXr91GKhAs94G_OUpj1rugR0dpye8SzluEAHe3ASE_lDkLYSGRwn7TXZDdK6WO-uaP1IcLgFDOiz_SltaF6YZFl-dJJMIQasVuKIbm-iFMRRICeszPVx_MFjZONmngGpmv54UvDztvvuL-hpGyQoLScCZvgm0TMUAZa"
+            />
+            <div
+              class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-xl text-xs font-bold text-on-surface shadow-sm"
+            >
+              ID: ARCH-204
+            </div>
+            <div class="absolute bottom-4 right-4 flex space-x-2">
+              <span
+                class="material-symbols-outlined icon text-white bg-black/40 p-2 rounded-full backdrop-blur-md cursor-pointer hover:bg-primary transition-colors"
+                >play_circle</span
+              >
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col">
+            <div class="flex justify-between items-start mb-2">
+              <h4
+                class="text-xl font-bold leading-tight group-hover:text-primary transition-colors"
+              >
+                Advanced Web Micro-Architectures
+              </h4>
+              <span class="material-symbols-outlined icon text-outline"
+                >more_vert</span
+              >
+            </div>
+            <div class="flex items-center text-sm text-on-surface-variant mb-4">
+              <span class="font-bold text-secondary">Dr. Sarah Jenkins</span>
+              <span class="mx-2">•</span>
+              <span>14.5 hours content</span>
+            </div>
+            <p
+              class="text-sm text-on-surface-variant line-clamp-2 mb-6 leading-relaxed"
+            >
+              A deep dive into serverless deployment, edge computing, and
+              complex state management across distributed systems.
+            </p>
+            <div class="mt-auto space-y-4">
+              <div>
+                <label
+                  class="text-label uppercase tracking-widest font-extrabold text-on-surface-variant block mb-2"
+                  >Override Difficulty</label
+                >
+                <div class="relative">
+                  <select
+                    class="w-full appearance-none bg-surface-container border border-outline-variant/20 rounded-xl px-4 py-3 text-sm font-bold focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                  >
+                    <option>Beginner</option>
+                    <option>Intermediate</option>
+                    <option selected="">Advanced</option>
+                    <option>Expert</option>
+                  </select>
+                  <span
+                    class="material-symbols-outlined icon absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-outline"
+                    >expand_more</span
+                  >
+                </div>
+              </div>
+              <div class="flex space-x-3">
+                <button
+                  class="flex-1 bg-primary text-on-primary py-3 rounded-xl font-bold text-sm hover:bg-primary-dim transition-all active:scale-[0.98]"
+                >
+                  Approve
+                </button>
+                <button
+                  class="px-4 py-3 border border-outline-variant/30 rounded-xl text-on-surface hover:bg-surface-container transition-all"
+                >
+                  <span class="material-symbols-outlined icon">feedback</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Card 2 -->
+        <div
+          class="group bg-surface-container-lowest rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col"
+        >
+          <div class="relative h-48 overflow-hidden">
+            <img
+              alt="Retro UI Design"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              data-alt="vibrant neon 80s aesthetic workstation with retro gadgets and colorful lighting effects"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBygidxMaEQaymma6RAhWpAVhxau6Wn6BmJUM4jvsveQtFdwIKP3A-nceoOyQ-csaAvteB0WlTS6Jp8no4bJn4GYDiFPX7Ma8753TFsdZDxj8ng3CJs_XodFIw1yUB_SSsu3l9CXk151nzPrK1QosGgrZG60UZTu2BNzTa8jVGvmpkzv8AGEyrZ6FI1DREzxnvOhMTjuKlVzXyJDu4kUN_d4awDbgEQGWFEncm2B8nDpQLGsLdei61GdLl8mELGTBqGPIGar-bOREqI"
+            />
+            <div
+              class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-xl text-xs font-bold text-on-surface shadow-sm"
+            >
+              ID: DSGN-99
+            </div>
+            <div class="absolute bottom-4 right-4 flex space-x-2">
+              <span
+                class="material-symbols-outlined icon text-white bg-black/40 p-2 rounded-full backdrop-blur-md cursor-pointer hover:bg-primary transition-colors"
+                >play_circle</span
+              >
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col">
+            <div class="flex justify-between items-start mb-2">
+              <h4
+                class="text-xl font-bold leading-tight group-hover:text-primary transition-colors"
+              >
+                The Neo-Retro UI Masterclass
+              </h4>
+              <span class="material-symbols-outlined icon text-outline"
+                >more_vert</span
+              >
+            </div>
+            <div class="flex items-center text-sm text-on-surface-variant mb-4">
+              <span class="font-bold text-secondary">Marcus Vane</span>
+              <span class="mx-2">•</span>
+              <span>8 hours content</span>
+            </div>
+            <p
+              class="text-sm text-on-surface-variant line-clamp-2 mb-6 leading-relaxed"
+            >
+              Master the art of 80s nostalgia mixed with modern glassmorphism.
+              Includes source assets and color profiles.
+            </p>
+            <div class="mt-auto space-y-4">
+              <div>
+                <label
+                  class="text-label uppercase tracking-widest font-extrabold text-on-surface-variant block mb-2"
+                  >Override Difficulty</label
+                >
+                <div class="relative">
+                  <select
+                    class="w-full appearance-none bg-surface-container border border-outline-variant/20 rounded-xl px-4 py-3 text-sm font-bold focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                  >
+                    <option>Beginner</option>
+                    <option selected="">Intermediate</option>
+                    <option>Advanced</option>
+                    <option>Expert</option>
+                  </select>
+                  <span
+                    class="material-symbols-outlined icon absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-outline"
+                    >expand_more</span
+                  >
+                </div>
+              </div>
+              <div class="flex space-x-3">
+                <button
+                  class="flex-1 bg-primary text-on-primary py-3 rounded-xl font-bold text-sm hover:bg-primary-dim transition-all active:scale-[0.98]"
+                >
+                  Approve
+                </button>
+                <button
+                  class="px-4 py-3 border border-outline-variant/30 rounded-xl text-on-surface hover:bg-surface-container transition-all"
+                >
+                  <span class="material-symbols-outlined icon">feedback</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Card 3 -->
+        <div
+          class="group bg-surface-container-lowest rounded-xl overflow-hidden hover:shadow-xl transition-all duration-300 flex flex-col"
+        >
+          <div class="relative h-48 overflow-hidden">
+            <img
+              alt="Predictive Analytics"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+              data-alt="abstract visualization of glowing data points connecting like a galaxy in a deep blue digital space"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDM1l9qHYi4Z6-HrO2yxw-KSI8Nwm05rsXI-aXNxTrkm6WF6LzpjkZH79-VH_UPiw4bI0n4i1njTdBXYCrFGc4KoiakKNQ32GdY0lJimiW8QqOSin2RvFZKOYpwsPM90M133jzGn0kA_FxavmfrsgzblogS34dfYQk4vjO674_THP3u3bNcEbLXD3s3_EgqbJ_57Ia5F3TmEqVE50QK4W8qbHDuhvOhRgHcoCY2YSy4_gOoLaTzrFfjpWBgigyZh_4VAHkmbpRQa6Rg"
+            />
+            <div
+              class="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-xl text-xs font-bold text-on-surface shadow-sm"
+            >
+              ID: DATA-402
+            </div>
+            <div class="absolute bottom-4 right-4 flex space-x-2">
+              <span
+                class="material-symbols-outlined icon text-white bg-black/40 p-2 rounded-full backdrop-blur-md cursor-pointer hover:bg-primary transition-colors"
+                >play_circle</span
+              >
+            </div>
+          </div>
+          <div class="p-6 flex-1 flex flex-col">
+            <div class="flex justify-between items-start mb-2">
+              <h4
+                class="text-xl font-bold leading-tight group-hover:text-primary transition-colors"
+              >
+                Ethical Predictive Analytics
+              </h4>
+              <span class="material-symbols-outlined icon text-outline"
+                >more_vert</span
+              >
+            </div>
+            <div class="flex items-center text-sm text-on-surface-variant mb-4">
+              <span class="font-bold text-secondary">AI Ethics Board</span>
+              <span class="mx-2">•</span>
+              <span>22 hours content</span>
+            </div>
+            <p
+              class="text-sm text-on-surface-variant line-clamp-2 mb-6 leading-relaxed"
+            >
+              Analyzing bias in machine learning models and implementing fair
+              prediction algorithms for public sector use.
+            </p>
+            <div class="mt-auto space-y-4">
+              <div>
+                <label
+                  class="text-label uppercase tracking-widest font-extrabold text-on-surface-variant block mb-2"
+                  >Override Difficulty</label
+                >
+                <div class="relative">
+                  <select
+                    class="w-full appearance-none bg-surface-container border border-outline-variant/20 rounded-xl px-4 py-3 text-sm font-bold focus:ring-2 focus:ring-primary focus:border-transparent outline-none"
+                  >
+                    <option>Beginner</option>
+                    <option>Intermediate</option>
+                    <option>Advanced</option>
+                    <option selected="">Expert</option>
+                  </select>
+                  <span
+                    class="material-symbols-outlined icon absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-outline"
+                    >expand_more</span
+                  >
+                </div>
+              </div>
+              <div class="flex space-x-3">
+                <button
+                  class="flex-1 bg-primary text-on-primary py-3 rounded-xl font-bold text-sm hover:bg-primary-dim transition-all active:scale-[0.98]"
+                >
+                  Approve
+                </button>
+                <button
+                  class="px-4 py-3 border border-outline-variant/30 rounded-xl text-on-surface hover:bg-surface-container transition-all"
+                >
+                  <span class="material-symbols-outlined icon">feedback</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Footer / Load More -->
+      <div class="mt-16 flex flex-col items-center">
+        <p class="text-on-surface-variant text-sm font-medium mb-4">
+          Showing 3 of 14 pending submissions
+        </p>
+        <button
+          class="group flex items-center space-x-2 text-primary font-bold hover:scale-105 transition-transform"
+        >
+          <span>Load More Submissions</span>
+          <span
+            class="material-symbols-outlined icon transition-transform group-hover:translate-y-1"
+            >keyboard_double_arrow_down</span
+          >
+        </button>
+      </div>
+    </main>
+    <!-- FAB for quick moderator action -->
+    <div class="fixed bottom-8 right-8 z-50">
+      <button class="btn btn-secondary btn-icon">
+        <span class="material-symbols-outlined icon">history</span>
+      </button>
+    </div>
+  </body>
+</html>
