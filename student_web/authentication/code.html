@@ -1,134 +1,207 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
-<html class="light" lang="en"><head>
-<link rel="stylesheet" href="../../shared/tailwind-desktop.css"/>
-<link rel="stylesheet" href="../../shared/base.css"/>
+<html class="light" lang="en">
 
-<meta charset="utf-8"/>
-<meta name="description" content="SkillForge — The premium platform for professional skill development and certification."/>
-<link rel="icon" type="image/svg+xml" href="../../shared/favicon.svg"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>SkillForge | Sign In</title>
+<head>
+  <link rel="stylesheet" href="../../shared/tailwind-desktop.css" />
+  <link rel="stylesheet" href="../../shared/base.css" />
+
+  <meta charset="utf-8" />
+  <meta name="description"
+    content="SkillForge — The premium platform for professional skill development and certification." />
+  <link rel="icon" type="image/svg+xml" href="../../shared/favicon.svg" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>SkillForge | Sign In</title>
 
 </head>
-<body class="bg-surface-bright font-body text-on-surface antialiased selection:bg-secondary-fixed selection:text-primary">
-<main class="min-h-screen flex flex-col md:flex-row overflow-hidden">
-<!-- Left Side: Editorial Canvas -->
-<section class="hidden md:flex md:w-1/2 lg:w-7/12 relative bg-surface-container-low p-16 items-center justify-center">
-<div class="z-10 max-w-xl">
-<div class="mb-12">
-<span class="sf-brand text-3xl">SkillForge</span>
-</div>
-<h1 class="font-headline font-bold text-6xl lg:text-7xl text-on-surface leading-[1.1] mb-8">
-                    Craft your <br/>
-<span class="text-primary">future self.</span>
-</h1>
-<p class="text-xl text-on-surface-variant leading-relaxed mb-12 max-w-md">
-                    Access premium editorial courses designed by industry titans. Move beyond standard learning.
-                </p>
-<div class="flex gap-4 items-center">
-<div class="flex -space-x-4">
-<img class="w-12 h-12 rounded-full border-4 border-surface-container-low object-cover" data-alt="portrait of a young smiling professional woman with dark hair in a bright studio" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYxIezaZNjZLnhkYh6ssz8Y_rmDYr5JOv8Njv80aElAbv4oxPRYwcIoafFuPptbwQ2uJzmNSJboiJf_SiDCew3jOQTiJ3rRLcprkvrm_wcVJe9KWSW-4z_hwPbUBKBCZ5wsP4NYzZRM330xVepvMdwF1lZE5Ug5i9ELO_LFyng7GAIUAmYEn1r-LLE62YWDRcMRMY5PGPdloKtOIKjgUyO3q9yoP31_c4AgqSJ105zLhyMAhgKyr07ifvJN7H_SMDAZ2eL8fe8ReAc"/>
-<img class="w-12 h-12 rounded-full border-4 border-surface-container-low object-cover" data-alt="close-up portrait of a thoughtful man with a short beard against a neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDvBr1pepeFOs8M8-z_o5ojAiYmpaR9rht4p-fT3td0U6NZObOx32tqhYJR9RTj9jI4BV9ThtOEOU3JzY1Pkaenb2v2AzPu-251REHCyF4yE6Ud1X_N4_-Wt2L6pV0AvKWStr2Hl6LNo9OKt3RE8Wxtat4HQYXA5fc1BjYfskDwjzbwRVvDuIzZVfKscZ1Nin3R5ZaCBrWFOtLcljW0W4QW73mWJrY3KaozdF7426NcwaTPVxqsw_ECVoFyK6Ol-FxNkghlZP25NeF"/>
-<img class="w-12 h-12 rounded-full border-4 border-surface-container-low object-cover" data-alt="portrait of a professional woman with glasses smiling confidently in a modern office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBLsnVV_jeSy-I8mGaA_dJASttDnw8o5NiiYKVTFeGNNWRlPKuvZhy6ne3Kgf7WypY_3uPYF5iBJheVqSiqWRsE9lll9KqV61TSqmrJsYilXSnL3faDm1wAfb6F3O_lvZc1d3U1M5CHFU0PB-Z-MqtOkRz3HlXnniXeq_P6c6Kp9vHe1YbmtyeW5pPRfOLv1LRVJMt5-4hOUC7VTwSTDgVYaU0uFeS-OvllZPnjAIHHpGo-qTR0pbOkNep7kyv2feZq3p8Jq55o45c"/>
-</div>
-<span class="text-sm font-label font-semibold text-on-surface-variant tracking-wide">Joined by 12,000+ learners this month</span>
-</div>
-</div>
-<!-- Background Aesthetic Element -->
-<div class="absolute top-0 right-0 w-64 h-64 bg-primary-fixed opacity-20 blur-[100px] rounded-full -mr-32 -mt-32"></div>
-<div class="absolute bottom-0 left-0 w-96 h-96 bg-secondary-container opacity-10 blur-[120px] rounded-full -ml-48 -mb-48"></div>
-<div class="absolute bottom-16 right-16 overflow-hidden rounded-xl shadow-md w-48 aspect-square">
-<img class="w-full h-full object-cover grayscale opacity-40 hover:grayscale-0 transition-all duration-700" data-alt="minimalist architectural detail with clean lines and soft shadows during morning light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_-Mlz_y1pARawUnh3Feo_a96b_LVJ5Z-q2Q0MEw-uneYWn1Q7lNgZt1Uofwv2Qcse_nVDEaDz11OlESwD2yV46S6JiljoPZVz-ZhiQPCCzbq60flbiHSbBeJFrmLv7-PMCUeR8PZBzgrCqQsj0pjyNoQdGYpEhgKVnKxRR-bEn2Z81NS-sMLroqZFjQU11KRJgY9ULT4C0wwhA_FMdxHgJuz7ImoY71F3kZIReLsEaD0cDpBpEOHjJJJ3qTqSkqMpz9Y4Xi_x6fYv"/>
-</div>
-</section>
-<!-- Right Side: Interaction Hub (Login/Signup) -->
-<section class="flex-1 bg-surface-container-lowest flex items-center justify-center p-8 md:p-16 lg:p-24 overflow-y-auto">
-<div class="w-full max-w-md space-y-10">
-<!-- Mobile Branding -->
-<div class="md:hidden flex justify-center mb-8">
-<span class="font-headline font-black text-3xl text-primary-container italic tracking-tight">SkillForge</span>
-</div>
-<!-- Header -->
-<header class="stack-sm">
 
-<h2 class="font-headline font-bold text-4xl text-on-surface tracking-tight">Welcome back</h2>
-<p class="text-on-surface-variant font-medium">Continue your editorial learning journey.</p>
-</header>
-<!-- Social Authentication -->
-<div class="grid grid-cols-2 gap-4">
-<button class="flex items-center justify-center gap-3 py-3 px-4 bg-surface-container-low hover:bg-surface-container transition-colors rounded-xl font-label font-bold text-on-surface group">
-<svg class="w-5 h-5 group-active:scale-90 transition-transform" viewbox="0 0 24 24">
-<path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="currentColor"></path>
-<path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="currentColor"></path>
-<path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="currentColor"></path>
-<path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="currentColor"></path>
-</svg>
-                        Google
-                    </button>
-<button class="flex items-center justify-center gap-3 py-3 px-4 bg-surface-container-low hover:bg-surface-container transition-colors rounded-xl font-label font-bold text-on-surface group">
-<svg class="w-5 h-5 group-active:scale-90 transition-transform text-[#1877F2]" fill="currentColor" viewbox="0 0 24 24">
-<path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"></path>
-</svg>
-                        Facebook
-                    </button>
-</div>
-<!-- Separator -->
-<div class="flex items-center gap-4">
-<div class="h-[1px] flex-1 bg-outline-variant opacity-30"></div>
-<span class="text-xs font-label font-bold text-outline uppercase tracking-[0.2em]">Or with email</span>
-<div class="h-[1px] flex-1 bg-outline-variant opacity-30"></div>
-</div>
-<!-- Form -->
-<form class="stack">
-<div class="space-y-5">
-<div class="stack-xs">
-<label class="block text-sm font-label font-bold text-on-surface-variant" for="email">Email Address</label>
-<input class="w-full h-14 px-6 bg-surface-container-low border-none focus:ring-2 focus:ring-primary-container rounded-xl text-on-surface placeholder:text-outline/50 transition-all" id="email" placeholder="name@company.com" type="email"/>
-</div>
-<div class="stack-xs">
-<div class="flex justify-between items-center">
-<label class="block text-sm font-label font-bold text-on-surface-variant" for="password">Password</label>
-<a class="text-xs font-label font-bold text-primary hover:underline underline-offset-4 tracking-wide" href="#">Forgot Password?</a>
-</div>
-<div class="relative group">
-<input class="w-full h-14 px-6 bg-surface-container-low border-none focus:ring-2 focus:ring-primary-container rounded-xl text-on-surface placeholder:text-outline/50 transition-all" id="password" placeholder="••••••••" type="password"/>
-<button class="absolute right-4 top-1/2 -translate-y-1/2 text-outline/60 hover:text-primary transition-colors" type="button">
-<span class="material-symbols-outlined nav-icon">visibility</span>
-</button>
-</div>
-</div>
-</div>
-<button class="btn btn-primary btn-lg btn-pill btn-w-full" type="submit">
-                        Sign In
-                    </button>
-</form>
-<!-- Footer Link -->
-<div class="pt-6 text-center">
-<p class="text-on-surface-variant font-medium">
-                        Don't have an account? 
-                        <a class="text-primary font-bold hover:underline underline-offset-4 ml-1" href="#">Create Account</a>
-</p>
-</div>
-<!-- Trust Badges (Editorial Touch) -->
-<div class="pt-12 flex justify-between items-center opacity-40 grayscale pointer-events-none">
-<div class="icon-text">
-<span class="material-symbols-outlined nav-icon">verified_user</span>
-<span class="text-label font-label font-black uppercase tracking-widest">Secure Entry</span>
-</div>
-<div class="icon-text">
-<span class="material-symbols-outlined nav-icon">encrypted</span>
-<span class="text-label font-label font-black uppercase tracking-widest">AES-256 Auth</span>
-</div>
-<div class="icon-text">
-<span class="material-symbols-outlined nav-icon">privacy_tip</span>
-<span class="text-label font-label font-black uppercase tracking-widest">GDPR Ready</span>
-</div>
-</div>
-</div>
-</section>
-</main>
-<!-- Floating Navigation Suppression Check: 
+<body
+  class="bg-surface-bright text-on-surface font-body selection:bg-secondary-fixed selection:text-on-secondary-container">
+  <!-- TopAppBar -->
+  <header class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-logo">
+        <span class="sf-brand text-2xl">SkillForge</span>
+        <nav class="hidden md:flex navbar-logo">
+          <a class="text-on-surface-variant dark:text-outline font-headline font-medium hover:text-primary transition-colors"
+            href="#">Courses</a>
+          <a class="text-primary dark:text-primary-container font-bold font-headline tracking-tight" href="#">My
+            Learning</a>
+          <a class="text-on-surface-variant dark:text-outline font-headline font-medium hover:text-primary transition-colors"
+            href="#">Community</a>
+        </nav>
+      </div>
+      <div class="flex items-center gap-4">
+        <div class="relative hidden sm:block">
+          <span
+            class="material-symbols-outlined icon absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+          <input class="input-search w-64" placeholder="Search courses..." type="text" />
+        </div>
+        <button
+          class="p-2 text-on-surface-variant hover:bg-primary-fixed/50 dark:hover:bg-primary/30 rounded-full transition-colors active:scale-95">
+          <span class="material-symbols-outlined icon">notifications</span>
+        </button>
+        <img alt="User Profile" class="w-8 h-8 rounded-full border-2 border-primary-container"
+          data-alt="Close up portrait of a professional man with a kind smile, clean studio background, professional headshot style"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwY1B9wpSRqxXzXAJh8DbdA4HfEw05owBnOJtCrM7a_WfsnRdus3WMxAwlVWPPHLYY6fUkWwsnRfeWtCLR78mjvm6HKRrtczbvGHqUYRTIWms7R9saUi18oT7DkX_kNb0i4bKDgdZyFNtu-pGHOdww86fCmQZGCTgJBqNbLQiBVdkQZmT43xoxxBAgEn8PVA1qIY9JUNZVIFdqd4da5woJgnyACzw4Yg_Hgt5GN4Ukl1UJZSuM0Sh9toKSm6z_2T4eIikR6hNgUzkO" />
+      </div>
+    </div>
+  </header>
+  <main class="min-h-screen flex flex-col md:flex-row overflow-hidden">
+    <!-- Left Side: Editorial Canvas -->
+    <section
+      class="hidden md:flex md:w-1/2 lg:w-7/12 relative bg-surface-container-low p-16 items-center justify-center">
+      <div class="z-10 max-w-xl">
+        <div class="mb-12">
+          <span class="sf-brand text-3xl">SkillForge</span>
+        </div>
+        <h1 class="font-headline font-bold text-6xl lg:text-7xl text-on-surface leading-[1.1] mb-8">
+          Craft your <br />
+          <span class="text-primary">future self.</span>
+        </h1>
+        <p class="text-xl text-on-surface-variant leading-relaxed mb-12 max-w-md">
+          Access premium editorial courses designed by industry titans. Move beyond standard learning.
+        </p>
+        <div class="flex gap-4 items-center">
+          <div class="flex -space-x-4">
+            <img class="w-12 h-12 rounded-full border-4 border-surface-container-low object-cover"
+              data-alt="portrait of a young smiling professional woman with dark hair in a bright studio"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYxIezaZNjZLnhkYh6ssz8Y_rmDYr5JOv8Njv80aElAbv4oxPRYwcIoafFuPptbwQ2uJzmNSJboiJf_SiDCew3jOQTiJ3rRLcprkvrm_wcVJe9KWSW-4z_hwPbUBKBCZ5wsP4NYzZRM330xVepvMdwF1lZE5Ug5i9ELO_LFyng7GAIUAmYEn1r-LLE62YWDRcMRMY5PGPdloKtOIKjgUyO3q9yoP31_c4AgqSJ105zLhyMAhgKyr07ifvJN7H_SMDAZ2eL8fe8ReAc" />
+            <img class="w-12 h-12 rounded-full border-4 border-surface-container-low object-cover"
+              data-alt="close-up portrait of a thoughtful man with a short beard against a neutral background"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDvBr1pepeFOs8M8-z_o5ojAiYmpaR9rht4p-fT3td0U6NZObOx32tqhYJR9RTj9jI4BV9ThtOEOU3JzY1Pkaenb2v2AzPu-251REHCyF4yE6Ud1X_N4_-Wt2L6pV0AvKWStr2Hl6LNo9OKt3RE8Wxtat4HQYXA5fc1BjYfskDwjzbwRVvDuIzZVfKscZ1Nin3R5ZaCBrWFOtLcljW0W4QW73mWJrY3KaozdF7426NcwaTPVxqsw_ECVoFyK6Ol-FxNkghlZP25NeF" />
+            <img class="w-12 h-12 rounded-full border-4 border-surface-container-low object-cover"
+              data-alt="portrait of a professional woman with glasses smiling confidently in a modern office"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBLsnVV_jeSy-I8mGaA_dJASttDnw8o5NiiYKVTFeGNNWRlPKuvZhy6ne3Kgf7WypY_3uPYF5iBJheVqSiqWRsE9lll9KqV61TSqmrJsYilXSnL3faDm1wAfb6F3O_lvZc1d3U1M5CHFU0PB-Z-MqtOkRz3HlXnniXeq_P6c6Kp9vHe1YbmtyeW5pPRfOLv1LRVJMt5-4hOUC7VTwSTDgVYaU0uFeS-OvllZPnjAIHHpGo-qTR0pbOkNep7kyv2feZq3p8Jq55o45c" />
+          </div>
+          <span class="text-sm font-label font-semibold text-on-surface-variant tracking-wide">Joined by 12,000+
+            learners this month</span>
+        </div>
+      </div>
+      <!-- Background Aesthetic Element -->
+      <div class="absolute top-0 right-0 w-64 h-64 bg-primary-fixed opacity-20 blur-[100px] rounded-full -mr-32 -mt-32">
+      </div>
+      <div
+        class="absolute bottom-0 left-0 w-96 h-96 bg-secondary-container opacity-10 blur-[120px] rounded-full -ml-48 -mb-48">
+      </div>
+      <div class="absolute bottom-16 right-16 overflow-hidden rounded-xl shadow-md w-48 aspect-square">
+        <img class="w-full h-full object-cover grayscale opacity-40 hover:grayscale-0 transition-all duration-700"
+          data-alt="minimalist architectural detail with clean lines and soft shadows during morning light"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_-Mlz_y1pARawUnh3Feo_a96b_LVJ5Z-q2Q0MEw-uneYWn1Q7lNgZt1Uofwv2Qcse_nVDEaDz11OlESwD2yV46S6JiljoPZVz-ZhiQPCCzbq60flbiHSbBeJFrmLv7-PMCUeR8PZBzgrCqQsj0pjyNoQdGYpEhgKVnKxRR-bEn2Z81NS-sMLroqZFjQU11KRJgY9ULT4C0wwhA_FMdxHgJuz7ImoY71F3kZIReLsEaD0cDpBpEOHjJJJ3qTqSkqMpz9Y4Xi_x6fYv" />
+      </div>
+    </section>
+    <!-- Right Side: Interaction Hub (Login/Signup) -->
+    <section
+      class="flex-1 bg-surface-container-lowest flex items-center justify-center p-8 md:p-16 lg:p-24 overflow-y-auto">
+      <div class="w-full max-w-md space-y-10">
+        <!-- Mobile Branding -->
+        <div class="md:hidden flex justify-center mb-8">
+          <span class="font-headline font-black text-3xl text-primary-container italic tracking-tight">SkillForge</span>
+        </div>
+        <!-- Header -->
+        <header class="stack-sm">
+
+          <h2 class="font-headline font-bold text-4xl text-on-surface tracking-tight">Welcome back</h2>
+          <p class="text-on-surface-variant font-medium">Continue your editorial learning journey.</p>
+        </header>
+        <!-- Social Authentication -->
+        <div class="grid grid-cols-2 gap-4">
+          <button
+            class="flex items-center justify-center gap-3 py-3 px-4 bg-surface-container-low hover:bg-surface-container transition-colors rounded-xl font-label font-bold text-on-surface group">
+            <svg class="w-5 h-5 group-active:scale-90 transition-transform" viewbox="0 0 24 24">
+              <path
+                d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                fill="currentColor"></path>
+              <path
+                d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                fill="currentColor"></path>
+              <path
+                d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z"
+                fill="currentColor"></path>
+              <path
+                d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                fill="currentColor"></path>
+            </svg>
+            Google
+          </button>
+          <button
+            class="flex items-center justify-center gap-3 py-3 px-4 bg-surface-container-low hover:bg-surface-container transition-colors rounded-xl font-label font-bold text-on-surface group">
+            <svg class="w-5 h-5 group-active:scale-90 transition-transform text-[#1877F2]" fill="currentColor"
+              viewbox="0 0 24 24">
+              <path
+                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z">
+              </path>
+            </svg>
+            Facebook
+          </button>
+        </div>
+        <!-- Separator -->
+        <div class="flex items-center gap-4">
+          <div class="h-[1px] flex-1 bg-outline-variant opacity-30"></div>
+          <span class="text-xs font-label font-bold text-outline uppercase tracking-[0.2em]">Or with email</span>
+          <div class="h-[1px] flex-1 bg-outline-variant opacity-30"></div>
+        </div>
+        <!-- Form -->
+        <form class="stack">
+          <div class="space-y-5">
+            <div class="stack-xs">
+              <label class="block text-sm font-label font-bold text-on-surface-variant" for="email">Email
+                Address</label>
+              <input
+                class="w-full h-14 px-6 bg-surface-container-low border-none focus:ring-2 focus:ring-primary-container rounded-xl text-on-surface placeholder:text-outline/50 transition-all"
+                id="email" placeholder="name@company.com" type="email" />
+            </div>
+            <div class="stack-xs">
+              <div class="flex justify-between items-center">
+                <label class="block text-sm font-label font-bold text-on-surface-variant"
+                  for="password">Password</label>
+                <a class="text-xs font-label font-bold text-primary hover:underline underline-offset-4 tracking-wide"
+                  href="#">Forgot Password?</a>
+              </div>
+              <div class="relative group">
+                <input
+                  class="w-full h-14 px-6 bg-surface-container-low border-none focus:ring-2 focus:ring-primary-container rounded-xl text-on-surface placeholder:text-outline/50 transition-all"
+                  id="password" placeholder="••••••••" type="password" />
+                <button
+                  class="absolute right-4 top-1/2 -translate-y-1/2 text-outline/60 hover:text-primary transition-colors"
+                  type="button">
+                  <span class="material-symbols-outlined nav-icon">visibility</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-lg btn-pill btn-w-full" type="submit">
+            Sign In
+          </button>
+        </form>
+        <!-- Footer Link -->
+        <div class="pt-6 text-center">
+          <p class="text-on-surface-variant font-medium">
+            Don't have an account?
+            <a class="text-primary font-bold hover:underline underline-offset-4 ml-1" href="#">Create Account</a>
+          </p>
+        </div>
+        <!-- Trust Badges (Editorial Touch) -->
+        <div class="pt-12 flex justify-between items-center opacity-40 grayscale pointer-events-none">
+          <div class="icon-text">
+            <span class="material-symbols-outlined nav-icon">verified_user</span>
+            <span class="text-label font-label font-black uppercase tracking-widest">Secure Entry</span>
+          </div>
+          <div class="icon-text">
+            <span class="material-symbols-outlined nav-icon">encrypted</span>
+            <span class="text-label font-label font-black uppercase tracking-widest">AES-256 Auth</span>
+          </div>
+          <div class="icon-text">
+            <span class="material-symbols-outlined nav-icon">privacy_tip</span>
+            <span class="text-label font-label font-black uppercase tracking-widest">GDPR Ready</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- Floating Navigation Suppression Check: 
          This is a transactional focused page, so TopAppBar and BottomNavBar are suppressed to prioritize the task. 
     -->
-</body></html>
+</body>
+
+</html>

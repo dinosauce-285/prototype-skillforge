@@ -11,26 +11,58 @@
 <title>SkillForge | Quiz Results</title>
 
 </head>
-<body class="bg-surface font-body text-on-surface">
-<!-- TopAppBar -->
-<nav class="navbar">
-<div class="navbar-container">
-<div class="flex items-center gap-4">
-<span class="sf-brand text-2xl">SkillForge</span>
-</div>
-<div class="flex items-center gap-4">
-<button class="p-2 text-on-surface-variant hover:bg-primary-fixed/50 transition-colors rounded-full">
-<span class="material-symbols-outlined icon" data-icon="notifications">notifications</span>
-</button>
-<button class="p-2 text-on-surface-variant hover:bg-primary-fixed/50 transition-colors rounded-full">
-<span class="material-symbols-outlined icon" data-icon="settings">settings</span>
-</button>
-<div class="h-8 w-8 rounded-full overflow-hidden bg-surface-container ml-2">
-<img class="w-full h-full object-cover" data-alt="Portrait of a young professional smiling with a clean minimalist background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJuS2t9Mi7ixe7XxWZ1NBzwa9ojq26omPp6xBwV_PVNkNkop-2j2VKgneQfzVzU_pZBujtfJarcObjZSNctaZ59l0F9F7ZMO0U1kPBvAz-MK-zEvN9xXg06CNGQo9-miSjhBdOnf4rKr8X8SM4kS0F4dxtNFi_imQZpSggroQfDuFzel1Y2gvIQUvcoYIMBC0nVlCx68MtHkkWSsoXIAAPJKeioeKMJl-1JYytTJdkW2HvooStU7xZsNi6UmORDpi8eEhQ1TGyGs-o"/>
-</div>
-</div>
-</div>
-</nav>
+<body
+    class="bg-surface-bright text-on-surface font-body selection:bg-secondary-fixed selection:text-on-secondary-container"
+  >
+    <!-- TopAppBar -->
+    <header class="navbar">
+      <div class="navbar-container">
+        <div class="navbar-logo">
+          <span class="sf-brand text-2xl">SkillForge</span>
+          <nav class="hidden md:flex navbar-logo">
+            <a
+              class="text-on-surface-variant dark:text-outline font-headline font-medium hover:text-primary transition-colors"
+              href="#"
+              >Courses</a
+            >
+            <a
+              class="text-primary dark:text-primary-container font-bold font-headline tracking-tight"
+              href="#"
+              >My Learning</a
+            >
+            <a
+              class="text-on-surface-variant dark:text-outline font-headline font-medium hover:text-primary transition-colors"
+              href="#"
+              >Community</a
+            >
+          </nav>
+        </div>
+        <div class="flex items-center gap-4">
+          <div class="relative hidden sm:block">
+            <span
+              class="material-symbols-outlined icon absolute left-3 top-1/2 -translate-y-1/2 text-outline"
+              >search</span
+            >
+            <input
+              class="input-search w-64"
+              placeholder="Search courses..."
+              type="text"
+            />
+          </div>
+          <button
+            class="p-2 text-on-surface-variant hover:bg-primary-fixed/50 dark:hover:bg-primary/30 rounded-full transition-colors active:scale-95"
+          >
+            <span class="material-symbols-outlined icon">notifications</span>
+          </button>
+          <img
+            alt="User Profile"
+            class="w-8 h-8 rounded-full border-2 border-primary-container"
+            data-alt="Close up portrait of a professional man with a kind smile, clean studio background, professional headshot style"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwY1B9wpSRqxXzXAJh8DbdA4HfEw05owBnOJtCrM7a_WfsnRdus3WMxAwlVWPPHLYY6fUkWwsnRfeWtCLR78mjvm6HKRrtczbvGHqUYRTIWms7R9saUi18oT7DkX_kNb0i4bKDgdZyFNtu-pGHOdww86fCmQZGCTgJBqNbLQiBVdkQZmT43xoxxBAgEn8PVA1qIY9JUNZVIFdqd4da5woJgnyACzw4Yg_Hgt5GN4Ukl1UJZSuM0Sh9toKSm6z_2T4eIikR6hNgUzkO"
+          />
+        </div>
+      </div>
+    </header>
 <main class="pt-24 pb-32 px-6 container-lg">
 <!-- Hero Result Section -->
 <section class="mb-12">

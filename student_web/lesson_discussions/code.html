@@ -1,207 +1,257 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
-<html class="light" lang="en"><head>
-<link rel="stylesheet" href="../../shared/tailwind-desktop.css"/>
-<link rel="stylesheet" href="../../shared/base.css"/>
+<html class="light" lang="en">
 
-<meta charset="utf-8"/>
-<meta name="description" content="SkillForge — The premium platform for professional skill development and certification."/>
-<link rel="icon" type="image/svg+xml" href="../../shared/favicon.svg"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>SkillForge | Lesson Discussion</title>
+<head>
+  <link rel="stylesheet" href="../../shared/tailwind-desktop.css" />
+  <link rel="stylesheet" href="../../shared/base.css" />
+
+  <meta charset="utf-8" />
+  <meta name="description"
+    content="SkillForge — The premium platform for professional skill development and certification." />
+  <link rel="icon" type="image/svg+xml" href="../../shared/favicon.svg" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>SkillForge | Lesson Discussion</title>
 
 </head>
-<body class="bg-surface font-body text-on-surface selection:bg-primary-fixed selection:text-on-primary-container">
-<!-- TopAppBar -->
-<header class="navbar">
 
-<div class="navbar-container">
-<div class="navbar-logo">
-<span class="sf-brand text-2xl">SkillForge</span>
-<nav class="hidden md:flex gap-6 items-center">
-<a class="text-on-surface-variant dark:text-outline font-headline hover:bg-primary-fixed/50 dark:hover:bg-primary/30 transition-colors px-3 py-2 rounded-xl" href="#">Home</a>
-<a class="text-on-surface-variant dark:text-outline font-headline hover:bg-primary-fixed/50 dark:hover:bg-primary/30 transition-colors px-3 py-2 rounded-xl" href="#">Search</a>
-<a class="text-primary dark:text-primary-container font-bold font-headline transition-colors px-3 py-2 rounded-xl" href="#">My Learning</a>
-</nav>
-</div>
-<div class="flex items-center gap-4">
-<button class="p-2 text-on-surface-variant hover:bg-primary-fixed/50 transition-colors rounded-full active:scale-95 duration-200">
-<span class="material-symbols-outlined icon" data-icon="notifications">notifications</span>
-</button>
-<button class="p-2 text-on-surface-variant hover:bg-primary-fixed/50 transition-colors rounded-full active:scale-95 duration-200">
-<span class="material-symbols-outlined icon" data-icon="settings">settings</span>
-</button>
-<img alt="User profile" class="w-8 h-8 rounded-full border-2 border-primary-fixed" data-alt="Close-up portrait of a professional male user with a friendly expression in a brightly lit modern office environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeEbWUfS5nGYwqCi7Lf9pq1IEvlpa2YMk8QuwuY8dw2tdso3ZQKVb4iRw1Gr18_3GcEL_FSpTCccpLMPvYFpUzS70_znTWRZtSB0jm2-r4I31gNWpSzTKmjEy1PgIgW2HFDzfgojh30ZlcayBCI94tG1fywBUzSK_fqr0YjC0_EK3lp6lXQHVFKhoX5UTh6mYqX6AIs5hYP2q5DcVrKtDV5R-PebxY9f80zs4kPL7UnRiiGDyZ7uIn3R-1Mz0VW2PI0IQgZEhQg9Xj"/>
-</div>
-</div>
-</header>
-<main class="pt-24 pb-32 px-6 sf-container min-h-screen">
-<!-- Content Header / Asymmetric Layout -->
-<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
-<div class="lg:col-span-8">
-<div class="flex items-center gap-2 text-primary font-bold mb-4">
-<span class="material-symbols-outlined icon" data-icon="arrow_back">arrow_back</span>
-<span class="font-headline tracking-tight uppercase text-xs">Back to Module 4: Advanced Shaders</span>
-</div>
-<h1 class="text-4xl md:text-5xl font-headline font-black tracking-tighter text-on-surface mb-6 leading-none">
-                    Lesson Discussions
-                </h1>
-<p class="text-on-surface-variant max-w-2xl text-lg leading-relaxed">
-                    Collaborate with fellow students and instructors. Ask questions, share insights, and reference specific timestamps from the lesson video.
-                </p>
-</div>
-<!-- Quick Stats/Info Card -->
-<div class="lg:col-span-4 flex items-end">
-<div class="bg-surface-container-lowest p-6 rounded-xl w-full shadow-ambient flex justify-around border-b-4 border-primary">
-<div class="text-center">
-<span class="block text-2xl font-headline font-bold text-on-surface">124</span>
-<span class="text-xs text-on-surface-variant uppercase font-bold tracking-widest">Questions</span>
-</div>
-<div class="w-px h-10 bg-outline-variant/30"></div>
-<div class="text-center">
-<span class="block text-2xl font-headline font-bold text-primary">12</span>
-<span class="text-xs text-on-surface-variant uppercase font-bold tracking-widest">Instructors</span>
-</div>
-<div class="w-px h-10 bg-outline-variant/30"></div>
-<div class="text-center">
-<span class="block text-2xl font-headline font-bold text-on-surface">98%</span>
-<span class="text-xs text-on-surface-variant uppercase font-bold tracking-widest">Solved</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Search & Filter Bar -->
-<div class="flex flex-col md:flex-row gap-4 mb-10 items-center">
-<div class="relative flex-grow w-full">
-<span class="material-symbols-outlined icon absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/60" data-icon="search">search</span>
-<input class="w-full bg-surface-container-low border-none rounded-xl py-4 pl-12 pr-4 focus:ring-2 focus:ring-primary-container text-on-surface placeholder:text-on-surface-variant/50 transition-all" placeholder="Search discussions by keyword, user, or timestamp..." type="text"/>
-</div>
-<button class="btn btn-surface btn-lg">
-<span class="material-symbols-outlined icon" data-icon="filter_list">filter_list</span>
-                Filters
-            </button>
-<button class="btn btn-primary btn-lg btn-pill">
-                Ask a Question
-            </button>
-</div>
-<!-- Thread List: Bento Grid Hybrid -->
-<div class="grid grid-cols-1 gap-6">
-<!-- Discussion Thread 1: Featured/Instructor Answer -->
-<div class="card relative overflow-hidden group">
-<div class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 group-hover:scale-110 transition-transform"></div>
-<div class="flex items-start gap-6 relative z-10">
-<img alt="Alex Rivera" class="w-12 h-12 rounded-full ring-4 ring-surface-container-low" data-alt="Headshot of a smiling young woman with dark hair in a professional creative studio lighting setup" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKozZW1w3Dn_Q-Wmvaet6WE99f7_1-nEnAT2Dmirf4Tm1SJLv2BmfubWaLxqgmf6ucsNze3LFgL0LmLTxNMoHhnxa0VGFYGCwoDY6MPQHE2IURztkTFyZAH-hXB1rOiAzVqy6RaTNCoMq0mGWk86HKGSI1XZb1jDNqo2aAn3Ak-6FW2HCz7cUCeMcgDBe7n6eozlAuehiTZ09Cp5yo8VKjpz7GELtjRPlje7l9s82rVL1919s7t3v7sC3Y0d4RtAPYTIrFoEhm3CH7"/>
-<div class="flex-grow">
-<div class="flex items-center gap-3 mb-2">
-<h3 class="font-headline font-bold text-xl text-on-surface">How do we handle vertex buffer overflows in WebGL2?</h3>
-<span class="bg-primary-fixed text-on-primary-fixed-variant px-3 py-1 rounded-full text-label font-black uppercase tracking-tighter flex items-center gap-1">
-<span class="material-symbols-outlined icon icon-filled" data-icon="schedule" >schedule</span>
-                                12:45
-                            </span>
-</div>
-<p class="text-on-surface-variant mb-6 text-lg leading-snug">
-                            At the mentioned timestamp, the example uses a static buffer size. If my mesh data dynamically increases beyond 65k vertices, what's the most efficient re-allocation strategy?
-                        </p>
-<!-- Reply / Thread Preview -->
-<div class="bg-surface-container-low p-6 rounded-xl border-l-4 border-primary">
-<div class="flex items-center gap-3 mb-3">
-<span class="bg-primary text-on-primary text-label font-bold px-2 py-1 rounded flex items-center gap-1">
-<span class="material-symbols-outlined icon icon-filled" data-icon="verified" >verified</span>
-                                    INSTRUCTOR
-                                </span>
-<span class="font-bold text-on-surface">Marcus Thorne</span>
-<span class="text-on-surface-variant/60 text-xs">2 hours ago</span>
-</div>
-<p class="text-on-surface text-base italic leading-relaxed">
-                                Great catch, Alex! For dynamic meshes, we typically implement a "Buffer Orphaning" technique. You would call gl.bufferData with null before re-specifying the data. This allows the driver to...
-                            </p>
-</div>
-<div class="navbar-logo mt-6 pt-6 border-t border-outline-variant/20">
-<div class="icon-text text-on-surface-variant">
-<span class="material-symbols-outlined icon" data-icon="chat_bubble">chat_bubble</span>
-<span class="font-bold">14 Replies</span>
-</div>
-<div class="icon-text text-primary">
-<span class="material-symbols-outlined icon icon-filled" data-icon="thumb_up" >thumb_up</span>
-<span class="font-bold">32</span>
-</div>
-<button class="ml-auto text-primary font-bold hover:underline">View Discussion</button>
-</div>
-</div>
-</div>
-</div>
-<!-- Discussion Thread 2: Community Question -->
-<div class="card">
-<div class="flex items-start gap-6">
-<div class="flex flex-col items-center gap-1 mt-1">
-<button class="material-symbols-outlined icon text-on-surface-variant hover:text-primary transition-colors" data-icon="expand_less">expand_less</button>
-<span class="font-headline font-bold text-lg">8</span>
-<button class="material-symbols-outlined icon text-on-surface-variant hover:text-error transition-colors" data-icon="expand_more">expand_more</button>
-</div>
-<div class="flex-grow">
-<div class="flex items-center gap-3 mb-2">
-<h3 class="font-headline font-bold text-xl text-on-surface">Clarification on fragment shader precision qualifiers</h3>
-<span class="bg-surface-container-high text-on-surface-variant px-3 py-1 rounded-full text-label font-black uppercase tracking-tighter">No Timestamp</span>
-</div>
-<p class="text-on-surface-variant mb-6 text-lg leading-snug">
-                            In the latest lecture, you mentioned using 'mediump' for mobile performance. Does this affect the texture sampling accuracy significantly on modern iOS devices?
-                        </p>
-<div class="flex items-center gap-4 text-sm">
-<div class="flex -space-x-3">
-<img alt="User 1" class="w-8 h-8 rounded-full border-2 border-surface-container-lowest" data-alt="Close-up of a young man with glasses smiling" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVoVsZMwoQGekO5swCNSEBUSMlBtQBwfxrqxb293iaySpSvYdauGV-IEC8xalwKhk3hiiA8qiMzeL73os8jtJC9W3Z1zYuIXf2EQo8SdKiBn6V00gOZ1voR8X4q5nu8Bx2jhLmAghGPsOXwEydBCYY54dlEEFJgXOAhIiOL0us-BwHABKpXlRURdEzwAAjUU_evWjV-OhgqFy-pFermkRt3DXyqy3nkfuXTec2jkXIJAeiRdzIL7bZ2fg2yyqYPEHUt6bfEfZTATvs"/>
-<img alt="User 2" class="w-8 h-8 rounded-full border-2 border-surface-container-lowest" data-alt="Portrait of a mature man with a beard in warm sunlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdk35G_okdn1MPVW1KB3MSWLGoxKSmUq4tYOOpZV_J3MUuVGRiCmuIWOWEJG9TxuxhRMAe5NW5j0dcr2HWtxsI6eBhV-FGFfpyJpWupF9UauD7Wwd6J9jcSdZBqA9PItkxoGeMnCCNbeBSzHYccDysqh7Y1SalOEHwSxBU4WUmQ7IW_HLJ9tg8jwfCyX3cIxJ0nHgQb4tFrzsJSx2LdUCdKT6cA3vT68qi0mQwOLCWW0owolDlFO8re3d7tFBXKUqWD5grN5sMebH7"/>
-<div class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-label font-bold border-2 border-surface-container-lowest">+3</div>
-</div>
-<span class="text-on-surface-variant">5 students are discussing this</span>
-</div>
-</div>
-</div>
-</div>
-<!-- Discussion Thread 3: Technical Bug -->
-<div class="card border-l-4 border-error/20">
-<div class="flex items-start gap-6">
-<img alt="Sarah Chen" class="w-12 h-12 rounded-full" data-alt="Professional woman with short dark hair looking thoughtfully at a computer screen in a bright office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8REl41qln-UDHbSX2vCgHMqR6I7b-e0UuNBcXxvaYCypIi-qRL6Wh3NGiS0INBojbG5PVk_FctPgTNkDAGEfuC9Ip6DdejRRp2ULuZPIPyK0XfglVnt_RgcQlZwLZZaZ4z-HGlaQm3aWYwtP8qQ6uNBis9NZG-H2t1hrRBUMsPuv3hOvY_98tRr9P2lmwrQZAt1pEQR0pIMMsmQlC5tjr7gLZz3_iKdQ1UVhr6cICO_I_ESRqjFwItcZOf9TdBU0GhiabskOD-yRF"/>
-<div class="flex-grow">
-<div class="flex items-center gap-3 mb-2">
-<h3 class="font-headline font-bold text-xl text-on-surface">Resource files missing for Lesson 4?</h3>
-<span class="bg-error-container text-on-error-container px-3 py-1 rounded-full text-label font-black uppercase tracking-tighter">Module Error</span>
-</div>
-<p class="text-on-surface-variant mb-4 text-lg leading-snug">
-                            The zip file for this lesson seems to be missing the 'noise-texture.png' file referenced at <span class="text-primary font-bold">04:12</span>.
-                        </p>
-<div class="flex items-center gap-2 bg-green-50 text-on-success-container px-4 py-2 rounded-xl w-fit text-sm font-bold">
-<span class="material-symbols-outlined icon icon-filled" data-icon="check_circle" >check_circle</span>
-                            Resolved by Instructor
-                        </div>
-</div>
-</div>
-</div>
-</div>
-<!-- Load More Section -->
-<div class="mt-12 flex justify-center">
-<button class="group flex flex-col items-center gap-2">
-<span class="text-on-surface-variant font-bold text-sm uppercase tracking-widest group-hover:text-primary transition-colors">Show More Discussions</span>
-<span class="material-symbols-outlined icon text-primary animate-bounce" data-icon="expand_more">expand_more</span>
-</button>
-</div>
-</main>
-<!-- BottomNavBar (Mobile Only) -->
-<nav class="md:hidden fixed bottom-0 left-0 w-full bg-white dark:bg-inverse-surface shadow-sm flex justify-around items-center px-4 pb-6 pt-3 z-50 rounded-t-3xl">
-<a class="nav-bottom-item" href="#">
-<span class="material-symbols-outlined icon" data-icon="home">home</span>
-<span class="font-accent text-caption font-medium tracking-wide uppercase">Home</span>
-</a>
-<a class="nav-bottom-item" href="#">
-<span class="material-symbols-outlined icon" data-icon="search">search</span>
-<span class="font-accent text-caption font-medium tracking-wide uppercase">Search</span>
-</a>
-<a class="flex flex-col items-center justify-center bg-primary-fixed dark:bg-primary/40 text-primary dark:text-primary-fixed-dim rounded-2xl px-5 py-1.5 active:scale-90" href="#">
-<span class="material-symbols-outlined icon icon-filled" data-icon="menu_book" >menu_book</span>
-<span class="font-accent text-caption font-medium tracking-wide uppercase">Learning</span>
-</a>
-<a class="nav-bottom-item" href="#">
-<span class="material-symbols-outlined icon" data-icon="person">person</span>
-<span class="font-accent text-caption font-medium tracking-wide uppercase">Profile</span>
-</a>
-</nav>
-</body></html>
+<body
+  class="bg-surface-bright text-on-surface font-body selection:bg-secondary-fixed selection:text-on-secondary-container">
+  <!-- TopAppBar -->
+  <header class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-logo">
+        <span class="sf-brand text-2xl">SkillForge</span>
+        <nav class="hidden md:flex navbar-logo">
+          <a class="text-on-surface-variant dark:text-outline font-headline font-medium hover:text-primary transition-colors"
+            href="#">Courses</a>
+          <a class="text-primary dark:text-primary-container font-bold font-headline tracking-tight" href="#">My
+            Learning</a>
+          <a class="text-on-surface-variant dark:text-outline font-headline font-medium hover:text-primary transition-colors"
+            href="#">Community</a>
+        </nav>
+      </div>
+      <div class="flex items-center gap-4">
+        <div class="relative hidden sm:block">
+          <span
+            class="material-symbols-outlined icon absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+          <input class="input-search w-64" placeholder="Search courses..." type="text" />
+        </div>
+        <button
+          class="p-2 text-on-surface-variant hover:bg-primary-fixed/50 dark:hover:bg-primary/30 rounded-full transition-colors active:scale-95">
+          <span class="material-symbols-outlined icon">notifications</span>
+        </button>
+        <img alt="User Profile" class="w-8 h-8 rounded-full border-2 border-primary-container"
+          data-alt="Close up portrait of a professional man with a kind smile, clean studio background, professional headshot style"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwY1B9wpSRqxXzXAJh8DbdA4HfEw05owBnOJtCrM7a_WfsnRdus3WMxAwlVWPPHLYY6fUkWwsnRfeWtCLR78mjvm6HKRrtczbvGHqUYRTIWms7R9saUi18oT7DkX_kNb0i4bKDgdZyFNtu-pGHOdww86fCmQZGCTgJBqNbLQiBVdkQZmT43xoxxBAgEn8PVA1qIY9JUNZVIFdqd4da5woJgnyACzw4Yg_Hgt5GN4Ukl1UJZSuM0Sh9toKSm6z_2T4eIikR6hNgUzkO" />
+      </div>
+    </div>
+  </header>
+  <main class="pt-24 pb-32 px-6 sf-container min-h-screen">
+    <!-- Content Header / Asymmetric Layout -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+      <div class="lg:col-span-8">
+        <div class="flex items-center gap-2 text-primary font-bold mb-4">
+          <span class="material-symbols-outlined icon" data-icon="arrow_back">arrow_back</span>
+          <span class="font-headline tracking-tight uppercase text-xs">Back to Module 4: Advanced Shaders</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-headline font-black tracking-tighter text-on-surface mb-6 leading-none">
+          Lesson Discussions
+        </h1>
+        <p class="text-on-surface-variant max-w-2xl text-lg leading-relaxed">
+          Collaborate with fellow students and instructors. Ask questions, share insights, and reference specific
+          timestamps from the lesson video.
+        </p>
+      </div>
+      <!-- Quick Stats/Info Card -->
+      <div class="lg:col-span-4 flex items-end">
+        <div
+          class="bg-surface-container-lowest p-6 rounded-xl w-full shadow-ambient flex justify-around border-b-4 border-primary">
+          <div class="text-center">
+            <span class="block text-2xl font-headline font-bold text-on-surface">124</span>
+            <span class="text-xs text-on-surface-variant uppercase font-bold tracking-widest">Questions</span>
+          </div>
+          <div class="w-px h-10 bg-outline-variant/30"></div>
+          <div class="text-center">
+            <span class="block text-2xl font-headline font-bold text-primary">12</span>
+            <span class="text-xs text-on-surface-variant uppercase font-bold tracking-widest">Instructors</span>
+          </div>
+          <div class="w-px h-10 bg-outline-variant/30"></div>
+          <div class="text-center">
+            <span class="block text-2xl font-headline font-bold text-on-surface">98%</span>
+            <span class="text-xs text-on-surface-variant uppercase font-bold tracking-widest">Solved</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Search & Filter Bar -->
+    <div class="flex flex-col md:flex-row gap-4 mb-10 items-center">
+      <div class="relative flex-grow w-full">
+        <span class="material-symbols-outlined icon absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant/60"
+          data-icon="search">search</span>
+        <input
+          class="w-full bg-surface-container-low border-none rounded-xl py-4 pl-12 pr-4 focus:ring-2 focus:ring-primary-container text-on-surface placeholder:text-on-surface-variant/50 transition-all"
+          placeholder="Search discussions by keyword, user, or timestamp..." type="text" />
+      </div>
+      <button class="btn btn-surface btn-lg">
+        <span class="material-symbols-outlined icon" data-icon="filter_list">filter_list</span>
+        Filters
+      </button>
+      <button class="btn btn-primary btn-lg btn-pill">
+        Ask a Question
+      </button>
+    </div>
+    <!-- Thread List: Bento Grid Hybrid -->
+    <div class="grid grid-cols-1 gap-6">
+      <!-- Discussion Thread 1: Featured/Instructor Answer -->
+      <div class="card relative overflow-hidden group">
+        <div
+          class="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full -mr-16 -mt-16 group-hover:scale-110 transition-transform">
+        </div>
+        <div class="flex items-start gap-6 relative z-10">
+          <img alt="Alex Rivera" class="w-12 h-12 rounded-full ring-4 ring-surface-container-low"
+            data-alt="Headshot of a smiling young woman with dark hair in a professional creative studio lighting setup"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBKozZW1w3Dn_Q-Wmvaet6WE99f7_1-nEnAT2Dmirf4Tm1SJLv2BmfubWaLxqgmf6ucsNze3LFgL0LmLTxNMoHhnxa0VGFYGCwoDY6MPQHE2IURztkTFyZAH-hXB1rOiAzVqy6RaTNCoMq0mGWk86HKGSI1XZb1jDNqo2aAn3Ak-6FW2HCz7cUCeMcgDBe7n6eozlAuehiTZ09Cp5yo8VKjpz7GELtjRPlje7l9s82rVL1919s7t3v7sC3Y0d4RtAPYTIrFoEhm3CH7" />
+          <div class="flex-grow">
+            <div class="flex items-center gap-3 mb-2">
+              <h3 class="font-headline font-bold text-xl text-on-surface">How do we handle vertex buffer overflows in
+                WebGL2?</h3>
+              <span
+                class="bg-primary-fixed text-on-primary-fixed-variant px-3 py-1 rounded-full text-label font-black uppercase tracking-tighter flex items-center gap-1">
+                <span class="material-symbols-outlined icon icon-filled" data-icon="schedule">schedule</span>
+                12:45
+              </span>
+            </div>
+            <p class="text-on-surface-variant mb-6 text-lg leading-snug">
+              At the mentioned timestamp, the example uses a static buffer size. If my mesh data dynamically increases
+              beyond 65k vertices, what's the most efficient re-allocation strategy?
+            </p>
+            <!-- Reply / Thread Preview -->
+            <div class="bg-surface-container-low p-6 rounded-xl border-l-4 border-primary">
+              <div class="flex items-center gap-3 mb-3">
+                <span class="bg-primary text-on-primary text-label font-bold px-2 py-1 rounded flex items-center gap-1">
+                  <span class="material-symbols-outlined icon icon-filled" data-icon="verified">verified</span>
+                  INSTRUCTOR
+                </span>
+                <span class="font-bold text-on-surface">Marcus Thorne</span>
+                <span class="text-on-surface-variant/60 text-xs">2 hours ago</span>
+              </div>
+              <p class="text-on-surface text-base italic leading-relaxed">
+                Great catch, Alex! For dynamic meshes, we typically implement a "Buffer Orphaning" technique. You would
+                call gl.bufferData with null before re-specifying the data. This allows the driver to...
+              </p>
+            </div>
+            <div class="navbar-logo mt-6 pt-6 border-t border-outline-variant/20">
+              <div class="icon-text text-on-surface-variant">
+                <span class="material-symbols-outlined icon" data-icon="chat_bubble">chat_bubble</span>
+                <span class="font-bold">14 Replies</span>
+              </div>
+              <div class="icon-text text-primary">
+                <span class="material-symbols-outlined icon icon-filled" data-icon="thumb_up">thumb_up</span>
+                <span class="font-bold">32</span>
+              </div>
+              <button class="ml-auto text-primary font-bold hover:underline">View Discussion</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Discussion Thread 2: Community Question -->
+      <div class="card">
+        <div class="flex items-start gap-6">
+          <div class="flex flex-col items-center gap-1 mt-1">
+            <button class="material-symbols-outlined icon text-on-surface-variant hover:text-primary transition-colors"
+              data-icon="expand_less">expand_less</button>
+            <span class="font-headline font-bold text-lg">8</span>
+            <button class="material-symbols-outlined icon text-on-surface-variant hover:text-error transition-colors"
+              data-icon="expand_more">expand_more</button>
+          </div>
+          <div class="flex-grow">
+            <div class="flex items-center gap-3 mb-2">
+              <h3 class="font-headline font-bold text-xl text-on-surface">Clarification on fragment shader precision
+                qualifiers</h3>
+              <span
+                class="bg-surface-container-high text-on-surface-variant px-3 py-1 rounded-full text-label font-black uppercase tracking-tighter">No
+                Timestamp</span>
+            </div>
+            <p class="text-on-surface-variant mb-6 text-lg leading-snug">
+              In the latest lecture, you mentioned using 'mediump' for mobile performance. Does this affect the texture
+              sampling accuracy significantly on modern iOS devices?
+            </p>
+            <div class="flex items-center gap-4 text-sm">
+              <div class="flex -space-x-3">
+                <img alt="User 1" class="w-8 h-8 rounded-full border-2 border-surface-container-lowest"
+                  data-alt="Close-up of a young man with glasses smiling"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVoVsZMwoQGekO5swCNSEBUSMlBtQBwfxrqxb293iaySpSvYdauGV-IEC8xalwKhk3hiiA8qiMzeL73os8jtJC9W3Z1zYuIXf2EQo8SdKiBn6V00gOZ1voR8X4q5nu8Bx2jhLmAghGPsOXwEydBCYY54dlEEFJgXOAhIiOL0us-BwHABKpXlRURdEzwAAjUU_evWjV-OhgqFy-pFermkRt3DXyqy3nkfuXTec2jkXIJAeiRdzIL7bZ2fg2yyqYPEHUt6bfEfZTATvs" />
+                <img alt="User 2" class="w-8 h-8 rounded-full border-2 border-surface-container-lowest"
+                  data-alt="Portrait of a mature man with a beard in warm sunlight"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdk35G_okdn1MPVW1KB3MSWLGoxKSmUq4tYOOpZV_J3MUuVGRiCmuIWOWEJG9TxuxhRMAe5NW5j0dcr2HWtxsI6eBhV-FGFfpyJpWupF9UauD7Wwd6J9jcSdZBqA9PItkxoGeMnCCNbeBSzHYccDysqh7Y1SalOEHwSxBU4WUmQ7IW_HLJ9tg8jwfCyX3cIxJ0nHgQb4tFrzsJSx2LdUCdKT6cA3vT68qi0mQwOLCWW0owolDlFO8re3d7tFBXKUqWD5grN5sMebH7" />
+                <div
+                  class="w-8 h-8 rounded-full bg-surface-container-high flex items-center justify-center text-label font-bold border-2 border-surface-container-lowest">
+                  +3</div>
+              </div>
+              <span class="text-on-surface-variant">5 students are discussing this</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Discussion Thread 3: Technical Bug -->
+      <div class="card border-l-4 border-error/20">
+        <div class="flex items-start gap-6">
+          <img alt="Sarah Chen" class="w-12 h-12 rounded-full"
+            data-alt="Professional woman with short dark hair looking thoughtfully at a computer screen in a bright office"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8REl41qln-UDHbSX2vCgHMqR6I7b-e0UuNBcXxvaYCypIi-qRL6Wh3NGiS0INBojbG5PVk_FctPgTNkDAGEfuC9Ip6DdejRRp2ULuZPIPyK0XfglVnt_RgcQlZwLZZaZ4z-HGlaQm3aWYwtP8qQ6uNBis9NZG-H2t1hrRBUMsPuv3hOvY_98tRr9P2lmwrQZAt1pEQR0pIMMsmQlC5tjr7gLZz3_iKdQ1UVhr6cICO_I_ESRqjFwItcZOf9TdBU0GhiabskOD-yRF" />
+          <div class="flex-grow">
+            <div class="flex items-center gap-3 mb-2">
+              <h3 class="font-headline font-bold text-xl text-on-surface">Resource files missing for Lesson 4?</h3>
+              <span
+                class="bg-error-container text-on-error-container px-3 py-1 rounded-full text-label font-black uppercase tracking-tighter">Module
+                Error</span>
+            </div>
+            <p class="text-on-surface-variant mb-4 text-lg leading-snug">
+              The zip file for this lesson seems to be missing the 'noise-texture.png' file referenced at <span
+                class="text-primary font-bold">04:12</span>.
+            </p>
+            <div
+              class="flex items-center gap-2 bg-green-50 text-on-success-container px-4 py-2 rounded-xl w-fit text-sm font-bold">
+              <span class="material-symbols-outlined icon icon-filled" data-icon="check_circle">check_circle</span>
+              Resolved by Instructor
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Load More Section -->
+    <div class="mt-12 flex justify-center">
+      <button class="group flex flex-col items-center gap-2">
+        <span
+          class="text-on-surface-variant font-bold text-sm uppercase tracking-widest group-hover:text-primary transition-colors">Show
+          More Discussions</span>
+        <span class="material-symbols-outlined icon text-primary animate-bounce"
+          data-icon="expand_more">expand_more</span>
+      </button>
+    </div>
+  </main>
+  <!-- BottomNavBar (Mobile Only) -->
+  <nav
+    class="md:hidden fixed bottom-0 left-0 w-full bg-white dark:bg-inverse-surface shadow-sm flex justify-around items-center px-4 pb-6 pt-3 z-50 rounded-t-3xl">
+    <a class="nav-bottom-item" href="#">
+      <span class="material-symbols-outlined icon" data-icon="home">home</span>
+      <span class="font-accent text-caption font-medium tracking-wide uppercase">Home</span>
+    </a>
+    <a class="nav-bottom-item" href="#">
+      <span class="material-symbols-outlined icon" data-icon="search">search</span>
+      <span class="font-accent text-caption font-medium tracking-wide uppercase">Search</span>
+    </a>
+    <a class="flex flex-col items-center justify-center bg-primary-fixed dark:bg-primary/40 text-primary dark:text-primary-fixed-dim rounded-2xl px-5 py-1.5 active:scale-90"
+      href="#">
+      <span class="material-symbols-outlined icon icon-filled" data-icon="menu_book">menu_book</span>
+      <span class="font-accent text-caption font-medium tracking-wide uppercase">Learning</span>
+    </a>
+    <a class="nav-bottom-item" href="#">
+      <span class="material-symbols-outlined icon" data-icon="person">person</span>
+      <span class="font-accent text-caption font-medium tracking-wide uppercase">Profile</span>
+    </a>
+  </nav>
+</body>
+
+</html>

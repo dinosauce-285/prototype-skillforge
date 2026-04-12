@@ -11,38 +11,58 @@
 <title>SkillForge | Recommendations</title>
 
 </head>
-<body class="bg-surface font-body text-on-surface">
-<!-- TopAppBar -->
-<header class="navbar">
-
-<div class="navbar-container">
-<div class="navbar-logo">
-<h1 class="sf-brand text-2xl">SkillForge</h1>
-<nav class="hidden md:flex gap-6 items-center">
-<a class="text-primary dark:text-primary-container font-bold font-accent text-sm" href="#">Explore</a>
-<a class="text-on-surface-variant dark:text-outline hover:bg-primary-fixed/50 dark:hover:bg-primary/30 transition-colors px-3 py-1 rounded-xl text-sm font-medium" href="#">Academy</a>
-<a class="text-on-surface-variant dark:text-outline hover:bg-primary-fixed/50 dark:hover:bg-primary/30 transition-colors px-3 py-1 rounded-xl text-sm font-medium" href="#">Pathways</a>
-</nav>
-</div>
-<div class="flex items-center gap-4">
-<div class="hidden sm:flex items-center bg-surface-container-low px-4 py-2 rounded-full">
-<span class="material-symbols-outlined icon text-slate-400 mr-2">search</span>
-<input class="bg-transparent border-none focus:ring-0 text-sm w-48 placeholder:text-slate-400" placeholder="Find your next skill..." type="text"/>
-</div>
-<div class="flex gap-2">
-<button class="p-2 text-on-surface-variant hover:bg-primary-fixed/50 rounded-full transition-all active:scale-95">
-<span class="material-symbols-outlined icon">notifications</span>
-</button>
-<button class="p-2 text-on-surface-variant hover:bg-primary-fixed/50 rounded-full transition-all active:scale-95">
-<span class="material-symbols-outlined icon">settings</span>
-</button>
-</div>
-<div class="h-10 w-10 rounded-full bg-primary-fixed overflow-hidden border-2 border-white">
-<img class="w-full h-full object-cover" data-alt="Close-up portrait of a young professional woman with a friendly expression in a brightly lit modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCVGlA4Z2roS9piwfcGg5bNdtYB-iXK-4vOKcRWpJhJlQAz4HaZ1NRya88hP24qAbRi7EKtz4rSTWvk6bEKA6b91BYt8CihzKFseKSQHhehGgd6oDQDGfKbtTYYXgi999kdL7dBUZnCcjXZpKO-rHbxCGnq2lBPN1Yxd_c9PQEsfTTSFXbUBSOy71Ziq53EAX5QvpFhuv6GWyarMbQHLb_5zqUAFhyjydOdYlonLItKxaPWY6n_NMSDkr-kj7jmWlFaCOZr0SfhaB8s"/>
-</div>
-</div>
-</div>
-</header>
+<body
+    class="bg-surface-bright text-on-surface font-body selection:bg-secondary-fixed selection:text-on-secondary-container"
+  >
+    <!-- TopAppBar -->
+    <header class="navbar">
+      <div class="navbar-container">
+        <div class="navbar-logo">
+          <span class="sf-brand text-2xl">SkillForge</span>
+          <nav class="hidden md:flex navbar-logo">
+            <a
+              class="text-on-surface-variant dark:text-outline font-headline font-medium hover:text-primary transition-colors"
+              href="#"
+              >Courses</a
+            >
+            <a
+              class="text-primary dark:text-primary-container font-bold font-headline tracking-tight"
+              href="#"
+              >My Learning</a
+            >
+            <a
+              class="text-on-surface-variant dark:text-outline font-headline font-medium hover:text-primary transition-colors"
+              href="#"
+              >Community</a
+            >
+          </nav>
+        </div>
+        <div class="flex items-center gap-4">
+          <div class="relative hidden sm:block">
+            <span
+              class="material-symbols-outlined icon absolute left-3 top-1/2 -translate-y-1/2 text-outline"
+              >search</span
+            >
+            <input
+              class="input-search w-64"
+              placeholder="Search courses..."
+              type="text"
+            />
+          </div>
+          <button
+            class="p-2 text-on-surface-variant hover:bg-primary-fixed/50 dark:hover:bg-primary/30 rounded-full transition-colors active:scale-95"
+          >
+            <span class="material-symbols-outlined icon">notifications</span>
+          </button>
+          <img
+            alt="User Profile"
+            class="w-8 h-8 rounded-full border-2 border-primary-container"
+            data-alt="Close up portrait of a professional man with a kind smile, clean studio background, professional headshot style"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwY1B9wpSRqxXzXAJh8DbdA4HfEw05owBnOJtCrM7a_WfsnRdus3WMxAwlVWPPHLYY6fUkWwsnRfeWtCLR78mjvm6HKRrtczbvGHqUYRTIWms7R9saUi18oT7DkX_kNb0i4bKDgdZyFNtu-pGHOdww86fCmQZGCTgJBqNbLQiBVdkQZmT43xoxxBAgEn8PVA1qIY9JUNZVIFdqd4da5woJgnyACzw4Yg_Hgt5GN4Ukl1UJZSuM0Sh9toKSm6z_2T4eIikR6hNgUzkO"
+          />
+        </div>
+      </div>
+    </header>
 <main class="pt-24 pb-32 px-6 sf-container">
 <!-- Hero Discovery Section -->
 <section class="mb-16">

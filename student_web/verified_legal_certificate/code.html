@@ -11,24 +11,58 @@
 <title>SkillForge | Verified Certificate</title>
 
 </head>
-<body class="bg-surface font-body text-on-surface">
-<!-- TopAppBar -->
-<header class="navbar">
-
-<div class="navbar-container">
-<div class="flex items-center gap-4">
-<span class="material-symbols-outlined icon text-on-surface-variant cursor-pointer hover:bg-primary-fixed/50 p-2 rounded-full transition-colors active:scale-95 duration-200">arrow_back</span>
-<h1 class="sf-brand text-xl">SkillForge</h1>
-</div>
-<div class="flex items-center gap-4">
-<button class="material-symbols-outlined icon text-on-surface-variant p-2 rounded-full hover:bg-primary-fixed/50 transition-colors active:scale-95">notifications</button>
-<button class="material-symbols-outlined icon text-on-surface-variant p-2 rounded-full hover:bg-primary-fixed/50 transition-colors active:scale-95">settings</button>
-<div class="h-8 w-8 rounded-full overflow-hidden border-2 border-primary-fixed">
-<img alt="User profile" data-alt="close-up portrait of a professional woman smiling in a bright modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALiAPJ0GRWqga9ci-CQALykygEw5NMY5QbL924nT5wGzFo-im5PBxaQN5abHNLJ-7_MFJiKNvQGwGXrTAy-Vk4MZRFmPaVVnZAThk1y0Oo3S1i_96X5jizyGDfrmwS5LJwV4sG9O7k-Cxbsppkh4wCXUcoinDwiPfi4WsNBtff36b-NQ-tPqihBj9t6jwz3ExY2kGE-jQEPx-dEk49-_Ktx1FfQYRv4pfy8lW24xVEB_AGUhpVvpmt3HLvJY7i9v9qWsARapQfZiJT"/>
-</div>
-</div>
-</div>
-</header>
+<body
+    class="bg-surface-bright text-on-surface font-body selection:bg-secondary-fixed selection:text-on-secondary-container"
+  >
+    <!-- TopAppBar -->
+    <header class="navbar">
+      <div class="navbar-container">
+        <div class="navbar-logo">
+          <span class="sf-brand text-2xl">SkillForge</span>
+          <nav class="hidden md:flex navbar-logo">
+            <a
+              class="text-on-surface-variant dark:text-outline font-headline font-medium hover:text-primary transition-colors"
+              href="#"
+              >Courses</a
+            >
+            <a
+              class="text-primary dark:text-primary-container font-bold font-headline tracking-tight"
+              href="#"
+              >My Learning</a
+            >
+            <a
+              class="text-on-surface-variant dark:text-outline font-headline font-medium hover:text-primary transition-colors"
+              href="#"
+              >Community</a
+            >
+          </nav>
+        </div>
+        <div class="flex items-center gap-4">
+          <div class="relative hidden sm:block">
+            <span
+              class="material-symbols-outlined icon absolute left-3 top-1/2 -translate-y-1/2 text-outline"
+              >search</span
+            >
+            <input
+              class="input-search w-64"
+              placeholder="Search courses..."
+              type="text"
+            />
+          </div>
+          <button
+            class="p-2 text-on-surface-variant hover:bg-primary-fixed/50 dark:hover:bg-primary/30 rounded-full transition-colors active:scale-95"
+          >
+            <span class="material-symbols-outlined icon">notifications</span>
+          </button>
+          <img
+            alt="User Profile"
+            class="w-8 h-8 rounded-full border-2 border-primary-container"
+            data-alt="Close up portrait of a professional man with a kind smile, clean studio background, professional headshot style"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwY1B9wpSRqxXzXAJh8DbdA4HfEw05owBnOJtCrM7a_WfsnRdus3WMxAwlVWPPHLYY6fUkWwsnRfeWtCLR78mjvm6HKRrtczbvGHqUYRTIWms7R9saUi18oT7DkX_kNb0i4bKDgdZyFNtu-pGHOdww86fCmQZGCTgJBqNbLQiBVdkQZmT43xoxxBAgEn8PVA1qIY9JUNZVIFdqd4da5woJgnyACzw4Yg_Hgt5GN4Ukl1UJZSuM0Sh9toKSm6z_2T4eIikR6hNgUzkO"
+          />
+        </div>
+      </div>
+    </header>
 <main class="pt-24 pb-32 px-6 max-w-6xl mx-auto">
 <!-- Formal Header Section -->
 <section class="mb-12 text-center md:text-left flex flex-col md:flex-row md:items-end justify-between gap-6">
