@@ -15,15 +15,42 @@
 </head>
 <body class="bg-background text-on-surface">
 <!-- Top Navigation Anchor -->
-<header class="navbar">
-
-<div class="flex items-center gap-4">
-<button class="material-symbols-outlined icon text-primary p-2 hover:bg-[#f26724]/10 rounded-full transition-colors active:scale-95">arrow_back</button>
-<h1 class="sf-brand text-xl">SkillForge</h1>
-</div>
-<div class="h-10 w-10 rounded-full bg-surface-container-high overflow-hidden border border-outline-variant/30">
-<img alt="User Profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzqZHZ812_0buGofvrTqK3GdxL51ueweZ-ITFThXdMHmVk7UN_Sf-p5HvWKqufbEl6RM06NOhW9ayXWXCS34_drjjh3HQKt6m_5s8T_MREP2g_nAjdnTuMTStVnpuMjX6wWcS9fQBvG3YUARvdqNYsInAobubuyyvV-FgHG3BP0PU19RRSa6Td-2jNTWPXXlYgQZK27k01wxSI12qHeDxRMh2PJ39hYR3TweugFLIkbGV548-f_tXhysldZl4Ymkt5FSOpqYc2HBqp"/>
-</div>
+<!-- Unified TopNavBar -->
+<header class="navbar flex items-center justify-between px-4 py-3 md:px-8 border-b border-surface-container-highest">
+    <div class="flex items-center gap-4">
+        <!-- Back Button (Mobile only) -->
+        <button class="md:hidden material-symbols-outlined icon text-on-surface-variant hover:bg-primary/10 p-2 rounded-full transition-colors active:scale-95" data-icon="arrow_back">arrow_back</button>
+        
+        <!-- Unified Logo -->
+        <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined icon text-primary hidden md:inline-block">school</span>
+            <h1 class="sf-brand text-xl md:text-2xl font-black text-primary m-0">SkillForge</h1>
+        </div>
+        
+        <!-- Desktop Nav Links -->
+        <div class="hidden md:flex items-center space-x-8 font-body tracking-tight font-bold text-lg ml-8">
+            <a class="text-on-surface-variant dark:text-surface hover:text-primary-container transition-colors duration-300" href="#">Browse</a>
+            <a class="text-on-surface-variant dark:text-surface hover:text-primary-container transition-colors duration-300" href="#">My Courses</a>
+            <a class="text-primary border-b-2 border-[#a53c00] pb-1 hover:text-primary-container transition-colors duration-300" href="#">Revenue</a>
+            <a class="text-on-surface-variant dark:text-surface hover:text-primary-container transition-colors duration-300" href="#">Dashboard</a>
+        </div>
+    </div>
+    
+    <div class="flex items-center space-x-4 md:space-x-6">
+        <!-- Unified Icons -->
+        <button class="hidden md:flex items-center gap-2 text-primary font-bold">
+            <span class="material-symbols-outlined icon">shopping_cart</span>
+            <span>Cart</span>
+        </button>
+        <button class="md:hidden material-symbols-outlined icon text-on-surface-variant hover:bg-primary/10 p-2 rounded-full transition-colors">shopping_cart</button>
+        
+        <span class="material-symbols-outlined icon text-on-surface-variant cursor-pointer">notifications</span>
+        
+        <!-- Unified Avatar -->
+        <div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden cursor-pointer border-2 border-transparent hover:border-primary transition-colors">
+            <img alt="User Avatar" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJhO3l7mIQiKxdsF_47A16cyf1_f6_XjyFAl8b_iKeByYylQJNsj15QLFiCrM5JAo4KbCJq2J8AC8-3aNWQEKGd7s1oDtW7x5r67gfElYWIfjUhUFBA-EVP41hADhw6bXkY7TVjU4Fr9LbYKkpOY5IYX5fpYmxmlIEewhR6ZnLq_EUcJL9wp5WoNFmyGXLrM-AUgRWm04E-Kci-CcFXo63h0ymn7LzkyVrVByvTnxZzNyJolCGYVwtSUOhTOmfBKtUuuntHrarcHn6"/>
+        </div>
+    </div>
 </header>
 <main class="pt-24 pb-32 px-4 container-lg">
 <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
