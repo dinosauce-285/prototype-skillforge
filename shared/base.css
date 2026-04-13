@@ -310,8 +310,8 @@ html.mobile-simulator body {
     width: 100vw;
     max-width: 480px;
     /* Mobile boundary */
-    height: 100vh;
-    height: 100dvh;
+    min-height: 100vh;
+    min-height: 100dvh;
     /* Safe-area respects mobile browsers natively */
     margin: 0;
     overflow-y: auto;
@@ -329,6 +329,14 @@ html.mobile-simulator body {
 html.mobile-simulator body::-webkit-scrollbar {
     width: 0;
     background: transparent;
+}
+
+/* Mobile simulator: navbar should be constrained to body width */
+html.mobile-simulator .navbar {
+    left: 0;
+    right: 0;
+    max-width: 480px;
+    margin-inline: auto;
 }
 
 /* ── Input Focus Ring ───────────────────────────────────── */
