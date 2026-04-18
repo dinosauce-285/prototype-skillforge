@@ -16,91 +16,58 @@
   </head>
   <body class="bg-surface text-on-surface">
     <!-- SideNavBar -->
-    <aside
-      class="h-screen w-64 fixed left-0 top-0 bg-zinc-100 flex flex-col p-4 gap-2 border-r border-zinc-200/50 z-50"
-    >
-      <div class="mb-8 px-4">
-        <h1 class="font-body font-extrabold text-primary text-2xl">
-          SkillForge
-        </h1>
-        <p class="text-xs font-medium text-zinc-500 uppercase tracking-widest">
-          Instructor Portal
-        </p>
+        <aside class="h-screen w-64 fixed left-0 top-0 border-r border-slate-200/50 bg-surface dark:bg-slate-950 flex flex-col py-6 px-4 z-[60]">
+      <div class="px-2 mb-8">
+        <h1 class="sf-brand text-2xl text-primary">SkillForge</h1>
+        <p class="text-xs font-semibold text-on-surface-variant uppercase tracking-widest mt-1">Instructor Portal</p>
       </div>
-      <nav class="flex flex-col gap-1 flex-1">
-        <a
-          class="flex items-center gap-3 text-zinc-600 px-4 py-3 hover:bg-zinc-200 rounded-xl transition-all duration-200"
-          href="#"
-        >
-          <span class="material-symbols-outlined icon" data-icon="dashboard"
-            >dashboard</span
-          >
-          <span class="font-label text-sm font-medium">Dashboard</span>
+      <nav class="flex-1 space-y-1 overflow-y-auto pr-2 pb-4">
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-medium hover:bg-surface-container-high/50 transition-colors tracking-tight" href="#">
+          <span class="material-symbols-outlined icon text-lg" data-icon="dashboard">dashboard</span>
+          <span class="font-body text-sm">Dashboard</span>
         </a>
-        <a
-          class="flex items-center gap-3 text-zinc-600 px-4 py-3 hover:bg-zinc-200 rounded-xl transition-all duration-200"
-          href="#"
-        >
-          <span class="material-symbols-outlined icon" data-icon="school"
-            >school</span
-          >
-          <span class="font-label text-sm font-medium">My Courses</span>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-medium hover:bg-surface-container-high/50 transition-colors tracking-tight" href="#">
+          <span class="material-symbols-outlined icon text-lg" data-icon="school">school</span>
+          <span class="font-body text-sm">My Courses</span>
         </a>
-        <a
-          class="flex items-center gap-3 text-zinc-600 px-4 py-3 hover:bg-zinc-200 rounded-xl transition-all duration-200"
-          href="#"
-        >
-          <span class="material-symbols-outlined icon" data-icon="forum"
-            >forum</span
-          >
-          <span class="font-label text-sm font-medium">Q&amp;A Management</span>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-medium hover:bg-surface-container-high/50 transition-colors tracking-tight" href="#">
+          <span class="material-symbols-outlined icon text-lg" data-icon="account_tree">account_tree</span>
+          <span class="font-body text-sm">Curriculum</span>
         </a>
-        <a
-          class="flex items-center gap-3 text-primary font-bold px-4 py-3 bg-white rounded-xl shadow-sm shadow-orange-900/5 transition-all duration-200"
-          href="#"
-        >
-          <span
-            class="material-symbols-outlined icon"
-            data-icon="confirmation_number"
-            >confirmation_number</span
-          >
-          <span class="font-label text-sm font-medium">Coupon Management</span>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-medium hover:bg-surface-container-high/50 transition-colors tracking-tight" href="#">
+          <span class="material-symbols-outlined icon text-lg" data-icon="quiz">quiz</span>
+          <span class="font-body text-sm">Quiz Builder</span>
         </a>
-        <a
-          class="flex items-center gap-3 text-zinc-600 px-4 py-3 hover:bg-zinc-200 rounded-xl transition-all duration-200"
-          href="#"
-        >
-          <span class="material-symbols-outlined icon" data-icon="insights"
-            >insights</span
-          >
-          <span class="font-label text-sm font-medium">Analytics</span>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-medium hover:bg-surface-container-high/50 transition-colors tracking-tight" href="#">
+          <span class="material-symbols-outlined icon text-lg" data-icon="forum">forum</span>
+          <span class="font-body text-sm">Q&A</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-medium hover:bg-surface-container-high/50 transition-colors tracking-tight" href="#">
+          <span class="material-symbols-outlined icon text-lg" data-icon="assignment_turned_in">assignment_turned_in</span>
+          <span class="font-body text-sm">Grading</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-medium hover:bg-surface-container-high/50 transition-colors tracking-tight" href="#">
+          <span class="material-symbols-outlined icon text-lg" data-icon="trending_up">trending_up</span>
+          <span class="font-body text-sm">Progress</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-primary font-bold bg-primary/10 transition-colors" href="#">
+          <span class="material-symbols-outlined icon text-lg" data-icon="confirmation_number">confirmation_number</span>
+          <span class="font-body text-sm">Coupons</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-medium hover:bg-surface-container-high/50 transition-colors tracking-tight" href="#">
+          <span class="material-symbols-outlined icon text-lg" data-icon="person">person</span>
+          <span class="font-body text-sm">Profile</span>
         </a>
       </nav>
-      <div class="pt-4 border-t border-zinc-200/50 flex flex-col gap-1">
-        <a
-          class="flex items-center gap-3 text-zinc-600 px-4 py-3 hover:bg-zinc-200 rounded-xl transition-all"
-          href="#"
-        >
-          <span class="material-symbols-outlined icon" data-icon="settings"
-            >settings</span
-          >
-          <span class="font-label text-sm font-medium">Settings</span>
-        </a>
-        <a
-          class="flex items-center gap-3 text-zinc-600 px-4 py-3 hover:bg-zinc-200 rounded-xl transition-all"
-          href="#"
-        >
-          <span
-            class="material-symbols-outlined icon"
-            data-icon="contact_support"
-            >contact_support</span
-          >
-          <span class="font-label text-sm font-medium">Support</span>
-        </a>
+      <div class="pt-4 border-t border-outline-variant/20 mt-auto">
+        <button class="btn btn-primary w-full flex items-center justify-center gap-2 py-3 rounded-xl shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all">
+          <span class="material-symbols-outlined icon">add</span>
+          <span class="whitespace-nowrap font-bold text-sm">Create Course</span>
+        </button>
       </div>
     </aside>
     <!-- Main Content Area -->
-    <main class="ml-64 min-h-screen flex flex-col">
+    <main class="ml-64 min-h-screen">
       <!-- TopNavBar -->
       <header
         class="navbar navbar-admin sticky top-0 z-40 bg-surface border-b border-outline-variant/20 px-6 py-3 flex items-center justify-between"
