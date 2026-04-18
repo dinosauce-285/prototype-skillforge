@@ -1,0 +1,583 @@
+<!doctype html>
+<html class="light" lang="en">
+  <head>
+    <link rel="stylesheet" href="../shared/tailwind-desktop.css" />
+    <link rel="stylesheet" href="../shared/base.css" />
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>SkillForge | Flow 2: Upload & Process Video</title>
+  </head>
+  <body class="bg-background font-body text-on-surface antialiased">
+    <!-- SideNavBar (Authority: JSON) -->
+    <aside
+      class="h-screen w-64 fixed left-0 top-0 border-r border-slate-200/50 bg-surface dark:bg-slate-950 flex flex-col py-6 px-4 z-[60]"
+    >
+      <div class="px-2 mb-8">
+        <h1 class="sf-brand text-2xl text-primary">SkillForge</h1>
+        <p
+          class="text-xs font-semibold text-on-surface-variant uppercase tracking-widest mt-1"
+        >
+          Instructor Portal
+        </p>
+      </div>
+      <nav class="flex-1 space-y-1 overflow-y-auto pr-2 pb-4">
+        <a
+          class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-medium hover:bg-surface-container-high/50 transition-colors tracking-tight"
+          href="#"
+        >
+          <span
+            class="material-symbols-outlined icon text-lg"
+            data-icon="dashboard"
+            >dashboard</span
+          >
+          <span class="font-body text-sm">Dashboard</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-medium hover:bg-surface-container-high/50 transition-colors tracking-tight"
+          href="#"
+        >
+          <span
+            class="material-symbols-outlined icon text-lg"
+            data-icon="school"
+            >school</span
+          >
+          <span class="font-body text-sm">My Courses</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 rounded-xl text-primary font-bold bg-primary/10 transition-colors"
+          href="#"
+        >
+          <span
+            class="material-symbols-outlined icon text-lg"
+            data-icon="account_tree"
+            >account_tree</span
+          >
+          <span class="font-body text-sm">Curriculum</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-medium hover:bg-surface-container-high/50 transition-colors tracking-tight"
+          href="#"
+        >
+          <span class="material-symbols-outlined icon text-lg" data-icon="quiz"
+            >quiz</span
+          >
+          <span class="font-body text-sm">Quiz Builder</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-medium hover:bg-surface-container-high/50 transition-colors tracking-tight"
+          href="#"
+        >
+          <span class="material-symbols-outlined icon text-lg" data-icon="forum"
+            >forum</span
+          >
+          <span class="font-body text-sm">Q&A</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-medium hover:bg-surface-container-high/50 transition-colors tracking-tight"
+          href="#"
+        >
+          <span
+            class="material-symbols-outlined icon text-lg"
+            data-icon="assignment_turned_in"
+            >assignment_turned_in</span
+          >
+          <span class="font-body text-sm">Grading</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-medium hover:bg-surface-container-high/50 transition-colors tracking-tight"
+          href="#"
+        >
+          <span
+            class="material-symbols-outlined icon text-lg"
+            data-icon="trending_up"
+            >trending_up</span
+          >
+          <span class="font-body text-sm">Progress</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-medium hover:bg-surface-container-high/50 transition-colors tracking-tight"
+          href="#"
+        >
+          <span
+            class="material-symbols-outlined icon text-lg"
+            data-icon="confirmation_number"
+            >confirmation_number</span
+          >
+          <span class="font-body text-sm">Coupons</span>
+        </a>
+        <a
+          class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-medium hover:bg-surface-container-high/50 transition-colors tracking-tight"
+          href="#"
+        >
+          <span
+            class="material-symbols-outlined icon text-lg"
+            data-icon="person"
+            >person</span
+          >
+          <span class="font-body text-sm">Profile</span>
+        </a>
+      </nav>
+      <!-- <div class="pt-4 border-t border-outline-variant/20 mt-auto">
+        <button
+          class="btn btn-primary w-full flex items-center justify-center gap-2 py-3 rounded-xl shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all"
+        >
+          <span class="material-symbols-outlined icon">add</span>
+          <span class="whitespace-nowrap font-bold text-sm">Create Course</span>
+        </button>
+      </div> -->
+    </aside>
+    <!-- Main Workspace -->
+    <main class="ml-64 min-h-screen">
+      <!-- TopNavBar (Authority: JSON) -->
+      <header
+        class="navbar navbar-admin sticky top-0 z-40 bg-surface/80 backdrop-blur-md border-b border-outline-variant/20 px-6 py-3 flex items-center justify-between"
+      >
+        <div class="flex items-center flex-1 max-w-xl">
+          <div class="relative w-full group">
+            <span
+              class="material-symbols-outlined icon absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant"
+              data-icon="search"
+              >search</span
+            >
+            <input
+              class="w-full pl-10 pr-4 py-2 bg-surface-container-highest/50 border-none rounded-xl text-sm focus:ring-2 focus:ring-primary/20 transition-all outline-none"
+              placeholder="Search students, courses or quiz results..."
+              type="text"
+            />
+          </div>
+        </div>
+        <div class="flex items-center gap-4 ml-8">
+          <div
+            class="flex items-center gap-4 text-sm font-bold bg-error-container text-on-error-container px-3 py-1 rounded-full"
+          >
+            PROTOTYPE: FLOW 2 (Video Upload & DRM)
+          </div>
+          <button
+            class="p-2 text-on-surface-variant hover:text-primary transition-all active:scale-95"
+          >
+            <span
+              class="material-symbols-outlined icon"
+              data-icon="notifications"
+              >notifications</span
+            >
+          </button>
+          <div class="h-8 w-[1px] bg-outline-variant/20 mx-2"></div>
+          <div
+            class="flex items-center gap-3 pl-2 cursor-pointer hover:opacity-80 transition-opacity"
+          >
+            <div class="text-right hidden sm:block">
+              <p class="text-sm font-bold text-on-surface">Dr. Sarah Chen</p>
+              <p class="text-xs text-on-surface-variant font-medium">
+                Sr. Instructor
+              </p>
+            </div>
+            <img
+              class="h-10 w-10 rounded-full object-cover border border-outline-variant/20"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqR9qQS4xvUv0sqHWWujkOn6kQjRNtfSroxzVSNVlf8kfdhBCKN-JW1nmbRcLcDh8gpzQF8i9l7dja4N6YRGzd8-Ux7wBsxdyHyrVV7KcggqE-fuEGh6meX4WnfCkglPcamMJk8roogHn_YmPqBBt_al8IuoQ14rYAjPI2E_28KtCTmyTK1589tvOUJWO_hkP2KVN18es66R5WQcJdE-4r7NmuGPyJMRpvTrxsg0eieQqpVf79Z0jpgS-Wz0vp-gaYROdQzH9_oa0"
+              alt="Profile"
+            />
+          </div>
+        </div>
+      </header>
+      <!-- Content Canvas -->
+      <div class="flex-1 bg-surface-container flex justify-center pb-20">
+        <!-- Editor Area -->
+        <div
+          class="w-full max-w-5xl bg-surface-container-lowest p-10 overflow-y-auto mt-8 rounded-3xl shadow-xl"
+        >
+          <div class="space-y-10">
+            <!-- Header Actions -->
+            <div
+              class="flex justify-between items-end border-b border-outline-variant/15 pb-6"
+            >
+              <div>
+                <span
+                  class="text-label font-black uppercase tracking-[0.2em] text-primary-container"
+                  >Editing Lesson 1.1</span
+                >
+                <h2
+                  class="font-headline font-bold text-3xl tracking-tight mt-1"
+                >
+                  Welcome to the Course
+                </h2>
+              </div>
+            </div>
+
+            <!-- ALERT FOR FLOW 2 -->
+            <div
+              class="bg-primary-container/10 border-l-4 border-primary-container p-4 rounded-r-xl mb-6"
+            >
+              <h3 class="font-bold text-primary-fixed-dim">
+                Prototype Controls
+              </h3>
+              <div class="flex gap-4 mt-2">
+                <button id="btn-upload-invalid" class="btn btn-outline text-xs">
+                  Simulate Invalid File (Size/Format)
+                </button>
+                <button id="btn-upload-fail" class="btn btn-outline text-xs">
+                  Simulate Network Drop
+                </button>
+                <button
+                  id="btn-upload-success"
+                  class="bg-primary text-white px-3 py-1.5 rounded-xl text-xs font-bold shadow-md hover:scale-105 transition-all"
+                >
+                  Simulate Happy Path (Mượt)
+                </button>
+              </div>
+            </div>
+
+            <!-- Video Upload Bento -->
+            <div class="grid grid-cols-12 gap-6 relative">
+              <!-- Processing Overlay -->
+              <div
+                id="processing-overlay"
+                class="absolute inset-0 bg-surface-container-lowest/90 backdrop-blur-sm z-10 hidden flex-col items-center justify-center rounded-xl border border-primary-container/30 transition-all duration-300"
+              >
+                <span
+                  id="process-icon"
+                  class="material-symbols-outlined icon text-primary-container icon-xl mb-4 animate-spin"
+                  >sync</span
+                >
+                <h3 id="process-title" class="font-headline font-bold text-xl">
+                  Uploading Video...
+                </h3>
+                <p
+                  id="process-desc"
+                  class="text-sm text-on-surface-variant mt-1"
+                >
+                  Please keep this browser window open.
+                </p>
+
+                <div
+                  class="w-64 h-3 bg-surface-container-highest rounded-full mt-6 overflow-hidden shadow-inner"
+                >
+                  <div
+                    id="progress-bar"
+                    class="h-full bg-gradient-to-r from-primary to-primary-container w-[0%] transition-all duration-500 rounded-full"
+                  ></div>
+                </div>
+                <p
+                  id="progress-text"
+                  class="text-xs font-bold text-primary mt-2"
+                >
+                  0%
+                </p>
+
+                <div id="action-buttons" class="mt-6 flex gap-3 hidden">
+                  <button
+                    id="btn-resume"
+                    class="btn btn-primary text-xs hidden"
+                  >
+                    Resume Upload
+                  </button>
+                  <button
+                    id="btn-cancel"
+                    class="btn btn-outline text-xs hidden text-error border-error"
+                  >
+                    Cancel & Delete Temp File
+                  </button>
+                  <button id="btn-retry" class="btn btn-primary text-xs hidden">
+                    Upload Again
+                  </button>
+                </div>
+              </div>
+
+              <div class="col-span-12 lg:col-span-8 space-y-4">
+                <label
+                  class="text-xs font-bold uppercase tracking-widest text-on-surface-variant"
+                  >Lesson Video Source</label
+                >
+                <div
+                  id="upload-zone"
+                  class="relative group aspect-video rounded-xl overflow-hidden bg-surface-container-highest border-2 border-dashed border-outline-variant/30 flex flex-col items-center justify-center cursor-pointer hover:border-primary-container/50 transition-all"
+                >
+                  <div class="text-center p-8">
+                    <span
+                      class="material-symbols-outlined icon icon-xl text-primary-container mb-3 transition-transform group-hover:-translate-y-2 duration-300"
+                      >cloud_upload</span
+                    >
+                    <p class="font-bold text-on-surface text-lg">
+                      Drag & Drop Video File
+                    </p>
+                    <p class="text-sm text-on-surface-variant mt-2">
+                      MP4, MOV, or WEBM up to 2GB. Recommended: 1080p H.264
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Success / Pending State -->
+                <div
+                  id="success-zone"
+                  class="hidden aspect-video rounded-xl overflow-hidden bg-emerald-900/10 border border-emerald-500/30 flex flex-col items-center justify-center"
+                >
+                  <span
+                    class="material-symbols-outlined icon icon-xl text-emerald-500 mb-3 icon-filled"
+                    >verified</span
+                  >
+                  <p class="font-bold text-emerald-600 text-lg">
+                    Video Successfully Processed
+                  </p>
+                  <div
+                    class="flex items-center gap-2 mt-2 bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-xs font-bold"
+                  >
+                    <span class="material-symbols-outlined icon text-[16px]"
+                      >admin_panel_settings</span
+                    >
+                    PENDING ADMIN APPROVAL
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-span-12 lg:col-span-4 space-y-4">
+                <label
+                  class="text-xs font-bold uppercase tracking-widest text-on-surface-variant"
+                  >Lesson Settings</label
+                >
+                <div class="bg-surface-container p-6 rounded-xl space-y-4">
+                  <div>
+                    <label
+                      class="block text-xs font-semibold text-on-surface-variant mb-1.5"
+                      >Lesson Type</label
+                    >
+                    <select
+                      class="w-full bg-surface-container-lowest border-none rounded-xl text-sm shadow-sm opacity-50 cursor-not-allowed"
+                      disabled
+                    >
+                      <option selected>Video Lesson</option>
+                    </select>
+                  </div>
+                  <div class="row row-between py-2">
+                    <span class="text-sm font-medium text-on-surface"
+                      >DRM Protection</span
+                    >
+                    <span
+                      class="material-symbols-outlined icon text-primary-fixed-dim icon-filled"
+                      >lock</span
+                    >
+                  </div>
+                  <div class="row row-between py-2">
+                    <span class="text-sm font-medium text-on-surface"
+                      >Auto-HLS Stream</span
+                    >
+                    <span
+                      class="material-symbols-outlined icon text-primary-fixed-dim icon-filled"
+                      >bolt</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Toast Notification Container -->
+            <div
+              id="toast-container"
+              class="fixed bottom-4 right-4 z-[200] flex flex-col gap-2 pointer-events-none"
+            ></div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <script>
+      const overlay = document.getElementById("processing-overlay");
+      const uploadZone = document.getElementById("upload-zone");
+      const successZone = document.getElementById("success-zone");
+      const title = document.getElementById("process-title");
+      const desc = document.getElementById("process-desc");
+      const icon = document.getElementById("process-icon");
+      const bar = document.getElementById("progress-bar");
+      const barText = document.getElementById("progress-text");
+      const actionBtns = document.getElementById("action-buttons");
+      const btnResume = document.getElementById("btn-resume");
+      const btnCancel = document.getElementById("btn-cancel");
+      const btnRetry = document.getElementById("btn-retry");
+
+      let uploadInterval;
+
+      function showToast(message, type = "success") {
+        const toast = document.createElement("div");
+        toast.className = `flex items-center gap-3 px-4 py-3 rounded-xl shadow-lg transform transition-all duration-300 translate-y-10 opacity-0 ${type === "success" ? "bg-primary-container text-on-primary-container" : "bg-error-container text-on-error-container"}`;
+        const iconName = type === "success" ? "check_circle" : "error";
+        toast.innerHTML = `<span class="material-symbols-outlined icon icon-filled" style="color:white; font-variation-settings: 'FILL' 1">${iconName}</span><span class="font-medium text-sm" style="color:white">${message}</span>`;
+        if (type === "success") toast.style.backgroundColor = "#4ade80";
+        else toast.style.backgroundColor = "#f87171";
+        toast.style.color = "#fff";
+        document.getElementById("toast-container").appendChild(toast);
+        requestAnimationFrame(() =>
+          toast.classList.remove("translate-y-10", "opacity-0"),
+        );
+        setTimeout(() => {
+          toast.classList.add("translate-y-10", "opacity-0");
+          setTimeout(() => toast.remove(), 300);
+        }, 4000);
+      }
+
+      function resetUI() {
+        clearInterval(uploadInterval);
+        overlay.classList.add("hidden");
+        overlay.classList.remove("flex");
+        uploadZone.classList.remove("hidden");
+        successZone.classList.add("hidden");
+        bar.style.width = "0%";
+        barText.textContent = "0%";
+        bar.classList.remove("bg-error");
+        bar.classList.add(
+          "bg-gradient-to-r",
+          "from-primary",
+          "to-primary-container",
+        );
+        icon.textContent = "sync";
+        icon.classList.add("animate-spin");
+        icon.classList.remove("text-error", "text-emerald-500");
+        icon.classList.add("text-primary-container");
+        title.classList.remove("text-error");
+        actionBtns.classList.add("hidden");
+        btnResume.classList.add("hidden");
+        btnCancel.classList.add("hidden");
+        btnRetry.classList.add("hidden");
+      }
+
+      function showOverlay() {
+        overlay.classList.remove("hidden");
+        overlay.classList.add("flex");
+      }
+
+      // Luồng: File Lỗi (Invalid File) -> Check ngay lập tức ở front-end
+      document
+        .getElementById("btn-upload-invalid")
+        .addEventListener("click", () => {
+          resetUI();
+          showToast(
+            "Error: File size exceeds 2GB limit or format not supported (MKV).",
+            "error",
+          );
+        });
+
+      // Luồng: Đứt mạng (Network Drop)
+      document
+        .getElementById("btn-upload-fail")
+        .addEventListener("click", () => {
+          resetUI();
+          showOverlay();
+          title.textContent = "Uploading Video...";
+          desc.textContent = "Transferring file to secure vault...";
+
+          let progress = 0;
+          uploadInterval = setInterval(() => {
+            progress += 10;
+            bar.style.width = `${progress}%`;
+            barText.textContent = `${progress}%`;
+
+            if (progress === 40) {
+              clearInterval(uploadInterval);
+              setTimeout(() => {
+                // Simulate network drop
+                icon.textContent = "wifi_off";
+                icon.classList.remove("animate-spin", "text-primary-container");
+                icon.classList.add("text-error");
+                title.textContent = "Network Disconnected";
+                title.classList.add("text-error");
+                desc.textContent =
+                  "Upload paused. Do you want to resume or cancel?";
+                bar.classList.remove(
+                  "bg-gradient-to-r",
+                  "from-primary",
+                  "to-primary-container",
+                );
+                bar.classList.add("bg-error");
+
+                actionBtns.classList.remove("hidden");
+                btnResume.classList.remove("hidden");
+                btnCancel.classList.remove("hidden");
+                showToast("Connection lost during upload.", "error");
+              }, 500);
+            }
+          }, 400);
+        });
+
+      // Handle Cancel from Network Stop
+      btnCancel.addEventListener("click", () => {
+        resetUI();
+        showToast("Temp file deleted. Upload cancelled.", "success");
+      });
+
+      // Handle Resume from Network Stop
+      btnResume.addEventListener("click", () => {
+        actionBtns.classList.add("hidden");
+        btnResume.classList.add("hidden");
+        btnCancel.classList.add("hidden");
+
+        icon.textContent = "sync";
+        icon.classList.add("animate-spin", "text-primary-container");
+        icon.classList.remove("text-error");
+        title.textContent = "Resuming Upload...";
+        title.classList.remove("text-error");
+        desc.textContent = "Reconnecting to vault...";
+        bar.classList.add(
+          "bg-gradient-to-r",
+          "from-primary",
+          "to-primary-container",
+        );
+        bar.classList.remove("bg-error");
+
+        let progress = 40;
+        uploadInterval = setInterval(() => {
+          progress += 15;
+          if (progress > 100) progress = 100;
+          bar.style.width = `${progress}%`;
+          barText.textContent = `${progress}%`;
+
+          if (progress === 100) {
+            clearInterval(uploadInterval);
+            backendProcessing();
+          }
+        }, 500);
+      });
+
+      // Happy Path Action
+      document
+        .getElementById("btn-upload-success")
+        .addEventListener("click", () => {
+          resetUI();
+          showOverlay();
+          title.textContent = "Uploading Video...";
+          desc.textContent = "Transferring file to secure vault...";
+
+          let progress = 0;
+          uploadInterval = setInterval(() => {
+            progress += 20;
+            bar.style.width = `${progress}%`;
+            barText.textContent = `${progress}%`;
+
+            if (progress >= 100) {
+              clearInterval(uploadInterval);
+              backendProcessing();
+            }
+          }, 300);
+        });
+
+      function backendProcessing() {
+        icon.textContent = "memory";
+        title.textContent = "Backend Processing...";
+        desc.textContent =
+          "Converting to HLS Stream & applying DRM encryption. This may take a moment.";
+        // Reset progress bar for backend process
+        bar.style.width = "0%";
+        barText.textContent = "Running pipelines...";
+
+        setTimeout(() => (bar.style.width = "30%"), 500);
+        setTimeout(() => (bar.style.width = "70%"), 1500);
+        setTimeout(() => (bar.style.width = "100%"), 2500);
+
+        setTimeout(() => {
+          // Success
+          uploadZone.classList.add("hidden");
+          overlay.classList.add("hidden");
+          successZone.classList.remove("hidden");
+          successZone.classList.add("flex");
+          showToast("Video successfully processed and pushed to CDN.");
+        }, 3000);
+      }
+    </script>
+  </body>
+</html>
