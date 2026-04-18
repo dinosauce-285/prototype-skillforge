@@ -1,522 +1,1206 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>SkillForge | Workspace Overview</title>
-    <link rel="stylesheet" href="shared/tailwind-desktop.css"/>
+    <link rel="stylesheet" href="shared/tailwind-desktop.css" />
     <style>
-        body { background-color: #1a1a1a; color: #f5f5f5; font-family: system-ui, sans-serif; overflow-x: hidden; }
-        .canvas-container { padding: 40px; }
-        .section-title { font-size: 24px; font-weight: bold; margin-bottom: 20px; color: #f26724; border-bottom: 2px solid #a53c00; padding-bottom: 10px; }
-        
-        .grid-mobile { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 40px; margin-bottom: 80px; }
-        .grid-desktop { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 40px; margin-bottom: 80px; }
-        
-        .frame-wrapper { 
-            background: #2a2a2a; border-radius: 16px; padding: 12px; 
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            transition: transform 0.2s;
-            position: relative;
-            display: flex; flex-direction: column; align-items: center;
-        }
-        .frame-wrapper:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(0,0,0,0.7); }
-        .frame-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; width: 100%; padding-inline: 4px; }
-        .frame-title { font-size: 14px; font-weight: bold; opacity: 0.8; }
-        .frame-link { color: #58a6ff; text-decoration: none; font-size: 12px; }
-        
-        .preview-mobile {
-            width: 375px; height: 812px;
-            transform: scale(0.65); transform-origin: top left;
-            border: none; border-radius: 24px; background: white;
-            pointer-events: none;
-        }
-        .preview-desktop {
-            width: 1440px; height: 900px;
-            transform: scale(0.25); transform-origin: top left;
-            border: none; background: white;
-            pointer-events: none;
-        }
-        
-        .scale-box-mobile { width: calc(375px * 0.65); height: calc(812px * 0.65); overflow: hidden; border-radius: 12px;}
-        .scale-box-desktop { width: calc(1440px * 0.25); height: calc(900px * 0.25); overflow: hidden; border-radius: 8px;}
+      body {
+        background-color: #1a1a1a;
+        color: #f5f5f5;
+        font-family: system-ui, sans-serif;
+        overflow-x: hidden;
+      }
+      .canvas-container {
+        padding: 40px;
+      }
+      .section-title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #f26724;
+        border-bottom: 2px solid #a53c00;
+        padding-bottom: 10px;
+      }
+
+      .grid-mobile {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 40px;
+        margin-bottom: 80px;
+      }
+      .grid-desktop {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+        gap: 40px;
+        margin-bottom: 80px;
+      }
+
+      .frame-wrapper {
+        background: #2a2a2a;
+        border-radius: 16px;
+        padding: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        transition: transform 0.2s;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .frame-wrapper:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7);
+      }
+      .frame-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        width: 100%;
+        padding-inline: 4px;
+      }
+      .frame-title {
+        font-size: 14px;
+        font-weight: bold;
+        opacity: 0.8;
+      }
+      .frame-link {
+        color: #58a6ff;
+        text-decoration: none;
+        font-size: 12px;
+      }
+
+      .preview-mobile {
+        width: 375px;
+        height: 812px;
+        transform: scale(0.65);
+        transform-origin: top left;
+        border: none;
+        border-radius: 24px;
+        background: white;
+        pointer-events: none;
+      }
+      .preview-desktop {
+        width: 1440px;
+        height: 900px;
+        transform: scale(0.25);
+        transform-origin: top left;
+        border: none;
+        background: white;
+        pointer-events: none;
+      }
+
+      .scale-box-mobile {
+        width: calc(375px * 0.65);
+        height: calc(812px * 0.65);
+        overflow: hidden;
+        border-radius: 12px;
+      }
+      .scale-box-desktop {
+        width: calc(1440px * 0.25);
+        height: calc(900px * 0.25);
+        overflow: hidden;
+        border-radius: 8px;
+      }
     </style>
-</head>
-<body>
-    <div class="px-10 py-6 bg-black flex justify-between items-center sticky top-0 z-50 shadow-2xl">
-        <h1 class="text-3xl font-black text-white tracking-tight"><span style="color:#f26724">SkillForge</span> Workspace</h1>
-        <p class="text-gray-400">Total Frames: 57</p>
+  </head>
+  <body>
+    <div
+      class="px-10 py-6 bg-black flex justify-between items-center sticky top-0 z-50 shadow-2xl"
+    >
+      <h1 class="text-3xl font-black text-white tracking-tight">
+        <span style="color: #f26724">SkillForge</span> Workspace
+      </h1>
+      <p class="text-gray-400">Total Frames: 57</p>
     </div>
 
-    <div class="canvas-container"><h2 class='section-title'>Learner Mobile App</h2><div class='grid-mobile'>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">CERTIFICATE OF COMPLETION</span>
-                <a class="frame-link" href="student_app/certificate_of_completion/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-mobile">
-                <iframe class="preview-mobile" src="student_app/certificate_of_completion/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">COURSE DETAILS</span>
-                <a class="frame-link" href="student_app/course_details/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-mobile">
-                <iframe class="preview-mobile" src="student_app/course_details/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">COURSE RECOMMENDATIONS</span>
-                <a class="frame-link" href="student_app/course_recommendations/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-mobile">
-                <iframe class="preview-mobile" src="student_app/course_recommendations/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">COURSE REVIEWS</span>
-                <a class="frame-link" href="student_app/course_reviews/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-mobile">
-                <iframe class="preview-mobile" src="student_app/course_reviews/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">COURSE SEARCH</span>
-                <a class="frame-link" href="student_app/course_search/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-mobile">
-                <iframe class="preview-mobile" src="student_app/course_search/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">DASHBOARD</span>
-                <a class="frame-link" href="student_app/dashboard/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-mobile">
-                <iframe class="preview-mobile" src="student_app/dashboard/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">LEARNING INTERFACE</span>
-                <a class="frame-link" href="student_app/learning_interface/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-mobile">
-                <iframe class="preview-mobile" src="student_app/learning_interface/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">LESSON DISCUSSIONS</span>
-                <a class="frame-link" href="student_app/lesson_discussions/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-mobile">
-                <iframe class="preview-mobile" src="student_app/lesson_discussions/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">LOGIN</span>
-                <a class="frame-link" href="student_app/login/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-mobile">
-                <iframe class="preview-mobile" src="student_app/login/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">PROGRESS TRACKING</span>
-                <a class="frame-link" href="student_app/progress_tracking/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-mobile">
-                <iframe class="preview-mobile" src="student_app/progress_tracking/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">QUIZ ASSIGNMENT</span>
-                <a class="frame-link" href="student_app/quiz_assignment/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-mobile">
-                <iframe class="preview-mobile" src="student_app/quiz_assignment/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">QUIZ RESULTS</span>
-                <a class="frame-link" href="student_app/quiz_results/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-mobile">
-                <iframe class="preview-mobile" src="student_app/quiz_results/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">USER PROFILE</span>
-                <a class="frame-link" href="student_app/user_profile/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-mobile">
-                <iframe class="preview-mobile" src="student_app/user_profile/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">VERIFIED LEGAL CERTIFICATE</span>
-                <a class="frame-link" href="student_app/verified_legal_certificate/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-mobile">
-                <iframe class="preview-mobile" src="student_app/verified_legal_certificate/code.html" loading="lazy"></iframe>
-            </div>
-        </div></div><h2 class='section-title'>Learner Web</h2><div class='grid-desktop'>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">AUTHENTICATION</span>
-                <a class="frame-link" href="student_web/authentication/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="student_web/authentication/code.html" loading="lazy"></iframe>
-            </div>
-        </div>            <div class="frame-wrapper" style="border: 2px solid #4ade80;">
-            <div class="frame-header">
-                <span class="frame-title" style="color: #4ade80;">PROTOTYPE: FLOW 1 (ENROLLMENT)</span>
-                <a class="frame-link" href="prototypes/1_enrollment_and_payment.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="prototypes/1_enrollment_and_payment.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">COURSE DETAILS</span>
-                <a class="frame-link" href="student_web/course_details/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="student_web/course_details/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">COURSE DETAILS VERIFIED</span>
-                <a class="frame-link" href="student_web/course_details_verified/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="student_web/course_details_verified/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">COURSE REVIEWS RATINGS</span>
-                <a class="frame-link" href="student_web/course_reviews_ratings/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="student_web/course_reviews_ratings/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">FORGOT PASSWORD</span>
-                <a class="frame-link" href="student_web/forgot_password/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="student_web/forgot_password/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">HOME DASHBOARD</span>
-                <a class="frame-link" href="student_web/home_dashboard/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="student_web/home_dashboard/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper" style="border: 2px solid #4ade80;">
-            <div class="frame-header">
-                <span class="frame-title" style="color: #4ade80;">PROTOTYPE: FLOW 3 (STREAMING)</span>
-                <a class="frame-link" href="prototypes/3_video_streaming_and_tracking.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="prototypes/3_video_streaming_and_tracking.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">LEARNING INTERFACE</span>
-                <a class="frame-link" href="student_web/learning_interface/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="student_web/learning_interface/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">LESSON DISCUSSIONS</span>
-                <a class="frame-link" href="student_web/lesson_discussions/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="student_web/lesson_discussions/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">PROGRESS TRACKING</span>
-                <a class="frame-link" href="student_web/progress_tracking/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="student_web/progress_tracking/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">QUIZ ASSIGNMENT</span>
-                <a class="frame-link" href="student_web/quiz_assignment/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="student_web/quiz_assignment/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">RECOMMENDATION ENGINE</span>
-                <a class="frame-link" href="student_web/recommendation_engine/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="student_web/recommendation_engine/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">REGISTRATION</span>
-                <a class="frame-link" href="student_web/registration/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="student_web/registration/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">RESULTS FEEDBACK</span>
-                <a class="frame-link" href="student_web/results_feedback/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="student_web/results_feedback/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">SEARCH FILTERING</span>
-                <a class="frame-link" href="student_web/search_filtering/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="student_web/search_filtering/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">STANDARD CERTIFICATE OF COMPLETION</span>
-                <a class="frame-link" href="student_web/standard_certificate_of_completion/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="student_web/standard_certificate_of_completion/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">USER PROFILE</span>
-                <a class="frame-link" href="student_web/user_profile/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="student_web/user_profile/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">VERIFIED LEGAL CERTIFICATE</span>
-                <a class="frame-link" href="student_web/verified_legal_certificate/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="student_web/verified_legal_certificate/code.html" loading="lazy"></iframe>
-            </div>
-        </div></div><h2 class='section-title'>Payment App</h2><div class='grid-mobile'>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">CART COUPONS</span>
-                <a class="frame-link" href="payment_app/cart_coupons/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-mobile">
-                <iframe class="preview-mobile" src="payment_app/cart_coupons/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">CHECKOUT</span>
-                <a class="frame-link" href="payment_app/checkout/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-mobile">
-                <iframe class="preview-mobile" src="payment_app/checkout/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">PLATFORM FINANCES</span>
-                <a class="frame-link" href="payment_app/platform_finances/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-mobile">
-                <iframe class="preview-mobile" src="payment_app/platform_finances/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">PURCHASE HISTORY</span>
-                <a class="frame-link" href="payment_app/purchase_history/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-mobile">
-                <iframe class="preview-mobile" src="payment_app/purchase_history/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">REVENUE PAYOUTS</span>
-                <a class="frame-link" href="payment_app/revenue_payouts/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-mobile">
-                <iframe class="preview-mobile" src="payment_app/revenue_payouts/code.html" loading="lazy"></iframe>
-            </div>
-        </div></div><h2 class='section-title'>Payment Web</h2><div class='grid-desktop'>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">INSTRUCTOR EARNINGS</span>
-                <a class="frame-link" href="payment_web/instructor_earnings/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="payment_web/instructor_earnings/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">ORDER HISTORY</span>
-                <a class="frame-link" href="payment_web/order_history/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="payment_web/order_history/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">PLATFORM FINANCE ADMIN</span>
-                <a class="frame-link" href="payment_web/platform_finance_admin/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="payment_web/platform_finance_admin/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">SECURE PAYMENT</span>
-                <a class="frame-link" href="payment_web/secure_payment/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="payment_web/secure_payment/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">SHOPPING CART</span>
-                <a class="frame-link" href="payment_web/shopping_cart/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="payment_web/shopping_cart/code.html" loading="lazy"></iframe>
-            </div>
-        </div></div><h2 class='section-title'>Instructor Dashboard</h2><div class='grid-desktop'>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">COUPON MANAGEMENT SKILLFORGE</span>
-                <a class="frame-link" href="instructor_web/coupon_management_skillforge/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="instructor_web/coupon_management_skillforge/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">COURSE EDITOR BASIC INFO</span>
-                <a class="frame-link" href="instructor_web/course_editor_basic_info/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="instructor_web/course_editor_basic_info/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper" style="border: 2px solid #4ade80;">
-            <div class="frame-header">
-                <span class="frame-title" style="color: #4ade80;">PROTOTYPE: FLOW 2 (UPLOAD VIDEO)</span>
-                <a class="frame-link" href="prototypes/2_upload_and_process_video.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="prototypes/2_upload_and_process_video.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">CURRICULUM BUILDER SKILLFORGE</span>
-                <a class="frame-link" href="instructor_web/curriculum_builder_skillforge/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="instructor_web/curriculum_builder_skillforge/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">LOGIN SKILLFORGE</span>
-                <a class="frame-link" href="instructor_web/login_skillforge/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="instructor_web/login_skillforge/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">MANUAL GRADING SKILLFORGE</span>
-                <a class="frame-link" href="instructor_web/manual_grading_skillforge/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="instructor_web/manual_grading_skillforge/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">MY COURSES SKILLFORGE</span>
-                <a class="frame-link" href="instructor_web/my_courses_skillforge/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="instructor_web/my_courses_skillforge/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">MY PROFILE SKILLFORGE</span>
-                <a class="frame-link" href="instructor_web/my_profile_skillforge/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="instructor_web/my_profile_skillforge/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">QUIZ BUILDER SKILLFORGE</span>
-                <a class="frame-link" href="instructor_web/quiz_builder_skillforge/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="instructor_web/quiz_builder_skillforge/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">Q A MANAGEMENT SKILLFORGE</span>
-                <a class="frame-link" href="instructor_web/q_a_management_skillforge/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="instructor_web/q_a_management_skillforge/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">STUDENT PROGRESS SKILLFORGE</span>
-                <a class="frame-link" href="instructor_web/student_progress_skillforge/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="instructor_web/student_progress_skillforge/code.html" loading="lazy"></iframe>
-            </div>
-        </div></div><h2 class='section-title'>🟥 Admin Dashboard</h2><div class='grid-desktop'>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">ADMIN LOGIN</span>
-                <a class="frame-link" href="admin/admin_login/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="admin/admin_login/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">COUPON MANAGER</span>
-                <a class="frame-link" href="admin/coupon_manager/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="admin/coupon_manager/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">COURSE MODERATION</span>
-                <a class="frame-link" href="admin/course_moderation/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="admin/course_moderation/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">SYSTEM SETTINGS</span>
-                <a class="frame-link" href="admin/system_settings/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="admin/system_settings/code.html" loading="lazy"></iframe>
-            </div>
-        </div>        <div class="frame-wrapper">
-            <div class="frame-header">
-                <span class="frame-title">USER MANAGEMENT</span>
-                <a class="frame-link" href="admin/user_management/code.html" target="_blank">Open ↗</a>
-            </div>
-            <div class="scale-box-desktop">
-                <iframe class="preview-desktop" src="admin/user_management/code.html" loading="lazy"></iframe>
-            </div>
-        </div></div></div></body></html>
+    <div class="canvas-container">
+      <h2 class="section-title">Learner Mobile App</h2>
+      <div class="grid-mobile">
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">CERTIFICATE OF COMPLETION</span>
+            <a
+              class="frame-link"
+              href="student_app/certificate_of_completion/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-mobile">
+            <iframe
+              class="preview-mobile"
+              src="student_app/certificate_of_completion/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">COURSE DETAILS</span>
+            <a
+              class="frame-link"
+              href="student_app/course_details/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-mobile">
+            <iframe
+              class="preview-mobile"
+              src="student_app/course_details/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">COURSE RECOMMENDATIONS</span>
+            <a
+              class="frame-link"
+              href="student_app/course_recommendations/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-mobile">
+            <iframe
+              class="preview-mobile"
+              src="student_app/course_recommendations/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">COURSE REVIEWS</span>
+            <a
+              class="frame-link"
+              href="student_app/course_reviews/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-mobile">
+            <iframe
+              class="preview-mobile"
+              src="student_app/course_reviews/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">COURSE SEARCH</span>
+            <a
+              class="frame-link"
+              href="student_app/course_search/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-mobile">
+            <iframe
+              class="preview-mobile"
+              src="student_app/course_search/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">DASHBOARD</span>
+            <a
+              class="frame-link"
+              href="student_app/dashboard/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-mobile">
+            <iframe
+              class="preview-mobile"
+              src="student_app/dashboard/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">LEARNING INTERFACE</span>
+            <a
+              class="frame-link"
+              href="student_app/learning_interface/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-mobile">
+            <iframe
+              class="preview-mobile"
+              src="student_app/learning_interface/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">LESSON DISCUSSIONS</span>
+            <a
+              class="frame-link"
+              href="student_app/lesson_discussions/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-mobile">
+            <iframe
+              class="preview-mobile"
+              src="student_app/lesson_discussions/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">LOGIN</span>
+            <a
+              class="frame-link"
+              href="student_app/login/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-mobile">
+            <iframe
+              class="preview-mobile"
+              src="student_app/login/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">PROGRESS TRACKING</span>
+            <a
+              class="frame-link"
+              href="student_app/progress_tracking/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-mobile">
+            <iframe
+              class="preview-mobile"
+              src="student_app/progress_tracking/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">QUIZ ASSIGNMENT</span>
+            <a
+              class="frame-link"
+              href="student_app/quiz_assignment/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-mobile">
+            <iframe
+              class="preview-mobile"
+              src="student_app/quiz_assignment/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">QUIZ RESULTS</span>
+            <a
+              class="frame-link"
+              href="student_app/quiz_results/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-mobile">
+            <iframe
+              class="preview-mobile"
+              src="student_app/quiz_results/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">USER PROFILE</span>
+            <a
+              class="frame-link"
+              href="student_app/user_profile/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-mobile">
+            <iframe
+              class="preview-mobile"
+              src="student_app/user_profile/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">VERIFIED LEGAL CERTIFICATE</span>
+            <a
+              class="frame-link"
+              href="student_app/verified_legal_certificate/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-mobile">
+            <iframe
+              class="preview-mobile"
+              src="student_app/verified_legal_certificate/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+      <h2 class="section-title">Learner Web</h2>
+      <div class="grid-desktop">
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">AUTHENTICATION</span>
+            <a
+              class="frame-link"
+              href="student_web/authentication/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="student_web/authentication/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper" style="border: 2px solid #4ade80">
+          <div class="frame-header">
+            <span class="frame-title" style="color: #4ade80"
+              >PROTOTYPE: FLOW 1 (ENROLLMENT)</span
+            >
+            <a
+              class="frame-link"
+              href="flow/1_enrollment_and_payment.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="flow/1_enrollment_and_payment.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">COURSE DETAILS</span>
+            <a
+              class="frame-link"
+              href="student_web/course_details/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="student_web/course_details/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">COURSE DETAILS VERIFIED</span>
+            <a
+              class="frame-link"
+              href="student_web/course_details_verified/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="student_web/course_details_verified/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">COURSE REVIEWS RATINGS</span>
+            <a
+              class="frame-link"
+              href="student_web/course_reviews_ratings/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="student_web/course_reviews_ratings/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">FORGOT PASSWORD</span>
+            <a
+              class="frame-link"
+              href="student_web/forgot_password/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="student_web/forgot_password/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">HOME DASHBOARD</span>
+            <a
+              class="frame-link"
+              href="student_web/home_dashboard/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="student_web/home_dashboard/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper" style="border: 2px solid #4ade80">
+          <div class="frame-header">
+            <span class="frame-title" style="color: #4ade80"
+              >PROTOTYPE: FLOW 3 (STREAMING)</span
+            >
+            <a
+              class="frame-link"
+              href="flow/3_video_streaming_and_tracking.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="flow/3_video_streaming_and_tracking.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">LEARNING INTERFACE</span>
+            <a
+              class="frame-link"
+              href="student_web/learning_interface/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="student_web/learning_interface/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">LESSON DISCUSSIONS</span>
+            <a
+              class="frame-link"
+              href="student_web/lesson_discussions/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="student_web/lesson_discussions/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">PROGRESS TRACKING</span>
+            <a
+              class="frame-link"
+              href="student_web/progress_tracking/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="student_web/progress_tracking/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">QUIZ ASSIGNMENT</span>
+            <a
+              class="frame-link"
+              href="student_web/quiz_assignment/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="student_web/quiz_assignment/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">RECOMMENDATION ENGINE</span>
+            <a
+              class="frame-link"
+              href="student_web/recommendation_engine/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="student_web/recommendation_engine/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">REGISTRATION</span>
+            <a
+              class="frame-link"
+              href="student_web/registration/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="student_web/registration/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">RESULTS FEEDBACK</span>
+            <a
+              class="frame-link"
+              href="student_web/results_feedback/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="student_web/results_feedback/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">SEARCH FILTERING</span>
+            <a
+              class="frame-link"
+              href="student_web/search_filtering/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="student_web/search_filtering/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">STANDARD CERTIFICATE OF COMPLETION</span>
+            <a
+              class="frame-link"
+              href="student_web/standard_certificate_of_completion/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="student_web/standard_certificate_of_completion/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">USER PROFILE</span>
+            <a
+              class="frame-link"
+              href="student_web/user_profile/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="student_web/user_profile/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">VERIFIED LEGAL CERTIFICATE</span>
+            <a
+              class="frame-link"
+              href="student_web/verified_legal_certificate/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="student_web/verified_legal_certificate/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+      <h2 class="section-title">Payment App</h2>
+      <div class="grid-mobile">
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">CART COUPONS</span>
+            <a
+              class="frame-link"
+              href="payment_app/cart_coupons/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-mobile">
+            <iframe
+              class="preview-mobile"
+              src="payment_app/cart_coupons/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">CHECKOUT</span>
+            <a
+              class="frame-link"
+              href="payment_app/checkout/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-mobile">
+            <iframe
+              class="preview-mobile"
+              src="payment_app/checkout/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">PLATFORM FINANCES</span>
+            <a
+              class="frame-link"
+              href="payment_app/platform_finances/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-mobile">
+            <iframe
+              class="preview-mobile"
+              src="payment_app/platform_finances/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">PURCHASE HISTORY</span>
+            <a
+              class="frame-link"
+              href="payment_app/purchase_history/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-mobile">
+            <iframe
+              class="preview-mobile"
+              src="payment_app/purchase_history/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">REVENUE PAYOUTS</span>
+            <a
+              class="frame-link"
+              href="payment_app/revenue_payouts/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-mobile">
+            <iframe
+              class="preview-mobile"
+              src="payment_app/revenue_payouts/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+      <h2 class="section-title">Payment Web</h2>
+      <div class="grid-desktop">
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">INSTRUCTOR EARNINGS</span>
+            <a
+              class="frame-link"
+              href="payment_web/instructor_earnings/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="payment_web/instructor_earnings/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">ORDER HISTORY</span>
+            <a
+              class="frame-link"
+              href="payment_web/order_history/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="payment_web/order_history/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">PLATFORM FINANCE ADMIN</span>
+            <a
+              class="frame-link"
+              href="payment_web/platform_finance_admin/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="payment_web/platform_finance_admin/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">SECURE PAYMENT</span>
+            <a
+              class="frame-link"
+              href="payment_web/secure_payment/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="payment_web/secure_payment/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">SHOPPING CART</span>
+            <a
+              class="frame-link"
+              href="payment_web/shopping_cart/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="payment_web/shopping_cart/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+      <h2 class="section-title">Instructor Dashboard</h2>
+      <div class="grid-desktop">
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">COUPON MANAGEMENT SKILLFORGE</span>
+            <a
+              class="frame-link"
+              href="instructor_web/coupon_management_skillforge/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="instructor_web/coupon_management_skillforge/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">COURSE EDITOR BASIC INFO</span>
+            <a
+              class="frame-link"
+              href="instructor_web/course_editor_basic_info/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="instructor_web/course_editor_basic_info/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper" style="border: 2px solid #4ade80">
+          <div class="frame-header">
+            <span class="frame-title" style="color: #4ade80"
+              >PROTOTYPE: FLOW 2 (UPLOAD VIDEO)</span
+            >
+            <a
+              class="frame-link"
+              href="flow/2_upload_and_process_video.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="flow/2_upload_and_process_video.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">CURRICULUM BUILDER SKILLFORGE</span>
+            <a
+              class="frame-link"
+              href="instructor_web/curriculum_builder_skillforge/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="instructor_web/curriculum_builder_skillforge/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">LOGIN SKILLFORGE</span>
+            <a
+              class="frame-link"
+              href="instructor_web/login_skillforge/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="instructor_web/login_skillforge/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">MANUAL GRADING SKILLFORGE</span>
+            <a
+              class="frame-link"
+              href="instructor_web/manual_grading_skillforge/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="instructor_web/manual_grading_skillforge/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">MY COURSES SKILLFORGE</span>
+            <a
+              class="frame-link"
+              href="instructor_web/my_courses_skillforge/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="instructor_web/my_courses_skillforge/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">MY PROFILE SKILLFORGE</span>
+            <a
+              class="frame-link"
+              href="instructor_web/my_profile_skillforge/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="instructor_web/my_profile_skillforge/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">QUIZ BUILDER SKILLFORGE</span>
+            <a
+              class="frame-link"
+              href="instructor_web/quiz_builder_skillforge/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="instructor_web/quiz_builder_skillforge/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">Q A MANAGEMENT SKILLFORGE</span>
+            <a
+              class="frame-link"
+              href="instructor_web/q_a_management_skillforge/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="instructor_web/q_a_management_skillforge/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">STUDENT PROGRESS SKILLFORGE</span>
+            <a
+              class="frame-link"
+              href="instructor_web/student_progress_skillforge/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="instructor_web/student_progress_skillforge/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+      <h2 class="section-title">🟥 Admin Dashboard</h2>
+      <div class="grid-desktop">
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">ADMIN LOGIN</span>
+            <a
+              class="frame-link"
+              href="admin/admin_login/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="admin/admin_login/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">COUPON MANAGER</span>
+            <a
+              class="frame-link"
+              href="admin/coupon_manager/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="admin/coupon_manager/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">COURSE MODERATION</span>
+            <a
+              class="frame-link"
+              href="admin/course_moderation/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="admin/course_moderation/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">SYSTEM SETTINGS</span>
+            <a
+              class="frame-link"
+              href="admin/system_settings/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="admin/system_settings/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+        <div class="frame-wrapper">
+          <div class="frame-header">
+            <span class="frame-title">USER MANAGEMENT</span>
+            <a
+              class="frame-link"
+              href="admin/user_management/code.html"
+              target="_blank"
+              >Open ↗</a
+            >
+          </div>
+          <div class="scale-box-desktop">
+            <iframe
+              class="preview-desktop"
+              src="admin/user_management/code.html"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
