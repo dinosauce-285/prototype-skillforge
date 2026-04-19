@@ -1,236 +1,529 @@
-﻿<!DOCTYPE html>
+﻿<!doctype html>
 
-<html lang="en"><head>
-<link rel="stylesheet" href="../../shared/tailwind-desktop.css"/>
-<link rel="stylesheet" href="../../shared/base.css"/>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="../../shared/tailwind-desktop.css" />
+    <link rel="stylesheet" href="../../shared/base.css" />
 
-<meta charset="utf-8"/>
-<meta name="description" content="SkillForge — The premium platform for professional skill development and certification."/>
-<link rel="icon" type="image/svg+xml" href="../../shared/favicon.svg"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>SkillForge | Manual Grading</title>
-
-</head>
-<body class="bg-background font-body text-on-surface">
-<!-- TopNavBar Shell -->
-<nav class="navbar">
-<div class="navbar-logo">
-<span class="text-2xl font-extrabold tracking-tighter text-primary">SkillForge</span>
-<div class="hidden md:flex navbar-logo">
-<a class="text-primary font-bold border-b-2 border-orange-600 font-headline tracking-tight transition-colors duration-200" href="#">Manual Grading</a>
-<a class="text-outline font-medium font-headline tracking-tight hover:text-primary transition-colors duration-200" href="#">Dashboard</a>
-<a class="text-outline font-medium font-headline tracking-tight hover:text-primary transition-colors duration-200" href="#">Curriculum</a>
-</div>
-</div>
-<div class="flex items-center gap-4">
-<div class="relative hidden sm:block">
-<span class="material-symbols-outlined icon absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
-<input class="bg-surface-container-lowest pl-10 pr-4 py-2 rounded-full border-none shadow-sm ring-1 ring-slate-200 focus:ring-2 focus:ring-primary-container transition-all text-sm w-64" placeholder="Search submissions..." type="text"/>
-</div>
-<button class="text-outline hover:text-primary transition-colors">
-<span class="material-symbols-outlined icon">notifications</span>
-</button>
-<img alt="Instructor Avatar" class="w-10 h-10 rounded-full border-2 border-primary-container/20" data-alt="Close up portrait of a professional instructor with a friendly expression in a modern office setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuChWY7JJ1K45UefP5Cs5EvPeUF3ls-aHpRnvdSl9NshE6yAlA6Ltd3vQZVDKDw5T8dzpAArb0ils_LY-5j8pu2kYJ8uMzdIl1INQe1wIe15MdbOZAwBjFTPrOVYc3H4MwA-bsRzBRfpS9buTbN13-PwRvqIfmX04Hh8iPlky2H07TsFYVxwNIDl1UkScODbmIpfFAlWr92P6f_zBLPiiQFSn9goZdiqIiyQqsEOLGsE7WVXtW1i_MEBRtrCfGG5uSEToDEW8l_OSpE"/>
-</div>
-</nav>
-<div class="flex pt-16 h-screen overflow-hidden">
-<!-- SideNavBar Shell -->
-<aside class="hidden lg:flex flex-col py-6 px-4 space-y-2 h-screen w-64 border-r border-slate-200/50 bg-surface-container-low font-label text-sm font-medium tracking-wide">
-<div class="px-2 mb-6">
-<p class="text-primary font-black uppercase tracking-widest text-lg">SkillForge</p>
-<p class="text-outline text-xs font-bold">Instructor Portal</p>
-</div>
-<nav class="flex-1 space-y-1">
-<div class="group flex items-center gap-3 px-3 py-3 text-on-surface-variant hover:bg-surface-container-low hover:translate-x-1 transition-all cursor-pointer rounded-xl">
-<span class="material-symbols-outlined nav-icon">dashboard</span>
-<span>Dashboard</span>
-</div>
-<div class="group flex items-center gap-3 px-3 py-3 text-on-surface-variant hover:bg-surface-container-low hover:translate-x-1 transition-all cursor-pointer rounded-xl">
-<span class="material-symbols-outlined nav-icon">account_tree</span>
-<span>Curriculum</span>
-</div>
-<div class="group flex items-center gap-3 px-3 py-3 text-on-surface-variant hover:bg-surface-container-low hover:translate-x-1 transition-all cursor-pointer rounded-xl">
-<span class="material-symbols-outlined nav-icon">quiz</span>
-<span>Quiz Builder</span>
-</div>
-<div class="group flex items-center gap-3 px-3 py-3 text-primary font-bold bg-white rounded-xl shadow-sm shadow-orange-900/5">
-<span class="material-symbols-outlined nav-icon">assignment_turned_in</span>
-<span>Grading</span>
-</div>
-<div class="group flex items-center gap-3 px-3 py-3 text-on-surface-variant hover:bg-surface-container-low hover:translate-x-1 transition-all cursor-pointer rounded-xl">
-<span class="material-symbols-outlined nav-icon">trending_up</span>
-<span>Progress</span>
-</div>
-</nav>
-<div class="pt-6 border-t border-slate-200">
-<div class="group flex items-center gap-3 px-3 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all cursor-pointer rounded-xl">
-<span class="material-symbols-outlined nav-icon">support</span>
-<span>Support</span>
-</div>
-<div class="group flex items-center gap-3 px-3 py-3 text-on-surface-variant hover:bg-surface-container-low transition-all cursor-pointer rounded-xl">
-<span class="material-symbols-outlined nav-icon">logout</span>
-<span>Sign Out</span>
-</div>
-</div>
-</aside>
-<!-- Main Content Canvas -->
-<main class="flex-1 flex flex-col md:flex-row overflow-hidden">
-<!-- List Panel: Asymmetric Layout -->
-<section class="w-full md:w-80 lg:w-96 flex flex-col border-r border-slate-200/50 bg-white">
-<div class="p-6 border-b border-slate-100">
-<h1 class="text-2xl font-extrabold font-headline tracking-tight text-on-surface mb-1">Manual Grading</h1>
-<p class="text-sm text-on-surface-variant font-medium">Advanced UI/UX Architecture • Module 4</p>
-</div>
-<div class="p-4 flex gap-2 overflow-x-auto no-scrollbar border-b border-slate-50">
-<span class="px-3 py-1 bg-primary-container text-on-primary-container text-label font-black uppercase tracking-wider rounded-full flex-shrink-0">Pending (12)</span>
-<span class="px-3 py-1 bg-[#E3F2FD] text-primary-container border border-[#64B5F6]/20 text-label font-black uppercase tracking-wider rounded-full flex-shrink-0">Graded (45)</span>
-<span class="px-3 py-1 bg-surface-container text-on-surface-variant text-label font-black uppercase tracking-wider rounded-full flex-shrink-0">Late (2)</span>
-</div>
-<div class="flex-1 overflow-y-auto custom-scrollbar">
-<!-- Submission Items -->
-<div class="p-4 space-y-3">
-<!-- Active Item -->
-<div class="bg-primary-container/5 ring-1 ring-primary-container/20 p-4 rounded-xl relative overflow-hidden group cursor-pointer">
-<div class="absolute left-0 top-0 bottom-0 w-1 bg-primary-container"></div>
-<div class="flex justify-between items-start mb-2">
-<div class="flex items-center gap-3">
-<img alt="Student" class="w-8 h-8 rounded-full" data-alt="Close up headshot of a creative male student with glasses and a thoughtful expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGyOXbrslRgDYZx2bmHRzF6HbAuFQm03Mm17AUa_boKikNsJ4nZihvuu8Cwv_u1fAjRum-VYGib6Ri47aGcVFJqX2cKneWt96hVhbxakQG5h-PzG717igqhzLtitxAScdnhLSjyvb16xTCzSbUWDpSfva99lLF97xlWWIhgN6X4Baegt1nTRRGO58XuTgDUFTf4QQL2ZY4vqWgNwiOy_SsHXrMfU1g4IBGkE528lwmAnNtFK8Y3Ov8kZ-OmQ8lF970fElZQWKh7KE"/>
-<div>
-<h4 class="font-bold text-sm text-on-surface">Alex Chen</h4>
-<p class="text-label text-on-surface-variant font-bold uppercase tracking-tight">Submitted 2h ago</p>
-</div>
-</div>
-<span class="material-symbols-outlined icon text-primary">arrow_forward_ios</span>
-</div>
-<p class="text-xs text-on-surface-variant line-clamp-2 italic">"I have approached the course builder timeline using the vertical primary-fixed line as requested..."</p>
-</div>
-<!-- Inactive Item -->
-<div class="hover:bg-surface-container-low p-4 rounded-xl transition-colors cursor-pointer group">
-<div class="flex justify-between items-start mb-2">
-<div class="flex items-center gap-3">
-<img alt="Student" class="w-8 h-8 rounded-full" data-alt="Portrait of a young professional woman smiling warmly in an educational environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWzk2OHY93j_ps9vieXKLkgZZ2d5ikYiEKcxRQUL_Cllh_CjceXvYMSNCsRwpKVx0olYPpXQX_hg8Aos6Tj-0BeFwKZKmNyZMpbyNQOILU0BmKQkVTcF9aJgYrhLJVB6Kwro8aSl6Wxl-TyvZwI6yOlLWzg1vWWEMM2bb0MsGX9edW5N06wvZkhATZkfiUyNiAwar-cAUkogU1aCCt9o2Kgu43N0Iis3-IUdu7pqNH_Q4iZ_4YeHbOJhZZI0lcolRrwFUnkxzRJCU"/>
-<div>
-<h4 class="font-bold text-sm text-on-surface">Sarah Miller</h4>
-<p class="text-label text-on-surface-variant font-bold uppercase tracking-tight">Submitted 5h ago</p>
-</div>
-</div>
-</div>
-<p class="text-xs text-on-surface-variant line-clamp-2">"Here is my architectural layout for the final project submission including the Figma link..."</p>
-</div>
-<div class="hover:bg-surface-container-low p-4 rounded-xl transition-colors cursor-pointer group">
-<div class="flex justify-between items-start mb-2">
-<div class="flex items-center gap-3">
-<img alt="Student" class="w-8 h-8 rounded-full" data-alt="Portrait of a male designer looking directly at the camera with a confident, modern look" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5lKv-YPNypgZbvjf0Y-A9voiMu_dy4oZDbQeOzHryLvtrPx9eSLnsG12p1AgPuhI4PqHJNQoTQmZZUlD4lScotXl6WJWkjtwN7a-DDUftYCtH8a7QtlTG2UnTyqO18ikLSk5HWg-KlGFTCsQx12Uvc8YtFseZS9PIkSfMzM5AiJuTd5qkp86SP_CrSylMkqpW3MZrmg8SRBREQhDO2LJ-kpiYQcOv-gXx0bXM4avw2ZUt1E54ua-WTX69gYbYPaeuN7Z7QHYyViU"/>
-<div>
-<h4 class="font-bold text-sm text-on-surface">Marcus Thorne</h4>
-<p class="text-label text-on-surface-variant font-bold uppercase tracking-tight">Submitted Yesterday</p>
-</div>
-</div>
-</div>
-<p class="text-xs text-on-surface-variant line-clamp-2">"Final curriculum draft for the 'Precision Architect' design system implementation..."</p>
-</div>
-</div>
-</div>
-</section>
-<!-- Detailed Content View: Glassmorphism and Depth -->
-<section class="flex-1 flex flex-col h-full bg-surface-container-low">
-<div class="p-8 flex-1 overflow-y-auto custom-scrollbar">
-<div class="max-w-4xl mx-auto space-y-8">
-<!-- Header / Navigation -->
-<div class="flex justify-between items-center">
-<div class="flex items-center gap-4">
-<button class="btn btn-icon btn-surface">
-<span class="material-symbols-outlined icon">chevron_left</span>
-</button>
-<div>
-<h2 class="text-xl font-bold font-headline text-on-surface">Alex Chen's Submission</h2>
-<p class="text-sm text-on-surface-variant">Design System Principles Implementation</p>
-</div>
-</div>
-<div class="icon-text">
-<span class="material-symbols-outlined icon text-slate-400">schedule</span>
-<span class="text-xs font-bold text-outline uppercase tracking-widest">Late Policy: On-Time</span>
-</div>
-</div>
-<!-- Work Preview Canvas -->
-<div class="bg-white rounded-xl shadow-sm overflow-hidden ring-1 ring-slate-100">
-<div class="p-4 bg-surface-container-low/50 border-b border-slate-100 flex justify-between items-center">
-<div class="flex gap-4">
-<span class="text-xs font-black text-primary uppercase tracking-widest">Document View</span>
-<span class="text-xs font-black text-slate-400 uppercase tracking-widest">Assets (3)</span>
-</div>
-<span class="material-symbols-outlined icon text-slate-400 cursor-pointer">fullscreen</span>
-</div>
-<div class="p-8 space-y-6">
-<h3 class="text-2xl font-extrabold font-headline tracking-tight">The Precision Architect Strategy</h3>
-<p class="text-on-surface leading-relaxed text-sm">
-                                    In this submission, I have focused on the "No-Line" rule for structural containment. By utilizing varying surface levels—specifically <code>surface_container</code> for the background and <code>surface_container_lowest</code> for the workspace—I've achieved visual separation without cluttering the interface with rigid border lines.
-                                </p>
-<div class="aspect-video w-full rounded-xl overflow-hidden bg-surface-container-low relative group">
-<img alt="UI Design Workspace" class="w-full h-full object-cover" data-alt="Modern clean UI design on a high-res monitor showing a dashboard with orange accents and white cards" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQfWZMXG24zpFBHcpaebLWdR2ji-GKyKwwE6hzXfUtvjw9xZCl09l1yspPGt3xRq3jcDc9FDcYuY5EPEb-XtDhwbe2ZWFpFSjVdsljY1UB2WFOjDw-T_IBO6hyOM-QGck0tZkV7H-10eOkUoAu556b_HPmWC4tNT6gEXz-p-yYtwexE-0TEui7lfORKaUlQKyhstiRbBvJZKVFxkQQA_hoDypbd88Yam2XqTFbAxn-oP4oaT9cQXCsLBGbBB9ttUoej4QOTOy4VVw"/>
-<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity row row-center">
-<button class="bg-white px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2">
-<span class="material-symbols-outlined icon">visibility</span> Preview
-                                        </button>
-<button class="bg-white px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2">
-<span class="material-symbols-outlined icon">download</span> Download
-                                        </button>
-</div>
-</div>
-<p class="text-on-surface leading-relaxed text-sm">
-                                    The typography dialogue between Manrope and Inter has been balanced to ensure legibility. I used Manrope for the "Wayfinder" headers at a display-md scale with tight tracking (-0.02em) to maintain the premium architect aesthetic.
-                                </p>
-</div>
-</div>
-<!-- Grading Panel: Precision Architect Style -->
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<!-- Feedback Card -->
-<div class="md:col-span-2 bg-white rounded-xl shadow-sm p-6 space-y-4">
-<label class="text-label font-black text-slate-400 uppercase tracking-widest block">Detailed Feedback</label>
-<div class="bg-surface-container-highest rounded-xl focus-within:bg-surface-container-lowest transition-all p-4 min-h-[120px] relative border-b-2 border-transparent focus-within:border-primary">
-<textarea class="w-full h-full bg-transparent border-none focus:ring-0 text-sm resize-none" placeholder="Type your feedback here..." rows="4"></textarea>
-<div class="absolute bottom-2 right-2 flex gap-2">
-<span class="material-symbols-outlined icon text-slate-400 cursor-pointer hover:text-primary">format_bold</span>
-<span class="material-symbols-outlined icon text-slate-400 cursor-pointer hover:text-primary">format_italic</span>
-<span class="material-symbols-outlined icon text-slate-400 cursor-pointer hover:text-primary">link</span>
-</div>
-</div>
-</div>
-<!-- Score Card -->
-<div class="bg-white rounded-xl shadow-sm p-6 flex flex-col justify-between">
-<div>
-<label class="text-label font-black text-slate-400 uppercase tracking-widest block mb-4">Submission Score</label>
-<div class="row-xs row-center">
-<input class="text-4xl font-black text-primary font-headline w-20 text-center bg-surface-container-highest border-none rounded-xl py-2 focus:ring-2 focus:ring-primary-container" type="number" value="92"/>
-<span class="text-2xl font-bold text-slate-300">/ 100</span>
-</div>
-</div>
-<div class="mt-4 pt-4 border-t border-slate-100 row row-between">
-<div class="flex text-tertiary">
-<span class="material-symbols-outlined icon icon-filled" >star</span>
-<span class="material-symbols-outlined icon icon-filled" >star</span>
-<span class="material-symbols-outlined icon icon-filled" >star</span>
-<span class="material-symbols-outlined icon icon-filled" >star</span>
-<span class="material-symbols-outlined icon">star</span>
-</div>
-<span class="text-label font-bold text-slate-400 uppercase">Auto-Calc</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Footer Action Bar -->
-<div class="p-6 bg-white border-t border-slate-100 flex justify-end gap-4 items-center">
-<button class="px-6 py-3 rounded-xl text-primary font-bold text-sm bg-surface-container-low hover:bg-surface-container transition-all">
-                        Save as Draft
-                    </button>
-<button class="sf-gradient px-8 py-3 rounded-xl text-white font-bold text-sm shadow-sm hover:shadow-md active:scale-95 transition-all">
-                        Publish Grade
-                    </button>
-</div>
-</section>
-</main>
-</div>
-<!-- Contextual FAB (Only on Dashboard/Home, but included for reference logic - hidden here) -->
-<!-- Suppression logic applied: suppressed on details/transactional grading screen as per instructions -->
-</body></html>
+    <meta charset="utf-8" />
+    <meta
+      name="description"
+      content="SkillForge — The premium platform for professional skill development and certification."
+    />
+    <link rel="icon" type="image/svg+xml" href="../../shared/favicon.svg" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>SkillForge | Manual Grading</title>
+  </head>
+  <body class="bg-background font-body text-on-surface">
+    <!-- TopNavBar Shell -->
+    <nav
+      class="navbar navbar-admin sticky top-0 z-40 bg-surface border-b border-outline-variant/20 px-6 py-3 flex items-center justify-between"
+    >
+      <div class="navbar-logo">
+        <span class="text-2xl font-extrabold tracking-tighter text-primary"
+          >SkillForge</span
+        >
+        <div class="hidden md:flex navbar-logo">
+          <a
+            class="text-primary font-bold border-b-2 border-orange-600 font-headline tracking-tight transition-colors duration-200"
+            href="#"
+            >Manual Grading</a
+          >
+          <a
+            class="text-outline font-medium font-headline tracking-tight hover:text-primary transition-colors duration-200"
+            href="#"
+            >Dashboard</a
+          >
+          <a
+            class="text-outline font-medium font-headline tracking-tight hover:text-primary transition-colors duration-200"
+            href="#"
+            >Curriculum</a
+          >
+        </div>
+      </div>
+      <div class="flex items-center gap-4">
+        <div class="relative hidden sm:block">
+          <span
+            class="material-symbols-outlined icon absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant"
+            >search</span
+          >
+          <input
+            class="bg-surface-container-lowest pl-10 pr-4 py-2 rounded-full border-none shadow-sm ring-1 ring-slate-200 focus:ring-2 focus:ring-primary-container transition-all text-sm w-64"
+            placeholder="Search submissions..."
+            type="text"
+          />
+        </div>
+        <button class="text-outline hover:text-primary transition-colors">
+          <span class="material-symbols-outlined icon">notifications</span>
+        </button>
+        <img
+          alt="Instructor Avatar"
+          class="w-10 h-10 rounded-full border-2 border-primary-container/20"
+          data-alt="Close up portrait of a professional instructor with a friendly expression in a modern office setting"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuChWY7JJ1K45UefP5Cs5EvPeUF3ls-aHpRnvdSl9NshE6yAlA6Ltd3vQZVDKDw5T8dzpAArb0ils_LY-5j8pu2kYJ8uMzdIl1INQe1wIe15MdbOZAwBjFTPrOVYc3H4MwA-bsRzBRfpS9buTbN13-PwRvqIfmX04Hh8iPlky2H07TsFYVxwNIDl1UkScODbmIpfFAlWr92P6f_zBLPiiQFSn9goZdiqIiyQqsEOLGsE7WVXtW1i_MEBRtrCfGG5uSEToDEW8l_OSpE"
+        />
+      </div>
+    </nav>
+    <div class="flex pt-16 h-screen overflow-hidden">
+      <!-- SideNavBar Shell -->
+      <aside
+        class="h-screen w-64 fixed left-0 top-0 border-r border-slate-200/50 bg-surface dark:bg-slate-950 flex flex-col py-6 px-4 z-[60]"
+      >
+        <div class="px-2 mb-8">
+          <h1 class="sf-brand text-2xl text-primary">SkillForge</h1>
+          <p
+            class="text-xs font-semibold text-on-surface-variant uppercase tracking-widest mt-1"
+          >
+            Instructor Portal
+          </p>
+        </div>
+        <nav class="flex-1 space-y-1 overflow-y-auto pr-2 pb-4">
+          <a
+            class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-medium hover:bg-surface-container-high/50 transition-colors tracking-tight"
+            href="#"
+          >
+            <span
+              class="material-symbols-outlined icon text-lg"
+              data-icon="dashboard"
+              >dashboard</span
+            >
+            <span class="font-body text-sm">Dashboard</span>
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-medium hover:bg-surface-container-high/50 transition-colors tracking-tight"
+            href="#"
+          >
+            <span
+              class="material-symbols-outlined icon text-lg"
+              data-icon="school"
+              >school</span
+            >
+            <span class="font-body text-sm">My Courses</span>
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-medium hover:bg-surface-container-high/50 transition-colors tracking-tight"
+            href="#"
+          >
+            <span
+              class="material-symbols-outlined icon text-lg"
+              data-icon="account_tree"
+              >account_tree</span
+            >
+            <span class="font-body text-sm">Curriculum</span>
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-medium hover:bg-surface-container-high/50 transition-colors tracking-tight"
+            href="#"
+          >
+            <span
+              class="material-symbols-outlined icon text-lg"
+              data-icon="quiz"
+              >quiz</span
+            >
+            <span class="font-body text-sm">Quiz Builder</span>
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-medium hover:bg-surface-container-high/50 transition-colors tracking-tight"
+            href="#"
+          >
+            <span
+              class="material-symbols-outlined icon text-lg"
+              data-icon="forum"
+              >forum</span
+            >
+            <span class="font-body text-sm">Q&A</span>
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 rounded-xl text-primary font-bold bg-primary/10 transition-colors"
+            href="#"
+          >
+            <span
+              class="material-symbols-outlined icon text-lg"
+              data-icon="assignment_turned_in"
+              >assignment_turned_in</span
+            >
+            <span class="font-body text-sm">Grading</span>
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-medium hover:bg-surface-container-high/50 transition-colors tracking-tight"
+            href="#"
+          >
+            <span
+              class="material-symbols-outlined icon text-lg"
+              data-icon="trending_up"
+              >trending_up</span
+            >
+            <span class="font-body text-sm">Progress</span>
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-medium hover:bg-surface-container-high/50 transition-colors tracking-tight"
+            href="#"
+          >
+            <span
+              class="material-symbols-outlined icon text-lg"
+              data-icon="confirmation_number"
+              >confirmation_number</span
+            >
+            <span class="font-body text-sm">Coupons</span>
+          </a>
+          <a
+            class="flex items-center gap-3 px-4 py-3 rounded-xl text-on-surface-variant font-medium hover:bg-surface-container-high/50 transition-colors tracking-tight"
+            href="#"
+          >
+            <span
+              class="material-symbols-outlined icon text-lg"
+              data-icon="person"
+              >person</span
+            >
+            <span class="font-body text-sm">Profile</span>
+          </a>
+        </nav>
+        <div class="pt-4 border-t border-outline-variant/20 mt-auto">
+          <button
+            class="btn btn-primary w-full flex items-center justify-center gap-2 py-3 rounded-xl shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all"
+          >
+            <span class="material-symbols-outlined icon">add</span>
+            <span class="whitespace-nowrap font-bold text-sm"
+              >Create Course</span
+            >
+          </button>
+        </div>
+      </aside>
+      <!-- Main Content Canvas -->
+      <main class="ml-64 min-h-screen flex">
+        <!-- List Panel: Asymmetric Layout -->
+        <section
+          class="w-full md:w-80 lg:w-96 flex flex-col border-r border-slate-200/50 bg-white"
+        >
+          <div class="p-6 border-b border-slate-100">
+            <h1
+              class="text-2xl font-extrabold font-headline tracking-tight text-on-surface mb-1"
+            >
+              Manual Grading
+            </h1>
+            <p class="text-sm text-on-surface-variant font-medium">
+              Advanced UI/UX Architecture • Module 4
+            </p>
+          </div>
+          <div
+            class="p-4 flex gap-2 overflow-x-auto no-scrollbar border-b border-slate-50"
+          >
+            <span
+              class="px-3 py-1 bg-primary-container text-on-primary-container text-label font-black uppercase tracking-wider rounded-full flex-shrink-0"
+              >Pending (12)</span
+            >
+            <span
+              class="px-3 py-1 bg-[#E3F2FD] text-primary-container border border-[#64B5F6]/20 text-label font-black uppercase tracking-wider rounded-full flex-shrink-0"
+              >Graded (45)</span
+            >
+            <span
+              class="px-3 py-1 bg-surface-container text-on-surface-variant text-label font-black uppercase tracking-wider rounded-full flex-shrink-0"
+              >Late (2)</span
+            >
+          </div>
+          <div class="flex-1 overflow-y-auto custom-scrollbar">
+            <!-- Submission Items -->
+            <div class="p-4 space-y-3">
+              <!-- Active Item -->
+              <div
+                class="bg-primary-container/5 ring-1 ring-primary-container/20 p-4 rounded-xl relative overflow-hidden group cursor-pointer"
+              >
+                <div
+                  class="absolute left-0 top-0 bottom-0 w-1 bg-primary-container"
+                ></div>
+                <div class="flex justify-between items-start mb-2">
+                  <div class="flex items-center gap-3">
+                    <img
+                      alt="Student"
+                      class="w-8 h-8 rounded-full"
+                      data-alt="Close up headshot of a creative male student with glasses and a thoughtful expression"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuDGyOXbrslRgDYZx2bmHRzF6HbAuFQm03Mm17AUa_boKikNsJ4nZihvuu8Cwv_u1fAjRum-VYGib6Ri47aGcVFJqX2cKneWt96hVhbxakQG5h-PzG717igqhzLtitxAScdnhLSjyvb16xTCzSbUWDpSfva99lLF97xlWWIhgN6X4Baegt1nTRRGO58XuTgDUFTf4QQL2ZY4vqWgNwiOy_SsHXrMfU1g4IBGkE528lwmAnNtFK8Y3Ov8kZ-OmQ8lF970fElZQWKh7KE"
+                    />
+                    <div>
+                      <h4 class="font-bold text-sm text-on-surface">
+                        Alex Chen
+                      </h4>
+                      <p
+                        class="text-label text-on-surface-variant font-bold uppercase tracking-tight"
+                      >
+                        Submitted 2h ago
+                      </p>
+                    </div>
+                  </div>
+                  <span class="material-symbols-outlined icon text-primary"
+                    >arrow_forward_ios</span
+                  >
+                </div>
+                <p class="text-xs text-on-surface-variant line-clamp-2 italic">
+                  "I have approached the course builder timeline using the
+                  vertical primary-fixed line as requested..."
+                </p>
+              </div>
+              <!-- Inactive Item -->
+              <div
+                class="hover:bg-surface-container-low p-4 rounded-xl transition-colors cursor-pointer group"
+              >
+                <div class="flex justify-between items-start mb-2">
+                  <div class="flex items-center gap-3">
+                    <img
+                      alt="Student"
+                      class="w-8 h-8 rounded-full"
+                      data-alt="Portrait of a young professional woman smiling warmly in an educational environment"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWzk2OHY93j_ps9vieXKLkgZZ2d5ikYiEKcxRQUL_Cllh_CjceXvYMSNCsRwpKVx0olYPpXQX_hg8Aos6Tj-0BeFwKZKmNyZMpbyNQOILU0BmKQkVTcF9aJgYrhLJVB6Kwro8aSl6Wxl-TyvZwI6yOlLWzg1vWWEMM2bb0MsGX9edW5N06wvZkhATZkfiUyNiAwar-cAUkogU1aCCt9o2Kgu43N0Iis3-IUdu7pqNH_Q4iZ_4YeHbOJhZZI0lcolRrwFUnkxzRJCU"
+                    />
+                    <div>
+                      <h4 class="font-bold text-sm text-on-surface">
+                        Sarah Miller
+                      </h4>
+                      <p
+                        class="text-label text-on-surface-variant font-bold uppercase tracking-tight"
+                      >
+                        Submitted 5h ago
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <p class="text-xs text-on-surface-variant line-clamp-2">
+                  "Here is my architectural layout for the final project
+                  submission including the Figma link..."
+                </p>
+              </div>
+              <div
+                class="hover:bg-surface-container-low p-4 rounded-xl transition-colors cursor-pointer group"
+              >
+                <div class="flex justify-between items-start mb-2">
+                  <div class="flex items-center gap-3">
+                    <img
+                      alt="Student"
+                      class="w-8 h-8 rounded-full"
+                      data-alt="Portrait of a male designer looking directly at the camera with a confident, modern look"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5lKv-YPNypgZbvjf0Y-A9voiMu_dy4oZDbQeOzHryLvtrPx9eSLnsG12p1AgPuhI4PqHJNQoTQmZZUlD4lScotXl6WJWkjtwN7a-DDUftYCtH8a7QtlTG2UnTyqO18ikLSk5HWg-KlGFTCsQx12Uvc8YtFseZS9PIkSfMzM5AiJuTd5qkp86SP_CrSylMkqpW3MZrmg8SRBREQhDO2LJ-kpiYQcOv-gXx0bXM4avw2ZUt1E54ua-WTX69gYbYPaeuN7Z7QHYyViU"
+                    />
+                    <div>
+                      <h4 class="font-bold text-sm text-on-surface">
+                        Marcus Thorne
+                      </h4>
+                      <p
+                        class="text-label text-on-surface-variant font-bold uppercase tracking-tight"
+                      >
+                        Submitted Yesterday
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <p class="text-xs text-on-surface-variant line-clamp-2">
+                  "Final curriculum draft for the 'Precision Architect' design
+                  system implementation..."
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Detailed Content View: Glassmorphism and Depth -->
+        <section class="flex-1 flex flex-col h-full bg-surface-container-low">
+          <div class="p-8 flex-1 overflow-y-auto custom-scrollbar">
+            <div class="max-w-4xl mx-auto space-y-8">
+              <!-- Header / Navigation -->
+              <div class="flex justify-between items-center">
+                <div class="flex items-center gap-4">
+                  <button class="btn btn-icon btn-surface">
+                    <span class="material-symbols-outlined icon"
+                      >chevron_left</span
+                    >
+                  </button>
+                  <div>
+                    <h2 class="text-xl font-bold font-headline text-on-surface">
+                      Alex Chen's Submission
+                    </h2>
+                    <p class="text-sm text-on-surface-variant">
+                      Design System Principles Implementation
+                    </p>
+                  </div>
+                </div>
+                <div class="icon-text">
+                  <span class="material-symbols-outlined icon text-slate-400"
+                    >schedule</span
+                  >
+                  <span
+                    class="text-xs font-bold text-outline uppercase tracking-widest"
+                    >Late Policy: On-Time</span
+                  >
+                </div>
+              </div>
+              <!-- Work Preview Canvas -->
+              <div
+                class="bg-white rounded-xl shadow-sm overflow-hidden ring-1 ring-slate-100"
+              >
+                <div
+                  class="p-4 bg-surface-container-low/50 border-b border-slate-100 flex justify-between items-center"
+                >
+                  <div class="flex gap-4">
+                    <span
+                      class="text-xs font-black text-primary uppercase tracking-widest"
+                      >Document View</span
+                    >
+                    <span
+                      class="text-xs font-black text-slate-400 uppercase tracking-widest"
+                      >Assets (3)</span
+                    >
+                  </div>
+                  <span
+                    class="material-symbols-outlined icon text-slate-400 cursor-pointer"
+                    >fullscreen</span
+                  >
+                </div>
+                <div class="p-8 space-y-6">
+                  <h3
+                    class="text-2xl font-extrabold font-headline tracking-tight"
+                  >
+                    The Precision Architect Strategy
+                  </h3>
+                  <p class="text-on-surface leading-relaxed text-sm">
+                    In this submission, I have focused on the "No-Line" rule for
+                    structural containment. By utilizing varying surface
+                    levels—specifically <code>surface_container</code> for the
+                    background and <code>surface_container_lowest</code> for the
+                    workspace—I've achieved visual separation without cluttering
+                    the interface with rigid border lines.
+                  </p>
+                  <div
+                    class="aspect-video w-full rounded-xl overflow-hidden bg-surface-container-low relative group"
+                  >
+                    <img
+                      alt="UI Design Workspace"
+                      class="w-full h-full object-cover"
+                      data-alt="Modern clean UI design on a high-res monitor showing a dashboard with orange accents and white cards"
+                      src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQfWZMXG24zpFBHcpaebLWdR2ji-GKyKwwE6hzXfUtvjw9xZCl09l1yspPGt3xRq3jcDc9FDcYuY5EPEb-XtDhwbe2ZWFpFSjVdsljY1UB2WFOjDw-T_IBO6hyOM-QGck0tZkV7H-10eOkUoAu556b_HPmWC4tNT6gEXz-p-yYtwexE-0TEui7lfORKaUlQKyhstiRbBvJZKVFxkQQA_hoDypbd88Yam2XqTFbAxn-oP4oaT9cQXCsLBGbBB9ttUoej4QOTOy4VVw"
+                    />
+                    <div
+                      class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity row row-center"
+                    >
+                      <button
+                        class="bg-white px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2"
+                      >
+                        <span class="material-symbols-outlined icon"
+                          >visibility</span
+                        >
+                        Preview
+                      </button>
+                      <button
+                        class="bg-white px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2"
+                      >
+                        <span class="material-symbols-outlined icon"
+                          >download</span
+                        >
+                        Download
+                      </button>
+                    </div>
+                  </div>
+                  <p class="text-on-surface leading-relaxed text-sm">
+                    The typography dialogue between Manrope and Inter has been
+                    balanced to ensure legibility. I used Manrope for the
+                    "Wayfinder" headers at a display-md scale with tight
+                    tracking (-0.02em) to maintain the premium architect
+                    aesthetic.
+                  </p>
+                </div>
+              </div>
+              <!-- Grading Panel: Precision Architect Style -->
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Feedback Card -->
+                <div
+                  class="md:col-span-2 bg-white rounded-xl shadow-sm p-6 space-y-4"
+                >
+                  <label
+                    class="text-label font-black text-slate-400 uppercase tracking-widest block"
+                    >Detailed Feedback</label
+                  >
+                  <div
+                    class="bg-surface-container-highest rounded-xl focus-within:bg-surface-container-lowest transition-all p-4 min-h-[120px] relative border-b-2 border-transparent focus-within:border-primary"
+                  >
+                    <textarea
+                      class="w-full h-full bg-transparent border-none focus:ring-0 text-sm resize-none"
+                      placeholder="Type your feedback here..."
+                      rows="4"
+                    ></textarea>
+                    <div class="absolute bottom-2 right-2 flex gap-2">
+                      <span
+                        class="material-symbols-outlined icon text-slate-400 cursor-pointer hover:text-primary"
+                        >format_bold</span
+                      >
+                      <span
+                        class="material-symbols-outlined icon text-slate-400 cursor-pointer hover:text-primary"
+                        >format_italic</span
+                      >
+                      <span
+                        class="material-symbols-outlined icon text-slate-400 cursor-pointer hover:text-primary"
+                        >link</span
+                      >
+                    </div>
+                  </div>
+                </div>
+                <!-- Score Card -->
+                <div
+                  class="bg-white rounded-xl shadow-sm p-6 flex flex-col justify-between"
+                >
+                  <div>
+                    <label
+                      class="text-label font-black text-slate-400 uppercase tracking-widest block mb-4"
+                      >Submission Score</label
+                    >
+                    <div class="row-xs row-center">
+                      <input
+                        class="text-4xl font-black text-primary font-headline w-20 text-center bg-surface-container-highest border-none rounded-xl py-2 focus:ring-2 focus:ring-primary-container"
+                        type="number"
+                        value="92"
+                      />
+                      <span class="text-2xl font-bold text-slate-300"
+                        >/ 100</span
+                      >
+                    </div>
+                  </div>
+                  <div
+                    class="mt-4 pt-4 border-t border-slate-100 row row-between"
+                  >
+                    <div class="flex text-tertiary">
+                      <span class="material-symbols-outlined icon icon-filled"
+                        >star</span
+                      >
+                      <span class="material-symbols-outlined icon icon-filled"
+                        >star</span
+                      >
+                      <span class="material-symbols-outlined icon icon-filled"
+                        >star</span
+                      >
+                      <span class="material-symbols-outlined icon icon-filled"
+                        >star</span
+                      >
+                      <span class="material-symbols-outlined icon">star</span>
+                    </div>
+                    <span class="text-label font-bold text-slate-400 uppercase"
+                      >Auto-Calc</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Footer Action Bar -->
+          <div
+            class="p-6 bg-white border-t border-slate-100 flex justify-end gap-4 items-center"
+          >
+            <button
+              class="px-6 py-3 rounded-xl text-primary font-bold text-sm bg-surface-container-low hover:bg-surface-container transition-all"
+            >
+              Save as Draft
+            </button>
+            <button
+              class="sf-gradient px-8 py-3 rounded-xl text-white font-bold text-sm shadow-sm hover:shadow-md active:scale-95 transition-all"
+            >
+              Publish Grade
+            </button>
+          </div>
+        </section>
+      </main>
+    </div>
+    <!-- Contextual FAB (Only on Dashboard/Home, but included for reference logic - hidden here) -->
+    <!-- Suppression logic applied: suppressed on details/transactional grading screen as per instructions -->
+  </body>
+</html>
