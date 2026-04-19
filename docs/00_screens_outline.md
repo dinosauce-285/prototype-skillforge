@@ -668,6 +668,113 @@
 
 ---
 
+### Mô Tả Chi Tiết Payment Web
+
+#### 1. Shopping Cart (`shopping_cart/code.html`)
+
+**Mục đích**: Trang giỏ hàng trên web, giúp người học rà soát khóa học đã chọn, áp dụng mã giảm giá và chuyển sang bước thanh toán.
+
+**Cấu trúc giao diện**:
+
+| Khu vực              | Thành phần               | Mô tả                                                                                        |
+| -------------------- | ------------------------ | -------------------------------------------------------------------------------------------- |
+| **Thanh điều hướng** | Logo + menu              | Điều hướng chính tới Browse / My Courses / Revenue / Dashboard                               |
+|                      | Biểu tượng hệ thống      | Cart, thông báo và avatar người dùng                                                         |
+| **Khu vực tiêu đề**  | Nhãn trang               | “Shopping Bag”                                                                               |
+|                      | Tiêu đề lớn              | “Your Selected Learning”                                                                     |
+| **Cột chính**        | Danh sách khóa trong giỏ | Mỗi item gồm thumbnail, badge (Bestseller/New Release), tên khóa, giảng viên, giá và nút xóa |
+| **Cột bên (sticky)** | Tóm tắt đơn hàng         | Subtotal, service fee, discount, total                                                       |
+|                      | Coupon                   | Ô nhập mã và nút Apply                                                                       |
+|                      | CTA                      | Nút Proceed to Checkout + chỉ báo SSL                                                        |
+| **Khối marketing**   | Upsell membership        | Banner nâng cấp gói truy cập toàn bộ khóa học                                                |
+| **Footer**           | Liên kết chính sách      | Privacy, Terms, Financial Security, Help Center                                              |
+
+---
+
+#### 2. Secure Payment (`secure_payment/code.html`)
+
+**Mục đích**: Trang checkout web để chọn phương thức thanh toán, nhập thông tin thẻ và hoàn tất đăng ký khóa học.
+
+**Cấu trúc giao diện**:
+
+| Khu vực             | Thành phần       | Mô tả                                          |
+| ------------------- | ---------------- | ---------------------------------------------- |
+| **Khu vực tiêu đề** | Nhãn tiến trình  | “Checkout Process”                             |
+|                     | Tiêu đề chính    | “Complete Your Enrollment”                     |
+| **Cột trái**        | Chọn phương thức | Card / MoMo / VNPay / PayPal                   |
+|                     | Form thẻ         | Cardholder name, card number, expiry date, CVV |
+|                     | Badge bảo mật    | SSL secured, encrypted data, guarantee         |
+| **Cột phải**        | Tóm tắt đơn hàng | Danh sách khóa/tài nguyên và giá từng mục      |
+|                     | Breakdown        | Subtotal, tax, total                           |
+|                     | CTA              | Nút Complete Enrollment                        |
+|                     | Điều khoản       | Thông báo đồng ý policy khi thanh toán         |
+| **Footer**          | Hỗ trợ pháp lý   | Link policy và trợ giúp người dùng             |
+
+---
+
+#### 3. Order History (`order_history/code.html`)
+
+**Mục đích**: Trang lịch sử giao dịch trên web để người dùng theo dõi hóa đơn, trạng thái đơn và tải biên lai PDF.
+
+**Cấu trúc giao diện**:
+
+| Khu vực                 | Thành phần            | Mô tả                                                        |
+| ----------------------- | --------------------- | ------------------------------------------------------------ |
+| **Thanh bên tài chính** | Menu chuyên biệt      | Overview / Transactions / Payouts / Tax Documents / Settings |
+|                         | Nút xuất báo cáo      | Export Report                                                |
+| **Khu vực tiêu đề**     | Nhãn phụ              | “Ledger & History”                                           |
+|                         | Tiêu đề               | “Order History.”                                             |
+|                         | Mô tả                 | Tóm tắt mục đích lưu trữ giao dịch                           |
+| **Lưới thống kê**       | Tổng chi tiêu         | Total Investment                                             |
+|                         | Đăng ký đang học      | Active Enrollments                                           |
+|                         | Thu chi kỳ tới        | Upcoming Payout                                              |
+| **Bảng giao dịch**      | Cột dữ liệu           | Invoice ID, Date & Item, Amount, Status, Actions             |
+|                         | Trạng thái thanh toán | Success / Pending                                            |
+|                         | Hành động             | Download PDF hoặc Processing                                 |
+| **Phân trang**          | Điều hướng danh sách  | Hiển thị số bản ghi và chuyển trang                          |
+
+---
+
+#### 4. Instructor Earnings (`instructor_earnings/code.html`)
+
+**Mục đích**: Dashboard doanh thu giảng viên trên web, theo dõi tăng trưởng, phân bổ doanh thu theo khóa học và thực hiện yêu cầu chi trả.
+
+**Cấu trúc giao diện**:
+
+| Khu vực                     | Thành phần          | Mô tả                                                    |
+| --------------------------- | ------------------- | -------------------------------------------------------- |
+| **Thanh bên tài chính**     | Menu điều hướng     | Overview, Transactions, Payouts, Tax Documents, Settings |
+| **Khu vực đầu trang**       | Tiêu đề phân tích   | “Financial Performance”                                  |
+|                             | Số dư hiện tại      | Current Balance                                          |
+| **Lưới KPI**                | Tăng trưởng quý     | Revenue Velocity và progress bar                         |
+|                             | Hành động nhanh     | Card Request Payout                                      |
+| **Khối phân tích chi tiết** | Breakdown theo khóa | Doanh thu, số học viên, tỷ lệ chia sẻ cho từng course    |
+|                             | Danh sách dạng card | Mỗi card có thumbnail, tên khóa, chỉ số và net payout    |
+| **Hành động xuất dữ liệu**  | Export              | Xuất báo cáo thu nhập                                    |
+
+---
+
+#### 5. Platform Finance Admin (`platform_finance_admin/code.html`)
+
+**Mục đích**: Bảng điều khiển tài chính cấp platform để quản trị tổng doanh thu, tỷ lệ chia sẻ, xu hướng doanh thu và duyệt payout giảng viên.
+
+**Cấu trúc giao diện**:
+
+| Khu vực                     | Thành phần           | Mô tả                                                        |
+| --------------------------- | -------------------- | ------------------------------------------------------------ |
+| **Thanh bên tài chính**     | Menu quản trị        | Overview / Transactions / Payouts / Tax Documents / Settings |
+| **Khu vực tổng quan**       | KPI tài chính lớn    | Total Gross Volume, Active Instructors, Net Platform Share   |
+| **Khối biểu đồ**            | Revenue Trends       | Biểu đồ cột theo thời gian (Daily/Monthly/Yearly)            |
+|                             | Instructor Split     | Thanh tỷ lệ Platform Share vs Instructor Payout              |
+|                             | Quick Actions        | Điều chỉnh split rates, chính sách giảm giá toàn cục         |
+| **Bảng phê duyệt payout**   | Pending Requests     | Danh sách yêu cầu chi trả giảng viên                         |
+|                             | Thông tin từng hàng  | Instructor, date, amount, method                             |
+|                             | Hành động            | Approve / Reject                                             |
+| **Khối báo cáo chuyên sâu** | Audit & tier insight | Tải file kiểm toán và gợi ý tối ưu tier giảng viên           |
+
+---
+
+
 ## 6. Payment App 
 
 | Màn hình | File | Mô tả sơ bộ |
@@ -677,4 +784,97 @@
 | 03 | `purchase_history/code.html` | Lịch sử mua hàng (mobile) |
 | 04 | `revenue_payouts/code.html` | Doanh thu & chi trả (mobile) |
 | 05 | `platform_finances/code.html` | Tài chính platform (mobile) |
+
+### Mô Tả Chi Tiết Payment App
+
+#### 1. Cart & Coupons (`cart_coupons/code.html`)
+
+**Mục đích**: Màn hình giỏ hàng mobile để xem danh sách khóa học đã chọn, áp mã giảm giá và tiến hành thanh toán.
+
+**Cấu trúc giao diện**:
+
+| Khu vực                   | Thành phần       | Mô tả                                                          |
+| ------------------------- | ---------------- | -------------------------------------------------------------- |
+| **Khu vực tiêu đề**       | Tên trang        | “Your Cart” + số lượng khóa đã chọn                            |
+| **Danh sách giỏ hàng**    | Item khóa học    | Thumbnail, tên khóa, giảng viên, giá hiện tại/giá gốc, nút xóa |
+| **Khối coupon**           | Nhập mã giảm giá | Ô nhập + nút Apply + ghi chú khuyến mãi                        |
+| **Khối tổng tiền**        | Breakdown        | Subtotal, coupon discount, total                               |
+|                           | CTA              | Nút Proceed to Payment                                         |
+| **Thanh điều hướng dưới** | Mobile nav       | Learn / Cart / Orders / Revenue / Admin                        |
+
+---
+
+#### 2. Checkout (`checkout/code.html`)
+
+**Mục đích**: Màn hình thanh toán mobile để chọn phương thức chi trả, nhập thông tin thẻ và xác nhận thanh toán đơn hàng.
+
+**Cấu trúc giao diện**:
+
+| Khu vực                   | Thành phần       | Mô tả                                        |
+| ------------------------- | ---------------- | -------------------------------------------- |
+| **Khu vực thanh toán**    | Tiêu đề          | “Secure Checkout”                            |
+|                           | Chọn phương thức | Credit Card, MoMo, VNPay, PayPal (dạng card) |
+|                           | Form thẻ         | Cardholder, card number, expiry, CVV         |
+|                           | Chỉ báo tin cậy  | Secure SSL + biểu tượng bảo mật              |
+| **Khu vực đơn hàng**      | Tóm tắt sản phẩm | Danh sách item, số lượng, giá từng mục       |
+|                           | Tổng hợp chi phí | Subtotal, platform fee, total amount         |
+|                           | CTA              | Nút Pay Now                                  |
+|                           | Điều khoản       | Ghi chú Terms of Service và Privacy Policy   |
+| **Khối phụ**              | Promo code nhanh | Ô nhập promo + nút Apply                     |
+| **Thanh điều hướng dưới** | Mobile nav       | Cart được ưu tiên hiển thị                   |
+
+---
+
+#### 3. Purchase History (`purchase_history/code.html`)
+
+**Mục đích**: Màn hình lịch sử mua hàng mobile để tra cứu giao dịch, theo dõi trạng thái đơn và tải hóa đơn.
+
+**Cấu trúc giao diện**:
+
+| Khu vực                   | Thành phần        | Mô tả                                          |
+| ------------------------- | ----------------- | ---------------------------------------------- |
+| **Khu vực tiêu đề**       | Tên trang + mô tả | “Order History” và hướng dẫn quản lý giao dịch |
+| **Khối thống kê nhanh**   | KPI ngắn          | Total Spent, Total Orders, Latest Invoice      |
+| **Danh sách giao dịch**   | Item giao dịch    | Tên khóa, mã đơn, ngày, số tiền                |
+|                           | Trạng thái        | Success / Failed với màu trạng thái            |
+|                           | Hành động         | Nút tải hóa đơn (download)                     |
+| **Thanh điều hướng dưới** | Mobile nav        | Orders được active                             |
+
+---
+
+#### 4. Revenue & Payouts (`revenue_payouts/code.html`)
+
+**Mục đích**: Màn hình doanh thu mobile cho giảng viên, theo dõi số dư khả dụng, doanh thu theo khóa và trạng thái payout.
+
+**Cấu trúc giao diện**:
+
+| Khu vực                      | Thành phần       | Mô tả                                                 |
+| ---------------------------- | ---------------- | ----------------------------------------------------- |
+| **Hero tài chính**           | Số dư rút được   | Available for Withdrawal                              |
+|                              | Hành động payout | Nút Request Payout + tài khoản nhận tiền              |
+|                              | Chỉ số tích lũy  | Lifetime Earnings + tăng trưởng tháng                 |
+| **Khối doanh thu theo khóa** | Danh sách course | Tên khóa, số học viên, tỷ lệ chia sẻ, doanh thu tháng |
+| **Khối trạng thái chi trả**  | Timeline payout  | Pending / Paid / Approved theo từng yêu cầu           |
+|                              | Mini chart       | Payout velocity theo chu kỳ                           |
+| **Thanh điều hướng dưới**    | Mobile nav       | Revenue được active                                   |
+
+---
+
+#### 5. Platform Finances (`platform_finances/code.html`)
+
+**Mục đích**: Màn hình tài chính platform trên mobile dành cho admin, giám sát doanh thu tổng, cấu hình chia sẻ và duyệt yêu cầu payout.
+
+**Cấu trúc giao diện**:
+
+| Khu vực                   | Thành phần              | Mô tả                                          |
+| ------------------------- | ----------------------- | ---------------------------------------------- |
+| **Khu vực tổng quan**     | Total Platform Revenue  | Chỉ số doanh thu toàn nền tảng + tăng trưởng   |
+|                           | Biểu đồ xu hướng        | Cột doanh thu theo kỳ                          |
+| **Khối cấu hình**         | Global Payout Logic     | Thiết lập tỷ lệ chia sẻ cho instructor         |
+|                           | Instructor Payouts      | Tổng payout và net margin                      |
+| **Khối vận hành**         | Pending Payout Requests | Bảng yêu cầu chi trả chờ duyệt                 |
+|                           | Dữ liệu mỗi yêu cầu     | Instructor, requested amount, wallet balance   |
+|                           | Hành động               | Approve / Reject                               |
+| **Khối insight**          | Tóm tắt vận hành        | Payout health, new instructors, tax compliance |
+| **Thanh điều hướng dưới** | Mobile nav              | Admin được active                              |
 
