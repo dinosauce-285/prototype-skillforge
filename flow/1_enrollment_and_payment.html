@@ -1,850 +1,646 @@
 <!doctype html>
 
 <html class="light" lang="en">
-  <head>
-    <link rel="stylesheet" href="../shared/tailwind-desktop.css" />
-    <link rel="stylesheet" href="../shared/base.css" />
 
-    <meta charset="utf-8" />
-    <meta
-      name="description"
-      content="SkillForge — The premium platform for professional skill development and certification."
-    />
-    <link rel="icon" type="image/svg+xml" href="../shared/favicon.svg" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>SkillForge | Flow 1 Prototype</title>
-  </head>
-  <body
-    class="bg-surface-bright text-on-surface font-body selection:bg-secondary-fixed selection:text-on-secondary-container"
-  >
-    <!-- TopAppBar -->
-    <header class="navbar">
-      <div class="navbar-container">
-        <div class="navbar-logo">
-          <span class="sf-brand text-2xl">SkillForge</span>
-          <nav class="hidden md:flex navbar-logo">
-            <a
-              class="text-on-surface-variant dark:text-outline font-headline font-medium hover:text-primary transition-colors"
-              href="#"
-              >Courses</a
-            >
-            <a
-              class="text-primary dark:text-primary-container font-bold font-headline tracking-tight"
-              href="#"
-              >My Learning</a
-            >
-            <a
-              class="text-on-surface-variant dark:text-outline font-headline font-medium hover:text-primary transition-colors"
-              href="#"
-              >Community</a
-            >
-          </nav>
+<head>
+  <link rel="stylesheet" href="../shared/tailwind-desktop.css" />
+  <link rel="stylesheet" href="../shared/base.css" />
+
+  <meta charset="utf-8" />
+  <meta name="description"
+    content="SkillForge — The premium platform for professional skill development and certification." />
+  <link rel="icon" type="image/svg+xml" href="../shared/favicon.svg" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <title>SkillForge | Flow 1 Prototype</title>
+</head>
+
+<body
+  class="bg-surface-bright text-on-surface font-body selection:bg-secondary-fixed selection:text-on-secondary-container">
+  <!-- TopAppBar -->
+  <header class="navbar">
+    <div class="navbar-container">
+      <div class="navbar-logo">
+        <span class="sf-brand text-2xl">SkillForge</span>
+        <nav class="hidden md:flex navbar-logo">
+          <a class="text-on-surface-variant dark:text-outline font-headline font-medium hover:text-primary transition-colors"
+            href="#">Courses</a>
+          <a class="text-primary dark:text-primary-container font-bold font-headline tracking-tight" href="#">My
+            Learning</a>
+          <a class="text-on-surface-variant dark:text-outline font-headline font-medium hover:text-primary transition-colors"
+            href="#">Community</a>
+        </nav>
+      </div>
+      <div class="flex items-center gap-4">
+        <div class="relative hidden sm:block">
+          <span
+            class="material-symbols-outlined icon absolute left-3 top-1/2 -translate-y-1/2 text-outline">search</span>
+          <input class="input-search w-64" placeholder="Search courses..." type="text" />
         </div>
-        <div class="flex items-center gap-4">
-          <div class="relative hidden sm:block">
-            <span
-              class="material-symbols-outlined icon absolute left-3 top-1/2 -translate-y-1/2 text-outline"
-              >search</span
-            >
-            <input
-              class="input-search w-64"
-              placeholder="Search courses..."
-              type="text"
-            />
+        <button
+          class="p-2 text-on-surface-variant hover:bg-primary-fixed/50 dark:hover:bg-primary/30 rounded-full transition-colors active:scale-95">
+          <span class="material-symbols-outlined icon">notifications</span>
+        </button>
+        <img alt="User Profile" class="w-8 h-8 rounded-full border-2 border-primary-container"
+          data-alt="Close up portrait of a professional man with a kind smile, clean studio background, professional headshot style"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwY1B9wpSRqxXzXAJh8DbdA4HfEw05owBnOJtCrM7a_WfsnRdus3WMxAwlVWPPHLYY6fUkWwsnRfeWtCLR78mjvm6HKRrtczbvGHqUYRTIWms7R9saUi18oT7DkX_kNb0i4bKDgdZyFNtu-pGHOdww86fCmQZGCTgJBqNbLQiBVdkQZmT43xoxxBAgEn8PVA1qIY9JUNZVIFdqd4da5woJgnyACzw4Yg_Hgt5GN4Ukl1UJZSuM0Sh9toKSm6z_2T4eIikR6hNgUzkO" />
+      </div>
+    </div>
+  </header>
+  <main class="sf-page-mobile">
+    <!-- Hero Section -->
+    <section class="relative bg-on-background text-white pt-20 pb-32 overflow-hidden">
+      <div class="absolute inset-0 opacity-30">
+        <img alt="Background Coding" class="w-full h-full object-cover"
+          data-alt="Abstract cinematic shot of high-end laptop screen with colorful code, dark room with ambient orange lighting, bokeh effect"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuAh1SuTnvGfmI7PU9rLLI_tciP_CuvjCD5ihaTCgGQ-AKsqQqIXAQQpxk0FJURwpiCWNakRnWVCP5jOt3kFW6Tec2KokGh7mrQ3fhXIKir8NAS2ZUurB8LjgtaDbjeOMW4PkiA1877b8CUse_sdOgNzHZTyg8Pfuo_xzWY9yjq2ZgCIhmXq2S35mNq7VntDyn-zc8TwYHCDVxrpm4CsDWFL3VRnaA9MQGYFB4WzDarzzBPF01ZF2mKmSt4cPRvGl3bCWSZcx4taIAnk" />
+      </div>
+      <div class="absolute inset-0 bg-gradient-to-r from-on-background via-on-background/80 to-transparent"></div>
+      <div class="relative sf-container px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="stack">
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1 bg-primary-container/20 border border-primary-container/30 rounded-full">
+            <span class="material-symbols-outlined icon text-primary-container icon-filled">star</span>
+            <span class="text-xs font-bold tracking-widest uppercase text-primary-fixed">Bestseller</span>
           </div>
+          <h1 class="text-5xl md:text-6xl font-headline font-black leading-[1.1] tracking-tight">
+            Advanced Architectural Design with
+            <span class="text-primary-container">WebGL &amp; Shaders</span>
+          </h1>
+          <p class="text-lg text-surface-variant max-w-xl font-body leading-relaxed">
+            Master the art of high-performance 3D rendering for the web. Learn
+            from industry veterans how to build immersive digital experiences
+            that scale.
+          </p>
+          <div class="flex flex-wrap items-center gap-6 pt-4">
+            <button
+              class="sf-gradient px-8 py-4 rounded-full font-headline font-bold text-lg hover:scale-105 active:scale-95 transition-all shadow-xl shadow-primary/20 enroll-btn">
+              Enroll Now — $89.99
+            </button>
+            <button
+              class="flex items-center gap-2 px-6 py-4 bg-white/10 backdrop-blur-md rounded-full font-headline font-bold hover:bg-white/20 transition-all">
+              <span class="material-symbols-outlined icon">play_circle</span>
+              Watch Preview
+            </button>
+          </div>
+          <div class="navbar-logo pt-4 text-sm font-medium text-surface-variant">
+            <div class="icon-text">
+              <span class="material-symbols-outlined icon text-primary-container">groups</span>
+              <span>12,402 Students</span>
+            </div>
+            <div class="icon-text">
+              <span class="material-symbols-outlined icon text-primary-container">schedule</span>
+              <span>24 Hours Content</span>
+            </div>
+            <div class="icon-text">
+              <span class="material-symbols-outlined icon text-primary-container">workspace_premium</span>
+              <span>Certificate Included</span>
+            </div>
+          </div>
+        </div>
+        <div class="hidden lg:block relative">
+          <div class="relative z-10 aspect-video rounded-2xl overflow-hidden shadow-2xl group cursor-pointer">
+            <img alt="Course Preview"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              data-alt="Sophisticated workspace with large monitor displaying 3D architectural renders, warm designer office atmosphere, soft evening light"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYQRPOErxbck2vdzTAw4xO4HLCqbkTy3w7LWd5wSqIy_guc0VEyWf_t-Jdd58x5QuMIzphClT4J7AM13_5A-wETytE6n7Tj8Xu3zSuCsWOIcORlQpSKcgfOTvoYTTuwkwBOTRO3RUvSBYbq5GAYENfCzo7Dz6cCoyM2w3Bg_zchGTW5ZiTialH1_ZQsktTRTLh9Dfl6tHelbrgRDERho_B_0_Benwf5rdT47X4CQq9QnOGddYpIEYEm_nai5L8KsU89fJlJ-Q2UxJx" />
+            <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+              <div
+                class="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center text-primary-container shadow-2xl active:scale-90 transition-transform">
+                <span class="material-symbols-outlined icon icon-lg icon-filled">play_arrow</span>
+              </div>
+            </div>
+          </div>
+          <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-primary-container/10 rounded-full blur-3xl"></div>
+          <div class="absolute -top-10 -right-10 w-48 h-48 bg-primary-fixed/500/10 rounded-full blur-[100px]"></div>
+        </div>
+      </div>
+    </section>
+    <!-- Course Tabs Section -->
+    <section class="sf-container px-6 -mt-10 relative z-20">
+      <div class="card-feature">
+        <!-- Navigation Tabs -->
+        <div class="flex overflow-x-auto no-scrollbar border-b border-surface-variant mb-12">
           <button
-            class="p-2 text-on-surface-variant hover:bg-primary-fixed/50 dark:hover:bg-primary/30 rounded-full transition-colors active:scale-95"
-          >
-            <span class="material-symbols-outlined icon">notifications</span>
+            class="px-8 py-4 text-primary font-headline font-bold border-b-4 border-primary-container whitespace-nowrap">
+            Overview
           </button>
-          <img
-            alt="User Profile"
-            class="w-8 h-8 rounded-full border-2 border-primary-container"
-            data-alt="Close up portrait of a professional man with a kind smile, clean studio background, professional headshot style"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwY1B9wpSRqxXzXAJh8DbdA4HfEw05owBnOJtCrM7a_WfsnRdus3WMxAwlVWPPHLYY6fUkWwsnRfeWtCLR78mjvm6HKRrtczbvGHqUYRTIWms7R9saUi18oT7DkX_kNb0i4bKDgdZyFNtu-pGHOdww86fCmQZGCTgJBqNbLQiBVdkQZmT43xoxxBAgEn8PVA1qIY9JUNZVIFdqd4da5woJgnyACzw4Yg_Hgt5GN4Ukl1UJZSuM0Sh9toKSm6z_2T4eIikR6hNgUzkO"
-          />
+          <button
+            class="px-8 py-4 text-outline font-headline font-medium hover:text-primary transition-colors whitespace-nowrap">
+            Curriculum
+          </button>
+          <button
+            class="px-8 py-4 text-outline font-headline font-medium hover:text-primary transition-colors whitespace-nowrap">
+            Instructor
+          </button>
+          <button
+            class="px-8 py-4 text-outline font-headline font-medium hover:text-primary transition-colors whitespace-nowrap">
+            Reviews
+          </button>
         </div>
-      </div>
-    </header>
-    <main class="sf-page-mobile">
-      <!-- Hero Section -->
-      <section
-        class="relative bg-on-background text-white pt-20 pb-32 overflow-hidden"
-      >
-        <div class="absolute inset-0 opacity-30">
-          <img
-            alt="Background Coding"
-            class="w-full h-full object-cover"
-            data-alt="Abstract cinematic shot of high-end laptop screen with colorful code, dark room with ambient orange lighting, bokeh effect"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAh1SuTnvGfmI7PU9rLLI_tciP_CuvjCD5ihaTCgGQ-AKsqQqIXAQQpxk0FJURwpiCWNakRnWVCP5jOt3kFW6Tec2KokGh7mrQ3fhXIKir8NAS2ZUurB8LjgtaDbjeOMW4PkiA1877b8CUse_sdOgNzHZTyg8Pfuo_xzWY9yjq2ZgCIhmXq2S35mNq7VntDyn-zc8TwYHCDVxrpm4CsDWFL3VRnaA9MQGYFB4WzDarzzBPF01ZF2mKmSt4cPRvGl3bCWSZcx4taIAnk"
-          />
-        </div>
-        <div
-          class="absolute inset-0 bg-gradient-to-r from-on-background via-on-background/80 to-transparent"
-        ></div>
-        <div
-          class="relative sf-container px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
-        >
-          <div class="stack">
-            <div
-              class="inline-flex items-center gap-2 px-3 py-1 bg-primary-container/20 border border-primary-container/30 rounded-full"
-            >
-              <span
-                class="material-symbols-outlined icon text-primary-container icon-filled"
-                >star</span
-              >
-              <span
-                class="text-xs font-bold tracking-widest uppercase text-primary-fixed"
-                >Bestseller</span
-              >
-            </div>
-            <h1
-              class="text-5xl md:text-6xl font-headline font-black leading-[1.1] tracking-tight"
-            >
-              Advanced Architectural Design with
-              <span class="text-primary-container">WebGL &amp; Shaders</span>
-            </h1>
-            <p
-              class="text-lg text-surface-variant max-w-xl font-body leading-relaxed"
-            >
-              Master the art of high-performance 3D rendering for the web. Learn
-              from industry veterans how to build immersive digital experiences
-              that scale.
-            </p>
-            <div class="flex flex-wrap items-center gap-6 pt-4">
-              <button
-                class="sf-gradient px-8 py-4 rounded-full font-headline font-bold text-lg hover:scale-105 active:scale-95 transition-all shadow-xl shadow-primary/20 enroll-btn"
-              >
-                Enroll Now — $89.99
-              </button>
-              <button
-                class="flex items-center gap-2 px-6 py-4 bg-white/10 backdrop-blur-md rounded-full font-headline font-bold hover:bg-white/20 transition-all"
-              >
-                <span class="material-symbols-outlined icon">play_circle</span>
-                Watch Preview
-              </button>
-            </div>
-            <div
-              class="navbar-logo pt-4 text-sm font-medium text-surface-variant"
-            >
-              <div class="icon-text">
-                <span
-                  class="material-symbols-outlined icon text-primary-container"
-                  >groups</span
-                >
-                <span>12,402 Students</span>
-              </div>
-              <div class="icon-text">
-                <span
-                  class="material-symbols-outlined icon text-primary-container"
-                  >schedule</span
-                >
-                <span>24 Hours Content</span>
-              </div>
-              <div class="icon-text">
-                <span
-                  class="material-symbols-outlined icon text-primary-container"
-                  >workspace_premium</span
-                >
-                <span>Certificate Included</span>
-              </div>
-            </div>
-          </div>
-          <div class="hidden lg:block relative">
-            <div
-              class="relative z-10 aspect-video rounded-2xl overflow-hidden shadow-2xl group cursor-pointer"
-            >
-              <img
-                alt="Course Preview"
-                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                data-alt="Sophisticated workspace with large monitor displaying 3D architectural renders, warm designer office atmosphere, soft evening light"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYQRPOErxbck2vdzTAw4xO4HLCqbkTy3w7LWd5wSqIy_guc0VEyWf_t-Jdd58x5QuMIzphClT4J7AM13_5A-wETytE6n7Tj8Xu3zSuCsWOIcORlQpSKcgfOTvoYTTuwkwBOTRO3RUvSBYbq5GAYENfCzo7Dz6cCoyM2w3Bg_zchGTW5ZiTialH1_ZQsktTRTLh9Dfl6tHelbrgRDERho_B_0_Benwf5rdT47X4CQq9QnOGddYpIEYEm_nai5L8KsU89fJlJ-Q2UxJx"
-              />
-              <div
-                class="absolute inset-0 bg-black/40 flex items-center justify-center"
-              >
-                <div
-                  class="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center text-primary-container shadow-2xl active:scale-90 transition-transform"
-                >
-                  <span
-                    class="material-symbols-outlined icon icon-lg icon-filled"
-                    >play_arrow</span
-                  >
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-16">
+          <!-- Left Column: Detailed Content -->
+          <div class="lg:col-span-2 space-y-12">
+            <!-- Overview -->
+            <div class="stack">
+              <h2 class="text-3xl font-headline font-extrabold tracking-tight">
+                About this Course
+              </h2>
+              <p class="text-on-surface-variant font-body leading-relaxed text-lg">
+                Dive deep into the world of WebGL and modern shader
+                development. This course is designed to bridge the gap between
+                creative coding and professional architectural visualization.
+                We don't just teach tools; we teach the underlying math and
+                physics of light that make 3D scenes come alive.
+              </p>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
+                <div class="flex items-start gap-3 p-4 bg-surface-container-low rounded-xl">
+                  <span class="material-symbols-outlined icon text-primary-container">check_circle</span>
+                  <span class="text-sm font-medium">Build custom GLSL shaders from scratch</span>
+                </div>
+                <div class="flex items-start gap-3 p-4 bg-surface-container-low rounded-xl">
+                  <span class="material-symbols-outlined icon text-primary-container">check_circle</span>
+                  <span class="text-sm font-medium">Optimize real-time rendering pipelines</span>
+                </div>
+                <div class="flex items-start gap-3 p-4 bg-surface-container-low rounded-xl">
+                  <span class="material-symbols-outlined icon text-primary-container">check_circle</span>
+                  <span class="text-sm font-medium">Implement physically based rendering (PBR)</span>
+                </div>
+                <div class="flex items-start gap-3 p-4 bg-surface-container-low rounded-xl">
+                  <span class="material-symbols-outlined icon text-primary-container">check_circle</span>
+                  <span class="text-sm font-medium">Master Three.js for architectural flows</span>
                 </div>
               </div>
             </div>
-            <div
-              class="absolute -bottom-6 -left-6 w-32 h-32 bg-primary-container/10 rounded-full blur-3xl"
-            ></div>
-            <div
-              class="absolute -top-10 -right-10 w-48 h-48 bg-primary-fixed/500/10 rounded-full blur-[100px]"
-            ></div>
-          </div>
-        </div>
-      </section>
-      <!-- Course Tabs Section -->
-      <section class="sf-container px-6 -mt-10 relative z-20">
-        <div class="card-feature">
-          <!-- Navigation Tabs -->
-          <div
-            class="flex overflow-x-auto no-scrollbar border-b border-surface-variant mb-12"
-          >
-            <button
-              class="px-8 py-4 text-primary font-headline font-bold border-b-4 border-primary-container whitespace-nowrap"
-            >
-              Overview
-            </button>
-            <button
-              class="px-8 py-4 text-outline font-headline font-medium hover:text-primary transition-colors whitespace-nowrap"
-            >
-              Curriculum
-            </button>
-            <button
-              class="px-8 py-4 text-outline font-headline font-medium hover:text-primary transition-colors whitespace-nowrap"
-            >
-              Instructor
-            </button>
-            <button
-              class="px-8 py-4 text-outline font-headline font-medium hover:text-primary transition-colors whitespace-nowrap"
-            >
-              Reviews
-            </button>
-          </div>
-          <div class="grid grid-cols-1 lg:grid-cols-3 gap-16">
-            <!-- Left Column: Detailed Content -->
-            <div class="lg:col-span-2 space-y-12">
-              <!-- Overview -->
-              <div class="stack">
-                <h2
-                  class="text-3xl font-headline font-extrabold tracking-tight"
-                >
-                  About this Course
+            <!-- Curriculum Preview -->
+            <div class="stack">
+              <div class="flex justify-between items-end">
+                <h2 class="text-3xl font-headline font-extrabold tracking-tight">
+                  Curriculum
                 </h2>
-                <p
-                  class="text-on-surface-variant font-body leading-relaxed text-lg"
-                >
-                  Dive deep into the world of WebGL and modern shader
-                  development. This course is designed to bridge the gap between
-                  creative coding and professional architectural visualization.
-                  We don't just teach tools; we teach the underlying math and
-                  physics of light that make 3D scenes come alive.
-                </p>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
-                  <div
-                    class="flex items-start gap-3 p-4 bg-surface-container-low rounded-xl"
-                  >
-                    <span
-                      class="material-symbols-outlined icon text-primary-container"
-                      >check_circle</span
-                    >
-                    <span class="text-sm font-medium"
-                      >Build custom GLSL shaders from scratch</span
-                    >
-                  </div>
-                  <div
-                    class="flex items-start gap-3 p-4 bg-surface-container-low rounded-xl"
-                  >
-                    <span
-                      class="material-symbols-outlined icon text-primary-container"
-                      >check_circle</span
-                    >
-                    <span class="text-sm font-medium"
-                      >Optimize real-time rendering pipelines</span
-                    >
-                  </div>
-                  <div
-                    class="flex items-start gap-3 p-4 bg-surface-container-low rounded-xl"
-                  >
-                    <span
-                      class="material-symbols-outlined icon text-primary-container"
-                      >check_circle</span
-                    >
-                    <span class="text-sm font-medium"
-                      >Implement physically based rendering (PBR)</span
-                    >
-                  </div>
-                  <div
-                    class="flex items-start gap-3 p-4 bg-surface-container-low rounded-xl"
-                  >
-                    <span
-                      class="material-symbols-outlined icon text-primary-container"
-                      >check_circle</span
-                    >
-                    <span class="text-sm font-medium"
-                      >Master Three.js for architectural flows</span
-                    >
-                  </div>
-                </div>
+                <span class="text-sm font-bold text-primary">12 Sections • 148 Lectures</span>
               </div>
-              <!-- Curriculum Preview -->
-              <div class="stack">
-                <div class="flex justify-between items-end">
-                  <h2
-                    class="text-3xl font-headline font-extrabold tracking-tight"
-                  >
-                    Curriculum
-                  </h2>
-                  <span class="text-sm font-bold text-primary"
-                    >12 Sections • 148 Lectures</span
-                  >
-                </div>
-                <div class="stack-sm">
-                  <!-- Section 1 -->
-                  <div
-                    class="group border border-transparent hover:border-outline-variant/30 bg-surface-container-low rounded-2xl overflow-hidden transition-all"
-                  >
-                    <div class="p-5 row row-between cursor-pointer">
-                      <div class="flex items-center gap-4">
-                        <span
-                          class="w-10 h-10 flex items-center justify-center bg-white rounded-xl font-headline font-bold text-primary-container shadow-sm"
-                          >01</span
-                        >
-                        <div>
-                          <h3 class="font-headline font-bold">
-                            Introduction to the WebGL Pipeline
-                          </h3>
-                          <p class="text-xs text-outline">4 Lectures • 45m</p>
-                        </div>
-                      </div>
+              <div class="stack-sm">
+                <!-- Section 1 -->
+                <div
+                  class="group border border-transparent hover:border-outline-variant/30 bg-surface-container-low rounded-2xl overflow-hidden transition-all">
+                  <div class="p-5 row row-between cursor-pointer">
+                    <div class="flex items-center gap-4">
                       <span
-                        class="material-symbols-outlined icon text-outline group-hover:rotate-180 transition-transform"
-                        >expand_more</span
-                      >
+                        class="w-10 h-10 flex items-center justify-center bg-white rounded-xl font-headline font-bold text-primary-container shadow-sm">01</span>
+                      <div>
+                        <h3 class="font-headline font-bold">
+                          Introduction to the WebGL Pipeline
+                        </h3>
+                        <p class="text-xs text-outline">4 Lectures • 45m</p>
+                      </div>
                     </div>
+                    <span
+                      class="material-symbols-outlined icon text-outline group-hover:rotate-180 transition-transform">expand_more</span>
                   </div>
-                  <!-- Section 2 - Active/Open -->
-                  <div
-                    class="bg-surface-container-low rounded-2xl overflow-hidden border border-primary-container/20"
-                  >
-                    <div class="p-5 row row-between bg-primary-container/5">
-                      <div class="flex items-center gap-4">
-                        <span
-                          class="w-10 h-10 flex items-center justify-center bg-primary-container rounded-xl font-headline font-bold text-white"
-                          >02</span
-                        >
-                        <div>
-                          <h3 class="font-headline font-bold">
-                            Mathematics for Shaders
-                          </h3>
-                          <p class="text-xs text-primary">
-                            6 Lectures • 1h 20m
-                          </p>
-                        </div>
-                      </div>
+                </div>
+                <!-- Section 2 - Active/Open -->
+                <div class="bg-surface-container-low rounded-2xl overflow-hidden border border-primary-container/20">
+                  <div class="p-5 row row-between bg-primary-container/5">
+                    <div class="flex items-center gap-4">
                       <span
-                        class="material-symbols-outlined icon text-primary-container"
-                        >expand_less</span
-                      >
+                        class="w-10 h-10 flex items-center justify-center bg-primary-container rounded-xl font-headline font-bold text-white">02</span>
+                      <div>
+                        <h3 class="font-headline font-bold">
+                          Mathematics for Shaders
+                        </h3>
+                        <p class="text-xs text-primary">
+                          6 Lectures • 1h 20m
+                        </p>
+                      </div>
                     </div>
-                    <div class="p-2 space-y-1">
-                      <div
-                        class="row row-between p-3 hover:bg-white rounded-xl transition-colors"
-                      >
-                        <div class="flex items-center gap-3">
-                          <span
-                            class="material-symbols-outlined icon text-primary-container icon-filled"
-                            >play_circle</span
-                          >
-                          <span class="text-sm font-medium"
-                            >Vector Math Essentials</span
-                          >
-                        </div>
+                    <span class="material-symbols-outlined icon text-primary-container">expand_less</span>
+                  </div>
+                  <div class="p-2 space-y-1">
+                    <div class="row row-between p-3 hover:bg-white rounded-xl transition-colors">
+                      <div class="flex items-center gap-3">
                         <span
-                          class="text-xs font-bold text-primary px-2 py-1 bg-primary-fixed rounded"
-                          >Preview</span
-                        >
+                          class="material-symbols-outlined icon text-primary-container icon-filled">play_circle</span>
+                        <span class="text-sm font-medium">Vector Math Essentials</span>
                       </div>
-                      <div
-                        class="row row-between p-3 hover:bg-white rounded-xl transition-colors"
-                      >
-                        <div class="flex items-center gap-3">
-                          <span
-                            class="material-symbols-outlined icon text-outline"
-                            >lock</span
-                          >
-                          <span class="text-sm font-medium text-outline"
-                            >Matrices and Coordinate Spaces</span
-                          >
-                        </div>
-                        <span class="text-xs text-outline">18:24</span>
+                      <span class="text-xs font-bold text-primary px-2 py-1 bg-primary-fixed rounded">Preview</span>
+                    </div>
+                    <div class="row row-between p-3 hover:bg-white rounded-xl transition-colors">
+                      <div class="flex items-center gap-3">
+                        <span class="material-symbols-outlined icon text-outline">lock</span>
+                        <span class="text-sm font-medium text-outline">Matrices and Coordinate Spaces</span>
                       </div>
+                      <span class="text-xs text-outline">18:24</span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <!-- Right Column: Info & Stats -->
-            <div class="stack-lg">
-              <!-- Ratings Card -->
-              <div
-                class="p-8 bg-surface-container-high rounded-3xl relative overflow-hidden"
-              >
-                <div class="absolute top-0 right-0 p-4">
-                  <span
-                    class="material-symbols-outlined icon text-primary-container/10 icon-hero icon-filled"
-                    >auto_awesome</span
-                  >
+          </div>
+          <!-- Right Column: Info & Stats -->
+          <div class="stack-lg">
+            <!-- Ratings Card -->
+            <div class="p-8 bg-surface-container-high rounded-3xl relative overflow-hidden">
+              <div class="absolute top-0 right-0 p-4">
+                <span
+                  class="material-symbols-outlined icon text-primary-container/10 icon-hero icon-filled">auto_awesome</span>
+              </div>
+              <div class="relative z-10 space-y-4">
+                <div class="text-5xl font-headline font-black text-primary">
+                  4.9
                 </div>
-                <div class="relative z-10 space-y-4">
-                  <div class="text-5xl font-headline font-black text-primary">
-                    4.9
+                <div class="flex text-tertiary-container">
+                  <span class="material-symbols-outlined icon icon-filled">star</span>
+                  <span class="material-symbols-outlined icon icon-filled">star</span>
+                  <span class="material-symbols-outlined icon icon-filled">star</span>
+                  <span class="material-symbols-outlined icon icon-filled">star</span>
+                  <span class="material-symbols-outlined icon icon-filled">star_half</span>
+                </div>
+                <p class="text-sm font-headline font-bold uppercase tracking-widest text-outline">
+                  Course Rating
+                </p>
+                <div class="pt-4 space-y-2">
+                  <div class="flex items-center gap-3">
+                    <div class="flex-1 h-1.5 bg-primary-fixed rounded-full overflow-hidden">
+                      <div class="h-full bg-primary-container w-[92%]"></div>
+                    </div>
+                    <span class="text-xs font-bold w-8 text-right">92%</span>
                   </div>
-                  <div class="flex text-tertiary-container">
-                    <span class="material-symbols-outlined icon icon-filled"
-                      >star</span
-                    >
-                    <span class="material-symbols-outlined icon icon-filled"
-                      >star</span
-                    >
-                    <span class="material-symbols-outlined icon icon-filled"
-                      >star</span
-                    >
-                    <span class="material-symbols-outlined icon icon-filled"
-                      >star</span
-                    >
-                    <span class="material-symbols-outlined icon icon-filled"
-                      >star_half</span
-                    >
+                  <div class="text-xs text-on-surface-variant">
+                    Recommended by 98% of professional architects.
                   </div>
-                  <p
-                    class="text-sm font-headline font-bold uppercase tracking-widest text-outline"
-                  >
-                    Course Rating
+                </div>
+              </div>
+            </div>
+            <!-- Instructor Block -->
+            <div class="stack">
+              <h3 class="text-xl font-headline font-extrabold">
+                Your Instructor
+              </h3>
+              <div class="flex items-center gap-4">
+                <img alt="Instructor" class="w-16 h-16 rounded-2xl object-cover shadow-lg"
+                  data-alt="Portrait of a creative professional man with glasses and a stylish haircut, modern design studio background"
+                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuDa3WKsNGpWECqJg1nGlHUh2lAnL8IZL50EcCKEtLx3lNdWruLH0h9ztoI8ZIf-Y4etSL7qyhQU7CqxzrFb129Z3i2nMwcQ-WJjybkeES0Cea8vPahu_jCvQEEdBcikB2O_zt_cF7oOnPo0mwGtaUZ2u1TfPj01QqhSaJljvUXNXzxKE7dgjbnW8jCpMxvFqZ2qlkb2yoYnSza0sRECBh2nwd3JhZK3g5NatupYimevxl4uKTlYcFn1-Wceo0bDomOSg7y784X1i99a" />
+                <div>
+                  <p class="font-headline font-bold text-lg">Marcus Chen</p>
+                  <p class="text-sm text-primary font-medium">
+                    Senior Creative Developer
                   </p>
-                  <div class="pt-4 space-y-2">
-                    <div class="flex items-center gap-3">
-                      <div
-                        class="flex-1 h-1.5 bg-primary-fixed rounded-full overflow-hidden"
-                      >
-                        <div class="h-full bg-primary-container w-[92%]"></div>
-                      </div>
-                      <span class="text-xs font-bold w-8 text-right">92%</span>
-                    </div>
-                    <div class="text-xs text-on-surface-variant">
-                      Recommended by 98% of professional architects.
-                    </div>
-                  </div>
                 </div>
               </div>
-              <!-- Instructor Block -->
-              <div class="stack">
-                <h3 class="text-xl font-headline font-extrabold">
-                  Your Instructor
-                </h3>
-                <div class="flex items-center gap-4">
-                  <img
-                    alt="Instructor"
-                    class="w-16 h-16 rounded-2xl object-cover shadow-lg"
-                    data-alt="Portrait of a creative professional man with glasses and a stylish haircut, modern design studio background"
-                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuDa3WKsNGpWECqJg1nGlHUh2lAnL8IZL50EcCKEtLx3lNdWruLH0h9ztoI8ZIf-Y4etSL7qyhQU7CqxzrFb129Z3i2nMwcQ-WJjybkeES0Cea8vPahu_jCvQEEdBcikB2O_zt_cF7oOnPo0mwGtaUZ2u1TfPj01QqhSaJljvUXNXzxKE7dgjbnW8jCpMxvFqZ2qlkb2yoYnSza0sRECBh2nwd3JhZK3g5NatupYimevxl4uKTlYcFn1-Wceo0bDomOSg7y784X1i99a"
-                  />
-                  <div>
-                    <p class="font-headline font-bold text-lg">Marcus Chen</p>
-                    <p class="text-sm text-primary font-medium">
-                      Senior Creative Developer
-                    </p>
-                  </div>
-                </div>
-                <p class="text-sm leading-relaxed text-on-surface-variant">
-                  Marcus has spent 15 years at the intersection of architecture
-                  and technology, building digital experiences for global brands
-                  like Nike and Apple.
-                </p>
-                <div class="flex gap-4">
-                  <span
-                    class="material-symbols-outlined icon text-outline hover:text-primary cursor-pointer transition-colors"
-                    >public</span
-                  >
-                  <span
-                    class="material-symbols-outlined icon text-outline hover:text-primary cursor-pointer transition-colors"
-                    >alternate_email</span
-                  >
-                  <span
-                    class="material-symbols-outlined icon text-outline hover:text-primary cursor-pointer transition-colors"
-                    >video_library</span
-                  >
-                </div>
+              <p class="text-sm leading-relaxed text-on-surface-variant">
+                Marcus has spent 15 years at the intersection of architecture
+                and technology, building digital experiences for global brands
+                like Nike and Apple.
+              </p>
+              <div class="flex gap-4">
+                <span
+                  class="material-symbols-outlined icon text-outline hover:text-primary cursor-pointer transition-colors">public</span>
+                <span
+                  class="material-symbols-outlined icon text-outline hover:text-primary cursor-pointer transition-colors">alternate_email</span>
+                <span
+                  class="material-symbols-outlined icon text-outline hover:text-primary cursor-pointer transition-colors">video_library</span>
               </div>
-              <!-- Mini Promo -->
-              <div
-                class="p-6 bg-secondary-fixed rounded-2xl border-2 border-dashed border-primary-container/20 text-center"
-              >
-                <p class="font-headline font-bold text-on-secondary-container">
-                  Limited Time Offer
-                </p>
-                <p class="text-xs mt-1 text-on-secondary-container/70">
-                  Get access to all 2024 updates for free if you enroll within
-                  48 hours.
-                </p>
-              </div>
+            </div>
+            <!-- Mini Promo -->
+            <div
+              class="p-6 bg-secondary-fixed rounded-2xl border-2 border-dashed border-primary-container/20 text-center">
+              <p class="font-headline font-bold text-on-secondary-container">
+                Limited Time Offer
+              </p>
+              <p class="text-xs mt-1 text-on-secondary-container/70">
+                Get access to all 2024 updates for free if you enroll within
+                48 hours.
+              </p>
             </div>
           </div>
         </div>
-      </section>
-      <!-- Preview Video Carousel / Bento Style -->
-      <section class="sf-container px-6 mt-24">
-        <h2 class="text-3xl font-headline font-extrabold tracking-tight mb-12">
-          Lecture Previews
-        </h2>
+      </div>
+    </section>
+    <!-- Preview Video Carousel / Bento Style -->
+    <section class="sf-container px-6 mt-24">
+      <h2 class="text-3xl font-headline font-extrabold tracking-tight mb-12">
+        Lecture Previews
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-4 h-[600px]">
+        <div class="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-3xl bg-surface-container">
+          <img alt="Shaders 101"
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            data-alt="Close-up of a screen showing vibrant glowing particle shaders in a dark environment, complex code visible on the side"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEqPn6NnAaJTlnZ6TVI_Peiv8mbwB7TVLOTf0z9wynAKdzg1zS_YVQCzZcWlYnnly4WLcV6_Ob8qQw2Y2kQHwYoIZvRvuE_dSB1gSC7iMmHvrUwjf8jWVaAE83qWpAuANNytqmiZcmF6u8tHE-j5GHIHKE7C3umRn0icLx5-idwob3gw1EvcJMBauzxZGi2TaAHd3IAWaW0K6woaCjt4Y3MJCyeBv1M5NNCDM5mvlI2ZmyWNbO6EOxrJymYu_sNibJHgunPNo_Xa7x" />
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-8 flex flex-col justify-end">
+            <span class="text-primary-container font-bold text-sm mb-2">Lecture 1.4</span>
+            <h4 class="text-white text-xl font-headline font-bold">
+              Understanding Fragment Shaders
+            </h4>
+          </div>
+          <div
+            class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+            <span class="material-symbols-outlined icon icon-xl text-white">play_circle</span>
+          </div>
+        </div>
+        <div class="md:col-span-2 relative group overflow-hidden rounded-3xl bg-surface-container">
+          <img alt="3D Math" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            data-alt="Minimalist abstract 3D geometric shapes in shades of orange and cream, soft shadows and premium texture"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1x0K3KW3tswiy1guXVEqO8bCmRnig-pJXSAb0DY0Tc-0wwwCzwdDwPB_EBiHKekUEVkdkqEpTqaTq2Aw_Qfmrd6TXVmsQvU0Vy80mkxjPXT1bq3a9XwB9Ls_GcMUZ7cIxwK0mFaIr0jDY3ENVMB-vEy84xzmnEPpnR8ggoSPO5xnHg97cWnwqh9N4Gv0MvW4UWvMQ4uN_g0naqpD9gNCwwcyi3q8HhkIq54SbWwegZez4KwQ4JMZEdcGV6NtCKIpPxyYPSBvBZoXj" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent p-6 flex flex-col justify-end">
+            <h4 class="text-white text-lg font-headline font-bold">
+              The Math of Light
+            </h4>
+          </div>
+        </div>
+        <div class="relative group overflow-hidden rounded-3xl bg-surface-container">
+          <img alt="PBR" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            data-alt="Macro photography of brushed metal texture with realistic light reflections and subtle scratches"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJ78xWLxAV4P4i9UXIM4wBMDddY3XX8s2yxlTox9NlSIpYnTViNlgLh9tNROE02jpqBykT3rw-0VgK7CxVH1gv_ZTcth8AcBdNxNjOvHmySttDsuRU4Vpx3FRBq8NB3OkEm1S766JTJLTxT5kL7djOV544x7jOwX_wbblrxK1dRJLqNdR6aHO8AgHHK2NmfkV63FVNL74El_MI96rCWbyTt1zlGf62mYfJkX0f-pGp_HV1RfPGiK6qfU5jZvSvDfjKObZ53KkMsGkX" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent p-4 flex flex-col justify-end">
+            <h4 class="text-white text-sm font-headline font-bold">
+              Advanced Texturing
+            </h4>
+          </div>
+        </div>
+        <div class="relative group overflow-hidden rounded-3xl bg-surface-container">
+          <img alt="Performance"
+            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+            data-alt="Digital performance monitoring dashboard with sleek charts and neon orange data points on dark background"
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvYiCcdGnoMn4tf_U2g3CB2CRwTF0ZJNzPYzzPPsfdydXWz3rFhYiTexfpBXjeH-9Q0EWLfqQtyDh2HadWyxNQ53A-Z9ZKdlcV0dnvqmTlN8gs2FMnxh95oL3-prHjN6Ivpo8_EyEhD1HBmlq4YryWlGq5xcENW0ulVikNd4QqGb41jWwC5-rHXUSfvU-IFfpPYrSiK4c1LFvSxa76fzdZtTr8Sw2VyYU0G8wepD1a2ApIcOz7YX3iZZpDJ4o7q7yIjmN2GuQmyMcf" />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent p-4 flex flex-col justify-end">
+            <h4 class="text-white text-sm font-headline font-bold">
+              Optimization Tips
+            </h4>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- BottomNavBar (Mobile Only) -->
+  <nav
+    class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white dark:bg-inverse-surface shadow-sm z-50 rounded-t-3xl">
+    <div
+      class="flex flex-col items-center justify-center text-outline dark:text-outline px-5 py-1.5 active:scale-90 transition-transform">
+      <span class="material-symbols-outlined icon">home</span>
+      <span class="font-accent text-caption font-medium tracking-wide uppercase mt-1">Home</span>
+    </div>
+    <div
+      class="flex flex-col items-center justify-center text-outline dark:text-outline px-5 py-1.5 active:scale-90 transition-transform">
+      <span class="material-symbols-outlined icon">search</span>
+      <span class="font-accent text-caption font-medium tracking-wide uppercase mt-1">Search</span>
+    </div>
+    <div
+      class="flex flex-col items-center justify-center bg-primary-fixed dark:bg-primary/40 text-primary dark:text-primary-fixed-dim rounded-2xl px-5 py-1.5 active:scale-90 transition-transform">
+      <span class="material-symbols-outlined icon icon-filled">menu_book</span>
+      <span class="font-accent text-caption font-medium tracking-wide uppercase mt-1">My Learning</span>
+    </div>
+    <div
+      class="flex flex-col items-center justify-center text-outline dark:text-outline px-5 py-1.5 active:scale-90 transition-transform">
+      <span class="material-symbols-outlined icon">person</span>
+      <span class="font-accent text-caption font-medium tracking-wide uppercase mt-1">Profile</span>
+    </div>
+  </nav>
+  <!-- Sticky Mobile CTA -->
+  <div class="md:hidden fixed bottom-24 left-6 right-6 z-40">
+    <button class="btn btn-primary btn-lg btn-w-full enroll-btn">
+      <span>Enroll Now • $89.99</span>
+      <span class="material-symbols-outlined icon">arrow_forward</span>
+    </button>
+  </div>
+
+  <!-- FLOW 1 UI COMPONENTS -->
+
+  <!-- Overlay -->
+  <div id="flow-overlay"
+    class="fixed inset-0 bg-black/60 backdrop-blur-sm hidden items-center justify-center opacity-0 transition-opacity duration-300"
+    style="z-index: 9999;">
+
+    <!-- Login Modal -->
+    <div id="login-modal"
+      class="hidden sf-container w-full max-w-md bg-surface-container-high rounded-3xl p-8 relative shadow-2xl transform scale-95 transition-transform duration-300">
+      <button id="close-login" class="absolute top-4 right-4 text-outline hover:text-primary transition-colors">
+        <span class="material-symbols-outlined icon">close</span>
+      </button>
+      <div class="text-center mb-6">
+        <h2 class="text-2xl font-headline font-bold text-primary">Login to Enroll</h2>
+        <p class="text-sm text-on-surface-variant mt-2">Please authenticate to continue your purchase.</p>
+      </div>
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-on-surface-variant mb-1">Email</label>
+          <input type="email" value="learner@skillforge.com"
+            class="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 focus:outline-none focus:border-primary transition-colors" />
+        </div>
+        <div>
+          <label class="block text-sm font-medium text-on-surface-variant mb-1">Password</label>
+          <input type="password" value="password123"
+            class="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 focus:outline-none focus:border-primary transition-colors" />
+        </div>
+        <button id="submit-login"
+          class="sf-gradient w-full py-4 rounded-xl font-headline font-bold text-white flex justify-center items-center gap-2 hover:scale-[1.02] transition-transform shadow-lg">
+          <span id="login-text">Sign In</span>
+          <span id="login-spinner" class="material-symbols-outlined icon animate-spin hidden">progress_activity</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Payment Modal -->
+    <div id="payment-modal"
+      class="hidden sf-container w-full max-w-lg bg-surface-container-high rounded-3xl p-8 relative shadow-2xl transform scale-95 transition-transform duration-300">
+      <button id="close-payment" class="absolute top-4 right-4 text-outline hover:text-primary transition-colors">
+        <span class="material-symbols-outlined icon">close</span>
+      </button>
+      <div class="flex items-center gap-4 mb-6 pb-6 border-b border-outline-variant/20">
+        <div class="w-16 h-16 bg-primary-container/20 rounded-xl flex items-center justify-center">
+          <span class="material-symbols-outlined icon text-primary-fixed icon-lg"
+            style="font-size: 32px">credit_card</span>
+        </div>
+        <div>
+          <h2 class="text-xl font-headline font-bold">Secure Checkout</h2>
+          <p class="text-sm text-on-surface-variant">Advanced Architectural Design with WebGL</p>
+        </div>
+      </div>
+
+      <div class="space-y-4 mb-6">
         <div
-          class="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-4 h-[600px]"
-        >
-          <div
-            class="md:col-span-2 md:row-span-2 relative group overflow-hidden rounded-3xl bg-surface-container"
-          >
-            <img
-              alt="Shaders 101"
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              data-alt="Close-up of a screen showing vibrant glowing particle shaders in a dark environment, complex code visible on the side"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEqPn6NnAaJTlnZ6TVI_Peiv8mbwB7TVLOTf0z9wynAKdzg1zS_YVQCzZcWlYnnly4WLcV6_Ob8qQw2Y2kQHwYoIZvRvuE_dSB1gSC7iMmHvrUwjf8jWVaAE83qWpAuANNytqmiZcmF6u8tHE-j5GHIHKE7C3umRn0icLx5-idwob3gw1EvcJMBauzxZGi2TaAHd3IAWaW0K6woaCjt4Y3MJCyeBv1M5NNCDM5mvlI2ZmyWNbO6EOxrJymYu_sNibJHgunPNo_Xa7x"
-            />
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent p-8 flex flex-col justify-end"
-            >
-              <span class="text-primary-container font-bold text-sm mb-2"
-                >Lecture 1.4</span
-              >
-              <h4 class="text-white text-xl font-headline font-bold">
-                Understanding Fragment Shaders
-              </h4>
-            </div>
-            <div
-              class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
-            >
-              <span class="material-symbols-outlined icon icon-xl text-white"
-                >play_circle</span
-              >
-            </div>
-          </div>
-          <div
-            class="md:col-span-2 relative group overflow-hidden rounded-3xl bg-surface-container"
-          >
-            <img
-              alt="3D Math"
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              data-alt="Minimalist abstract 3D geometric shapes in shades of orange and cream, soft shadows and premium texture"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1x0K3KW3tswiy1guXVEqO8bCmRnig-pJXSAb0DY0Tc-0wwwCzwdDwPB_EBiHKekUEVkdkqEpTqaTq2Aw_Qfmrd6TXVmsQvU0Vy80mkxjPXT1bq3a9XwB9Ls_GcMUZ7cIxwK0mFaIr0jDY3ENVMB-vEy84xzmnEPpnR8ggoSPO5xnHg97cWnwqh9N4Gv0MvW4UWvMQ4uN_g0naqpD9gNCwwcyi3q8HhkIq54SbWwegZez4KwQ4JMZEdcGV6NtCKIpPxyYPSBvBZoXj"
-            />
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent p-6 flex flex-col justify-end"
-            >
-              <h4 class="text-white text-lg font-headline font-bold">
-                The Math of Light
-              </h4>
-            </div>
-          </div>
-          <div
-            class="relative group overflow-hidden rounded-3xl bg-surface-container"
-          >
-            <img
-              alt="PBR"
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              data-alt="Macro photography of brushed metal texture with realistic light reflections and subtle scratches"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCJ78xWLxAV4P4i9UXIM4wBMDddY3XX8s2yxlTox9NlSIpYnTViNlgLh9tNROE02jpqBykT3rw-0VgK7CxVH1gv_ZTcth8AcBdNxNjOvHmySttDsuRU4Vpx3FRBq8NB3OkEm1S766JTJLTxT5kL7djOV544x7jOwX_wbblrxK1dRJLqNdR6aHO8AgHHK2NmfkV63FVNL74El_MI96rCWbyTt1zlGf62mYfJkX0f-pGp_HV1RfPGiK6qfU5jZvSvDfjKObZ53KkMsGkX"
-            />
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent p-4 flex flex-col justify-end"
-            >
-              <h4 class="text-white text-sm font-headline font-bold">
-                Advanced Texturing
-              </h4>
-            </div>
-          </div>
-          <div
-            class="relative group overflow-hidden rounded-3xl bg-surface-container"
-          >
-            <img
-              alt="Performance"
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              data-alt="Digital performance monitoring dashboard with sleek charts and neon orange data points on dark background"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvYiCcdGnoMn4tf_U2g3CB2CRwTF0ZJNzPYzzPPsfdydXWz3rFhYiTexfpBXjeH-9Q0EWLfqQtyDh2HadWyxNQ53A-Z9ZKdlcV0dnvqmTlN8gs2FMnxh95oL3-prHjN6Ivpo8_EyEhD1HBmlq4YryWlGq5xcENW0ulVikNd4QqGb41jWwC5-rHXUSfvU-IFfpPYrSiK4c1LFvSxa76fzdZtTr8Sw2VyYU0G8wepD1a2ApIcOz7YX3iZZpDJ4o7q7yIjmN2GuQmyMcf"
-            />
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent p-4 flex flex-col justify-end"
-            >
-              <h4 class="text-white text-sm font-headline font-bold">
-                Optimization Tips
-              </h4>
-            </div>
-          </div>
+          class="flex justify-between items-center bg-surface-container px-5 py-4 rounded-xl border border-primary-container/30">
+          <span class="font-medium text-on-surface">Total Amount</span>
+          <span class="text-2xl font-bold text-primary">$89.99</span>
         </div>
-      </section>
-    </main>
-    <!-- BottomNavBar (Mobile Only) -->
-    <nav
-      class="md:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 pb-6 pt-3 bg-white dark:bg-inverse-surface shadow-sm z-50 rounded-t-3xl"
-    >
-      <div
-        class="flex flex-col items-center justify-center text-outline dark:text-outline px-5 py-1.5 active:scale-90 transition-transform"
-      >
-        <span class="material-symbols-outlined icon">home</span>
-        <span
-          class="font-accent text-caption font-medium tracking-wide uppercase mt-1"
-          >Home</span
-        >
       </div>
-      <div
-        class="flex flex-col items-center justify-center text-outline dark:text-outline px-5 py-1.5 active:scale-90 transition-transform"
-      >
-        <span class="material-symbols-outlined icon">search</span>
-        <span
-          class="font-accent text-caption font-medium tracking-wide uppercase mt-1"
-          >Search</span
-        >
-      </div>
-      <div
-        class="flex flex-col items-center justify-center bg-primary-fixed dark:bg-primary/40 text-primary dark:text-primary-fixed-dim rounded-2xl px-5 py-1.5 active:scale-90 transition-transform"
-      >
-        <span class="material-symbols-outlined icon icon-filled"
-          >menu_book</span
-        >
-        <span
-          class="font-accent text-caption font-medium tracking-wide uppercase mt-1"
-          >My Learning</span
-        >
-      </div>
-      <div
-        class="flex flex-col items-center justify-center text-outline dark:text-outline px-5 py-1.5 active:scale-90 transition-transform"
-      >
-        <span class="material-symbols-outlined icon">person</span>
-        <span
-          class="font-accent text-caption font-medium tracking-wide uppercase mt-1"
-          >Profile</span
-        >
-      </div>
-    </nav>
-    <!-- Sticky Mobile CTA -->
-    <div class="md:hidden fixed bottom-24 left-6 right-6 z-40">
-      <button class="btn btn-primary btn-lg btn-w-full enroll-btn">
-        <span>Enroll Now • $89.99</span>
-        <span class="material-symbols-outlined icon">arrow_forward</span>
+
+      <button id="submit-payment"
+        class="sf-gradient px-8 py-4 h-14 rounded-xl font-headline font-bold text-lg w-full text-center hover:scale-[1.02] transition-transform shadow-lg relative flex items-center justify-center text-white overflow-hidden">
+        <span id="payment-text">Pay Now</span>
+        <div id="payment-progress"
+          class="hidden absolute inset-0 text-white flex items-center justify-center w-full h-full"
+          style="z-index: 50;">
+          <div id="progress-bar" class="absolute left-0 top-0 bottom-0 bg-black/30 w-0 transition-all duration-1000">
+          </div>
+          <span class="relative flex items-center justify-center gap-2 w-full">
+            <span class="material-symbols-outlined icon animate-spin">sync</span>
+            Processing Payment...
+          </span>
+        </div>
+      </button>
+
+      <button id="cancel-payment"
+        class="w-full text-center mt-6 text-sm text-outline hover:text-error transition-colors font-medium cursor-pointer">
+        Cancel Transaction
       </button>
     </div>
 
-    <!-- FLOW 1 UI COMPONENTS -->
+  </div>
 
-    <!-- Overlay -->
-    <div id="flow-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] hidden items-center justify-center opacity-0 transition-opacity duration-300">
-        
-        <!-- Login Modal -->
-        <div id="login-modal" class="hidden sf-container w-full max-w-md bg-surface-container-high rounded-3xl p-8 relative shadow-2xl transform scale-95 transition-transform duration-300">
-            <button id="close-login" class="absolute top-4 right-4 text-outline hover:text-primary transition-colors">
-                <span class="material-symbols-outlined icon">close</span>
-            </button>
-            <div class="text-center mb-6">
-                <h2 class="text-2xl font-headline font-bold text-primary">Login to Enroll</h2>
-                <p class="text-sm text-on-surface-variant mt-2">Please authenticate to continue your purchase.</p>
-            </div>
-            <div class="space-y-4">
-                <div>
-                    <label class="block text-sm font-medium text-on-surface-variant mb-1">Email</label>
-                    <input type="email" value="learner@skillforge.com" class="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 focus:outline-none focus:border-primary transition-colors" />
-                </div>
-                <div>
-                    <label class="block text-sm font-medium text-on-surface-variant mb-1">Password</label>
-                    <input type="password" value="password123" class="w-full bg-surface-container-low border border-outline-variant/30 rounded-xl px-4 py-3 focus:outline-none focus:border-primary transition-colors" />
-                </div>
-                <button id="submit-login" class="sf-gradient w-full py-4 rounded-xl font-headline font-bold text-white relative flex justify-center items-center hover:scale-[1.02] transition-transform shadow-lg">
-                    <span id="login-text">Sign In</span>
-                    <span id="login-spinner" class="material-symbols-outlined icon animate-spin hidden absolute">progress_activity</span>
-                </button>
-            </div>
-        </div>
+  <!-- Toast Notification -->
+  <div id="toast-container" class="fixed bottom-4 right-4 z-[200] flex flex-col gap-2 pointer-events-none"></div>
 
-        <!-- Payment Modal -->
-        <div id="payment-modal" class="hidden sf-container w-full max-w-lg bg-surface-container-high rounded-3xl p-8 relative shadow-2xl transform scale-95 transition-transform duration-300">
-            <button id="close-payment" class="absolute top-4 right-4 text-outline hover:text-primary transition-colors">
-                <span class="material-symbols-outlined icon">close</span>
-            </button>
-            <div class="flex items-center gap-4 mb-6 pb-6 border-b border-outline-variant/20">
-                <div class="w-16 h-16 bg-primary-container/20 rounded-xl flex items-center justify-center">
-                    <span class="material-symbols-outlined icon text-primary-fixed icon-lg" style="font-size: 32px">credit_card</span>
-                </div>
-                <div>
-                    <h2 class="text-xl font-headline font-bold">Secure Checkout</h2>
-                    <p class="text-sm text-on-surface-variant">Advanced Architectural Design with WebGL</p>
-                </div>
-            </div>
-            
-            <div class="space-y-4 mb-6">
-                <div class="flex justify-between items-center bg-surface-container px-5 py-4 rounded-xl border border-primary-container/30">
-                    <span class="font-medium text-on-surface">Total Amount</span>
-                    <span class="text-2xl font-bold text-primary">$89.99</span>
-                </div>
-            </div>
+  <script>
+    // State
+    let isLoggedIn = false;
 
-            <button id="submit-payment" class="sf-gradient px-8 py-4 rounded-xl font-headline font-bold text-lg w-full text-center hover:scale-[1.02] transition-transform shadow-lg relative flex items-center justify-center text-white overflow-hidden">
-                <span id="payment-text" class="relative z-10 w-full">Pay Now</span>
-                <div id="payment-progress" class="hidden absolute inset-0 text-white flex items-center justify-center w-full h-full">
-                    <div id="progress-bar" class="absolute left-0 top-0 bottom-0 bg-black/30 w-0 transition-all duration-1000"></div>
-                    <span class="relative z-10 flex items-center justify-center gap-2 w-full">
-                        <span class="material-symbols-outlined icon animate-spin">sync</span>
-                        Processing Payment...
-                    </span>
-                </div>
-            </button>
-            
-            <button id="cancel-payment" class="w-full text-center mt-6 text-sm text-outline hover:text-error transition-colors font-medium cursor-pointer">
-                Cancel Transaction
-            </button>
-        </div>
+    // Elements
+    const overlay = document.getElementById('flow-overlay');
+    const loginModal = document.getElementById('login-modal');
+    const paymentModal = document.getElementById('payment-modal');
 
-    </div>
+    const enrollBtns = document.querySelectorAll('.enroll-btn');
 
-    <!-- Toast Notification -->
-    <div id="toast-container" class="fixed bottom-4 right-4 z-[200] flex flex-col gap-2 pointer-events-none"></div>
+    function showOverlay() {
+      overlay.classList.remove('hidden');
+      overlay.classList.add('flex');
+      // Trigger reflow
+      void overlay.offsetWidth;
+      overlay.classList.remove('opacity-0');
+      overlay.classList.add('opacity-100');
+    }
 
-    <script>
-        // State
-        let isLoggedIn = false;
+    function hideOverlay() {
+      overlay.classList.remove('opacity-100');
+      overlay.classList.add('opacity-0');
+      setTimeout(() => {
+        overlay.classList.add('hidden');
+        overlay.classList.remove('flex');
+        loginModal.classList.add('hidden');
+        paymentModal.classList.add('hidden');
+        loginModal.classList.remove('scale-100');
+        paymentModal.classList.remove('scale-100');
+      }, 300);
+    }
 
-        // Elements
-        const overlay = document.getElementById('flow-overlay');
-        const loginModal = document.getElementById('login-modal');
-        const paymentModal = document.getElementById('payment-modal');
-        
-        const enrollBtns = document.querySelectorAll('.enroll-btn');
+    function showModal(modal) {
+      showOverlay();
+      modal.classList.remove('hidden');
+      // Trigger reflow for transform animation
+      void modal.offsetWidth;
+      modal.classList.remove('scale-95');
+      modal.classList.add('scale-100');
+    }
 
-        function showOverlay() {
-            overlay.classList.remove('hidden');
-            overlay.classList.add('flex');
-            // Trigger reflow
-            void overlay.offsetWidth;
-            overlay.classList.remove('opacity-0');
-            overlay.classList.add('opacity-100');
-        }
+    function showToast(message, type = 'success') {
+      const toast = document.createElement('div');
+      toast.className = `flex items-center gap-3 px-4 py-3 rounded-xl shadow-lg transform transition-all duration-300 translate-y-10 opacity-0 ${type === 'success' ? 'bg-primary-container text-on-primary-container' : 'bg-error-container text-on-error-container'}`;
 
-        function hideOverlay() {
-            overlay.classList.remove('opacity-100');
-            overlay.classList.add('opacity-0');
-            setTimeout(() => {
-                overlay.classList.add('hidden');
-                overlay.classList.remove('flex');
-                loginModal.classList.add('hidden');
-                paymentModal.classList.add('hidden');
-                loginModal.classList.remove('scale-100');
-                paymentModal.classList.remove('scale-100');
-            }, 300);
-        }
-
-        function showModal(modal) {
-            showOverlay();
-            modal.classList.remove('hidden');
-            // Trigger reflow for transform animation
-            void modal.offsetWidth;
-            modal.classList.remove('scale-95');
-            modal.classList.add('scale-100');
-        }
-
-        function showToast(message, type = 'success') {
-            const toast = document.createElement('div');
-            toast.className = `flex items-center gap-3 px-4 py-3 rounded-xl shadow-lg transform transition-all duration-300 translate-y-10 opacity-0 ${type === 'success' ? 'bg-primary-container text-on-primary-container' : 'bg-error-container text-on-error-container'}`;
-            
-            const icon = type === 'success' ? 'check_circle' : 'error';
-            toast.innerHTML = `
+      const icon = type === 'success' ? 'check_circle' : 'error';
+      toast.innerHTML = `
                 <span class="material-symbols-outlined icon icon-filled" style="color:white; font-variation-settings: 'FILL' 1">${icon}</span>
                 <span class="font-medium text-sm" style="color:white">${message}</span>
             `;
-            // override colors to be clear 
-            if (type === 'success') toast.style.backgroundColor = '#4ade80';
-            else toast.style.backgroundColor = '#f87171';
-            toast.style.color = '#fff';
+      // override colors to be clear 
+      if (type === 'success') toast.style.backgroundColor = '#4ade80';
+      else toast.style.backgroundColor = '#f87171';
+      toast.style.color = '#fff';
 
-            document.getElementById('toast-container').appendChild(toast);
-            
-            // Animate in
-            requestAnimationFrame(() => {
-                toast.classList.remove('translate-y-10', 'opacity-0');
-            });
-            
-            // Remove after 3s
-            setTimeout(() => {
-                toast.classList.add('translate-y-10', 'opacity-0');
-                setTimeout(() => toast.remove(), 300);
-            }, 3000);
+      document.getElementById('toast-container').appendChild(toast);
+
+      // Animate in
+      requestAnimationFrame(() => {
+        toast.classList.remove('translate-y-10', 'opacity-0');
+      });
+
+      // Remove after 3s
+      setTimeout(() => {
+        toast.classList.add('translate-y-10', 'opacity-0');
+        setTimeout(() => toast.remove(), 300);
+      }, 3000);
+    }
+
+    // Enroll logic
+    enrollBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (!isLoggedIn) {
+          showModal(loginModal);
+        } else {
+          showModal(paymentModal);
         }
+      });
+    });
 
-        // Enroll logic
-        enrollBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.preventDefault();
-                if (!isLoggedIn) {
-                    showModal(loginModal);
-                } else {
-                    showModal(paymentModal);
-                }
-            });
-        });
+    // Close buttons
+    document.getElementById('close-login').addEventListener('click', hideOverlay);
+    document.getElementById('close-payment').addEventListener('click', hideOverlay);
+    document.getElementById('cancel-payment').addEventListener('click', hideOverlay);
 
-        // Close buttons
-        document.getElementById('close-login').addEventListener('click', hideOverlay);
-        document.getElementById('close-payment').addEventListener('click', hideOverlay);
-        document.getElementById('cancel-payment').addEventListener('click', hideOverlay);
+    // Login Submission Simulation
+    document.getElementById('submit-login').addEventListener('click', (e) => {
+      const text = document.getElementById('login-text');
+      const spinner = document.getElementById('login-spinner');
 
-        // Login Submission Simulation
-        document.getElementById('submit-login').addEventListener('click', (e) => {
-            const text = document.getElementById('login-text');
-            const spinner = document.getElementById('login-spinner');
-            
-            text.classList.add('invisible');
-            spinner.classList.remove('hidden');
-            
-            setTimeout(() => {
-                isLoggedIn = true;
-                text.classList.remove('invisible');
-                spinner.classList.add('hidden');
-                
-                showToast('Login successful!');
-                
-                // Switch to payment modal
-                loginModal.classList.add('hidden');
-                loginModal.classList.remove('scale-100');
-                loginModal.classList.add('scale-95');
-                
-                showModal(paymentModal);
-            }, 1200);
-        });
+      spinner.classList.remove('hidden');
 
-        // Payment Submission Simulation
-        document.getElementById('submit-payment').addEventListener('click', (e) => {
-            const progress = document.getElementById('payment-progress');
-            const text = document.getElementById('payment-text');
-            const bar = document.getElementById('progress-bar');
-            
-            text.classList.add('invisible');
-            progress.classList.remove('hidden');
-            
-            // Progress bar animation
-            setTimeout(() => bar.style.width = '40%', 100);
-            setTimeout(() => bar.style.width = '80%', 1500);
-            setTimeout(() => bar.style.width = '100%', 2500);
-            
-            setTimeout(() => {
-                hideOverlay();
-                showToast('Payment successful! Course added to My Learning.');
-                
-                // Reset for replayability and update button text
-                setTimeout(() => {
-                    text.classList.remove('invisible');
-                    progress.classList.add('hidden');
-                    bar.style.width = '0';
-                    
-                    // Simulate redirect / update UI state
-                    enrollBtns.forEach(b => {
-                        const spanIcon = b.querySelector('.material-symbols-outlined');
-                        if(spanIcon) {
-                            b.innerHTML = `<span>Go to Learning Area</span><span class="material-symbols-outlined icon">play_circle</span>`;
-                        } else {
-                            b.textContent = 'Go to Learning Area';
-                        }
-                        b.classList.remove('sf-gradient', 'shadow-xl', 'shadow-primary/20');
-                        b.style.background = '#4CAF50';
-                        b.style.color = 'white';
-                    });
-                }, 500);
-            }, 3200);
-        });
-    </script>
-  </body>
+      setTimeout(() => {
+        isLoggedIn = true;
+        spinner.classList.add('hidden');
+
+        showToast('Login successful!');
+
+        // Switch to payment modal
+        loginModal.classList.add('hidden');
+        loginModal.classList.remove('scale-100');
+        loginModal.classList.add('scale-95');
+
+        showModal(paymentModal);
+      }, 1200);
+    });
+
+    // Payment Submission Simulation
+    document.getElementById('submit-payment').addEventListener('click', (e) => {
+      const progress = document.getElementById('payment-progress');
+      const text = document.getElementById('payment-text');
+      const bar = document.getElementById('progress-bar');
+
+      text.classList.add('hidden');
+      progress.classList.remove('hidden');
+
+      // Progress bar animation
+      setTimeout(() => bar.style.width = '40%', 100);
+      setTimeout(() => bar.style.width = '80%', 1500);
+      setTimeout(() => bar.style.width = '100%', 2500);
+
+      setTimeout(() => {
+        hideOverlay();
+        showToast('Payment successful! Course added to My Learning.');
+
+        // Reset for replayability and update button text
+        setTimeout(() => {
+          text.classList.remove('hidden');
+          progress.classList.add('hidden');
+          bar.style.width = '0';
+
+          // Simulate redirect / update UI state
+          enrollBtns.forEach(b => {
+            const spanIcon = b.querySelector('.material-symbols-outlined');
+            if (spanIcon) {
+              b.innerHTML = `<span>Go to Learning Area</span><span class="material-symbols-outlined icon">play_circle</span>`;
+            } else {
+              b.textContent = 'Go to Learning Area';
+            }
+            b.classList.remove('sf-gradient', 'shadow-xl', 'shadow-primary/20');
+            b.style.background = '#4CAF50';
+            b.style.color = 'white';
+          });
+        }, 500);
+      }, 3200);
+    });
+  </script>
+</body>
+
 </html>
-
