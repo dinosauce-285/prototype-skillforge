@@ -1291,8 +1291,8 @@ select:focus {
 }
 
 .sf-container {
-    max-width: 80rem;
-    margin: 0 auto;
+    max-width: 1200px;
+    margin-inline: auto;
 }
 
 .sf-container-sm {
