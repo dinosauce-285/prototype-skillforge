@@ -727,6 +727,9 @@ export function AppStateProvider({ children }) {
           image: payload.image || heroImages.typography,
           instructorId: currentUser?.id ?? "instructor-1",
           instructorName: currentUser?.name ?? "Instructor",
+          publishStatus: "pending_review",
+          publishSubmittedAt: new Date().toISOString(),
+          publishAdminNote: "",
           certificateType: payload.certificateType,
           legalCertificate: {
             status: "not_requested",
@@ -739,6 +742,23 @@ export function AppStateProvider({ children }) {
           quiz: [],
         };
         setState((prev) => ({ ...prev, catalog: [course, ...prev.catalog] }));
+      },
+      reviewCoursePublication(courseId, payload) {
+        if (!currentUser) return;
+        setState((prev) => ({
+          ...prev,
+          catalog: prev.catalog.map((course) =>
+            course.id !== courseId
+              ? course
+              : {
+                  ...course,
+                  publishStatus: payload.status,
+                  publishAdminNote: payload.adminNote ?? "",
+                  publishReviewedAt: new Date().toISOString(),
+                  publishReviewedBy: currentUser.name,
+                },
+          ),
+        }));
       },
       updateCourse(courseId, patch) {
         setState((prev) => ({

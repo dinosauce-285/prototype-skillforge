@@ -82,6 +82,7 @@ export const courseSeed = [
     image: heroImages.dashboard,
     instructorId: "instructor-1",
     instructorName: "Marcus Chen",
+    publishStatus: "published",
     certificateType: "verified",
     legalCertificate: {
       status: "approved",
@@ -159,6 +160,7 @@ export const courseSeed = [
     image: heroImages.analytics,
     instructorId: "instructor-1",
     instructorName: "Marcus Chen",
+    publishStatus: "published",
     certificateType: "standard",
     skills: ["Product", "Growth", "Marketplace", "Analytics"],
     modules: makeModules("prodstrat", [
@@ -217,6 +219,7 @@ export const courseSeed = [
     image: heroImages.typography,
     instructorId: "instructor-1",
     instructorName: "Marcus Chen",
+    publishStatus: "published",
     certificateType: "verified",
     skills: ["CRUD", "Curriculum", "Assessment", "Analytics"],
     modules: makeModules("instops", [
@@ -272,6 +275,7 @@ export const courseSeed = [
     image: heroImages.architecture,
     instructorId: "instructor-1",
     instructorName: "Marcus Chen",
+    publishStatus: "published",
     certificateType: "verified",
     legalCertificate: {
       status: "approved",
@@ -340,6 +344,9 @@ export const courseSeed = [
     image: heroImages.mobile,
     instructorId: "instructor-2",
     instructorName: "Elena Vasquez",
+    publishStatus: "pending_review",
+    publishSubmittedAt: "2026-05-08T10:00:00.000Z",
+    publishAdminNote: "",
     certificateType: "standard",
     skills: ["Mobile", "Figma", "Systems", "Accessibility"],
     modules: makeModules("mobileds", [
@@ -382,6 +389,7 @@ export const courseSeed = [
     image: heroImages.commerce,
     instructorId: "instructor-3",
     instructorName: "David Kim",
+    publishStatus: "published",
     certificateType: "verified",
     skills: ["Payments", "Checkout", "Receipts", "Risk"],
     modules: makeModules("payarch", [
@@ -438,6 +446,9 @@ export const courseSeed = [
     image: heroImages.ai,
     instructorId: "instructor-2",
     instructorName: "Elena Vasquez",
+    publishStatus: "pending_review",
+    publishSubmittedAt: "2026-05-09T14:30:00.000Z",
+    publishAdminNote: "",
     certificateType: "verified",
     skills: ["AI UX", "Recommendations", "Assistants", "Feedback"],
     modules: makeModules("aiassist", [
@@ -487,6 +498,7 @@ export const courseSeed = [
     image: heroImages.product,
     instructorId: "instructor-3",
     instructorName: "David Kim",
+    publishStatus: "published",
     certificateType: "standard",
     skills: ["Community", "Discussions", "Reviews", "Moderation"],
     modules: makeModules("community", [
@@ -529,6 +541,7 @@ export const courseSeed = [
     image: heroImages.analytics,
     instructorId: "instructor-1",
     instructorName: "Marcus Chen",
+    publishStatus: "published",
     certificateType: "verified",
     skills: ["Dashboards", "KPI", "Admin", "Analytics"],
     modules: makeModules("dashops", [

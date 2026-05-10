@@ -42,6 +42,8 @@ function useAdminData() {
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .slice(0, 6);
 
+  const pendingPublications = courses.filter((course) => course.publishStatus === "pending_review");
+
   return {
     ...app,
     students,
@@ -54,6 +56,7 @@ function useAdminData() {
     activeCoupons,
     verifiedCourses,
     recentFeed,
+    pendingPublications,
   };
 }
 
@@ -119,7 +122,7 @@ export function AdminPage() {
         action={<NavLink className="btn btn-primary" to="/admin/courses">Open Operations Console</NavLink>}
       />
       <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
-        <MetricCard title="Students" value={String(students.length)} caption="Learners moving through purchase, learning, quiz, review, and certificate steps" />
+      <MetricCard title="Students" value={String(students.length)} caption="Learners moving through purchase, learning, quiz, review, and certificate steps" />
         <MetricCard title="Instructors" value={String(instructors.length)} caption="Creators, graders, and legal certificate request owners" />
         <MetricCard title="Gross Revenue" value={currency(totalRevenue)} caption={`${state.orders.length} paid orders recorded in mock checkout`} />
         <MetricCard title="Open Admin Tasks" value={String(pendingOrgProfiles.length + pendingLegalRequests.length)} caption="Organization verification and legal approval items awaiting action" />
@@ -327,26 +330,101 @@ export function AdminUsersPage() {
 
 export function AdminCoursesPage() {
   const { courses, state, pendingLegalRequests, approvedLegalRequests, verifiedCourses, actions } = useAdminData();
+  const pendingPublications = courses.filter((course) => course.publishStatus === "pending_review");
+  const publishedCourses = courses.filter((course) => course.publishStatus === "published");
   const [notesByRequestId, setNotesByRequestId] = useState(() => Object.fromEntries(state.legalApprovalRequests.map((request) => [request.id, request.adminNotes || ""])));
+  const [pubNotesByCourseId, setPubNotesByCourseId] = useState(() => Object.fromEntries(courses.map((course) => [course.id, course.publishAdminNote || ""])));
   const recentOrders = useMemo(() => [...state.orders].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).slice(0, 6), [state.orders]);
 
   return (
     <div className="space-y-8">
       <SectionHeader
         chip="Operations Console"
-        title="Compliance, grading, and transaction oversight"
-        description="This admin surface stays focused on the highest-value checkpoints: legal certificate approval and paid order monitoring."
+        title="Moderation, compliance, and transactions"
+        description="Three admin checkpoints in sequence: approve course content so it reaches learners → process legal certificates for compliant credential issuance → track the paid orders that result from published courses."
       />
       <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
+        <MetricCard title="Pending Publication" value={String(pendingPublications.length)} caption="Courses waiting on admin content review before going live" />
+        <MetricCard title="Published" value={String(publishedCourses.length)} caption="Courses live in catalog and available for purchase" />
         <MetricCard title="Pending Legal" value={String(pendingLegalRequests.length)} caption="Course certificate packages waiting on admin signoff" />
-        <MetricCard title="Approved Legal" value={String(approvedLegalRequests.length)} caption="Requests already activated for verified certificate issuance" />
-        <MetricCard title="Verified Courses" value={String(verifiedCourses.length)} caption="Courses currently carrying approved legal certificate status" />
         <MetricCard title="Recent Orders" value={String(state.orders.length)} caption="Paid transactions feeding enrollments and revenue" />
       </div>
+
+      {/* ── Course publication queue ───────────────────────── */}
+      <section className="space-y-4">
+        <div>
+          <h2 className="text-3xl font-headline font-black tracking-tight">Course publication queue</h2>
+          <p className="mt-2 text-sm text-on-surface-variant">Instructors submit courses here for content review. Admin approves or rejects before the course appears in the learner catalog and becomes purchasable.</p>
+        </div>
+        <div className="demo-kpi overflow-x-auto p-0">
+          <table className="w-full border-collapse text-left">
+            <thead>
+              <tr className="bg-surface-container-low/50">
+                <th className="px-4 py-4 text-xs font-extrabold uppercase tracking-widest text-on-surface-variant">Course</th>
+                <th className="px-4 py-4 text-xs font-extrabold uppercase tracking-widest text-on-surface-variant">Instructor</th>
+                <th className="px-4 py-4 text-xs font-extrabold uppercase tracking-widest text-on-surface-variant">Category</th>
+                <th className="px-4 py-4 text-xs font-extrabold uppercase tracking-widest text-on-surface-variant">Submitted</th>
+                <th className="px-4 py-4 text-xs font-extrabold uppercase tracking-widest text-on-surface-variant">Status</th>
+                <th className="px-4 py-4 text-xs font-extrabold uppercase tracking-widest text-on-surface-variant">Admin Note</th>
+                <th className="px-4 py-4 text-xs font-extrabold uppercase tracking-widest text-on-surface-variant">Action</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-outline-variant/10">
+              {pendingPublications.length === 0 ? (
+                <tr>
+                  <td colSpan={7} className="px-4 py-8 text-center text-sm text-on-surface-variant">No courses pending publication review right now.</td>
+                </tr>
+              ) : pendingPublications.map((course) => (
+                <tr key={course.id}>
+                  <td className="px-4 py-4 align-top">
+                    <div className="font-bold text-on-surface">{course.title}</div>
+                    <div className="text-xs text-on-surface-variant">{course.level} • {currency(course.price)}</div>
+                  </td>
+                  <td className="px-4 py-4 align-top">
+                    <div className="font-bold text-on-surface">{course.instructorName}</div>
+                    <div className="text-xs text-on-surface-variant">{course.instructorId}</div>
+                  </td>
+                  <td className="px-4 py-4 align-top text-sm text-on-surface">{course.category}</td>
+                  <td className="px-4 py-4 align-top text-sm text-on-surface">{dateLabel(course.publishSubmittedAt)}</td>
+                  <td className="px-4 py-4 align-top">
+                    <span className="demo-chip demo-chip-primary">Pending review</span>
+                  </td>
+                  <td className="px-4 py-4 align-top">
+                    <textarea
+                      className="demo-textarea min-w-[220px]"
+                      placeholder="Content review note"
+                      value={pubNotesByCourseId[course.id] ?? ""}
+                      onChange={(event) => setPubNotesByCourseId((prev) => ({ ...prev, [course.id]: event.target.value }))}
+                    />
+                  </td>
+                  <td className="px-4 py-4 align-top">
+                    <div className="flex min-w-[180px] flex-col gap-2">
+                      <button
+                        className="btn btn-primary"
+                        onClick={() => actions.reviewCoursePublication(course.id, { status: "published", adminNote: pubNotesByCourseId[course.id] ?? "" })}
+                      >
+                        Approve &amp; Publish
+                      </button>
+                      <button
+                        className="btn btn-surface"
+                        onClick={() => actions.reviewCoursePublication(course.id, { status: "rejected", adminNote: pubNotesByCourseId[course.id] ?? "" })}
+                      >
+                        Reject
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      {/* ── Legal certificate approvals ─────────────────────── */}
       <section className="space-y-4">
         <div>
           <h2 className="text-3xl font-headline font-black tracking-tight">Legal certificate approvals</h2>
-          <p className="mt-2 text-sm text-on-surface-variant">Use a compact queue so the team can scan and process high request volume without oversized cards.</p>
+          <p className="mt-2 text-sm text-on-surface-variant">After a course is published, instructors can submit legal certificate requests. These unlock the verified certificate badge and credential-issuance flow for compliant courses.</p>
         </div>
         <div className="demo-kpi overflow-x-auto p-0">
           <table className="w-full border-collapse text-left">
@@ -393,9 +471,11 @@ export function AdminCoursesPage() {
           </table>
         </div>
       </section>
+
+      {/* ── Paid order ledger ───────────────────────────────── */}
       <section className="demo-kpi p-8">
           <h2 className="text-3xl font-headline font-black tracking-tight">Paid order ledger</h2>
-          <p className="mt-2 text-sm text-on-surface-variant">Orders are the bridge between the student cart flow and instructor/admin revenue visibility.</p>
+          <p className="mt-2 text-sm text-on-surface-variant">Orders flow directly from published courses — only courses approved above can be purchased. This ledger shows the revenue impact of each publication decision.</p>
           <div className="mt-6 overflow-x-auto">
             <table className="w-full border-collapse text-left">
               <thead>
