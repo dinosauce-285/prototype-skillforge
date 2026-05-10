@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { STORAGE_KEY } from "../lib/utils";
 import { useAppState } from "../state/AppState";
 import { homePathForRole } from "../lib/utils";
 
@@ -43,6 +44,11 @@ export function AuthPage({ mode }) {
     const result = actions.login(account.email, account.password);
     if (!result.ok) return setError(result.message);
     navigate(homePathForRole(result.user.role));
+  }
+
+  function resetDemoState() {
+    localStorage.removeItem(STORAGE_KEY);
+    window.location.reload();
   }
 
   return (
@@ -130,6 +136,10 @@ export function AuthPage({ mode }) {
                     </div>
                   </div>
                 ))}
+              </div>
+              <div className="rounded-2xl border border-outline-variant/30 bg-surface-container-low px-4 py-4 text-sm text-on-surface-variant">
+                <p className="mb-3">If `admin@demo.com` cannot log in, your saved local demo state is probably stale.</p>
+                <button className="btn btn-surface btn-w-full" onClick={resetDemoState} type="button">Reset Local Demo Data</button>
               </div>
             </div>
             <div className="pt-6 text-center">

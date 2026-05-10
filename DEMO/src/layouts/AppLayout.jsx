@@ -10,22 +10,24 @@ export function AppLayout({ currentUser, children }) {
     ["/courses", "Courses"],
     ["/progress", "My Learning"],
     ["/cart", "Cart"],
+    ["/wallet", "Wallet"],
     ["/orders", "Orders"],
     ["/profile", "Profile"],
   ];
   const instructorNav = [
     ["/instructor", "Overview"],
     ["/instructor/courses", "Course Studio"],
-    ["/instructor/compliance", "Cert Review"],
     ["/instructor/grading", "Grading"],
     ["/instructor/students", "Students"],
+    ["/instructor/earnings", "Earnings"],
     ["/instructor/coupons", "Coupons"],
     ["/profile", "Profile"],
   ];
   const adminNav = [
     ["/admin", "Dashboard", "dashboard"],
     ["/admin/users", "Users", "group"],
-    ["/admin/courses", "Courses", "school"],
+    ["/admin/courses", "Moderation", "school"],
+    ["/admin/finance", "Finance", "account_balance_wallet"],
     ["/admin/coupons", "Coupons", "local_offer"],
     ["/admin/settings", "Settings", "settings"],
   ];
@@ -54,7 +56,9 @@ export function AppLayout({ currentUser, children }) {
           </div>
           <nav className="flex-1 space-y-1">
             {adminNav.map(([to, label, icon]) => {
-              const isActive = location.pathname === to || location.pathname.startsWith(`${to}/`);
+              const isActive = to === "/admin"
+                ? location.pathname === to
+                : location.pathname === to || location.pathname.startsWith(`${to}/`);
               return (
                 <NavLink
                   key={to}

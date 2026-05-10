@@ -1,8 +1,10 @@
-import { useMemo, useState } from "react";
+﻿import { useMemo, useState } from "react";
 import { NavLink, Navigate, useNavigate, useParams } from "react-router-dom";
 import { CourseCard, MetricCard, SectionHeader, TimelineItem } from "../components/ui";
 import { courseProgress, currency, dateLabel } from "../lib/utils";
 import { useAppState } from "../state/AppState";
+
+const DEMO_CERTIFICATE_COURSE_IDS = ["react-ux", "product-strategy"];
 
 function certificateLabel(type) {
   return type === "verified" ? "Verified Legal" : "Standard";
@@ -33,13 +35,61 @@ function lessonQuiz(lesson) {
   return lesson?.quiz ?? [];
 }
 
+function courseLessonCount(course) {
+  return course.modules.reduce((sum, module) => sum + module.lessons.length, 0);
+}
+
+function courseResourceCount(course) {
+  return course.modules.reduce((sum, module) => sum + module.lessons.reduce((lessonSum, lesson) => lessonSum + lessonMaterials(lesson).length, 0), 0);
+}
+
+function courseQuizCount(course) {
+  return course.modules.reduce((sum, module) => sum + module.lessons.reduce((lessonSum, lesson) => lessonSum + lessonQuiz(lesson).length, 0), 0);
+}
+
+function financeAccountFor(state, userId) {
+  return state.financeAccounts?.find((account) => account.userId === userId) ?? {
+    walletBalance: 0,
+    payoutAvailable: 0,
+    totalDeposited: 0,
+    totalWithdrawn: 0,
+    totalEarned: 0,
+    preferredPayoutMethod: "Bank transfer",
+  };
+}
+
+function transactionsForUser(state, userId) {
+  return (state.financeTransactions ?? []).filter((item) => item.userId === userId);
+}
+
+function certificateCoursesForUser(currentUser, courses) {
+  return courses.filter((course) => {
+    const unlockedByState = currentUser.certificates.includes(course.id);
+    const passedQuiz = (currentUser.quizResults?.[course.id]?.percent ?? 0) >= 70;
+    const completedCourse = courseProgress(currentUser, course) >= 100;
+    return unlockedByState || (completedCourse && passedQuiz);
+  });
+}
+
+function featuredCertificateCoursesForUser(currentUser, courses) {
+  const demoCertificates = DEMO_CERTIFICATE_COURSE_IDS
+    .map((courseId) => courses.find((course) => course.id === courseId))
+    .filter(Boolean);
+  const sortByIssuedAt = [...demoCertificates].sort((a, b) => {
+    const aTime = new Date(currentUser.quizResults?.[a.id]?.createdAt ?? 0).getTime();
+    const bTime = new Date(currentUser.quizResults?.[b.id]?.createdAt ?? 0).getTime();
+    return bTime - aTime;
+  });
+  const verified = sortByIssuedAt.find((course) => course.certificateType === "verified");
+  const standard = sortByIssuedAt.find((course) => course.certificateType === "standard");
+  return [verified, standard].filter(Boolean);
+}
+
 export function DashboardPage() {
   const { currentUser, courses, state } = useAppState();
   const enrolled = courses.filter((course) => currentUser.enrolledCourseIds.includes(course.id));
   const recommended = courses.filter((course) => !currentUser.enrolledCourseIds.includes(course.id)).slice(0, 2);
-  const completedCertificates = courses
-    .filter((course) => currentUser.certificates.includes(course.id))
-    .slice(0, 2);
+  const completedCertificates = featuredCertificateCoursesForUser(currentUser, courses);
   const latestOrder = state.orders.find((order) => order.userId === currentUser.id);
   const focusCourse = enrolled[0];
   return (
@@ -148,32 +198,48 @@ export function DashboardPage() {
             <div className="flex justify-between items-end mb-6">
               <div>
                 <h2 className="text-3xl font-headline font-extrabold tracking-tight">Certificates Ready</h2>
-                <p className="text-on-surface-variant mt-2">Two completed mock courses are preloaded so you can compare the standard and verified certificate experiences.</p>
+                <p className="text-on-surface-variant mt-2">The student demo highlights exactly two certificate journeys: one verified legal credential and one standard completion certificate.</p>
               </div>
+              <NavLink to="/progress" className="text-sm font-bold text-primary">Open My Learning</NavLink>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 gap-6 xl:grid-cols-2">
               {completedCertificates.map((course) => (
-                <NavLink key={course.id} to={`/certificate/${course.id}`} className="group rounded-[32px] border border-black/5 bg-white p-6 shadow-[0_20px_60px_rgba(84,38,10,0.06)] transition-all hover:-translate-y-1">
-                  <div className="flex items-start justify-between gap-4 mb-6">
-                    <div>
+                <NavLink
+                  key={course.id}
+                  to={`/certificate/${course.id}`}
+                  className={`group overflow-hidden rounded-[32px] border p-6 shadow-[0_20px_60px_rgba(84,38,10,0.06)] transition-all hover:-translate-y-1 ${course.certificateType === "verified" ? "border-amber-200 bg-[linear-gradient(180deg,#fffdf8_0%,#f9f5eb_100%)]" : "border-black/5 bg-[linear-gradient(180deg,#ffffff_0%,#fff7f0_100%)]"}`}
+                >
+                  <div className="mb-6 flex items-start justify-between gap-4">
+                    <div className="min-w-0">
                       <div className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-black uppercase tracking-[0.25em] ${course.certificateType === "verified" ? "bg-amber-100 text-amber-800" : "bg-primary-fixed text-primary"}`}>
                         <span className="material-symbols-outlined icon text-base">{course.certificateType === "verified" ? "verified" : "workspace_premium"}</span>
-                        {certificateLabel(course.certificateType)}
+                        {course.certificateType === "verified" ? "Verified Credential" : "Completion Certificate"}
                       </div>
                       <h3 className="mt-4 text-2xl font-headline font-black leading-tight text-on-surface">{course.title}</h3>
+                      <p className="mt-2 text-sm text-on-surface-variant">{course.instructorName}</p>
                     </div>
-                    <span className="rounded-2xl bg-surface-container-low px-3 py-2 text-sm font-bold text-on-surface-variant">100%</span>
+                    <span className="rounded-2xl bg-white/80 px-3 py-2 text-sm font-bold text-on-surface-variant shadow-sm">{currentUser.quizResults?.[course.id]?.percent ?? 100}%</span>
                   </div>
-                  <p className="min-h-[72px] text-sm leading-relaxed text-on-surface-variant">{certificateBlurb(course.certificateType)}</p>
+                  <div className={`mb-6 rounded-[24px] border px-5 py-6 text-center ${course.certificateType === "verified" ? "border-amber-300/60 bg-white/70" : "border-primary-fixed/40 bg-white/80"}`}>
+                    <div className="mb-3 flex justify-center">
+                      <div className={`flex h-14 w-14 items-center justify-center rounded-full ${course.certificateType === "verified" ? "bg-amber-100 text-amber-700" : "bg-primary-fixed text-primary"}`}>
+                        <span className="material-symbols-outlined icon icon-filled">{course.certificateType === "verified" ? "verified" : "workspace_premium"}</span>
+                      </div>
+                    </div>
+                    <div className="text-xs font-black uppercase tracking-[0.24em] text-on-surface-variant">{course.certificateType === "verified" ? "Legal Approval" : "Issued Credential"}</div>
+                    <div className="mt-2 font-headline text-lg font-black text-on-surface">{currentUser.name}</div>
+                    <p className="mt-2 text-sm leading-relaxed text-on-surface-variant">{certificateBlurb(course.certificateType)}</p>
+                  </div>
                   <div className="mt-6 flex items-center justify-between border-t border-black/5 pt-5">
                     <div>
                       <div className="text-xs font-black uppercase tracking-[0.2em] text-on-surface-variant">Issued</div>
                       <div className="font-bold text-on-surface">{dateLabel(currentUser.quizResults?.[course.id]?.createdAt ?? new Date().toISOString())}</div>
                     </div>
-                    <span className="btn btn-surface btn-pill min-w-0 group-hover:bg-primary-fixed/60">Open Certificate</span>
+                    <span className="btn btn-surface btn-pill min-w-0 group-hover:bg-primary-fixed/60">Preview Certificate</span>
                   </div>
                 </NavLink>
               ))}
+              {!completedCertificates.length ? <div className="rounded-[32px] border border-dashed border-outline-variant/40 bg-white/70 p-8 text-on-surface-variant xl:col-span-2">No unlocked certificates yet. Complete a course and pass its quiz to populate this demo showcase.</div> : null}
             </div>
           </section>
         </div>
@@ -302,7 +368,7 @@ export function CatalogPage() {
                   <div className="h-56 relative overflow-hidden">
                     <img className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" src={course.image} alt={course.title} />
                     <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-label font-bold uppercase tracking-widest text-primary">{course.category}</div>
-                    {isLegalCertificateApproved(course) ? <div className="absolute right-4 top-4 rounded-full bg-emerald-600/90 px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-white shadow-lg">{course.legalCertificate.badgeLabel}</div> : null}
+                    {isLegalCertificateApproved(course) ? <div className="absolute right-4 bottom-4 rounded-full bg-emerald-600/90 px-3 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-white shadow-lg">{course.legalCertificate.badgeLabel}</div> : null}
                   </div>
                 </NavLink>
                 <div className="flex flex-1 flex-col p-8">
@@ -356,13 +422,13 @@ export function CourseDetailPage() {
   const progress = courseProgress(currentUser, course);
   const certificateUnlocked = currentUser.certificates.includes(course.id);
   const reviewMeta = reviewStatus(currentUser, course, reviews);
-  const totalLessons = course.modules.reduce((sum, module) => sum + module.lessons.length, 0);
-  const totalResources = course.modules.reduce((sum, module) => sum + module.lessons.reduce((lessonSum, lesson) => lessonSum + lessonMaterials(lesson).length, 0), 0);
+  const totalLessons = courseLessonCount(course);
+  const totalResources = courseResourceCount(course);
   const tabItems = [
     ["overview", "Overview"],
     ["curriculum", "Curriculum"],
     ["instructor", "Instructor"],
-    ...(enrolled ? [["reviews", "Reviews"]] : []),
+    ["reviews", "Reviews"],
   ];
   return (
     <>
@@ -497,13 +563,13 @@ export function CourseDetailPage() {
                 <div className="stack">
                   <h2 className="text-3xl font-headline font-extrabold tracking-tight">Instructor</h2>
                   <div className="card p-8">
-                    <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+                    <div className="flex flex-col gap-6 xl:flex-row xl:items-start xl:justify-between">
                       <div className="max-w-2xl">
                         <p className="text-xs font-bold tracking-[0.2em] uppercase text-primary mb-3">Course Mentor</p>
                         <h3 className="text-3xl font-headline font-black mb-2">{course.instructorName}</h3>
                         <p className="text-on-surface-variant leading-relaxed">Teaching across {course.category.toLowerCase()} with a practical focus on self-paced learners, production details, and real course workflows.</p>
                       </div>
-                      <div className="grid grid-cols-2 gap-4 min-w-[220px]">
+                      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:w-[300px] xl:flex-none">
                         <div className="bg-surface-container-low rounded-2xl p-4">
                           <div className="text-xs uppercase tracking-[0.2em] font-bold text-on-surface-variant mb-2">Level</div>
                           <div className="text-xl font-black">{course.level}</div>
@@ -522,9 +588,20 @@ export function CourseDetailPage() {
                   <div className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
                     <div>
                       <h2 className="text-3xl font-headline font-extrabold tracking-tight">Reviews</h2>
-                      <p className="text-on-surface-variant mt-2">{reviews.length} learner review(s) from enrolled students who finished the course.</p>
+                      <p className="text-on-surface-variant mt-2">
+                        {reviews.length > 0
+                          ? `${reviews.length} review(s) — Average: ${(reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length).toFixed(1)} ★`
+                          : "No reviews yet for this course."}
+                      </p>
                     </div>
-                    <NavLink className="btn btn-primary" to={`/reviews/${course.id}`}>{reviewMeta.canReview ? "Write a Review" : "Open Reviews"}</NavLink>
+                    {reviewMeta.canReview ? (
+                      <NavLink className="btn btn-primary" to={`/reviews/${course.id}`}>Write a Review</NavLink>
+                    ) : reviewMeta.alreadyReviewed ? (
+                      <span className="inline-flex items-center gap-2 px-5 py-3 bg-primary-fixed/40 text-primary rounded-xl font-bold text-sm">
+                        <span className="material-symbols-outlined icon text-base">check_circle</span>
+                        Review Submitted
+                      </span>
+                    ) : null}
                   </div>
                   <div className="space-y-4">
                     {reviews.map((review) => (
@@ -534,12 +611,23 @@ export function CourseDetailPage() {
                             <div className="font-bold">{review.author}</div>
                             <div className="text-sm text-on-surface-variant">{dateLabel(review.createdAt)}</div>
                           </div>
-                          <div className="text-primary font-bold">{Array.from({ length: review.rating }, () => "★").join("")}</div>
+                          <div className="flex items-center gap-0.5">
+                            {Array.from({ length: 5 }).map((_, i) => (
+                              <span key={i} className={`material-symbols-outlined icon text-base icon-filled ${i < review.rating ? "text-tertiary" : "text-outline/30"}`}>star</span>
+                            ))}
+                            <span className="ml-2 font-bold text-sm text-on-surface">{review.rating}/5</span>
+                          </div>
                         </div>
-                        <p className="text-on-surface-variant">{review.content}</p>
+                        <p className="text-on-surface-variant leading-relaxed">{review.content}</p>
                       </div>
                     ))}
-                    {!reviews.length ? <div className="card p-8 text-on-surface-variant">Reviews appear after enrolled learners complete the course and submit feedback.</div> : null}
+                    {!reviews.length ? (
+                      <div className="card p-10 text-center">
+                        <span className="material-symbols-outlined icon text-outline/40 mb-3 block" style={{fontSize: "3rem"}}>rate_review</span>
+                        <p className="font-bold text-on-surface mb-1">No reviews yet</p>
+                        <p className="text-on-surface-variant text-sm">Reviews appear after enrolled learners complete the course and submit feedback.</p>
+                      </div>
+                    ) : null}
                   </div>
                 </div>
               ) : null}
@@ -729,9 +817,11 @@ export function LearningPage() {
 export function ProgressPage() {
   const { currentUser, courses } = useAppState();
   const enrolled = courses.filter((course) => currentUser.enrolledCourseIds.includes(course.id));
+  const certificates = featuredCertificateCoursesForUser(currentUser, courses);
+  const certificateIds = new Set(certificates.map((course) => course.id));
   const inProgress = enrolled.filter((course) => courseProgress(currentUser, course) > 0 && courseProgress(currentUser, course) < 100);
-  const completed = enrolled.filter((course) => courseProgress(currentUser, course) >= 100);
-  const notStarted = enrolled.filter((course) => courseProgress(currentUser, course) === 0);
+  const completed = courses.filter((course) => certificateIds.has(course.id) || (currentUser.enrolledCourseIds.includes(course.id) && courseProgress(currentUser, course) >= 100));
+  const notStarted = enrolled.filter((course) => !certificateIds.has(course.id) && courseProgress(currentUser, course) === 0);
   return (
     <>
       <section className="mb-12">
@@ -748,9 +838,9 @@ export function ProgressPage() {
           <p className="text-on-surface-variant">Courses already started and ready to resume from the learner workspace.</p>
         </div>
         <div className="card p-8">
-          <div className="text-xs uppercase tracking-[0.2em] font-bold text-on-surface-variant mb-3">Completed</div>
-          <div className="text-5xl font-black text-primary mb-3">{completed.length}</div>
-          <p className="text-on-surface-variant">Courses finished end-to-end and ready for a star rating and written review.</p>
+          <div className="text-xs uppercase tracking-[0.2em] font-bold text-on-surface-variant mb-3">Certificates</div>
+          <div className="text-5xl font-black text-primary mb-3">{certificates.length}</div>
+          <p className="text-on-surface-variant">Unlocked credentials ready to preview, download, and present during the demo.</p>
         </div>
         <div className="card p-8">
           <div className="text-xs uppercase tracking-[0.2em] font-bold text-on-surface-variant mb-3">Not Started</div>
@@ -795,6 +885,48 @@ export function ProgressPage() {
               </div>
             ))}
             {!inProgress.length ? <div className="card p-8 text-on-surface-variant">No active courses right now.</div> : null}
+          </div>
+        </section>
+        <section>
+          <div className="mb-8 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+            <div>
+              <h2 className="font-headline text-3xl font-bold tracking-tight">Credential Wallet</h2>
+              <p className="text-on-surface-variant mt-2">A polished certificate shelf makes the React demo feel like a real learner profile instead of just a completion counter.</p>
+            </div>
+            <span className="text-primary font-bold text-sm">{certificates.length} credential(s) unlocked</span>
+          </div>
+          <div className="grid gap-6 lg:grid-cols-2">
+            {certificates.map((course) => (
+              <NavLink
+                key={`cert-${course.id}`}
+                to={`/certificate/${course.id}`}
+                className={`group overflow-hidden rounded-[32px] border p-6 transition-all hover:-translate-y-1 hover:shadow-[0_20px_60px_rgba(84,38,10,0.08)] ${course.certificateType === "verified" ? "border-amber-200 bg-[linear-gradient(180deg,#fffdf8_0%,#f7f0df_100%)]" : "border-primary-fixed/40 bg-[linear-gradient(180deg,#ffffff_0%,#fff7f0_100%)]"}`}
+              >
+                <div className="mb-5 flex items-start justify-between gap-4">
+                  <div>
+                    <div className={`inline-flex items-center gap-2 rounded-full px-3 py-1 text-[11px] font-black uppercase tracking-[0.2em] ${course.certificateType === "verified" ? "bg-amber-100 text-amber-800" : "bg-primary-fixed text-primary"}`}>
+                      <span className="material-symbols-outlined icon text-base">{course.certificateType === "verified" ? "verified" : "workspace_premium"}</span>
+                      {certificateLabel(course.certificateType)}
+                    </div>
+                    <h3 className="mt-4 text-2xl font-headline font-black text-on-surface">{course.title}</h3>
+                    <p className="mt-2 text-sm text-on-surface-variant">{course.instructorName} • {dateLabel(currentUser.quizResults?.[course.id]?.createdAt ?? new Date().toISOString())}</p>
+                  </div>
+                  <div className={`flex h-14 w-14 items-center justify-center rounded-full ${course.certificateType === "verified" ? "bg-amber-100 text-amber-700" : "bg-primary-fixed text-primary"}`}>
+                    <span className="material-symbols-outlined icon icon-filled">{course.certificateType === "verified" ? "verified" : "workspace_premium"}</span>
+                  </div>
+                </div>
+                <div className="rounded-[24px] border border-white/60 bg-white/70 p-5">
+                  <div className="text-xs font-black uppercase tracking-[0.22em] text-on-surface-variant">Credential Holder</div>
+                  <div className="mt-2 font-headline text-xl font-black text-on-surface">{currentUser.name}</div>
+                  <p className="mt-3 text-sm leading-relaxed text-on-surface-variant">{certificateBlurb(course.certificateType)}</p>
+                </div>
+                <div className="mt-5 flex flex-wrap gap-3">
+                  <span className="btn btn-primary">Open Certificate</span>
+                  <span className="btn btn-surface">{course.certificateType === "verified" ? "Verify Details" : "Completion Details"}</span>
+                </div>
+              </NavLink>
+            ))}
+            {!certificates.length ? <div className="card p-8 text-on-surface-variant lg:col-span-2">No certificates unlocked yet. Pass a quiz and finish the full course to add credentials here.</div> : null}
           </div>
         </section>
         <section>
@@ -914,79 +1046,189 @@ export function CertificatePage() {
   const { courseId } = useParams();
   const { currentUser, courses } = useAppState();
   const course = courses.find((item) => item.id === courseId);
-  if (!course || !currentUser.certificates.includes(courseId)) return <Navigate to={`/results/${courseId}`} replace />;
+  const demoCertificateUnlocked = DEMO_CERTIFICATE_COURSE_IDS.includes(courseId);
+  if (!course || (!demoCertificateUnlocked && !currentUser.certificates.includes(courseId))) return <Navigate to={`/results/${courseId}`} replace />;
   const issuedAt = currentUser.quizResults?.[course.id]?.createdAt ?? new Date().toISOString();
   const isVerified = course.certificateType === "verified";
+  const totalLessons = courseLessonCount(course);
+  const totalResources = courseResourceCount(course);
+  const totalQuizItems = courseQuizCount(course);
+  const issuedLabel = dateLabel(issuedAt);
+  const referenceId = course.legalCertificate?.referenceId ?? `REF-${course.id.toUpperCase()}-${new Date(issuedAt).getFullYear()}`;
+  const documentHash = `SKF-${course.id.toUpperCase()}-${String(totalLessons).padStart(2, "0")}${String(totalResources).padStart(2, "0")}-${String(totalQuizItems).padStart(2, "0")}`;
+  const finalAuthority = isVerified ? (course.legalCertificate?.approvedBy ?? "Chief Compliance Office") : "Learning Lead";
+  const skillsLabel = course.skills?.length ? course.skills.slice(0, 4).join(", ") : "Professional completion milestones";
   return (
     <div className="space-y-8">
       <SectionHeader chip="Certification" title={isVerified ? "Verified credential ready" : "Certificate ready"} description="Standard and verified certificate variants are both supported with distinct mock layouts and issuance metadata." />
       {isVerified ? (
-        <div className="overflow-hidden rounded-[40px] border-[18px] border-double border-amber-400/80 bg-[#faf7f0] p-6 shadow-[0_32px_100px_rgba(84,38,10,0.12)] md:p-10">
-          <div className="rounded-[28px] border border-slate-300/80 bg-white/80 p-8 text-center md:p-12">
-            <div className="mb-10 flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
-              <div className="text-left">
-                <div className="text-xs font-black uppercase tracking-[0.3em] text-slate-500">SkillForge Executive Authority</div>
-                <h2 className="mt-3 font-serif text-4xl font-bold uppercase tracking-[0.18em] text-slate-900">Verified Legal Credential</h2>
-                <p className="mt-3 max-w-xl text-sm leading-relaxed text-slate-600">Issued in partnership with the Global Design Licensure Board with mock compliance, ledger verification, and reference tracking.</p>
-              </div>
-              <div className="rounded-3xl border border-amber-300 bg-amber-50 px-5 py-4 text-left">
-                <div className="text-xs font-black uppercase tracking-[0.24em] text-slate-500">Reference ID</div>
-                <div className="mt-2 font-mono text-sm font-bold text-slate-900">REF-{course.id.toUpperCase()}-2026</div>
-                <div className="mt-2 text-xs uppercase tracking-[0.2em] text-slate-500">Compliant: TT 10/2026</div>
-              </div>
+        <div className="space-y-8">
+          <section className="flex flex-col gap-6 rounded-[32px] bg-white/80 p-6 shadow-[0_20px_60px_rgba(84,38,10,0.08)] md:flex-row md:items-end md:justify-between">
+            <div className="stack-xs">
+              <span className="inline-flex items-center gap-2 rounded-md bg-tertiary px-3 py-1 text-[11px] font-black uppercase tracking-[0.22em] text-on-tertiary">
+                <span className="material-symbols-outlined icon">gavel</span>
+                Partner Institution Certified
+              </span>
+              <h2 className="font-headline text-4xl font-extrabold tracking-tight text-on-surface md:text-5xl">Verified Legal Credential</h2>
+              <p className="max-w-2xl text-lg text-on-surface-variant">Credential issued to <span className="font-bold text-on-surface">{currentUser.name}</span> for statutory compliance under {course.legalCertificate?.policy ?? "TT 10/2026"} for {course.title}.</p>
             </div>
-            <div className="mb-10 flex justify-center">
-              <div className="flex h-28 w-28 items-center justify-center rounded-full border-4 border-double border-amber-500 bg-amber-50 text-amber-700">
-                <span className="material-symbols-outlined icon text-5xl">verified</span>
-              </div>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <button className="btn btn-secondary" onClick={() => window.print()} type="button">
+                <span className="material-symbols-outlined icon">download</span>
+                Download PDF
+              </button>
+              <button className="rounded-xl bg-surface-container-high px-8 py-4 font-bold text-on-surface transition-transform active:scale-95" type="button">
+                <span className="material-symbols-outlined icon mr-2">verified_user</span>
+                Verify on Ledger
+              </button>
             </div>
-            <p className="font-serif text-xl text-slate-600">This official document certifies that</p>
-            <div className="mt-6 font-serif text-5xl font-bold text-slate-950 md:text-6xl">{currentUser.name}</div>
-            <p className="mx-auto mt-8 max-w-3xl font-serif text-xl leading-relaxed text-slate-700">has successfully completed all statutory requirements for <span className="font-bold italic">{course.title}</span> and is eligible for partner-backed verification in the SkillForge demo environment.</p>
-            <div className="mt-12 grid gap-6 md:grid-cols-3">
-              <div className="rounded-3xl border border-slate-200 bg-white px-5 py-6">
-                <div className="text-xs font-black uppercase tracking-[0.22em] text-slate-500">Document Hash</div>
-                <div className="mt-3 font-mono text-sm font-bold text-slate-900">SKF-{course.id.toUpperCase()}-8829</div>
+          </section>
+          <div className="relative overflow-hidden bg-[#faf9f6] p-4 shadow-[0_32px_100px_rgba(84,38,10,0.12)] md:rounded-none md:border-[20px] md:border-double md:border-[#d4af37] md:p-8">
+            <div className="absolute inset-0 flex items-center justify-center opacity-[0.03] pointer-events-none select-none">
+              <span className="material-symbols-outlined icon text-[14rem] md:text-[28rem]">gavel</span>
+            </div>
+            <div className="relative min-h-[800px] border border-slate-300 bg-white/60 p-6 text-center text-slate-900 backdrop-blur-[2px] md:p-12">
+              <div className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
+                <div className="flex flex-col items-center md:items-start">
+                  <div className="relative flex h-24 w-24 items-center justify-center rounded-full border-4 border-double border-tertiary bg-tertiary-fixed">
+                    <span className="material-symbols-outlined icon icon-xl text-tertiary">verified</span>
+                    <div className="absolute -bottom-2 whitespace-nowrap rounded-sm bg-tertiary px-2 py-1 text-[11px] font-black uppercase tracking-tight text-white">Verified Legal</div>
+                  </div>
+                </div>
+                <div className="text-center md:text-right">
+                  <p className="mb-1 text-xs font-black uppercase tracking-[0.24em] text-outline">Licensure Reference ID</p>
+                  <p className="font-mono text-xs font-bold text-slate-800">{referenceId}</p>
+                  <p className="mt-1 text-[11px] uppercase tracking-[0.2em] text-slate-400">Compliant: {course.legalCertificate?.policy ?? "Act 10 Section B"}</p>
+                </div>
               </div>
-              <div className="rounded-3xl border border-slate-200 bg-white px-5 py-6">
-                <div className="text-xs font-black uppercase tracking-[0.22em] text-slate-500">Verification</div>
-                <div className="mt-3 text-sm font-bold text-slate-900">Ledger + institutional signature</div>
+              <div className="mb-16 mt-16">
+                <h3 className="mb-2 font-serif text-2xl font-bold uppercase tracking-[0.2em] text-slate-800 md:text-3xl">SkillForge Executive Authority</h3>
+                <div className="mx-auto mb-4 h-0.5 w-16 bg-slate-800" />
+                <p className="font-serif text-sm italic text-on-surface-variant">In partnership with the Global Design Licensure Board</p>
               </div>
-              <div className="rounded-3xl border border-slate-200 bg-white px-5 py-6">
-                <div className="text-xs font-black uppercase tracking-[0.22em] text-slate-500">Issued</div>
-                <div className="mt-3 text-sm font-bold text-slate-900">{dateLabel(issuedAt)}</div>
+              <div className="flex flex-col gap-8">
+                <p className="font-serif text-xl text-slate-700">This official document serves to certify that</p>
+                <h4 className="font-serif text-5xl font-bold text-slate-900 underline decoration-slate-300 underline-offset-8 md:text-6xl">{currentUser.name}</h4>
+                <p className="mx-auto max-w-2xl font-serif text-xl leading-relaxed text-slate-700">has demonstrated exceptional proficiency and met all statutory requirements for the professional licensure in</p>
+                <h5 className="font-serif text-3xl font-bold italic text-slate-800 md:text-4xl">{course.title}</h5>
+                <p className="text-sm italic text-outline">As prescribed by the regulatory standards for educational excellence.</p>
+              </div>
+              <div className="mt-20 grid gap-12 md:grid-cols-3 md:items-end">
+                <div className="flex flex-col items-center border-t border-slate-300 pt-4">
+                  <div className="mb-1 text-3xl text-slate-800 [font-family:'Dancing_Script',cursive]">{course.instructorName}</div>
+                  <p className="text-xs font-black uppercase tracking-[0.2em] text-outline">Board Director, SkillForge</p>
+                </div>
+                <div className="flex flex-col items-center">
+                  <div className="mb-4 flex h-24 w-24 items-center justify-center border border-slate-200 bg-white text-slate-500">
+                    <span className="material-symbols-outlined icon text-5xl">qr_code_2</span>
+                  </div>
+                  <p className="text-xs font-black uppercase tracking-[0.2em] text-slate-800">Scan for Authenticity</p>
+                </div>
+                <div className="flex flex-col items-center border-t border-slate-300 pt-4">
+                  <div className="mb-1 text-3xl text-slate-800 [font-family:'Dancing_Script',cursive]">{finalAuthority}</div>
+                  <p className="text-xs font-black uppercase tracking-[0.2em] text-outline">Chief Compliance Officer</p>
+                </div>
+              </div>
+              <div className="mt-16 flex flex-col gap-4 border-t border-slate-100 pt-8 md:flex-row md:items-center md:justify-between">
+                <p className="font-serif text-xs uppercase tracking-[0.24em] text-slate-400">Date of Issuance: {issuedLabel}</p>
+                <div className="icon-text">
+                  <span className="material-symbols-outlined icon text-slate-300">lock</span>
+                  <p className="font-serif text-xs uppercase tracking-[0.24em] text-slate-400">Document Hash: {documentHash}</p>
+                </div>
               </div>
             </div>
           </div>
+          <section className="grid gap-6 md:grid-cols-3">
+            <div className="rounded-sm border border-slate-200 bg-white p-8">
+              <span className="material-symbols-outlined icon icon-lg text-tertiary">verified</span>
+              <h6 className="mt-4 text-sm font-bold uppercase tracking-[0.2em] text-on-surface">Statutory Verification</h6>
+              <p className="mt-2 text-xs leading-relaxed text-on-surface-variant">This credential meets the legal standards set forth in {course.legalCertificate?.policy ?? "TT 10/2026"} for advanced professional certification and licensure.</p>
+            </div>
+            <div className="rounded-sm border border-slate-200 bg-white p-8">
+              <span className="material-symbols-outlined icon icon-lg text-tertiary">fingerprint</span>
+              <h6 className="mt-4 text-sm font-bold uppercase tracking-[0.2em] text-on-surface">Digital Signature</h6>
+              <p className="mt-2 text-xs leading-relaxed text-on-surface-variant">The certificate carries a ledger-traceable reference, institutional approval, and a completion result of {currentUser.quizResults?.[course.id]?.percent ?? 100}%.</p>
+            </div>
+            <div className="rounded-sm border border-slate-200 bg-white p-8">
+              <span className="material-symbols-outlined icon icon-lg text-tertiary">account_balance</span>
+              <h6 className="mt-4 text-sm font-bold uppercase tracking-[0.2em] text-on-surface">Institutional Authority</h6>
+              <p className="mt-2 text-xs leading-relaxed text-on-surface-variant">{course.legalCertificate?.organizationName || "SkillForge"} is the issuing authority for this verified credential, approved by {finalAuthority}.</p>
+            </div>
+          </section>
         </div>
       ) : (
-        <div className="overflow-hidden rounded-[40px] bg-gradient-to-br from-[#fff7f0] via-white to-[#fff4e8] p-6 shadow-[0_32px_100px_rgba(84,38,10,0.12)] md:p-10">
-          <div className="rounded-[28px] border-[4px] border-primary-fixed/40 bg-white/80 p-8 text-center md:p-12">
-            <div className="mb-8 flex justify-center">
-              <div className="flex h-20 w-20 items-center justify-center rounded-full bg-primary-fixed text-primary">
-                <span className="material-symbols-outlined icon icon-lg icon-filled">workspace_premium</span>
-              </div>
+        <div className="space-y-8">
+          <section className="flex flex-col gap-6 text-center md:flex-row md:items-end md:justify-between md:text-left">
+            <div className="stack-xs">
+              <span className="inline-block rounded-full bg-primary-fixed px-3 py-1 text-[11px] font-black uppercase tracking-[0.22em] text-on-primary-fixed-variant">Course Completed</span>
+              <h2 className="font-headline text-4xl font-extrabold tracking-tight text-on-surface md:text-5xl">Congratulations, {currentUser.name.split(" ")[0]}!</h2>
+              <p className="max-w-xl text-lg text-on-surface-variant">You&apos;ve successfully completed <span className="font-bold text-on-surface">{course.title}</span>. Your achievement is now official.</p>
             </div>
-            <div className="text-xs font-black uppercase tracking-[0.3em] text-on-surface-variant">Standard Certificate of Completion</div>
-            <h2 className="mt-5 font-headline text-5xl font-black tracking-tight text-primary">SkillForge</h2>
-            <p className="mt-8 text-lg italic text-on-surface-variant">This acknowledges that</p>
-            <div className="mt-6 font-headline text-5xl font-black tracking-tight text-on-surface md:text-6xl">{currentUser.name}</div>
-            <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-on-surface-variant">has successfully finished all requirements for the professional course <span className="font-bold text-on-surface">{course.title}</span>.</p>
-            <div className="mt-12 grid gap-6 md:grid-cols-3">
-              <div className="rounded-3xl bg-surface-container-low px-5 py-6">
-                <div className="text-xs font-black uppercase tracking-[0.22em] text-on-surface-variant">Certificate</div>
-                <div className="mt-3 text-sm font-bold text-on-surface">Portfolio-friendly completion proof</div>
-              </div>
-              <div className="rounded-3xl bg-surface-container-low px-5 py-6">
-                <div className="text-xs font-black uppercase tracking-[0.22em] text-on-surface-variant">Issued</div>
-                <div className="mt-3 text-sm font-bold text-on-surface">{dateLabel(issuedAt)}</div>
-              </div>
-              <div className="rounded-3xl bg-surface-container-low px-5 py-6">
-                <div className="text-xs font-black uppercase tracking-[0.22em] text-on-surface-variant">Course Type</div>
-                <div className="mt-3 text-sm font-bold text-on-surface">{course.category}</div>
+            <div className="flex flex-col gap-3 sm:flex-row">
+              <button className="signature-gradient rounded-full px-8 py-4 font-bold text-on-primary shadow-md transition-transform active:scale-95" onClick={() => window.print()} type="button">
+                <span className="material-symbols-outlined icon icon-filled mr-2">download</span>
+                Save Certificate
+              </button>
+              <button className="btn btn-surface btn-pill" type="button">
+                <span className="material-symbols-outlined icon mr-2">share</span>
+                Share Success
+              </button>
+            </div>
+          </section>
+          <div className="relative group">
+            <div className="absolute -left-12 -top-12 -z-10 h-64 w-64 rounded-full bg-primary-fixed/30 blur-3xl" />
+            <div className="absolute -bottom-12 -right-12 -z-10 h-80 w-80 rounded-full bg-secondary-container/20 blur-3xl" />
+            <div className="card-hero relative overflow-hidden">
+              <div className="flex min-h-[500px] flex-col items-center rounded-2xl border-[4px] border-primary-fixed/30 p-8 text-center md:p-12">
+                <div className="mb-8">
+                  <div className="flex h-20 w-20 items-center justify-center rounded-full bg-primary-fixed text-primary">
+                    <span className="material-symbols-outlined icon icon-lg icon-filled">workspace_premium</span>
+                  </div>
+                </div>
+                <div className="mb-10">
+                  <h3 className="font-headline text-2xl font-black italic tracking-tight text-primary">SkillForge</h3>
+                  <p className="mt-1 text-xs font-black uppercase tracking-[0.3em] text-on-surface-variant">Standard Certificate of Completion</p>
+                </div>
+                <div className="flex flex-grow flex-col justify-center space-y-6">
+                  <p className="text-lg italic text-on-surface-variant">This acknowledges that</p>
+                  <h4 className="font-headline text-5xl font-black tracking-tight text-on-surface md:text-6xl">{currentUser.name}</h4>
+                  <div className="mx-auto h-0.5 w-16 bg-primary-container" />
+                  <p className="mx-auto max-w-lg text-lg leading-relaxed text-on-surface-variant">has successfully finished all requirements for the professional course</p>
+                  <h5 className="font-headline text-2xl font-bold text-on-primary-container md:text-3xl">{course.title}</h5>
+                </div>
+                <div className="mt-16 grid w-full max-w-2xl gap-12 md:grid-cols-2 md:items-end">
+                  <div className="flex flex-col items-center">
+                    <div className="mb-2 text-3xl text-on-surface/80 [font-family:'Dancing_Script',cursive]">{course.instructorName}</div>
+                    <div className="mb-2 h-px w-32 bg-outline-variant/50" />
+                    <p className="text-xs font-black uppercase tracking-[0.22em] text-on-surface-variant">Course Director</p>
+                  </div>
+                  <div className="flex flex-col items-center">
+                    <div className="mb-2 text-3xl text-on-surface/80 [font-family:'Dancing_Script',cursive]">{finalAuthority}</div>
+                    <div className="mb-2 h-px w-32 bg-outline-variant/50" />
+                    <p className="text-xs font-black uppercase tracking-[0.22em] text-on-surface-variant">Learning Lead</p>
+                  </div>
+                </div>
+                <p className="mt-12 text-xs uppercase tracking-[0.24em] text-outline">Issued on {issuedLabel}</p>
               </div>
             </div>
           </div>
+          <section className="grid gap-6 md:grid-cols-3">
+            <div className="rounded-xl bg-surface-container-low p-8">
+              <span className="material-symbols-outlined icon icon-lg text-primary">task_alt</span>
+              <h6 className="mt-4 font-headline font-bold text-on-surface">Course Content</h6>
+              <p className="mt-1 text-sm text-on-surface-variant">{course.modules.length} modules, {totalLessons} lessons, and {totalQuizItems} assessment items successfully completed.</p>
+            </div>
+            <div className="rounded-xl bg-surface-container-low p-8">
+              <span className="material-symbols-outlined icon icon-lg text-primary">schedule</span>
+              <h6 className="mt-4 font-headline font-bold text-on-surface">Time Invested</h6>
+              <p className="mt-1 text-sm text-on-surface-variant">{course.duration} of guided learning with attached resources and self-paced practice.</p>
+            </div>
+            <div className="rounded-xl bg-surface-container-low p-8">
+              <span className="material-symbols-outlined icon icon-lg text-primary">military_tech</span>
+              <h6 className="mt-4 font-headline font-bold text-on-surface">Skills Acquired</h6>
+              <p className="mt-1 text-sm text-on-surface-variant">{skillsLabel}.</p>
+            </div>
+          </section>
         </div>
       )}
       <div className="grid gap-6 md:grid-cols-3">
@@ -1044,26 +1286,43 @@ export function CheckoutPage() {
   const items = courses.filter((course) => state.cart.includes(course.id));
   const [method, setMethod] = useState("Card");
   const [form, setForm] = useState({ cardholder: currentUser.name, cardNumber: "4111 1111 1111 1111", expiry: "12/28", cvv: "123" });
+  const [message, setMessage] = useState("");
   if (!items.length) return <Navigate to="/cart" replace />;
   const subtotal = items.reduce((sum, item) => sum + item.price, 0);
   const coupon = state.coupons.find((item) => item.code === state.appliedCoupon);
   const discount = coupon ? (coupon.type === "percent" ? Math.round((subtotal * coupon.value) / 100) : coupon.value) : 0;
   const total = Math.max(subtotal - discount, 0);
+  const wallet = financeAccountFor(state, currentUser.id);
   return (
     <div className="grid lg:grid-cols-[1.15fr_0.85fr] gap-8">
       <section className="space-y-8">
         <SectionHeader chip="Payment Gateway Integration" title="Complete enrollment" description="Gateway selection, card data, and order creation are connected to the checkout flow with mock payment handling." />
         <div className="demo-kpi p-8">
           <h2 className="text-2xl font-headline font-black mb-6">Choose payment method</h2>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">{["Card", "MoMo", "VNPay", "PayPal"].map((item) => <button key={item} className={`rounded-3xl p-5 border text-center font-bold ${method === item ? "border-primary bg-primary-fixed text-primary" : "border-black/5 bg-white"}`} onClick={() => setMethod(item)}>{item}</button>)}</div>
-          <div className="grid md:grid-cols-2 gap-4"><input className="demo-input" value={form.cardholder} onChange={(e) => setForm((prev) => ({ ...prev, cardholder: e.target.value }))} /><input className="demo-input" value={form.cardNumber} onChange={(e) => setForm((prev) => ({ ...prev, cardNumber: e.target.value }))} /><input className="demo-input" value={form.expiry} onChange={(e) => setForm((prev) => ({ ...prev, expiry: e.target.value }))} /><input className="demo-input" value={form.cvv} onChange={(e) => setForm((prev) => ({ ...prev, cvv: e.target.value }))} /></div>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">{["Card", "MoMo", "VNPay", "PayPal", "Wallet"].map((item) => <button key={item} className={`rounded-3xl p-5 border text-center font-bold ${method === item ? "border-primary bg-primary-fixed text-primary" : "border-black/5 bg-white"}`} onClick={() => setMethod(item)}>{item}</button>)}</div>
+          {method === "Wallet" ? (
+            <div className="mb-6 rounded-3xl border border-emerald-200 bg-[linear-gradient(135deg,#f7fff8_0%,#ecfdf3_100%)] p-5">
+              <div className="text-xs font-black uppercase tracking-[0.22em] text-emerald-700">Wallet balance</div>
+              <div className="mt-2 text-3xl font-headline font-black text-on-surface">{currency(wallet.walletBalance)}</div>
+              <p className="mt-2 text-sm text-on-surface-variant">If balance is not enough, top up from the wallet page before completing enrollment.</p>
+            </div>
+          ) : null}
+          {method === "Wallet" ? (
+            <div className="rounded-3xl bg-surface-container-low p-5 text-sm text-on-surface-variant">
+              Wallet checkout uses your stored balance directly, so no extra payment credentials are needed for this order.
+            </div>
+          ) : (
+            <div className="grid md:grid-cols-2 gap-4"><input className="demo-input" value={form.cardholder} onChange={(e) => setForm((prev) => ({ ...prev, cardholder: e.target.value }))} /><input className="demo-input" value={form.cardNumber} onChange={(e) => setForm((prev) => ({ ...prev, cardNumber: e.target.value }))} /><input className="demo-input" value={form.expiry} onChange={(e) => setForm((prev) => ({ ...prev, expiry: e.target.value }))} /><input className="demo-input" value={form.cvv} onChange={(e) => setForm((prev) => ({ ...prev, cvv: e.target.value }))} /></div>
+          )}
         </div>
       </section>
       <aside className="demo-kpi p-8 h-fit sticky top-28">
         <h3 className="text-2xl font-headline font-black mb-6">Order Summary</h3>
         <div className="space-y-4 mb-6">{items.map((course) => <div key={course.id} className="flex justify-between gap-4"><div><div className="font-bold">{course.title}</div><div className="text-sm text-on-surface-variant">{course.category}</div></div><div className="font-bold">{currency(course.price)}</div></div>)}</div>
         <div className="space-y-3 mb-6 text-sm"><div className="flex justify-between"><span>Subtotal</span><span>{currency(subtotal)}</span></div><div className="flex justify-between"><span>Discount</span><span>-{currency(discount)}</span></div><div className="flex justify-between text-lg font-black pt-3 border-t border-black/5"><span>Total</span><span className="text-primary">{currency(total)}</span></div></div>
-        <button className="btn btn-primary btn-lg btn-w-full" onClick={() => { const order = actions.checkout(method); if (order) navigate("/orders"); }}>Complete Enrollment</button>
+        <button className="btn btn-primary btn-lg btn-w-full" onClick={() => { const result = actions.checkout(method); if (result?.ok) { navigate("/orders"); } else if (result?.message) { setMessage(result.message); } }}>Complete Enrollment</button>
+        {message ? <p className="mt-4 text-sm font-medium text-primary">{message}</p> : null}
+        <NavLink className="btn btn-surface btn-w-full mt-3" to="/wallet">Manage Wallet</NavLink>
       </aside>
     </div>
   );
@@ -1082,6 +1341,84 @@ export function OrdersPage() {
   );
 }
 
+export function WalletPage() {
+  const { currentUser, state, actions } = useAppState();
+  const account = financeAccountFor(state, currentUser.id);
+  const transactions = transactionsForUser(state, currentUser.id);
+  const [topUpForm, setTopUpForm] = useState({ amount: 100, method: "Card" });
+  const [withdrawForm, setWithdrawForm] = useState({ amount: 50, method: account.preferredPayoutMethod || "Bank transfer" });
+  const [message, setMessage] = useState("");
+  const walletSpend = transactions.filter((item) => item.type === "wallet_purchase").reduce((sum, item) => sum + item.amount, 0);
+
+  return (
+    <div className="space-y-8">
+      <SectionHeader chip="Student Wallet" title="Add and withdraw funds" description="This wallet lets learners top up balance ahead of checkout, pay with stored funds, and withdraw unused money back to a preferred payout rail." />
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
+        <MetricCard title="Available" value={currency(account.walletBalance)} caption="Spendable wallet balance for future enrollments" />
+        <MetricCard title="Deposited" value={currency(account.totalDeposited)} caption="All successful top-ups recorded in the demo ledger" />
+        <MetricCard title="Withdrawn" value={currency(account.totalWithdrawn)} caption="Funds sent back out of the learner wallet" />
+        <MetricCard title="Spent" value={currency(walletSpend)} caption="Wallet-funded course purchases" />
+      </div>
+      <div className="grid gap-8 xl:grid-cols-[0.85fr_1.15fr]">
+        <section className="demo-kpi p-8">
+          <h2 className="text-3xl font-headline font-black tracking-tight">Wallet actions</h2>
+          <div className="mt-6 space-y-8">
+            <div className="space-y-4">
+              <div className="text-xs font-black uppercase tracking-[0.22em] text-on-surface-variant">Top up balance</div>
+              <input className="demo-input" type="number" value={topUpForm.amount} onChange={(event) => setTopUpForm((prev) => ({ ...prev, amount: event.target.value }))} />
+              <select className="demo-select" value={topUpForm.method} onChange={(event) => setTopUpForm((prev) => ({ ...prev, method: event.target.value }))}>
+                <option value="Card">Card</option>
+                <option value="MoMo">MoMo</option>
+                <option value="VNPay">VNPay</option>
+                <option value="PayPal">PayPal</option>
+              </select>
+              <button className="btn btn-primary btn-w-full" type="button" onClick={() => { const result = actions.topUpWallet(topUpForm.amount, topUpForm.method); setMessage(result.message); }}>Add Funds</button>
+            </div>
+            <div className="space-y-4 border-t border-black/5 pt-8">
+              <div className="text-xs font-black uppercase tracking-[0.22em] text-on-surface-variant">Withdraw unused balance</div>
+              <input className="demo-input" type="number" value={withdrawForm.amount} onChange={(event) => setWithdrawForm((prev) => ({ ...prev, amount: event.target.value }))} />
+              <select className="demo-select" value={withdrawForm.method} onChange={(event) => setWithdrawForm((prev) => ({ ...prev, method: event.target.value }))}>
+                <option value="Bank transfer">Bank transfer</option>
+                <option value="MoMo">MoMo</option>
+                <option value="PayPal">PayPal</option>
+              </select>
+              <button className="btn btn-surface btn-w-full" type="button" onClick={() => { const result = actions.withdrawFromWallet(withdrawForm.amount, withdrawForm.method); setMessage(result.message); }}>Withdraw Funds</button>
+            </div>
+            {message ? <p className="text-sm font-medium text-primary">{message}</p> : null}
+          </div>
+        </section>
+        <section className="demo-kpi p-8">
+          <h2 className="text-3xl font-headline font-black tracking-tight">Wallet ledger</h2>
+          <div className="mt-6 overflow-x-auto">
+            <table className="demo-table">
+              <thead>
+                <tr>
+                  <th>Date</th>
+                  <th>Type</th>
+                  <th>Method</th>
+                  <th>Status</th>
+                  <th>Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                {transactions.map((item) => (
+                  <tr key={item.id}>
+                    <td>{dateLabel(item.createdAt)}</td>
+                    <td className="font-bold">{item.type.replaceAll("_", " ")}</td>
+                    <td>{item.method}</td>
+                    <td><span className={`demo-chip ${item.status === "completed" ? "demo-chip-success" : "demo-chip-primary"}`}>{item.status}</span></td>
+                    <td className="font-bold text-primary">{currency(item.amount)}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div>
+    </div>
+  );
+}
+
 export function ReviewsPage() {
   const { courseId } = useParams();
   const { currentUser, courses, state, actions } = useAppState();
@@ -1089,24 +1426,59 @@ export function ReviewsPage() {
   const [rating, setRating] = useState(5);
   const [content, setContent] = useState("");
   const [message, setMessage] = useState("");
+  const [submittedReview, setSubmittedReview] = useState(null);
   if (!course) return <Navigate to="/courses" replace />;
   const reviews = state.reviews[course.id] ?? [];
   const meta = reviewStatus(currentUser, course, reviews);
+  const isSuggestedDemoCourse = course.id === "product-strategy";
   return (
     <div className="grid lg:grid-cols-[1fr_0.9fr] gap-8">
       <section className="space-y-4">
         <SectionHeader chip="Course Reviews & Ratings" title={course.title} description={meta.enrolled ? `${reviews.length} review(s) from enrolled learners who completed the course.` : "Reviews are hidden until the learner purchases the course."} />
+        {isSuggestedDemoCourse && meta.canReview ? (
+          <div className="rounded-[28px] border border-emerald-200 bg-[linear-gradient(135deg,#f7fff9_0%,#ecfdf3_100%)] p-6 shadow-[0_20px_50px_rgba(22,101,52,0.08)]">
+            <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-emerald-100 px-3 py-1 text-[11px] font-black uppercase tracking-[0.24em] text-emerald-800">
+              <span className="material-symbols-outlined icon text-base">auto_awesome</span>
+              Demo-ready
+            </div>
+            <h2 className="text-2xl font-headline font-black text-on-surface">This is the cleanest course to show a successful first review.</h2>
+            <p className="mt-2 text-sm leading-relaxed text-on-surface-variant">The seeded student has finished this course and has not reviewed it yet, so you can immediately compare the before and after review states in the demo.</p>
+          </div>
+        ) : null}
         {!meta.enrolled ? <div className="demo-kpi p-8"><div className="text-xs font-black uppercase tracking-[0.22em] text-on-surface-variant mb-3">Locked</div><h2 className="text-3xl font-headline font-black mb-3">Enroll to unlock reviews</h2><p className="text-on-surface-variant mb-6">This keeps public catalog cards cleaner and prevents unpurchased courses from showing empty review UI.</p><NavLink className="btn btn-primary" to={`/courses/${course.id}`}>Back to Course</NavLink></div> : null}
         {meta.enrolled ? reviews.map((review) => <div key={review.id} className="demo-kpi p-6"><div className="flex justify-between items-center mb-3"><div className="font-bold">{review.author}</div><div className="text-sm text-on-surface-variant">{dateLabel(review.createdAt)}</div></div><div className="text-primary font-bold mb-2">{Array.from({ length: review.rating }, () => "★").join("")}</div><p className="text-on-surface-variant">{review.content}</p></div>) : null}
         {meta.enrolled && !reviews.length ? <div className="demo-kpi p-8 text-on-surface-variant">No learner feedback yet. Reviews will appear here after completed students submit them.</div> : null}
       </section>
       <aside className="demo-kpi p-8 h-fit sticky top-28">
-        <h2 className="text-2xl font-headline font-black mb-6">{meta.canReview ? "Write a review" : "Review access"}</h2>
-        {meta.canReview ? (
+        <h2 className="text-2xl font-headline font-black mb-6">{submittedReview ? "Review submitted" : meta.canReview ? "Write a review" : "Review access"}</h2>
+        {submittedReview ? (
+          <div className="space-y-5">
+            <div className="rounded-[28px] border border-emerald-200 bg-[linear-gradient(180deg,#ffffff_0%,#f0fdf4_100%)] p-6">
+              <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-emerald-100 text-emerald-700">
+                <span className="material-symbols-outlined icon icon-filled">check_circle</span>
+              </div>
+              <div className="text-xs font-black uppercase tracking-[0.24em] text-emerald-700">Success</div>
+              <h3 className="mt-2 text-2xl font-headline font-black text-on-surface">Your review is now live.</h3>
+              <p className="mt-2 text-sm leading-relaxed text-on-surface-variant">The new rating has been added to the course feed so you can compare the updated learner-proof state in this demo.</p>
+              <div className="mt-5 rounded-3xl bg-white p-5 shadow-sm">
+                <div className="flex items-center justify-between gap-4">
+                  <div className="font-bold text-on-surface">{submittedReview.author}</div>
+                  <div className="text-sm text-on-surface-variant">{dateLabel(submittedReview.createdAt)}</div>
+                </div>
+                <div className="mt-3 text-primary font-bold">{Array.from({ length: submittedReview.rating }, () => "★").join("")}</div>
+                <p className="mt-3 text-sm leading-relaxed text-on-surface-variant">{submittedReview.content}</p>
+              </div>
+            </div>
+            <div className="grid gap-3">
+              <NavLink className="btn btn-primary btn-w-full" to={`/courses/${course.id}`}>Back to Course</NavLink>
+              <button className="btn btn-surface btn-w-full" onClick={() => setSubmittedReview(null)} type="button">View Review Access State</button>
+            </div>
+          </div>
+        ) : meta.canReview ? (
           <div className="space-y-4">
             <select className="demo-select" value={rating} onChange={(e) => setRating(Number(e.target.value))}>{[5, 4, 3, 2, 1].map((item) => <option key={item} value={item}>{item} stars</option>)}</select>
             <textarea className="demo-textarea" value={content} onChange={(e) => setContent(e.target.value)} placeholder="Share your feedback..." />
-            <button className="btn btn-primary btn-w-full" onClick={() => { if (!content.trim()) return; const result = actions.addReview(course.id, { rating, content }); setMessage(result?.message ?? "Review submitted."); if (result?.ok) setContent(""); }}>Submit Review</button>
+            <button className="btn btn-primary btn-w-full" onClick={() => { if (!content.trim()) return; const result = actions.addReview(course.id, { rating, content }); setMessage(result?.message ?? "Review submitted."); if (result?.ok) { setSubmittedReview(result.review); setContent(""); } }}>Submit Review</button>
             {message ? <p className="text-sm font-medium text-primary">{message}</p> : null}
           </div>
         ) : (

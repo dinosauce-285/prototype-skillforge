@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { NavLink, Navigate, useNavigate, useParams } from "react-router-dom";
+import { NavLink, Navigate, useNavigate, useParams, useSearchParams } from "react-router-dom";
 import { MetricCard, SectionHeader } from "../components/ui";
 import { courseProgress, currency, dateLabel, flattenLessons } from "../lib/utils";
 import { useAppState } from "../state/AppState";
@@ -9,6 +9,17 @@ function useInstructorData() {
   const ownedCourses = app.courses.filter((course) => course.instructorId === app.currentUser.id);
   const instructorOrders = app.state.orders.filter((order) => order.courseIds.some((courseId) => ownedCourses.some((course) => course.id === courseId)));
   return { ...app, ownedCourses, instructorOrders };
+}
+
+function financeAccountFor(state, userId) {
+  return state.financeAccounts?.find((account) => account.userId === userId) ?? {
+    walletBalance: 0,
+    payoutAvailable: 0,
+    totalDeposited: 0,
+    totalWithdrawn: 0,
+    totalEarned: 0,
+    preferredPayoutMethod: "Bank transfer",
+  };
 }
 
 function collectCourseStudents(state, course) {
@@ -35,6 +46,20 @@ function collectCourseDiscussions(state, course) {
 
 function courseLegalStatus(course) {
   return course.legalCertificate?.status ?? "not_requested";
+}
+
+function legalStatusLabel(status) {
+  if (status === "approved") return "Approved";
+  if (status === "pending") return "Pending Admin Review";
+  if (status === "rejected") return "Rejected";
+  if (status === "submitted") return "Submitted";
+  return "Not Requested";
+}
+
+function legalStatusChipClass(status) {
+  if (status === "approved") return "demo-chip-success";
+  if (status === "pending" || status === "submitted") return "demo-chip-primary";
+  return "demo-chip-muted";
 }
 
 function ownedLegalRequests(state, instructorId) {
@@ -184,6 +209,7 @@ export function InstructorOverviewPage() {
             <NavLink className="btn btn-surface btn-w-full" to="/instructor/grading">Manual Grading Queue</NavLink>
             <NavLink className="btn btn-surface btn-w-full" to="/instructor/students">Student Analytics</NavLink>
             <NavLink className="btn btn-surface btn-w-full" to="/instructor/coupons">Promotions & Coupons</NavLink>
+            <NavLink className="btn btn-surface btn-w-full" to="/instructor/earnings">Earnings & Payouts</NavLink>
           </div>
         </div>
         <div className="demo-kpi p-8">
@@ -232,11 +258,13 @@ export function InstructorCoursesPage() {
           <div key={course.id} className="demo-kpi p-6">
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
               <div>
+                <div className={`demo-chip ${legalStatusChipClass(courseLegalStatus(course))} mb-3`}>{legalStatusLabel(courseLegalStatus(course))}</div>
                 <div className="font-bold text-xl">{course.title}</div>
                 <div className="text-sm text-on-surface-variant">{course.category} • {course.level} • {currency(course.price)}</div>
               </div>
-              <div className="flex gap-3">
+              <div className="flex flex-wrap gap-3">
                 <button className="btn btn-primary" onClick={() => navigate(`/instructor/courses/${course.id}`)}>Edit Course</button>
+                <button className="btn btn-surface" onClick={() => navigate(`/instructor/courses/${course.id}?tab=legal`)}>Review Status</button>
                 <button className="btn btn-surface" onClick={() => actions.deleteCourse(course.id)}>Delete</button>
               </div>
             </div>
@@ -249,11 +277,12 @@ export function InstructorCoursesPage() {
 
 export function InstructorCourseEditorPage() {
   const { courseId } = useParams();
-  const { state, ownedCourses, actions } = useInstructorData();
+  const [searchParams] = useSearchParams();
+  const { state, currentUser, ownedCourses, actions } = useInstructorData();
   const course = ownedCourses.find((item) => item.id === courseId);
   const students = useMemo(() => (course ? collectCourseStudents(state, course) : []), [state, course]);
   const discussions = useMemo(() => (course ? collectCourseDiscussions(state, course) : []), [state, course]);
-  const [activeTab, setActiveTab] = useState("overview");
+  const [activeTab, setActiveTab] = useState(searchParams.get("tab") === "legal" ? "legal" : "overview");
   const [newModuleTitle, setNewModuleTitle] = useState("");
   const [newLesson, setNewLesson] = useState({ title: "", duration: "08:00", type: "video" });
   const [materialDraft, setMaterialDraft] = useState({ title: "", type: "PDF", size: "1.0 MB" });
@@ -268,6 +297,17 @@ export function InstructorCourseEditorPage() {
     certificateType: course.certificateType,
     skills: course.skills.join(", "),
   }) : null);
+  const organization = currentUser.organizationProfile ?? {};
+  const legalRequest = state.legalApprovalRequests.find((request) => request.courseId === course?.id);
+  const legalStatus = course ? courseLegalStatus(course) : "not_requested";
+  const isLegalApproved = legalStatus === "approved";
+  const [legalForm, setLegalForm] = useState(() => ({
+    organizationName: course?.legalCertificate?.organizationName || organization.businessName || "",
+    complianceStandard: course?.legalCertificate?.policy || legalRequest?.complianceStandard || "TT 10/2026",
+    archivePlan: legalRequest?.archivePlan || "Store issued certificate IDs in the center ledger and retain the digital master book.",
+    verificationMethod: legalRequest?.verificationMethod || "QR code + lookup ID",
+    documentNote: "Legal issuance declaration, assessment governance evidence, and organization license scans uploaded.",
+  }));
 
   const [selectedModuleId, setSelectedModuleId] = useState(course?.modules[0]?.id ?? "");
   const firstLessonId = course?.modules[0]?.lessons[0]?.id ?? "";
@@ -344,6 +384,7 @@ export function InstructorCourseEditorPage() {
           <div className="text-xs font-label uppercase tracking-widest text-on-surface-variant mb-2">Course Studio</div>
           <h1 className="text-4xl font-headline font-extrabold tracking-tight">{course.title}</h1>
           <p className="text-on-surface-variant mt-2">Edit overview, track learners, answer discussion threads, and manage every chapter and lesson.</p>
+          <div className={`demo-chip ${legalStatusChipClass(courseLegalStatus(course))} mt-4`}>{legalStatusLabel(courseLegalStatus(course))}</div>
         </div>
         <div className="flex gap-3">
           <button className="btn btn-surface" onClick={() => setActiveTab("overview")}>Overview</button>
@@ -391,6 +432,7 @@ export function InstructorCourseEditorPage() {
               ["questions", "Q&A"],
               ["curriculum", "Curriculum"],
               ["lesson", "Lesson"],
+              ["legal", "Legal Review"],
             ].map(([id, label]) => (
               <button key={id} className={activeTab === id ? "px-5 py-3 rounded-full bg-primary-container text-white font-bold whitespace-nowrap" : "px-5 py-3 rounded-full bg-surface-container-high text-on-surface whitespace-nowrap"} onClick={() => setActiveTab(id)}>{label}</button>
             ))}
@@ -434,6 +476,188 @@ export function InstructorCourseEditorPage() {
                 </div>
               </div>
             </>
+          ) : null}
+
+          {activeTab === "legal" ? (
+            <div className="grid gap-8 xl:grid-cols-[1.05fr_0.95fr]">
+              {isLegalApproved ? (
+                <>
+                  <section className="demo-kpi overflow-hidden p-8">
+                    <div className="rounded-[32px] border border-emerald-200 bg-[linear-gradient(135deg,#f7fff8_0%,#ecfdf3_48%,#eff6ff_100%)] p-8 shadow-[0_24px_80px_rgba(16,185,129,0.10)]">
+                      <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-emerald-100 px-4 py-2 text-[11px] font-black uppercase tracking-[0.24em] text-emerald-800">
+                        <span className="material-symbols-outlined icon text-base">verified</span>
+                        Approved And Active
+                      </div>
+                      <div className="grid gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+                        <div>
+                          <h2 className="font-headline text-4xl font-black tracking-tight text-on-surface">Verified certificate issuance is live for this course.</h2>
+                          <p className="mt-3 max-w-2xl text-sm leading-relaxed text-on-surface-variant">Admins approved the organization, issuance controls, and verification path. This course can now publish legal certificates with a Skill Forge verification reference.</p>
+                          <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                            <div className="rounded-3xl bg-white/80 p-5 shadow-sm">
+                              <div className="text-xs font-black uppercase tracking-[0.2em] text-on-surface-variant">Organization</div>
+                              <div className="mt-2 text-lg font-black text-on-surface">{course.legalCertificate?.organizationName || legalRequest?.organizationName || currentUser.name}</div>
+                              <p className="mt-2 text-sm text-on-surface-variant">Authorized to issue the approved credential package under the seeded compliance profile.</p>
+                            </div>
+                            <div className="rounded-3xl bg-white/80 p-5 shadow-sm">
+                              <div className="text-xs font-black uppercase tracking-[0.2em] text-on-surface-variant">Reference ID</div>
+                              <div className="mt-2 text-lg font-black text-on-surface">{course.legalCertificate?.referenceId || legalRequest?.id}</div>
+                              <p className="mt-2 text-sm text-on-surface-variant">Use this reference for certificate lookup, audit exports, and legal verification calls.</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div className="rounded-[28px] border border-white/80 bg-white/75 p-6 backdrop-blur">
+                          <div className="text-xs font-black uppercase tracking-[0.22em] text-on-surface-variant">Approval Snapshot</div>
+                          <div className="mt-4 space-y-4">
+                            <div>
+                              <div className="text-sm text-on-surface-variant">Approved by</div>
+                              <div className="font-black text-on-surface">{course.legalCertificate?.approvedBy || legalRequest?.reviewedBy || "Admin reviewer"}</div>
+                            </div>
+                            <div>
+                              <div className="text-sm text-on-surface-variant">Approved on</div>
+                              <div className="font-black text-on-surface">{dateLabel(course.legalCertificate?.approvedAt || legalRequest?.reviewedAt || legalRequest?.submittedAt)}</div>
+                            </div>
+                            <div>
+                              <div className="text-sm text-on-surface-variant">Compliance standard</div>
+                              <div className="font-black text-on-surface">{course.legalCertificate?.policy || legalRequest?.complianceStandard || "TT 10/2026"}</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="mt-8 grid gap-4 md:grid-cols-3">
+                      {[
+                        { title: "Assessment Governance", body: "Manual review checkpoints and issuance approval logic were accepted in the admin review package." },
+                        { title: "Archive Readiness", body: legalRequest?.archivePlan || "Certificate IDs and learner evidence are retained in the approved ledger workflow." },
+                        { title: "Verification Method", body: legalRequest?.verificationMethod || "QR lookup and reference verification are active for issued credentials." },
+                      ].map((item) => (
+                        <div key={item.title} className="rounded-3xl bg-surface-container-low p-6">
+                          <div className="text-xs font-black uppercase tracking-[0.2em] text-on-surface-variant">{item.title}</div>
+                          <p className="mt-3 text-sm leading-relaxed text-on-surface-variant">{item.body}</p>
+                        </div>
+                      ))}
+                    </div>
+                    <div className="mt-8 rounded-[28px] border border-black/5 bg-surface-container-lowest p-6">
+                      <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+                        <div>
+                          <div className="text-xs font-black uppercase tracking-[0.22em] text-on-surface-variant">Admin Note</div>
+                          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-on-surface-variant">{course.legalCertificate?.adminNotes || legalRequest?.adminNotes || "No admin notes yet."}</p>
+                        </div>
+                        <div className="flex flex-wrap gap-3">
+                          <button className="btn btn-primary" type="button">Preview Approved Certificate</button>
+                          <button className="btn btn-surface" type="button">Export Review Package</button>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                  <aside className="demo-kpi h-fit p-8">
+                    <h3 className="font-headline text-2xl font-black mb-5">Verification status</h3>
+                    <div className={`demo-chip ${legalStatusChipClass(legalStatus)} mb-5`}>{course.legalCertificate?.badgeLabel || legalStatusLabel(legalStatus)}</div>
+                    <div className="space-y-4 text-sm">
+                      <div className="rounded-2xl bg-surface-container-low p-4">
+                        <div className="text-xs font-black uppercase tracking-[0.2em] text-on-surface-variant mb-2">Course</div>
+                        <div className="font-bold">{course.title}</div>
+                      </div>
+                      <div className="rounded-2xl bg-surface-container-low p-4">
+                        <div className="text-xs font-black uppercase tracking-[0.2em] text-on-surface-variant mb-2">Reference</div>
+                        <div className="font-bold">{course.legalCertificate?.referenceId || legalRequest?.id}</div>
+                      </div>
+                      <div className="rounded-2xl bg-surface-container-low p-4">
+                        <div className="text-xs font-black uppercase tracking-[0.2em] text-on-surface-variant mb-2">Documents</div>
+                        <div className="space-y-2">
+                          {(legalRequest?.documents || []).map((document) => (
+                            <div key={document.id} className="flex items-center justify-between gap-3 rounded-2xl bg-white px-3 py-3">
+                              <div className="min-w-0">
+                                <div className="truncate font-bold text-on-surface">{document.name}</div>
+                                <div className="text-xs uppercase tracking-[0.18em] text-on-surface-variant">{document.type}</div>
+                              </div>
+                              <span className="demo-chip demo-chip-success">Accepted</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                      <div className="rounded-2xl bg-surface-container-low p-4">
+                        <div className="text-xs font-black uppercase tracking-[0.2em] text-on-surface-variant mb-2">Timeline</div>
+                        <div className="space-y-3 text-on-surface-variant">
+                          <div><span className="font-bold text-on-surface">Submitted:</span> {dateLabel(legalRequest?.submittedAt || course.legalCertificate?.approvedAt)}</div>
+                          <div><span className="font-bold text-on-surface">Reviewed:</span> {dateLabel(legalRequest?.reviewedAt || course.legalCertificate?.approvedAt)}</div>
+                          <div><span className="font-bold text-on-surface">Authority:</span> {course.legalCertificate?.approvedBy || legalRequest?.reviewedBy || "Admin reviewer"}</div>
+                        </div>
+                      </div>
+                    </div>
+                  </aside>
+                </>
+              ) : (
+                <>
+                  <section className="demo-kpi p-8">
+                    <div className="mb-6">
+                      <div className={`demo-chip ${legalStatusChipClass(legalStatus)} mb-4`}>{legalStatusLabel(legalStatus)}</div>
+                      <h2 className="font-headline text-3xl font-black tracking-tight">Certificate review package</h2>
+                      <p className="mt-2 text-on-surface-variant">Upload the course-specific information admins need before approving verified certificate issuance.</p>
+                    </div>
+                    <div className="grid gap-4 md:grid-cols-2">
+                      <input className="demo-input" placeholder="Organization name" value={legalForm.organizationName} onChange={(e) => setLegalForm((prev) => ({ ...prev, organizationName: e.target.value }))} />
+                      <input className="demo-input" placeholder="Compliance standard" value={legalForm.complianceStandard} onChange={(e) => setLegalForm((prev) => ({ ...prev, complianceStandard: e.target.value }))} />
+                      <textarea className="demo-textarea md:col-span-2" placeholder="Archive and master ledger plan" value={legalForm.archivePlan} onChange={(e) => setLegalForm((prev) => ({ ...prev, archivePlan: e.target.value }))} />
+                      <textarea className="demo-textarea md:col-span-2" placeholder="Verification method" value={legalForm.verificationMethod} onChange={(e) => setLegalForm((prev) => ({ ...prev, verificationMethod: e.target.value }))} />
+                      <textarea className="demo-textarea md:col-span-2" placeholder="Uploaded document notes" value={legalForm.documentNote} onChange={(e) => setLegalForm((prev) => ({ ...prev, documentNote: e.target.value }))} />
+                    </div>
+                    <div className="mt-5 grid gap-3 md:grid-cols-3">
+                      {["Organization license scan", "Assessment governance evidence", "Certificate issuance declaration"].map((label) => (
+                        <div key={label} className="rounded-2xl bg-surface-container-low p-4">
+                          <span className="material-symbols-outlined icon text-primary">upload_file</span>
+                          <div className="mt-3 text-sm font-bold">{label}</div>
+                          <div className="mt-1 text-xs text-on-surface-variant">Mock file attached for admin review</div>
+                        </div>
+                      ))}
+                    </div>
+                    <button
+                      className="btn btn-primary mt-6"
+                      onClick={() => {
+                        actions.saveOrganizationProfile({
+                          businessName: legalForm.organizationName,
+                          centerDecision: organization.centerDecision || "QD-458/2024-SGDNN",
+                          licenseNumber: organization.licenseNumber || "EDU-VOC-2026-118",
+                          issuingAuthority: organization.issuingAuthority || "Ho Chi Minh City Department of Labour and Education",
+                          representative: organization.representative || currentUser.name,
+                          notes: legalForm.documentNote,
+                        });
+                        actions.submitLegalCertificateRequest({
+                          courseId: course.id,
+                          organizationName: legalForm.organizationName || organization.businessName || currentUser.name,
+                          complianceStandard: legalForm.complianceStandard,
+                          archivePlan: legalForm.archivePlan,
+                          verificationMethod: legalForm.verificationMethod,
+                        });
+                      }}
+                    >
+                      Submit to Admin Review
+                    </button>
+                  </section>
+                  <aside className="demo-kpi p-8 h-fit">
+                    <h3 className="font-headline text-2xl font-black mb-5">Review status</h3>
+                    <div className={`demo-chip ${legalStatusChipClass(legalStatus)} mb-5`}>{legalStatusLabel(legalStatus)}</div>
+                    <div className="space-y-4 text-sm">
+                      <div className="rounded-2xl bg-surface-container-low p-4">
+                        <div className="text-xs font-black uppercase tracking-[0.2em] text-on-surface-variant mb-2">Course</div>
+                        <div className="font-bold">{course.title}</div>
+                      </div>
+                      <div className="rounded-2xl bg-surface-container-low p-4">
+                        <div className="text-xs font-black uppercase tracking-[0.2em] text-on-surface-variant mb-2">Reference</div>
+                        <div className="font-bold">{course.legalCertificate?.referenceId ?? legalRequest?.id ?? "Created after admin approval"}</div>
+                      </div>
+                      <div className="rounded-2xl bg-surface-container-low p-4">
+                        <div className="text-xs font-black uppercase tracking-[0.2em] text-on-surface-variant mb-2">Admin note</div>
+                        <div className="text-on-surface-variant">{course.legalCertificate?.adminNotes || legalRequest?.adminNotes || "No admin notes yet."}</div>
+                      </div>
+                      <div className="rounded-2xl bg-surface-container-low p-4">
+                        <div className="text-xs font-black uppercase tracking-[0.2em] text-on-surface-variant mb-2">Last activity</div>
+                        <div className="font-bold">{legalRequest?.submittedAt ? dateLabel(legalRequest.submittedAt) : course.legalCertificate?.approvedAt ? dateLabel(course.legalCertificate.approvedAt) : "Not submitted"}</div>
+                      </div>
+                    </div>
+                  </aside>
+                </>
+              )}
+            </div>
           ) : null}
 
           {activeTab === "learners" ? (
@@ -1048,9 +1272,25 @@ export function InstructorGradingPage() {
   const { state, ownedCourses, actions } = useInstructorData();
   const courseIds = ownedCourses.map((course) => course.id);
   const submissions = ownedGradingSubmissions(state, courseIds);
-  const [selectedId, setSelectedId] = useState(submissions[0]?.id ?? "");
-  const selected = submissions.find((submission) => submission.id === selectedId) ?? submissions[0] ?? null;
+  const [selectedCourseId, setSelectedCourseId] = useState(submissions[0]?.courseId ?? ownedCourses[0]?.id ?? "");
+  const selectedCourse = ownedCourses.find((course) => course.id === selectedCourseId) ?? ownedCourses[0] ?? null;
+  const lessonOptions = selectedCourse ? flattenLessons(selectedCourse) : [];
+  const courseSubmissions = submissions.filter((submission) => submission.courseId === selectedCourseId);
+  const [selectedLessonId, setSelectedLessonId] = useState(courseSubmissions[0]?.lessonId ?? lessonOptions[0]?.id ?? "");
+  const filteredSubmissions = courseSubmissions.filter((submission) => !selectedLessonId || submission.lessonId === selectedLessonId);
+  const [selectedId, setSelectedId] = useState(filteredSubmissions[0]?.id ?? "");
+  const selected = filteredSubmissions.find((submission) => submission.id === selectedId) ?? filteredSubmissions[0] ?? null;
   const [gradeForm, setGradeForm] = useState(() => ({ score: selected?.score ?? "", instructorFeedback: selected?.instructorFeedback ?? "" }));
+
+  useEffect(() => {
+    const nextLessonId = courseSubmissions[0]?.lessonId ?? lessonOptions[0]?.id ?? "";
+    setSelectedLessonId(nextLessonId);
+    setSelectedId(courseSubmissions.find((submission) => submission.lessonId === nextLessonId)?.id ?? "");
+  }, [selectedCourseId]);
+
+  useEffect(() => {
+    setSelectedId(filteredSubmissions[0]?.id ?? "");
+  }, [selectedLessonId]);
 
   useEffect(() => {
     setGradeForm({ score: selected?.score ?? "", instructorFeedback: selected?.instructorFeedback ?? "" });
@@ -1067,9 +1307,32 @@ export function InstructorGradingPage() {
         <MetricCard title="Already Graded" value={String(manualDone.length)} caption="Instructor-reviewed submissions completed" />
         <MetricCard title="Auto Graded" value={String(submissions.filter((submission) => !submission.manualRequired).length)} caption="Objective submissions that did not require human review" />
       </div>
+      <div className="demo-kpi p-6">
+        <div className="grid gap-4 md:grid-cols-2">
+          <label>
+            <span className="mb-2 block text-xs font-black uppercase tracking-[0.2em] text-on-surface-variant">Course</span>
+            <select className="demo-select" value={selectedCourseId} onChange={(event) => setSelectedCourseId(event.target.value)}>
+              {ownedCourses.map((course) => (
+                <option key={course.id} value={course.id}>{course.title}</option>
+              ))}
+            </select>
+          </label>
+          <label>
+            <span className="mb-2 block text-xs font-black uppercase tracking-[0.2em] text-on-surface-variant">Lesson</span>
+            <select className="demo-select" value={selectedLessonId} onChange={(event) => setSelectedLessonId(event.target.value)}>
+              {lessonOptions.map((lesson) => (
+                <option key={lesson.id} value={lesson.id}>{lesson.title}</option>
+              ))}
+            </select>
+          </label>
+        </div>
+        <div className="mt-4 text-sm text-on-surface-variant">
+          Showing {filteredSubmissions.length} submission(s) for {selectedCourse?.title ?? "selected course"}.
+        </div>
+      </div>
       <div className="grid xl:grid-cols-[0.95fr_1.05fr] gap-8">
         <section className="space-y-4">
-          {submissions.map((submission) => (
+          {filteredSubmissions.map((submission) => (
             <button key={submission.id} className={`w-full text-left demo-kpi p-6 ${selected?.id === submission.id ? "border border-primary/20 bg-primary-fixed/20" : ""}`} onClick={() => setSelectedId(submission.id)}>
               <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                 <div>
@@ -1084,6 +1347,7 @@ export function InstructorGradingPage() {
               </div>
             </button>
           ))}
+          {!filteredSubmissions.length ? <div className="demo-kpi p-8 text-on-surface-variant">No submissions for this lesson yet.</div> : null}
         </section>
         <aside className="demo-kpi p-8 h-fit sticky top-28">
           {selected ? (
@@ -1148,6 +1412,109 @@ export function InstructorCouponsPage() {
         <button className="btn btn-primary mt-5" onClick={() => { if (!form.code.trim()) return; actions.createCoupon(form); setForm({ code: "", type: "percent", value: 15, description: "" }); }}>Create Coupon</button>
       </div>
       <div className="space-y-3">{state.coupons.map((coupon) => <div key={coupon.code} className="demo-kpi p-6 flex justify-between items-center"><div><div className="font-bold">{coupon.code}</div><div className="text-sm text-on-surface-variant">{coupon.description}</div></div><div className="flex gap-2 items-center"><span className="demo-chip demo-chip-muted">{coupon.status}</span><button className="btn btn-surface btn-sm" onClick={() => actions.updateCoupon(coupon.code, { status: coupon.status === "Active" ? "Paused" : "Active" })}>{coupon.status === "Active" ? "Pause" : "Activate"}</button></div></div>)}</div>
+    </div>
+  );
+}
+
+export function InstructorEarningsPage() {
+  const { currentUser, state, instructorOrders, ownedCourses, actions } = useInstructorData();
+  const account = financeAccountFor(state, currentUser.id);
+  const payoutRequests = (state.payoutRequests ?? []).filter((request) => request.instructorId === currentUser.id);
+  const financeTransactions = (state.financeTransactions ?? []).filter((item) => item.userId === currentUser.id);
+  const [form, setForm] = useState({
+    amount: Math.min(Math.max(account.payoutAvailable, 0), 250) || 100,
+    method: account.preferredPayoutMethod || "Bank transfer",
+    destination: account.preferredPayoutMethod === "PayPal" ? currentUser.email : "VCB • 1029 445 882",
+    note: "Weekly instructor withdrawal",
+  });
+  const [message, setMessage] = useState("");
+  const grossRevenue = instructorOrders.reduce((sum, order) => sum + order.total, 0);
+
+  return (
+    <div className="space-y-8">
+      <SectionHeader chip="Instructor Revenue Hub" title="Earnings and payout requests" description="Track course earnings allocation, see how much is available for withdrawal, and send payout requests to admin for approval." />
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
+        <MetricCard title="Available to Withdraw" value={currency(account.payoutAvailable)} caption="Approved earnings not yet paid out" />
+        <MetricCard title="Lifetime Earned" value={currency(account.totalEarned)} caption="All course earnings credited from learner orders" />
+        <MetricCard title="Paid Out" value={currency(account.totalWithdrawn)} caption="Settlements already released to your payout rail" />
+        <MetricCard title="Gross Course Revenue" value={currency(grossRevenue)} caption={`${ownedCourses.length} owned courses contributing to earnings`} />
+      </div>
+      <div className="grid gap-8 xl:grid-cols-[0.85fr_1.15fr]">
+        <section className="demo-kpi p-8">
+          <h2 className="text-3xl font-headline font-black tracking-tight">Request payout</h2>
+          <p className="mt-2 text-sm text-on-surface-variant">Instructor withdrawals are reviewed by admin so platform cash flow and payout thresholds stay controlled.</p>
+          <div className="mt-6 space-y-4">
+            <input className="demo-input" type="number" value={form.amount} onChange={(event) => setForm((prev) => ({ ...prev, amount: event.target.value }))} />
+            <select className="demo-select" value={form.method} onChange={(event) => setForm((prev) => ({ ...prev, method: event.target.value }))}>
+              <option value="Bank transfer">Bank transfer</option>
+              <option value="PayPal">PayPal</option>
+              <option value="Stripe Connect">Stripe Connect</option>
+            </select>
+            <input className="demo-input" value={form.destination} onChange={(event) => setForm((prev) => ({ ...prev, destination: event.target.value }))} placeholder="Destination account" />
+            <textarea className="demo-textarea" value={form.note} onChange={(event) => setForm((prev) => ({ ...prev, note: event.target.value }))} placeholder="Payout note" />
+            <button className="btn btn-primary btn-w-full" type="button" onClick={() => { const result = actions.requestPayout(form); setMessage(result.message || (result.ok ? "Payout request submitted." : "")); }}>
+              Submit Payout Request
+            </button>
+            {message ? <p className="text-sm font-medium text-primary">{message}</p> : null}
+          </div>
+        </section>
+        <section className="space-y-6">
+          <div className="demo-kpi p-8">
+            <h2 className="text-3xl font-headline font-black tracking-tight">Payout queue</h2>
+            <div className="mt-6 overflow-x-auto">
+              <table className="demo-table">
+                <thead>
+                  <tr>
+                    <th>Requested</th>
+                    <th>Amount</th>
+                    <th>Method</th>
+                    <th>Status</th>
+                    <th>Destination</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {payoutRequests.map((request) => (
+                    <tr key={request.id}>
+                      <td>{dateLabel(request.requestedAt)}</td>
+                      <td className="font-bold text-primary">{currency(request.amount)}</td>
+                      <td>{request.method}</td>
+                      <td><span className={`demo-chip ${request.status === "approved" ? "demo-chip-success" : request.status === "pending" ? "demo-chip-primary" : "demo-chip-muted"}`}>{request.status}</span></td>
+                      <td>{request.destination}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div className="demo-kpi p-8">
+            <h2 className="text-3xl font-headline font-black tracking-tight">Earnings ledger</h2>
+            <div className="mt-6 overflow-x-auto">
+              <table className="demo-table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Method</th>
+                    <th>Status</th>
+                    <th>Amount</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {financeTransactions.map((item) => (
+                    <tr key={item.id}>
+                      <td>{dateLabel(item.createdAt)}</td>
+                      <td className="font-bold">{item.type.replaceAll("_", " ")}</td>
+                      <td>{item.method}</td>
+                      <td><span className={`demo-chip ${item.status === "completed" ? "demo-chip-success" : "demo-chip-primary"}`}>{item.status}</span></td>
+                      <td className="font-bold text-primary">{currency(item.amount)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
   );
 }

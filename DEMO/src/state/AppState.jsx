@@ -3,14 +3,136 @@ import { heroImages, initialState, makeLessonRecord } from "../mock/seed";
 import { STORAGE_KEY, flattenLessons } from "../lib/utils";
 
 const AppStateContext = createContext(null);
+const DEMO_CERTIFICATE_COURSE_IDS = ["react-ux", "product-strategy"];
+const DEFAULT_PLATFORM_SETTINGS = { commissionRate: 30, minimumPayoutThreshold: 100 };
+
+function demoQuizResult(course, index) {
+  const total = Math.max(course.quiz.length, 1);
+  return {
+    id: `result-${course.id}-demo`,
+    courseId: course.id,
+    score: total,
+    total,
+    percent: 100,
+    answers: course.quiz.map((question) => question.answer),
+    createdAt: index === 0 ? "2026-04-23T10:30:00.000Z" : "2026-04-24T07:45:00.000Z",
+  };
+}
+
+function hydrateDemoStudentCertificates(state) {
+  const catalog = state.catalog?.length ? state.catalog : initialState.catalog;
+  const demoCourses = DEMO_CERTIFICATE_COURSE_IDS
+    .map((courseId) => catalog.find((course) => course.id === courseId))
+    .filter(Boolean);
+
+  return {
+    ...state,
+    catalog,
+    users: state.users.map((user) => {
+      if (user.id !== "student-1") return user;
+
+      const completedLessons = { ...user.completedLessons };
+      const quizResults = { ...user.quizResults };
+
+      demoCourses.forEach((course, index) => {
+        completedLessons[course.id] = flattenLessons(course).map((lesson) => lesson.id);
+        quizResults[course.id] = demoQuizResult(course, index);
+      });
+
+      return {
+        ...user,
+        enrolledCourseIds: Array.from(new Set([...user.enrolledCourseIds, ...DEMO_CERTIFICATE_COURSE_IDS])),
+        completedLessons,
+        quizResults,
+        certificates: DEMO_CERTIFICATE_COURSE_IDS,
+      };
+    }),
+  };
+}
+
+function hydrateFinanceState(state) {
+  const fallbackSettings = initialState.platformSettings ?? DEFAULT_PLATFORM_SETTINGS;
+  const financeAccounts = state.financeAccounts?.length ? state.financeAccounts : (initialState.financeAccounts ?? []);
+  const financeTransactions = state.financeTransactions?.length ? state.financeTransactions : (initialState.financeTransactions ?? []);
+  const payoutRequests = state.payoutRequests?.length ? state.payoutRequests : (initialState.payoutRequests ?? []);
+
+  return {
+    ...state,
+    platformSettings: { ...fallbackSettings, ...(state.platformSettings ?? {}) },
+    financeAccounts,
+    financeTransactions,
+    payoutRequests,
+  };
+}
 
 function loadState() {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? { ...initialState, ...JSON.parse(raw) } : initialState;
+    const state = raw ? { ...initialState, ...JSON.parse(raw) } : initialState;
+    return hydrateFinanceState(hydrateDemoStudentCertificates(state));
   } catch {
-    return initialState;
+    return hydrateFinanceState(hydrateDemoStudentCertificates(initialState));
   }
+}
+
+function roundMoney(value) {
+  return Math.round(Number(value || 0) * 100) / 100;
+}
+
+function financeAccountFor(state, userId) {
+  return state.financeAccounts?.find((account) => account.userId === userId) ?? {
+    userId,
+    walletBalance: 0,
+    payoutAvailable: 0,
+    totalDeposited: 0,
+    totalWithdrawn: 0,
+    totalEarned: 0,
+    preferredPayoutMethod: "Bank transfer",
+  };
+}
+
+function updateFinanceAccounts(accounts, userId, updater) {
+  const existing = accounts.find((account) => account.userId === userId);
+  const base = existing ?? financeAccountFor({ financeAccounts: [] }, userId);
+  const next = updater(base);
+  return existing
+    ? accounts.map((account) => (account.userId === userId ? next : account))
+    : [next, ...accounts];
+}
+
+function financeEvent(payload) {
+  return {
+    id: payload.id ?? `fin-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
+    userId: payload.userId,
+    role: payload.role,
+    type: payload.type,
+    amount: roundMoney(payload.amount),
+    method: payload.method,
+    status: payload.status ?? "completed",
+    note: payload.note,
+    createdAt: payload.createdAt ?? new Date().toISOString(),
+    relatedId: payload.relatedId ?? null,
+  };
+}
+
+function allocateOrderRevenue(courseIds, courses, netTotal, commissionRate) {
+  const purchasedCourses = courseIds.map((id) => courses.find((course) => course.id === id)).filter(Boolean);
+  const subtotal = purchasedCourses.reduce((sum, course) => sum + course.price, 0);
+  const instructorShares = {};
+  let allocated = 0;
+
+  purchasedCourses.forEach((course, index) => {
+    const proportion = subtotal ? course.price / subtotal : 0;
+    const courseNet = index === purchasedCourses.length - 1 ? roundMoney(netTotal - allocated) : roundMoney(netTotal * proportion);
+    allocated += courseNet;
+    const instructorShare = roundMoney(courseNet * ((100 - commissionRate) / 100));
+    instructorShares[course.instructorId] = roundMoney((instructorShares[course.instructorId] ?? 0) + instructorShare);
+  });
+
+  const totalInstructorShare = Object.values(instructorShares).reduce((sum, amount) => sum + amount, 0);
+  const platformShare = roundMoney(netTotal - totalInstructorShare);
+
+  return { instructorShares, platformShare };
 }
 
 export function AppStateProvider({ children }) {
@@ -55,7 +177,12 @@ export function AppStateProvider({ children }) {
           quizResults: {},
           certificates: [],
         };
-        setState((prev) => ({ ...prev, users: [...prev.users, user], sessionUserId: user.id }));
+        setState((prev) => ({
+          ...prev,
+          users: [...prev.users, user],
+          sessionUserId: user.id,
+          financeAccounts: updateFinanceAccounts(prev.financeAccounts ?? [], user.id, (account) => ({ ...account, userId: user.id })),
+        }));
         return { ok: true, user };
       },
       logout() {
@@ -96,6 +223,28 @@ export function AppStateProvider({ children }) {
                   },
                 }
               : user,
+          ),
+        }));
+      },
+      reviewOrganizationProfile(userId, payload) {
+        if (!currentUser) return;
+        setState((prev) => ({
+          ...prev,
+          users: prev.users.map((user) =>
+            user.id !== userId
+              ? user
+              : {
+                  ...user,
+                  organizationProfile: user.organizationProfile
+                    ? {
+                        ...user.organizationProfile,
+                        status: payload.status,
+                        reviewedAt: new Date().toISOString(),
+                        reviewedBy: currentUser.name,
+                        notes: payload.notes,
+                      }
+                    : user.organizationProfile,
+                },
           ),
         }));
       },
@@ -221,36 +370,267 @@ export function AppStateProvider({ children }) {
       clearCoupon() {
         setState((prev) => ({ ...prev, appliedCoupon: null }));
       },
+      topUpWallet(amount, method) {
+        if (!currentUser) return { ok: false, message: "Sign in to add funds." };
+        const numericAmount = roundMoney(amount);
+        if (numericAmount <= 0) return { ok: false, message: "Enter a valid amount." };
+        const roleLabel = currentUser.role === "admin" ? "admin" : currentUser.role;
+        setState((prev) => ({
+          ...prev,
+          financeAccounts: updateFinanceAccounts(prev.financeAccounts ?? [], currentUser.id, (account) => ({
+            ...account,
+            walletBalance: roundMoney(account.walletBalance + numericAmount),
+            totalDeposited: roundMoney(account.totalDeposited + numericAmount),
+          })),
+          financeTransactions: [
+            financeEvent({
+              userId: currentUser.id,
+              role: roleLabel,
+              type: currentUser.role === "admin" ? "treasury_deposit" : "wallet_top_up",
+              amount: numericAmount,
+              method,
+              note: currentUser.role === "admin" ? "Platform reserve funding" : "Wallet top-up",
+            }),
+            ...(prev.financeTransactions ?? []),
+          ],
+        }));
+        return { ok: true, message: "Funds added successfully." };
+      },
+      withdrawFromWallet(amount, method) {
+        if (!currentUser) return { ok: false, message: "Sign in to withdraw funds." };
+        const numericAmount = roundMoney(amount);
+        const account = financeAccountFor(state, currentUser.id);
+        if (numericAmount <= 0) return { ok: false, message: "Enter a valid amount." };
+        if (account.walletBalance < numericAmount) return { ok: false, message: "Insufficient available balance." };
+        setState((prev) => ({
+          ...prev,
+          financeAccounts: updateFinanceAccounts(prev.financeAccounts ?? [], currentUser.id, (item) => ({
+            ...item,
+            walletBalance: roundMoney(item.walletBalance - numericAmount),
+            totalWithdrawn: roundMoney(item.totalWithdrawn + numericAmount),
+          })),
+          financeTransactions: [
+            financeEvent({
+              userId: currentUser.id,
+              role: currentUser.role,
+              type: currentUser.role === "admin" ? "treasury_withdrawal" : "wallet_withdrawal",
+              amount: numericAmount,
+              method,
+              note: currentUser.role === "admin" ? "Treasury withdrawal" : "Wallet withdrawal",
+            }),
+            ...(prev.financeTransactions ?? []),
+          ],
+        }));
+        return { ok: true, message: "Withdrawal recorded." };
+      },
+      requestPayout(payload) {
+        if (!currentUser || currentUser.role !== "instructor") return { ok: false, message: "Only instructors can request payouts." };
+        const numericAmount = roundMoney(payload.amount);
+        const account = financeAccountFor(state, currentUser.id);
+        const minimumPayoutThreshold = state.platformSettings?.minimumPayoutThreshold ?? DEFAULT_PLATFORM_SETTINGS.minimumPayoutThreshold;
+        if (numericAmount <= 0) return { ok: false, message: "Enter a valid payout amount." };
+        if (numericAmount > account.payoutAvailable) return { ok: false, message: "Requested amount exceeds available earnings." };
+        if (numericAmount < minimumPayoutThreshold) return { ok: false, message: `Minimum payout request is ${minimumPayoutThreshold}.` };
+        const request = {
+          id: `payout-${Date.now()}`,
+          instructorId: currentUser.id,
+          instructorName: currentUser.name,
+          amount: numericAmount,
+          method: payload.method,
+          destination: payload.destination,
+          note: payload.note,
+          status: "pending",
+          requestedAt: new Date().toISOString(),
+          reviewedAt: null,
+          reviewedBy: null,
+          adminNotes: "",
+        };
+        setState((prev) => ({
+          ...prev,
+          payoutRequests: [request, ...(prev.payoutRequests ?? [])],
+          financeTransactions: [
+            financeEvent({
+              userId: currentUser.id,
+              role: currentUser.role,
+              type: "payout_request",
+              amount: numericAmount,
+              method: payload.method,
+              status: "pending",
+              note: "Instructor payout requested",
+              relatedId: request.id,
+            }),
+            ...(prev.financeTransactions ?? []),
+          ],
+        }));
+        return { ok: true, request };
+      },
+      reviewPayoutRequest(requestId, payload) {
+        if (!currentUser || currentUser.role !== "admin") return { ok: false, message: "Only admins can review payouts." };
+        const request = state.payoutRequests?.find((item) => item.id === requestId);
+        if (!request) return { ok: false, message: "Payout request not found." };
+        if (request.status !== "pending") return { ok: false, message: "This request was already reviewed." };
+        const adminId = currentUser.id;
+        const instructorAccount = financeAccountFor(state, request.instructorId);
+        const adminAccount = financeAccountFor(state, adminId);
+        if (payload.status === "approved") {
+          if (instructorAccount.payoutAvailable < request.amount) return { ok: false, message: "Instructor balance is no longer sufficient." };
+          if (adminAccount.walletBalance < request.amount) return { ok: false, message: "Platform reserve is insufficient for this payout." };
+        }
+        setState((prev) => {
+          const nextTransactions = [...(prev.financeTransactions ?? [])];
+          if (payload.status === "approved") {
+            nextTransactions.unshift(
+              financeEvent({
+                userId: request.instructorId,
+                role: "instructor",
+                type: "payout_completed",
+                amount: request.amount,
+                method: request.method,
+                note: "Instructor payout approved and released",
+                relatedId: request.id,
+              }),
+            );
+            nextTransactions.unshift(
+              financeEvent({
+                userId: adminId,
+                role: "admin",
+                type: "treasury_payout",
+                amount: request.amount,
+                method: request.method,
+                note: `Payout released to ${request.instructorName}`,
+                relatedId: request.id,
+              }),
+            );
+          }
+          return {
+            ...prev,
+            payoutRequests: prev.payoutRequests.map((item) =>
+              item.id === requestId
+                ? {
+                    ...item,
+                    status: payload.status,
+                    reviewedAt: new Date().toISOString(),
+                    reviewedBy: currentUser.name,
+                    adminNotes: payload.adminNotes ?? "",
+                  }
+                : item,
+            ),
+            financeAccounts: (() => {
+              let accounts = prev.financeAccounts ?? [];
+              if (payload.status === "approved") {
+                accounts = updateFinanceAccounts(accounts, request.instructorId, (account) => ({
+                  ...account,
+                  payoutAvailable: roundMoney(account.payoutAvailable - request.amount),
+                  totalWithdrawn: roundMoney(account.totalWithdrawn + request.amount),
+                }));
+                accounts = updateFinanceAccounts(accounts, adminId, (account) => ({
+                  ...account,
+                  walletBalance: roundMoney(account.walletBalance - request.amount),
+                  totalWithdrawn: roundMoney(account.totalWithdrawn + request.amount),
+                }));
+              }
+              return accounts;
+            })(),
+            financeTransactions: nextTransactions,
+          };
+        });
+        return { ok: true, message: `Payout ${payload.status}.` };
+      },
       checkout(method) {
-        if (!currentUser || !state.cart.length) return null;
+        if (!currentUser || !state.cart.length) return { ok: false, message: "Your cart is empty." };
         const cartCourses = courses.filter((course) => state.cart.includes(course.id));
         const subtotal = cartCourses.reduce((sum, course) => sum + course.price, 0);
         const coupon = state.coupons.find((item) => item.code === state.appliedCoupon);
         const discount = coupon ? (coupon.type === "percent" ? Math.round((subtotal * coupon.value) / 100) : coupon.value) : 0;
+        const total = Math.max(subtotal - discount, 0);
+        const buyerAccount = financeAccountFor(state, currentUser.id);
+        if (method === "Wallet" && buyerAccount.walletBalance < total) {
+          return { ok: false, message: "Insufficient wallet balance for this purchase." };
+        }
         const order = {
           id: `ORD-${Math.floor(Date.now() / 1000)}`,
           userId: currentUser.id,
           courseIds: [...state.cart],
           subtotal,
           discount,
-          total: Math.max(subtotal - discount, 0),
+          total,
           method,
           status: "Paid",
           createdAt: new Date().toISOString(),
           receiptUrl: "#",
         };
+        const adminUserId = state.users.find((user) => user.role === "admin")?.id ?? "admin-1";
+        const commissionRate = state.platformSettings?.commissionRate ?? DEFAULT_PLATFORM_SETTINGS.commissionRate;
+        const { instructorShares } = allocateOrderRevenue(order.courseIds, courses, order.total, commissionRate);
         setState((prev) => ({
           ...prev,
           orders: [order, ...prev.orders],
           cart: [],
           appliedCoupon: null,
+          financeAccounts: (() => {
+            let accounts = prev.financeAccounts ?? [];
+            if (method === "Wallet") {
+              accounts = updateFinanceAccounts(accounts, currentUser.id, (account) => ({
+                ...account,
+                walletBalance: roundMoney(account.walletBalance - order.total),
+              }));
+            }
+            accounts = updateFinanceAccounts(accounts, adminUserId, (account) => ({
+              ...account,
+              walletBalance: roundMoney(account.walletBalance + order.total),
+              totalDeposited: roundMoney(account.totalDeposited + order.total),
+            }));
+            Object.entries(instructorShares).forEach(([instructorId, amount]) => {
+              accounts = updateFinanceAccounts(accounts, instructorId, (account) => ({
+                ...account,
+                payoutAvailable: roundMoney(account.payoutAvailable + amount),
+                totalEarned: roundMoney(account.totalEarned + amount),
+              }));
+            });
+            return accounts;
+          })(),
+          financeTransactions: [
+            financeEvent({
+              userId: currentUser.id,
+              role: currentUser.role,
+              type: method === "Wallet" ? "wallet_purchase" : "course_purchase",
+              amount: order.total,
+              method,
+              note: `Purchased ${order.courseIds.length} course(s)`,
+              relatedId: order.id,
+              createdAt: order.createdAt,
+            }),
+            ...Object.entries(instructorShares).map(([instructorId, amount]) =>
+              financeEvent({
+                userId: instructorId,
+                role: "instructor",
+                type: "course_earning",
+                amount,
+                method: "Settlement",
+                note: `Earnings allocated from order ${order.id}`,
+                relatedId: order.id,
+                createdAt: order.createdAt,
+              }),
+            ),
+            financeEvent({
+              userId: adminUserId,
+              role: "admin",
+              type: "order_capture",
+              amount: order.total,
+              method,
+              note: `Platform captured payment for order ${order.id}`,
+              relatedId: order.id,
+              createdAt: order.createdAt,
+            }),
+            ...(prev.financeTransactions ?? []),
+          ],
           users: prev.users.map((user) =>
             user.id === currentUser.id
               ? { ...user, enrolledCourseIds: Array.from(new Set([...user.enrolledCourseIds, ...order.courseIds])) }
               : user,
           ),
         }));
-        return order;
+        return { ok: true, order };
       },
       markLessonComplete(courseId, lessonId) {
         if (!currentUser) return;
@@ -319,7 +699,7 @@ export function AppStateProvider({ children }) {
           createdAt: new Date().toISOString(),
         };
         setState((prev) => ({ ...prev, reviews: { ...prev.reviews, [courseId]: [review, ...(prev.reviews[courseId] ?? [])] } }));
-        return { ok: true };
+        return { ok: true, review };
       },
       addDiscussion(courseId, lessonId, content) {
         if (!currentUser) return;
@@ -527,6 +907,13 @@ export function AppStateProvider({ children }) {
         setState((prev) => ({
           ...prev,
           coupons: prev.coupons.map((coupon) => (coupon.code === code ? { ...coupon, ...patch } : coupon)),
+        }));
+      },
+      updatePlatformSettings(patch) {
+        if (!currentUser || currentUser.role !== "admin") return;
+        setState((prev) => ({
+          ...prev,
+          platformSettings: { ...(prev.platformSettings ?? DEFAULT_PLATFORM_SETTINGS), ...patch },
         }));
       },
     }),

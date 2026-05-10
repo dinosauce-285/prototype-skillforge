@@ -18,12 +18,13 @@ import {
   ResultsPage,
   ReviewsPage,
   CheckoutPage,
+  WalletPage,
 } from "../pages/StudentPages";
 import {
-  InstructorCompliancePage,
   InstructorCouponsPage,
   InstructorCourseEditorPage,
   InstructorCoursesPage,
+  InstructorEarningsPage,
   InstructorGradingPage,
   InstructorCurriculumPage,
   InstructorOverviewPage,
@@ -34,6 +35,7 @@ import {
 import {
   AdminCouponsPage,
   AdminCoursesPage,
+  AdminFinancePage,
   AdminPage,
   AdminSettingsPage,
   AdminUsersPage,
@@ -60,6 +62,7 @@ function ProtectedApp() {
     <Route path="/certificate/:courseId" element={<RoleRoute roles={["student"]}><CertificatePage /></RoleRoute>} />
     <Route path="/cart" element={<RoleRoute roles={["student"]}><CartPage /></RoleRoute>} />
     <Route path="/checkout" element={<RoleRoute roles={["student"]}><CheckoutPage /></RoleRoute>} />
+    <Route path="/wallet" element={<RoleRoute roles={["student"]}><WalletPage /></RoleRoute>} />
     <Route path="/orders" element={<RoleRoute roles={["student"]}><OrdersPage /></RoleRoute>} />
     <Route path="/reviews/:courseId" element={<RoleRoute roles={["student"]}><ReviewsPage /></RoleRoute>} />
     <Route path="/discussions/:courseId/:lessonId" element={<RoleRoute roles={["student"]}><DiscussionsPage /></RoleRoute>} />
@@ -68,15 +71,16 @@ function ProtectedApp() {
     <Route path="/instructor/courses" element={<RoleRoute roles={["instructor"]}><InstructorCoursesPage /></RoleRoute>} />
     <Route path="/instructor/courses/:courseId" element={<RoleRoute roles={["instructor"]}><InstructorCourseEditorPage /></RoleRoute>} />
     <Route path="/instructor/courses/:courseId/lessons/:lessonId/quiz" element={<RoleRoute roles={["instructor"]}><InstructorLessonQuizEditorPage /></RoleRoute>} />
-    <Route path="/instructor/compliance" element={<RoleRoute roles={["instructor"]}><InstructorCompliancePage /></RoleRoute>} />
     <Route path="/instructor/grading" element={<RoleRoute roles={["instructor"]}><InstructorGradingPage /></RoleRoute>} />
     <Route path="/instructor/curriculum" element={<RoleRoute roles={["instructor"]}><InstructorCurriculumPage /></RoleRoute>} />
     <Route path="/instructor/quizzes" element={<RoleRoute roles={["instructor"]}><InstructorQuizBuilderPage /></RoleRoute>} />
     <Route path="/instructor/students" element={<RoleRoute roles={["instructor"]}><InstructorStudentsPage /></RoleRoute>} />
+    <Route path="/instructor/earnings" element={<RoleRoute roles={["instructor"]}><InstructorEarningsPage /></RoleRoute>} />
     <Route path="/instructor/coupons" element={<RoleRoute roles={["instructor"]}><InstructorCouponsPage /></RoleRoute>} />
     <Route path="/admin" element={<RoleRoute roles={["admin"]}><AdminPage /></RoleRoute>} />
     <Route path="/admin/users" element={<RoleRoute roles={["admin"]}><AdminUsersPage /></RoleRoute>} />
     <Route path="/admin/courses" element={<RoleRoute roles={["admin"]}><AdminCoursesPage /></RoleRoute>} />
+    <Route path="/admin/finance" element={<RoleRoute roles={["admin"]}><AdminFinancePage /></RoleRoute>} />
     <Route path="/admin/coupons" element={<RoleRoute roles={["admin"]}><AdminCouponsPage /></RoleRoute>} />
     <Route path="/admin/settings" element={<RoleRoute roles={["admin"]}><AdminSettingsPage /></RoleRoute>} />
     <Route path="*" element={<Navigate to={homePathForRole(currentUser.role)} replace />} />
